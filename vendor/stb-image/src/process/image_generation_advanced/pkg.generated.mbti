@@ -1,0 +1,194 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_generation_advanced"
+
+// Values
+pub fn create_default_generation_config() -> ImageGenerationConfig
+
+pub fn diffuse_sample(Array[Double], Int, Int) -> Array[Double]
+
+pub fn generate_noise(Int, Int, Int, Int) -> Array[Double]
+
+pub fn image_generation_report_to_string(ImageGenerationTaskType, ImageGenerationConfig, String) -> String
+
+pub fn image_to_image(Array[Double], ImageGenerationConfig) -> ImageToImageResult
+
+pub fn inpaint_image(Array[Double], Array[Bool], Int, Int, ImageGenerationConfig) -> InpaintingResult
+
+pub fn text_to_image(ImageGenerationConfig) -> TextToImageResult
+
+pub fn transfer_style(Array[Double], Array[Double], Int, Int, ImageGenerationConfig) -> StyleTransferResult
+
+// Errors
+
+// Types and methods
+pub(all) struct ColorizationResult {
+  colorized_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  grayscale_image : Array[Double]
+  colorization_method : String
+  model_type : GenerativeModelType
+  color_palette : Array[Array[Double]]
+  num_colors : Int
+  colorization_time_ms : Double
+  color_consistency : Double
+}
+
+pub(all) enum DiffusionModelType {
+  DDPM
+  DDIM
+  ScoreBased
+  LatentDiffusion
+  StableDiffusion
+  ControlNet
+  Unknown
+} derive(Eq)
+
+pub(all) enum GANType {
+  VanillaGAN
+  DCGAN
+  WGAN
+  WGANGP
+  StyleGAN
+  StyleGAN2
+  CycleGAN
+  Pix2Pix
+  Unknown
+} derive(Eq)
+
+pub(all) struct GeneratedImage {
+  image_data : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  generation_method : GenerativeModelType
+  prompt : String
+  seed : Int
+  num_inference_steps : Int
+  guidance_scale : Double
+  generation_time_ms : Double
+  quality_score : Double
+  diversity_score : Double
+}
+
+pub(all) enum GenerativeModelType {
+  Diffusion
+  GAN
+  VAE
+  Flow
+  Autoregressive
+  EnergyBased
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImageGenerationConfig {
+  task_type : ImageGenerationTaskType
+  model_type : GenerativeModelType
+  diffusion_model : DiffusionModelType
+  gan_type : GANType
+  vae_type : VAEType
+  width : Int
+  height : Int
+  num_inference_steps : Int
+  guidance_scale : Double
+  seed : Int
+  num_images : Int
+  prompt : String
+  negative_prompt : String
+  strength : Double
+  style_strength : Double
+  content_strength : Double
+  use_gpu : Bool
+  use_fp16 : Bool
+  scheduler_type : String
+  beta_start : Double
+  beta_end : Double
+  beta_schedule : String
+}
+
+pub(all) enum ImageGenerationTaskType {
+  TextToImage
+  ImageToImage
+  Inpainting
+  Outpainting
+  StyleTransfer
+  SuperResolution
+  Colorization
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImageToImageResult {
+  images : Array[GeneratedImage]
+  num_images : Int
+  input_image : Array[Double]
+  prompt : String
+  strength : Double
+  model_type : DiffusionModelType
+  num_inference_steps : Int
+  guidance_scale : Double
+  seed : Int
+  total_generation_time_ms : Double
+}
+
+pub(all) struct InpaintingResult {
+  repaired_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  mask : Array[Bool]
+  num_repaired_pixels : Int
+  repair_method : String
+  model_type : GenerativeModelType
+  num_inference_steps : Int
+  seed : Int
+  repair_time_ms : Double
+  consistency_score : Double
+}
+
+pub(all) struct StyleTransferResult {
+  stylized_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  content_image : Array[Double]
+  style_image : Array[Double]
+  style_strength : Double
+  content_strength : Double
+  transfer_method : String
+  model_type : GANType
+  num_iterations : Int
+  transfer_time_ms : Double
+  content_loss : Double
+  style_loss : Double
+  total_loss : Double
+}
+
+pub(all) struct TextToImageResult {
+  images : Array[GeneratedImage]
+  num_images : Int
+  prompt : String
+  negative_prompt : String
+  model_type : DiffusionModelType
+  width : Int
+  height : Int
+  num_inference_steps : Int
+  guidance_scale : Double
+  seed : Int
+  total_generation_time_ms : Double
+}
+
+pub(all) enum VAEType {
+  VanillaVAE
+  BetaVAE
+  CVAE
+  VQVAE
+  VQVAE2
+  GumbelVAE
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,112 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/fusion_enhanced"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn apply_translation(@types.Image, Int, Int) -> @types.Image
+
+pub fn calculate_fusion_quality(@types.Image) -> Double
+
+pub fn create_default_fusion_config() -> FusionConfig
+
+pub fn create_default_registration_config() -> RegistrationConfig
+
+pub fn downsample_fe(@types.Image) -> @types.Image
+
+pub fn fuse_images(Array[@types.Image], FusionConfig) -> FusionResult
+
+pub fn fuse_laplacian_pyramid(Array[@types.Image], Int) -> @types.Image
+
+pub fn fuse_maximum(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_minimum(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_simple_mean(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_weighted_average(Array[@types.Image], Array[Double]) -> @types.Image
+
+pub fn fusion_report_to_string(FusionResult, Double) -> String
+
+pub fn gaussian_blur_fe(@types.Image, Int) -> @types.Image
+
+pub fn register_images(@types.Image, @types.Image, RegistrationConfig) -> RegistrationResult
+
+pub fn register_phase_correlation(@types.Image, @types.Image) -> RegistrationResult
+
+pub fn upsample_fe(@types.Image) -> @types.Image
+
+// Errors
+
+// Types and methods
+pub(all) enum FusionAlgorithm {
+  WeightedAverage
+  LaplacianPyramid
+  GaussianPyramid
+  Wavelet
+  PCA
+  IHS
+  Brovey
+  SimpleMean
+  Maximum
+  Minimum
+  Unknown
+} derive(Eq)
+
+pub(all) struct FusionConfig {
+  algorithm : FusionAlgorithm
+  weights : Array[Double]
+  pyramid_levels : Int
+  use_color_preservation : Bool
+}
+
+pub(all) struct FusionResult {
+  image : @types.Image
+  algorithm : FusionAlgorithm
+  num_images : Int
+  processing_time_ms : Double
+  fusion_quality : Double
+}
+
+pub(all) enum RegistrationAlgorithm {
+  PhaseCorrelation
+  FeatureBased
+  AreaBased
+  MutualInformation
+  OpticalFlow
+  Unknown
+} derive(Eq)
+
+pub(all) struct RegistrationConfig {
+  algorithm : RegistrationAlgorithm
+  max_iterations : Int
+  tolerance : Double
+  use_multiscale : Bool
+}
+
+pub(all) struct RegistrationResult {
+  image : @types.Image
+  algorithm : RegistrationAlgorithm
+  translation_x : Double
+  translation_y : Double
+  rotation_angle : Double
+  scale_factor : Double
+  similarity : Double
+  processing_time_ms : Double
+}
+
+pub(all) struct TransformMatrix {
+  a : Double
+  b : Double
+  c : Double
+  d : Double
+  e : Double
+  f : Double
+}
+
+// Type aliases
+
+// Traits
+

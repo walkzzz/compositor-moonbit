@@ -1,0 +1,163 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/reinforcement_learning"
+
+// Values
+pub fn add_experience(ReplayBuffer, Experience) -> ReplayBuffer
+
+pub fn create_default_rl_config() -> RLConfig
+
+pub fn create_q_learning_agent(Int, Int, Double, Double, Double) -> RLAgent
+
+pub fn create_replay_buffer(Int, Int, ReplayBufferType) -> ReplayBuffer
+
+pub fn create_rl_environment(String, Int, Int, Int, Int, Bool, Int) -> RLEnvironment
+
+pub fn evaluate_policy(RLAgent, RLEnvironment, Int) -> PolicyEvaluationResult
+
+pub fn q_learning_update(RLAgent, Int, Int, Double, Int, Bool) -> RLAgent
+
+pub fn reinforcement_learning_report_to_string(RLTrainingResult, RLConfig, RLEnvironment) -> String
+
+pub fn sample_experiences(ReplayBuffer, Int) -> Array[Experience]
+
+pub fn select_action(RLAgent, Int) -> Int
+
+pub fn simulate_rl_training(RLConfig, RLEnvironment) -> RLTrainingResult
+
+// Errors
+
+// Types and methods
+pub(all) struct Experience {
+  state : Array[Double]
+  action : Int
+  reward : Double
+  next_state : Array[Double]
+  is_done : Bool
+  priority : Double
+}
+
+pub(all) enum ExplorationStrategy {
+  EpsilonGreedy
+  Boltzmann
+  UCB
+  ThompsonSampling
+  NoisyNet
+  ParameterNoise
+  EntropyRegularization
+  Unknown
+} derive(Eq)
+
+pub(all) struct PolicyEvaluationResult {
+  average_reward : Double
+  std_reward : Double
+  min_reward : Double
+  max_reward : Double
+  num_episodes : Int
+  success_rate : Double
+  average_steps : Double
+}
+
+pub(all) struct RLAgent {
+  algorithm : RLAlgorithm
+  learning_rate : Double
+  gamma : Double
+  epsilon : Double
+  epsilon_decay : Double
+  epsilon_min : Double
+  q_table : Array[Array[Double]]
+  num_states : Int
+  num_actions : Int
+  total_reward : Double
+  episodes_completed : Int
+}
+
+pub(all) enum RLAlgorithm {
+  QLearning
+  DQN
+  DoubleDQN
+  DuelingDQN
+  PPO
+  A2C
+  A3C
+  REINFORCE
+  DDPG
+  SAC
+  TD3
+  Unknown
+} derive(Eq)
+
+pub(all) struct RLConfig {
+  algorithm : RLAlgorithm
+  exploration_strategy : ExplorationStrategy
+  replay_buffer_type : ReplayBufferType
+  num_episodes : Int
+  max_steps_per_episode : Int
+  learning_rate : Double
+  gamma : Double
+  epsilon_start : Double
+  epsilon_end : Double
+  epsilon_decay : Double
+  batch_size : Int
+  buffer_size : Int
+  target_update_freq : Int
+  use_soft_update : Bool
+  tau : Double
+  use_dueling : Bool
+  use_double : Bool
+  use_prioritized_replay : Bool
+  clip_range : Double
+  entropy_coef : Double
+  value_coef : Double
+  max_grad_norm : Double
+}
+
+pub(all) struct RLEnvironment {
+  env_name : String
+  num_states : Int
+  num_actions : Int
+  state_dim : Int
+  action_dim : Int
+  is_discrete : Bool
+  max_steps : Int
+  current_state : Array[Double]
+  current_step : Int
+  is_done : Bool
+}
+
+pub(all) struct RLTrainingResult {
+  algorithm : RLAlgorithm
+  num_episodes : Int
+  total_reward : Double
+  average_reward : Double
+  final_epsilon : Double
+  episodes_to_solve : Int
+  reward_history : Array[Double]
+  loss_history : Array[Double]
+  epsilon_history : Array[Double]
+  training_time_s : Double
+  convergence_episode : Int
+}
+
+pub(all) struct ReplayBuffer {
+  buffer : Array[Experience]
+  buffer_size : Int
+  current_size : Int
+  buffer_type : ReplayBufferType
+  batch_size : Int
+  alpha : Double
+  beta : Double
+}
+
+pub(all) enum ReplayBufferType {
+  Uniform
+  Prioritized
+  Hindsight
+  Episodic
+  Reservoir
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

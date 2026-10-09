@@ -1,0 +1,82 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/filter"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn bilateral_filter(@types.Image, Int, Float, Float) -> @types.Image raise @types.LoadError
+
+pub fn bilateral_filter_16(@types.Image16, Int, Float, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn bilateral_filter_f(@types.ImageF, Int, Float, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn bilateral_filter_fast(@types.Image, Int, Float, Float, Int) -> @types.Image raise @types.LoadError
+
+pub fn bilateral_filter_fast_16(@types.Image16, Int, Float, Float, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn bilateral_filter_fast_f(@types.ImageF, Int, Float, Float, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn box_blur(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn box_blur_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn box_blur_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn convolve(@types.Image, Array[Float], Float, Float) -> @types.Image raise @types.LoadError
+
+pub fn convolve_16(@types.Image16, Array[Float], Float, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn convolve_f(@types.ImageF, Array[Float], Float, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn gaussian_blur(@types.Image, Int, Float) -> @types.Image raise @types.LoadError
+
+pub fn gaussian_blur_16(@types.Image16, Int, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn gaussian_blur_f(@types.ImageF, Int, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn inpaint(@types.Image, @types.Image, iterations? : Int) -> @types.Image raise @types.LoadError
+
+pub fn inpaint_16(@types.Image16, @types.Image16, iterations? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn inpaint_f(@types.ImageF, @types.ImageF, iterations? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn inpaint_fast(@types.Image, @types.Image, radius? : Int) -> @types.Image raise @types.LoadError
+
+pub fn inpaint_fast_16(@types.Image16, @types.Image16, radius? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn inpaint_fast_f(@types.ImageF, @types.ImageF, radius? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn median_blur(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn median_blur_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn median_blur_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn nlm_denoise(@types.Image, patch_size? : Int, search_size? : Int, h? : Int) -> @types.Image raise @types.LoadError
+
+pub fn nlm_denoise_16(@types.Image16, patch_size? : Int, search_size? : Int, h? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn nlm_denoise_f(@types.ImageF, patch_size? : Int, search_size? : Int, h? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn nlm_denoise_fast(@types.Image, patch_size? : Int, search_size? : Int, h? : Int, step? : Int) -> @types.Image raise @types.LoadError
+
+pub fn nlm_denoise_fast_16(@types.Image16, patch_size? : Int, search_size? : Int, h? : Int, step? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn nlm_denoise_fast_f(@types.ImageF, patch_size? : Int, search_size? : Int, h? : Int, step? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn sharpen(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn sharpen_16(@types.Image16, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn sharpen_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

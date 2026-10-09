@@ -1,0 +1,169 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/video"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn compute_frame_difference(@types.Image, @types.Image, threshold? : Double) -> Double
+
+pub fn compute_optical_flow(@types.Image, @types.Image, block_size? : Int, search_range? : Int) -> OpticalFlowField
+
+pub fn create_animation(Array[@types.Image], fps? : Double) -> VideoFrames
+
+pub fn create_default_stabilization_config() -> VideoStabilizationConfig
+
+pub fn detect_scene_change(@types.Image, @types.Image, threshold? : Double) -> (Bool, Double)
+
+pub fn extract_keyframes(Array[@types.Image], Double, method_type? : String) -> Array[Keyframe]
+
+pub fn generate_video_summary(Array[@types.Image], Double) -> VideoSummary
+
+pub fn initialize_tracking(@types.Image, Int, Int, Int, Int, String) -> TrackedObject
+
+pub fn interpolate_frames(@types.Image, @types.Image, num_frames? : Int) -> Array[@types.Image]
+
+pub fn recognize_action(Array[@types.Image], Int, Int) -> ActionRecognitionResult
+
+pub fn stabilize_video(Array[@types.Image], VideoStabilizationConfig) -> Array[@types.Image]
+
+pub fn update_tracking(TrackedObject, @types.Image) -> TrackedObject
+
+pub fn video_concat(VideoFrames, VideoFrames) -> VideoFrames
+
+pub fn video_fade_in(VideoFrames, duration_frames? : Int) -> VideoFrames
+
+pub fn video_fade_out(VideoFrames, duration_frames? : Int) -> VideoFrames
+
+pub fn video_frame_average(VideoFrames) -> @types.Image
+
+pub fn video_frame_count(VideoFrames) -> Int
+
+pub fn video_frames_new(Array[@types.Image], fps? : Double) -> VideoFrames
+
+pub fn video_get_frame(VideoFrames, Int) -> @types.Image?
+
+pub fn video_reverse(VideoFrames) -> VideoFrames
+
+pub fn video_sample(VideoFrames, interval? : Int) -> VideoFrames
+
+// Errors
+
+// Types and methods
+pub(all) struct ActionRecognitionResult {
+  action_type : ActionType
+  confidence : Double
+  start_frame : Int
+  end_frame : Int
+  duration_frames : Int
+  motion_energy : Double
+  direction : Double
+  key_points : Array[(Int, Int)]
+}
+
+pub(all) enum ActionType {
+  Walking
+  Running
+  Jumping
+  Sitting
+  Standing
+  LyingDown
+  Waving
+  Clapping
+  Pointing
+  Lifting
+  Throwing
+  Catching
+  Unknown
+} derive(Eq)
+
+pub(all) struct Keyframe {
+  frame_index : Int
+  timestamp_ms : Double
+  keyframe_type : KeyframeType
+  score : Double
+  thumbnail : @types.Image
+}
+
+pub(all) enum KeyframeType {
+  SceneChange
+  MotionPeak
+  ContentChange
+  UniformSampling
+  UserSelected
+} derive(Eq)
+
+pub(all) struct OpticalFlowField {
+  width : Int
+  height : Int
+  vectors : Array[OpticalFlowVector]
+  average_magnitude : Double
+  max_magnitude : Double
+  motion_direction : Double
+}
+
+pub(all) struct OpticalFlowVector {
+  x : Double
+  y : Double
+  magnitude : Double
+  angle : Double
+}
+
+pub(all) struct TrackedObject {
+  id : Int
+  label : String
+  x : Int
+  y : Int
+  width : Int
+  height : Int
+  center_x : Double
+  center_y : Double
+  velocity_x : Double
+  velocity_y : Double
+  confidence : Double
+  age : Int
+  visible_count : Int
+  invisible_count : Int
+  color_histogram : Array[Double]
+  trajectory : Array[(Int, Int)]
+}
+
+pub(all) struct TrackingResult {
+  frame_index : Int
+  objects : Array[TrackedObject]
+  tracking_time_ms : Double
+  num_objects : Int
+}
+
+pub(all) struct VideoFrames {
+  frames : Array[@types.Image]
+  width : Int
+  height : Int
+  channels : Int
+  fps : Double
+}
+
+pub(all) struct VideoStabilizationConfig {
+  smoothing_radius : Int
+  max_correction : Double
+  crop_ratio : Double
+  enable_rotation_correction : Bool
+  enable_scale_correction : Bool
+}
+
+pub(all) struct VideoSummary {
+  total_frames : Int
+  duration_ms : Double
+  keyframes : Array[Keyframe]
+  num_keyframes : Int
+  average_motion : Double
+  motion_peaks : Array[Int]
+  scene_changes : Array[Int]
+  summary_text : String
+}
+
+// Type aliases
+
+// Traits
+

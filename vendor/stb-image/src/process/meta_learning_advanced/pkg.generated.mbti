@@ -1,0 +1,204 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/meta_learning_advanced"
+
+// Values
+pub fn create_default_meta_learning_config() -> MetaLearningConfig
+
+pub fn meta_learn(Int, MetaLearningConfig) -> MetaLearningResult
+
+pub fn meta_learning_report_to_string(MetaLearningTaskType, MetaLearningConfig, String) -> String
+
+pub fn train_maml(Int, MetaLearningConfig) -> MAMLResult
+
+pub fn train_matching_net(Array[Array[Double]], Array[Array[Double]], MetaLearningConfig) -> MatchingNetResult
+
+pub fn train_protonet(Array[Array[Double]], Array[Array[Double]], MetaLearningConfig) -> ProtoNetResult
+
+pub fn train_relation_net(Array[Array[Double]], Array[Double], MetaLearningConfig) -> RelationNetResult
+
+pub fn train_reptile(Int, MetaLearningConfig) -> ReptileResult
+
+// Errors
+
+// Types and methods
+pub(all) struct MAMLResult {
+  initial_parameters : Array[Double]
+  meta_learned_parameters : Array[Double]
+  num_tasks : Int
+  num_way : Int
+  num_shot : Int
+  num_query : Int
+  meta_loss : Double
+  meta_accuracy : Double
+  inner_loss : Array[Double]
+  inner_accuracy : Array[Double]
+  num_inner_steps : Int
+  inner_learning_rate : Double
+  meta_learning_rate : Double
+  num_meta_iterations : Int
+  learning_time_ms : Double
+  first_order : Bool
+}
+
+pub(all) struct MatchingNetResult {
+  support_embeddings : Array[Array[Double]]
+  query_embeddings : Array[Array[Double]]
+  num_classes : Int
+  num_support : Int
+  num_query : Int
+  training_loss : Double
+  test_loss : Double
+  training_accuracy : Double
+  test_accuracy : Double
+  confidence_interval : Double
+  num_episodes : Int
+  learning_rate : Double
+  learning_time_ms : Double
+  use_fce : Bool
+}
+
+pub(all) enum MetaLearningAlgorithmType {
+  MAML
+  Reptile
+  MetaSGD
+  FOMAML
+  IMAML
+  MetaCurvature
+  LEO
+  SNAIL
+  ProtoNet
+  MatchingNet
+  RelationNet
+  TADAM
+  FEAT
+  MetaOptNet
+  R2D2
+  Unknown
+} derive(Eq)
+
+pub(all) struct MetaLearningConfig {
+  task_type : MetaLearningTaskType
+  algorithm_type : MetaLearningAlgorithmType
+  optimizer_type : MetaOptimizerType
+  task_distribution : TaskDistributionType
+  num_way : Int
+  num_shot : Int
+  num_query : Int
+  num_meta_iterations : Int
+  num_tasks_per_batch : Int
+  inner_learning_rate : Double
+  meta_learning_rate : Double
+  num_inner_steps : Int
+  first_order : Bool
+  use_curriculum : Bool
+  use_data_augmentation : Bool
+  use_regularization : Bool
+  regularization_strength : Double
+  use_gpu : Bool
+  random_state : Int
+}
+
+pub(all) struct MetaLearningResult {
+  meta_learned_parameters : Array[Double]
+  num_tasks : Int
+  num_way : Int
+  num_shot : Int
+  num_query : Int
+  meta_training_loss : Double
+  meta_validation_loss : Double
+  meta_test_loss : Double
+  meta_training_accuracy : Double
+  meta_validation_accuracy : Double
+  meta_test_accuracy : Double
+  confidence_interval : Double
+  num_meta_iterations : Int
+  meta_learning_rate : Double
+  inner_learning_rate : Double
+  inner_steps : Int
+  learning_time_ms : Double
+  converged : Bool
+}
+
+pub(all) enum MetaLearningTaskType {
+  FewShotClassification
+  FewShotRegression
+  MetaOptimization
+  MetaArchitecture
+  MetaLearningRate
+  MetaDataAugmentation
+  MetaRegularization
+  MetaFeatureSelection
+  Unknown
+} derive(Eq)
+
+pub(all) enum MetaOptimizerType {
+  SGD
+  Adam
+  RMSprop
+  Adagrad
+  MetaLearnedOptimizer
+  LearnedOptimizer
+  Unknown
+} derive(Eq)
+
+pub(all) struct ProtoNetResult {
+  prototypes : Array[Array[Double]]
+  num_classes : Int
+  feature_dimension : Int
+  training_loss : Double
+  validation_loss : Double
+  test_loss : Double
+  training_accuracy : Double
+  validation_accuracy : Double
+  test_accuracy : Double
+  confidence_interval : Double
+  num_episodes : Int
+  learning_rate : Double
+  learning_time_ms : Double
+  distance_metric : String
+}
+
+pub(all) struct RelationNetResult {
+  relation_scores : Array[Array[Double]]
+  num_classes : Int
+  num_support : Int
+  num_query : Int
+  training_loss : Double
+  test_loss : Double
+  training_accuracy : Double
+  test_accuracy : Double
+  confidence_interval : Double
+  num_episodes : Int
+  learning_rate : Double
+  learning_time_ms : Double
+  relation_module_layers : Int
+}
+
+pub(all) struct ReptileResult {
+  initial_parameters : Array[Double]
+  meta_learned_parameters : Array[Double]
+  num_tasks : Int
+  num_way : Int
+  num_shot : Int
+  meta_loss : Double
+  meta_accuracy : Double
+  num_inner_steps : Int
+  inner_learning_rate : Double
+  meta_learning_rate : Double
+  num_meta_iterations : Int
+  learning_time_ms : Double
+}
+
+pub(all) enum TaskDistributionType {
+  Uniform
+  Curriculum
+  HardNegative
+  Diversity
+  Weighted
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

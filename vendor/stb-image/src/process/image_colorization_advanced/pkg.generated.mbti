@@ -1,0 +1,191 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_colorization_advanced"
+
+// Values
+pub fn automatic_colorization(Array[Double], Int, Int, ImageColorizationConfig) -> ColorizationResult
+
+pub fn create_default_colorization_config() -> ImageColorizationConfig
+
+pub fn enhance_colors(Array[Double], Int, Int, ImageColorizationConfig) -> ColorEnhancementResult
+
+pub fn image_colorization_report_to_string(ColorizationTaskType, ImageColorizationConfig, String) -> String
+
+pub fn old_photo_colorization(Array[Double], Int, Int, ImageColorizationConfig) -> OldPhotoColorizationResult
+
+pub fn reference_based_colorization(Array[Double], Array[Double], Int, Int, ImageColorizationConfig) -> ReferenceColorizationResult
+
+pub fn transfer_colors(Array[Double], Array[Double], Int, Int, ImageColorizationConfig) -> ColorTransferResult
+
+// Errors
+
+// Types and methods
+pub(all) struct ColorCorrectionResult {
+  corrected_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  original_image : Array[Double]
+  color_cast_type : String
+  color_temperature : Double
+  tint : Double
+  exposure_correction : Double
+  white_balance : Array[Double]
+  processing_time_ms : Double
+  quality_score : Double
+}
+
+pub(all) struct ColorEnhancementResult {
+  enhanced_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  original_image : Array[Double]
+  saturation_boost : Double
+  contrast_boost : Double
+  brightness_adjustment : Double
+  white_balance_correction : Double
+  vibrancy : Double
+  processing_time_ms : Double
+  quality_score : Double
+}
+
+pub(all) struct ColorRestorationResult {
+  restored_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  original_image : Array[Double]
+  fade_correction : Double
+  color_cast_removal : Double
+  contrast_enhancement : Double
+  saturation_recovery : Double
+  color_consistency : Double
+  processing_time_ms : Double
+  quality_score : Double
+}
+
+pub(all) enum ColorSpaceType {
+  RGB
+  LAB
+  HSV
+  HSL
+  YUV
+  YCbCr
+  XYZ
+  Unknown
+} derive(Eq)
+
+pub(all) struct ColorTransferResult {
+  transferred_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  source_image : Array[Double]
+  reference_image : Array[Double]
+  transfer_method : String
+  color_space : ColorSpaceType
+  luminance_preservation : Double
+  color_similarity : Double
+  processing_time_ms : Double
+  quality_score : Double
+}
+
+pub(all) enum ColorizationModelType {
+  Zhang2016
+  Larsson2016
+  Iizuka2016
+  DeOldify
+  CIC
+  InstanceColor
+  ColorfulImageColorization
+  Unknown
+} derive(Eq)
+
+pub(all) struct ColorizationResult {
+  colorized_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  grayscale_image : Array[Double]
+  colorization_method : ColorizationModelType
+  color_space : ColorSpaceType
+  color_palette : Array[Array[Double]]
+  num_colors : Int
+  color_consistency : Double
+  color_vibrancy : Double
+  skin_tone_accuracy : Double
+  sky_color_accuracy : Double
+  vegetation_color_accuracy : Double
+  processing_time_ms : Double
+  quality_score : Double
+}
+
+pub(all) enum ColorizationTaskType {
+  AutomaticColorization
+  ReferenceBasedColorization
+  ColorRestoration
+  OldPhotoColorization
+  GrayscaleToColor
+  ColorTransfer
+  ColorEnhancement
+  ColorCorrection
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImageColorizationConfig {
+  task_type : ColorizationTaskType
+  model_type : ColorizationModelType
+  color_space : ColorSpaceType
+  colorization_strength : Double
+  saturation_boost : Double
+  contrast_boost : Double
+  brightness_adjustment : Double
+  reference_image_path : String
+  use_reference : Bool
+  use_color_hints : Bool
+  color_hints : Array[Array[Double]]
+  era_color_palette : String
+  scratch_removal : Bool
+  noise_reduction : Double
+  color_cast_removal : Bool
+  white_balance_correction : Bool
+  use_gpu : Bool
+  use_pretrained : Bool
+  pretrained_model : String
+}
+
+pub(all) struct OldPhotoColorizationResult {
+  colorized_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  old_photo : Array[Double]
+  scratch_removal : Bool
+  noise_reduction : Double
+  contrast_enhancement : Double
+  colorization_strength : Double
+  era_color_palette : String
+  processing_time_ms : Double
+  quality_score : Double
+  realism_score : Double
+}
+
+pub(all) struct ReferenceColorizationResult {
+  colorized_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  grayscale_image : Array[Double]
+  reference_image : Array[Double]
+  color_transfer_map : Array[Array[Double]]
+  matched_regions : Int
+  color_consistency : Double
+  reference_similarity : Double
+  processing_time_ms : Double
+  quality_score : Double
+}
+
+// Type aliases
+
+// Traits
+

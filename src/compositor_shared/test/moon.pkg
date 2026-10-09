@@ -1,0 +1,3 @@
+import {
+  "compositor/compositor-moonbit/src/compositor_shared" @S,
+}

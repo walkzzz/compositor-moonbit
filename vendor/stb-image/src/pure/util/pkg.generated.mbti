@@ -1,0 +1,64 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/pure/util"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn adler32(Bytes) -> Int
+
+pub fn convert_iphone_png_to_rgb_pure(Bool) -> Unit
+
+pub fn crc32(Bytes) -> Int
+
+pub fn failure_reason_pure() -> String
+
+pub fn flip_vertically_on_write_pure(Bool) -> Unit
+
+pub fn get_convert_iphone_png_to_rgb_pure() -> Bool
+
+pub fn get_flip_vertically_on_load_pure() -> Bool
+
+pub fn get_flip_vertically_on_write_pure() -> Bool
+
+pub fn get_hdr_to_ldr_gamma_pure() -> Float
+
+pub fn get_hdr_to_ldr_scale_pure() -> Float
+
+pub fn get_ldr_to_hdr_gamma_pure() -> Float
+
+pub fn get_ldr_to_hdr_scale_pure() -> Float
+
+pub fn get_unpremultiply_on_load_pure() -> Bool
+
+pub fn hdr_to_ldr_gamma_pure(Float) -> Unit
+
+pub fn hdr_to_ldr_scale_pure(Float) -> Unit
+
+pub fn info_from_bytes_pure(Bytes) -> @types.ImageInfo? raise @types.LoadError
+
+pub fn is_16_bit_from_bytes_pure(Bytes) -> Bool
+
+pub fn is_hdr_from_bytes_pure(Bytes) -> Bool
+
+pub fn ldr_to_hdr_gamma_pure(Float) -> Unit
+
+pub fn ldr_to_hdr_scale_pure(Float) -> Unit
+
+pub fn resize_pure(@types.Image, Int, Int, filter? : @types.ResizeFilter, edge? : @types.ResizeEdge) -> @types.Image raise @types.LoadError
+
+pub fn set_flip_vertically_on_load_pure(Bool) -> Unit
+
+pub fn set_unpremultiply_on_load_pure(Bool) -> Unit
+
+pub fn zlib_inflate(Bytes) -> Bytes raise @types.LoadError
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

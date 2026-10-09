@@ -1,0 +1,135 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/stereo3d"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn compute_disparity(@types.Image, @types.Image, max_disparity? : Int, block_size? : Int) -> @types.Image
+
+pub fn create_default_camera_intrinsics(Int, Int) -> CameraIntrinsics3d
+
+pub fn create_default_stereo_config() -> StereoConfig3d
+
+pub fn depth_map_to_image(DepthMap3d) -> @types.Image
+
+pub fn depth_to_colormap(@types.Image, colormap? : String) -> @types.Image
+
+pub fn depth_to_point_cloud(DepthMap3d, CameraIntrinsics3d) -> PointCloud3D
+
+pub fn depth_to_pointcloud(@types.Image, fx? : Double, fy? : Double, cx? : Double, cy? : Double, scale? : Double) -> PointCloud
+
+pub fn disparity_to_depth(@types.Image, baseline? : Double, focal_length? : Double) -> @types.Image
+
+pub fn estimate_normals(PointCloud3D, Double) -> Array[(Double, Double, Double)]
+
+pub fn icp_registration(PointCloud3D, PointCloud3D, Int, Double) -> RegistrationResult3d
+
+pub fn point_cloud_new() -> PointCloud
+
+pub fn pointcloud_voxel_downsample(PointCloud, voxel_size? : Double) -> PointCloud
+
+pub fn statistical_outlier_removal(PointCloud3D, Int, Double) -> PointCloud3D
+
+pub fn stereo_match(@types.Image, @types.Image, StereoConfig3d) -> DepthMap3d
+
+pub fn vision_3d_report_to_string(PointCloud3D, DepthMap3d, RegistrationResult3d) -> String
+
+pub fn voxel_downsample(PointCloud3D, Double) -> PointCloud3D
+
+// Errors
+
+// Types and methods
+pub(all) struct BoundingBox3d {
+  center_x : Double
+  center_y : Double
+  center_z : Double
+  width : Double
+  height : Double
+  depth : Double
+  yaw : Double
+  pitch : Double
+  roll : Double
+  class_id : Int
+  confidence : Double
+}
+
+pub(all) struct CameraExtrinsics3d {
+  rotation : Array[Double]
+  translation : Array[Double]
+}
+
+pub(all) struct CameraIntrinsics3d {
+  fx : Double
+  fy : Double
+  cx : Double
+  cy : Double
+  width : Int
+  height : Int
+  distortion : Array[Double]
+}
+
+pub(all) struct DepthMap3d {
+  width : Int
+  height : Int
+  depths : Array[Double]
+  min_depth : Double
+  max_depth : Double
+  invalid_count : Int
+}
+
+pub(all) struct Mesh3d {
+  vertices : Array[Point3d]
+  faces : Array[(Int, Int, Int)]
+  num_vertices : Int
+  num_faces : Int
+}
+
+pub(all) struct Point3d {
+  x : Double
+  y : Double
+  z : Double
+  r : Int
+  g : Int
+  b : Int
+  intensity : Double
+}
+
+pub(all) struct PointCloud {
+  points : Array[(Double, Double, Double)]
+  colors : Array[(Int, Int, Int)]
+  num_points : Int
+}
+
+pub(all) struct PointCloud3D {
+  points : Array[Point3d]
+  num_points : Int
+  width : Int
+  height : Int
+  is_organized : Bool
+}
+
+pub(all) struct RegistrationResult3d {
+  transformation : Array[Double]
+  inliers : Int
+  rmse : Double
+  fitness : Double
+  iterations : Int
+  converged : Bool
+}
+
+pub(all) struct StereoConfig3d {
+  min_disparity : Int
+  num_disparities : Int
+  block_size : Int
+  uniqueness_ratio : Double
+  speckle_window_size : Int
+  speckle_range : Int
+  pre_filter_cap : Int
+}
+
+// Type aliases
+
+// Traits
+

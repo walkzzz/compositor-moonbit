@@ -1,0 +1,8 @@
+import {
+  "walkzzz/image/src/types",
+  "moonbitlang/core/math",
+  "moonbitlang/core/encoding/utf8" @encoding/utf8,
+}
+
+import {
+} for "test"

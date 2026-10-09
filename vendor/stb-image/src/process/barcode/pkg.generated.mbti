@@ -1,0 +1,88 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/barcode"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn barcode_default_config() -> BarcodeConfig
+
+pub fn decode_barcode(@types.Image, config? : BarcodeConfig) -> Array[BarcodeResult] raise @types.LoadError
+
+pub fn decode_code128(@types.Image) -> BarcodeResult? raise @types.LoadError
+
+pub fn decode_code39(@types.Image) -> BarcodeResult? raise @types.LoadError
+
+pub fn decode_ean13(@types.Image, config? : BarcodeConfig) -> BarcodeResult? raise @types.LoadError
+
+pub fn decode_linear_barcode(@types.Image) -> Array[BarcodeResult] raise @types.LoadError
+
+pub fn decode_qrcode(@types.Image, config? : BarcodeConfig) -> BarcodeResult? raise @types.LoadError
+
+pub fn decode_qrcode_full(@types.Image) -> QrDecodeResult? raise @types.LoadError
+
+pub fn decode_upca(@types.Image) -> BarcodeResult? raise @types.LoadError
+
+pub fn detect_qr_finder_patterns(@types.Image) -> Array[QrFinderPattern] raise @types.LoadError
+
+pub fn reed_solomon_decode(Array[Int], Int) -> (Array[Int], Int)
+
+// Errors
+
+// Types and methods
+pub(all) struct BarcodeConfig {
+  enable_ean13 : Bool
+  enable_upca : Bool
+  enable_code128 : Bool
+  enable_qrcode : Bool
+  min_bar_width : Int
+  max_bar_width : Int
+  scan_lines : Int
+  quiet_zone_required : Bool
+}
+
+pub(all) struct BarcodeResult {
+  barcode_type : BarcodeType
+  data : String
+  confidence : Double
+  x : Int
+  y : Int
+  width : Int
+  height : Int
+}
+
+pub(all) enum BarcodeType {
+  Ean13
+  UpcA
+  Code128
+  QrCode
+  Unknown
+} derive(Eq)
+
+pub(all) enum Code128Charset {
+  CodeA
+  CodeB
+  CodeC
+} derive(Eq)
+
+pub(all) struct QrDecodeResult {
+  data : String
+  version : Int
+  error_correction_level : String
+  mask_pattern : Int
+  confidence : Double
+  corrected_errors : Int
+}
+
+pub(all) struct QrFinderPattern {
+  x : Double
+  y : Double
+  size : Double
+  quality : Double
+}
+
+// Type aliases
+
+// Traits
+

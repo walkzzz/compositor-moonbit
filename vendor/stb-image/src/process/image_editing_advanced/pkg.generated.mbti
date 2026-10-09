@@ -1,0 +1,225 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_editing_advanced"
+
+// Values
+pub fn beauty_retouch(Array[Double], Int, Int, ImageEditingConfig) -> BeautyRetouchResult
+
+pub fn create_default_editing_config() -> ImageEditingConfig
+
+pub fn image_editing_report_to_string(ImageEditingTaskType, ImageEditingConfig, String) -> String
+
+pub fn remove_objects(Array[Double], Array[Bool], Int, Int, ImageEditingConfig) -> ObjectRemovalResult
+
+pub fn replace_background(Array[Double], Array[Double], Array[Double], Int, Int, ImageEditingConfig) -> BackgroundReplacementResult
+
+pub fn smart_cutout(Array[Double], Int, Int, ImageEditingConfig) -> CutoutResult
+
+// Errors
+
+// Types and methods
+pub(all) struct AgeTransformationResult {
+  transformed_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  original_age : Int
+  target_age : Int
+  age_direction : String
+  face_alignment : Bool
+  aging_strength : Double
+  processing_time_ms : Double
+  realism_score : Double
+  identity_preservation : Double
+}
+
+pub(all) struct BackgroundReplacementResult {
+  composited_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  original_background : Array[Double]
+  new_background : Array[Double]
+  alpha_mask : Array[Double]
+  blending_method : String
+  edge_feathering : Double
+  color_matching : Bool
+  lighting_adjustment : Bool
+  processing_time_ms : Double
+  realism_score : Double
+}
+
+pub(all) struct BeautyRetouchResult {
+  retouched_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  beauty_types : Array[BeautyType]
+  beauty_strengths : Array[Double]
+  skin_smoothness : Double
+  skin_brightness : Double
+  face_thinness : Double
+  eye_size : Double
+  processing_time_ms : Double
+  naturalness_score : Double
+}
+
+pub(all) enum BeautyType {
+  SkinSmoothing
+  Whitening
+  FaceThinning
+  EyeEnlargement
+  NoseReshaping
+  LipEnhancement
+  TeethWhitening
+  Unknown
+} derive(Eq)
+
+pub(all) enum CutoutMethod {
+  GrabCut
+  DeepLab
+  U2Net
+  MODNet
+  BackgroundMatting
+  Unknown
+} derive(Eq)
+
+pub(all) struct CutoutResult {
+  foreground : Array[Double]
+  alpha_mask : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  cutout_method : CutoutMethod
+  foreground_pixels : Int
+  background_pixels : Int
+  edge_quality : Double
+  hair_detail : Double
+  processing_time_ms : Double
+}
+
+pub(all) struct ExpressionEditingResult {
+  edited_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  original_expression : String
+  target_expression : String
+  expression_strength : Double
+  face_landmarks : Array[Array[Double]]
+  mouth_mask : Array[Bool]
+  eye_mask : Array[Bool]
+  processing_time_ms : Double
+  naturalness_score : Double
+  identity_preservation : Double
+}
+
+pub(all) struct FaceEditingResult {
+  edited_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  num_faces_detected : Int
+  face_landmarks : Array[Array[Double]]
+  editing_type : String
+  editing_strength : Double
+  face_alignment : Bool
+  skin_mask : Array[Bool]
+  processing_time_ms : Double
+  naturalness_score : Double
+}
+
+pub(all) struct ImageEditingConfig {
+  task_type : ImageEditingTaskType
+  cutout_method : CutoutMethod
+  removal_method : ObjectRemovalMethod
+  edge_feathering : Double
+  color_matching : Bool
+  lighting_adjustment : Bool
+  beauty_strength : Double
+  skin_smoothing : Double
+  whitening : Double
+  face_thinning : Double
+  eye_enlargement : Double
+  makeup_strength : Double
+  lipstick_color : Array[Double]
+  eyeshadow_color : Array[Double]
+  blush_color : Array[Double]
+  target_age : Int
+  original_age : Int
+  target_expression : String
+  expression_strength : Double
+  use_face_detection : Bool
+  use_landmark_detection : Bool
+  use_gpu : Bool
+}
+
+pub(all) enum ImageEditingTaskType {
+  SmartCutout
+  BackgroundReplacement
+  ObjectRemoval
+  FaceEditing
+  BeautyRetouch
+  Makeup
+  AgeTransformation
+  ExpressionEditing
+  Unknown
+} derive(Eq)
+
+pub(all) struct MakeupResult {
+  madeup_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  makeup_types : Array[MakeupType]
+  makeup_colors : Array[Array[Double]]
+  makeup_strengths : Array[Double]
+  face_mask : Array[Bool]
+  lip_mask : Array[Bool]
+  eye_mask : Array[Bool]
+  cheek_mask : Array[Bool]
+  processing_time_ms : Double
+  realism_score : Double
+}
+
+pub(all) enum MakeupType {
+  Foundation
+  Concealer
+  Blush
+  Eyeshadow
+  Eyeliner
+  Mascara
+  Lipstick
+  Contour
+  Highlight
+  Unknown
+} derive(Eq)
+
+pub(all) enum ObjectRemovalMethod {
+  Inpainting
+  ContentAwareFill
+  PatchMatch
+  Telea
+  NavierStokes
+  Unknown
+} derive(Eq)
+
+pub(all) struct ObjectRemovalResult {
+  repaired_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  removed_objects : Array[Array[Int]]
+  num_removed_objects : Int
+  removal_method : ObjectRemovalMethod
+  mask : Array[Bool]
+  num_repaired_pixels : Int
+  inpainting_iterations : Int
+  processing_time_ms : Double
+  consistency_score : Double
+  texture_quality : Double
+}
+
+// Type aliases
+
+// Traits
+

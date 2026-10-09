@@ -1,0 +1,190 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/agriculture_vision_advanced"
+
+// Values
+pub fn agriculture_vision_report_to_string(AgricultureVisionTaskType, AgricultureVisionConfig, String) -> String
+
+pub fn analyze_soil(Array[Double], AgricultureVisionConfig) -> SoilAnalysisResult
+
+pub fn create_default_agriculture_config() -> AgricultureVisionConfig
+
+pub fn detect_crops(Array[Double], Int, Int, AgricultureVisionConfig) -> Array[CropDetectionResult]
+
+pub fn detect_diseases(Array[Double], Int, Int, AgricultureVisionConfig) -> Array[DiseaseDetectionResult]
+
+pub fn detect_pests(Array[Double], Int, Int, AgricultureVisionConfig) -> Array[PestDetectionResult]
+
+pub fn predict_yield(CropType, Double, String, Double, AgricultureVisionConfig) -> YieldPredictionResult
+
+// Errors
+
+// Types and methods
+pub(all) struct AgricultureVisionConfig {
+  task_type : AgricultureVisionTaskType
+  crop_type : CropType
+  detection_threshold : Double
+  disease_severity_threshold : Double
+  pest_infestation_threshold : Double
+  soil_ph_optimal_min : Double
+  soil_ph_optimal_max : Double
+  use_multispectral : Bool
+  use_thermal : Bool
+  use_ndvi : Bool
+  drone_altitude : Double
+  camera_resolution : Array[Int]
+  gps_accuracy : Double
+  auto_recommendation : Bool
+  irrigation_control : Bool
+  fertilization_control : Bool
+}
+
+pub(all) enum AgricultureVisionTaskType {
+  CropIdentification
+  PestDetection
+  DiseaseDetection
+  YieldPrediction
+  SoilAnalysis
+  WeedDetection
+  GrowthMonitoring
+  Unknown
+} derive(Eq)
+
+pub(all) struct CropDetectionResult {
+  crop_id : Int
+  crop_type : CropType
+  bounding_box : Array[Int]
+  confidence : Double
+  growth_stage : String
+  health_status : String
+  height_cm : Double
+  leaf_count : Int
+  canopy_coverage : Double
+}
+
+pub(all) enum CropType {
+  Wheat
+  Rice
+  Corn
+  Soybean
+  Cotton
+  Tomato
+  Potato
+  Apple
+  Grape
+  Unknown
+} derive(Eq)
+
+pub(all) struct DiseaseDetectionResult {
+  disease_id : Int
+  disease_type : DiseaseType
+  severity : Double
+  confidence : Double
+  bounding_box : Array[Int]
+  affected_area_ratio : Double
+  spread_direction : String
+  recommendation : String
+  is_critical : Bool
+}
+
+pub(all) enum DiseaseType {
+  Rust
+  Blight
+  Mildew
+  Rot
+  Wilt
+  Mosaic
+  Spot
+  Canker
+  Healthy
+  Unknown
+} derive(Eq)
+
+pub(all) struct GrowthMonitoringResult {
+  crop_type : CropType
+  current_height : Double
+  height_growth_rate : Double
+  canopy_coverage : Double
+  canopy_growth_rate : Double
+  leaf_area_index : Double
+  biomass_estimate : Double
+  health_index : Double
+  stress_level : Double
+  growth_stage : String
+  days_to_harvest : Int
+}
+
+pub(all) struct PestDetectionResult {
+  pest_id : Int
+  pest_type : PestType
+  count : Int
+  confidence : Double
+  bounding_box : Array[Int]
+  infestation_level : Double
+  damage_severity : Double
+  recommendation : String
+  is_critical : Bool
+}
+
+pub(all) enum PestType {
+  Aphid
+  Caterpillar
+  Beetle
+  Mite
+  Fly
+  Bug
+  Worm
+  Healthy
+  Unknown
+} derive(Eq)
+
+pub(all) struct SoilAnalysisResult {
+  soil_type : SoilType
+  ph : Double
+  nitrogen : Double
+  phosphorus : Double
+  potassium : Double
+  organic_matter : Double
+  moisture : Double
+  temperature : Double
+  fertility_score : Double
+  recommendation : String
+}
+
+pub(all) enum SoilType {
+  Sandy
+  Clay
+  Silt
+  Loam
+  Peat
+  Chalky
+  Unknown
+} derive(Eq)
+
+pub(all) struct WeedDetectionResult {
+  weed_id : Int
+  weed_type : String
+  bounding_box : Array[Int]
+  confidence : Double
+  density : Double
+  coverage_ratio : Double
+  competition_level : Double
+  recommendation : String
+  is_critical : Bool
+}
+
+pub(all) struct YieldPredictionResult {
+  crop_type : CropType
+  predicted_yield : Double
+  yield_unit : String
+  confidence : Double
+  current_growth_stage : String
+  expected_harvest_date : String
+  factors_analysis : Array[String]
+  num_factors : Int
+  historical_comparison : Double
+}
+
+// Type aliases
+
+// Traits
+

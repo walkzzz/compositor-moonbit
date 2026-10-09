@@ -1,0 +1,173 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/intelligent_vision"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn create_default_intelligent_vision_config() -> IntelligentVisionConfig
+
+pub fn detect_crops(@types.Image, IntelligentVisionConfig) -> Array[CropDetectionResult]
+
+pub fn detect_defects(@types.Image, IntelligentVisionConfig) -> Array[DefectDetectionResult]
+
+pub fn detect_intrusion(@types.Image, Array[Double], IntelligentVisionConfig) -> IntrusionDetectionResult
+
+pub fn detect_lanes(@types.Image, IntelligentVisionConfig) -> LaneDetectionResult
+
+pub fn detect_objects_iv(@types.Image, IntelligentVisionConfig) -> Array[DetectionResultIV]
+
+pub fn detect_stars(@types.Image, IntelligentVisionConfig) -> StarDetectionResult
+
+pub fn intelligent_vision_report_to_string(String, Int, Double, IntelligentVisionConfig) -> String
+
+pub fn recognize_traffic_signs(@types.Image, IntelligentVisionConfig) -> Array[TrafficSignResult]
+
+// Errors
+
+// Types and methods
+pub(all) enum AgriculturalVisionTask {
+  CropDetection
+  WeedDetection
+  DiseaseDetection
+  PestDetection
+  YieldEstimation
+  SoilAnalysis
+  IrrigationMonitoring
+  HarvestReadiness
+  Unknown
+} derive(Eq)
+
+pub(all) enum AstronomicalImageTask {
+  StarDetection
+  GalaxyClassification
+  PlanetDetection
+  NebulaAnalysis
+  CometTracking
+  SupernovaDetection
+  CosmicRayRemoval
+  ImageStacking
+  Unknown
+} derive(Eq)
+
+pub(all) enum AutonomousDrivingTask {
+  LaneDetection
+  TrafficSignRecognition
+  PedestrianDetection
+  VehicleDetection
+  ObstacleDetection
+  RoadSegmentation
+  DepthEstimation
+  TrafficLightDetection
+  Unknown
+} derive(Eq)
+
+pub(all) struct CropDetectionResult {
+  crop_type : String
+  health_status : String
+  confidence : Double
+  bounding_box : Array[Double]
+  growth_stage : String
+  num_crops : Int
+}
+
+pub(all) struct DefectDetectionResult {
+  defect_type : String
+  severity : String
+  confidence : Double
+  bounding_box : Array[Double]
+  defect_area : Double
+  num_defects : Int
+}
+
+pub(all) struct DetectionResultIV {
+  class_name : String
+  confidence : Double
+  bounding_box : Array[Double]
+  class_id : Int
+  num_detections : Int
+}
+
+pub(all) enum IndustrialInspectionTask {
+  DefectDetection
+  SurfaceInspection
+  DimensionMeasurement
+  AssemblyVerification
+  QualityControl
+  WeldInspection
+  PCBInspection
+  TextileInspection
+  Unknown
+} derive(Eq)
+
+pub(all) struct IntelligentVisionConfig {
+  confidence_threshold : Double
+  nms_threshold : Double
+  max_detections : Int
+  input_size : Int
+  use_gpu : Bool
+  model_type : String
+}
+
+pub(all) struct IntrusionDetectionResult {
+  is_intrusion : Bool
+  confidence : Double
+  intrusion_region : Array[Double]
+  object_type : String
+  timestamp : Double
+  num_intrusions : Int
+}
+
+pub(all) struct LaneDetectionResult {
+  lanes : Array[Array[Array[Double]]]
+  num_lanes : Int
+  lane_type : String
+  confidence : Double
+  curvature : Double
+}
+
+pub(all) enum RobotVisionTask {
+  ObjectRecognition
+  GraspDetection
+  Navigation
+  SLAM
+  HumanFollowing
+  GestureRecognition
+  FaceRecognition
+  SceneUnderstanding
+  Unknown
+} derive(Eq)
+
+pub(all) enum SecurityMonitoringTask {
+  IntrusionDetection
+  FaceRecognition
+  BehaviorAnalysis
+  CrowdCounting
+  LicensePlateRecognition
+  AbandonedObjectDetection
+  FireSmokeDetection
+  FallDetection
+  Unknown
+} derive(Eq)
+
+pub(all) struct StarDetectionResult {
+  stars : Array[Array[Double]]
+  num_stars : Int
+  magnitudes : Array[Double]
+  brightest_star : Array[Double]
+  sky_background : Double
+}
+
+pub(all) struct TrafficSignResult {
+  sign_type : String
+  sign_value : String
+  confidence : Double
+  bounding_box : Array[Double]
+  num_signs : Int
+}
+
+// Type aliases
+
+// Traits
+

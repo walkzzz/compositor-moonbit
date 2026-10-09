@@ -1,0 +1,118 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/superres"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn bicubic_interpolate(@types.Image, Double) -> @types.Image
+
+pub fn bilinear_interpolate(@types.Image, Double) -> @types.Image
+
+pub fn calculate_image_quality_metrics(@types.Image, @types.Image) -> ImageQualityMetrics
+
+pub fn calculate_psnr_sr(@types.Image, @types.Image) -> Double
+
+pub fn calculate_ssim_sr(@types.Image, @types.Image) -> Double
+
+pub fn create_default_enhancement_config() -> EnhancementConfig
+
+pub fn create_default_interpolation_config() -> InterpolationConfig
+
+pub fn denoise_image(@types.Image, Double) -> @types.Image
+
+pub fn enhance_image(@types.Image, EnhancementConfig) -> @types.Image
+
+pub fn nearest_neighbor_interpolate(@types.Image, Double) -> @types.Image
+
+pub fn sharpen_image(@types.Image, Double) -> @types.Image
+
+pub fn sr_default_config() -> SuperResolutionConfig
+
+pub fn super_resolution(@types.Image, config? : SuperResolutionConfig) -> @types.Image
+
+pub fn super_resolution_bicubic(@types.Image, Double) -> @types.Image
+
+pub fn super_resolution_edge_preserving(@types.Image, Double, edge_threshold? : Double, sharpen_amount? : Double) -> @types.Image
+
+pub fn super_resolution_lanczos(@types.Image, Double, a? : Int) -> @types.Image
+
+pub fn super_resolution_report_to_string(SuperResolutionResult, ImageQualityMetrics) -> String
+
+pub fn super_resolve(@types.Image, InterpolationConfig) -> SuperResolutionResult
+
+pub fn upscale_2x(@types.Image) -> @types.Image
+
+pub fn upscale_4x(@types.Image) -> @types.Image
+
+// Errors
+
+// Types and methods
+pub(all) struct EnhancementConfig {
+  brightness : Double
+  contrast : Double
+  saturation : Double
+  sharpness : Double
+  denoise : Double
+  gamma : Double
+  use_clahe : Bool
+  clahe_clip_limit : Double
+  clahe_tile_size : Int
+}
+
+pub(all) struct ImageQualityMetrics {
+  psnr : Double
+  ssim : Double
+  mse : Double
+  mae : Double
+  correlation : Double
+  sharpness : Double
+  noise_level : Double
+  overall_quality : Double
+}
+
+pub(all) struct InterpolationConfig {
+  algorithm : SuperResolutionAlgorithm
+  scale_factor : Double
+  use_edge_preservation : Bool
+  sharpening_strength : Double
+  denoise_strength : Double
+}
+
+pub(all) enum SuperResolutionAlgorithm {
+  NearestNeighbor
+  Bilinear
+  Bicubic
+  Lanczos
+  EdgeDirected
+  ExampleBased
+  DeepLearning
+  Unknown
+} derive(Eq)
+
+pub(all) struct SuperResolutionConfig {
+  scale : Double
+  method_type : String
+  lanczos_a : Int
+  edge_threshold : Double
+  sharpen_amount : Double
+}
+
+pub(all) struct SuperResolutionResult {
+  image : @types.Image
+  original_width : Int
+  original_height : Int
+  output_width : Int
+  output_height : Int
+  scale_factor : Double
+  algorithm : SuperResolutionAlgorithm
+  processing_time_ms : Double
+  psnr : Double
+  ssim : Double
+}
+
+// Type aliases
+
+// Traits
+

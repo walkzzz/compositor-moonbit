@@ -1,0 +1,160 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/encryption"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn adjacent_correlation(@types.Image, direction? : String) -> Double raise @types.LoadError
+
+pub fn arnold_scramble(@types.Image, ArnoldParams) -> EncryptionResult raise @types.LoadError
+
+pub fn batch_encrypt(Array[@types.Image], Double) -> Array[@types.Image] raise @types.LoadError
+
+pub fn calculate_correlation(@types.Image, @types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_image_entropy(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_psnr(@types.Image, @types.Image) -> Double raise @types.LoadError
+
+pub fn chaotic_encrypt(@types.Image, ChaoticParams) -> EncryptionResult raise @types.LoadError
+
+pub fn create_default_arnold_params() -> ArnoldParams
+
+pub fn create_default_chaotic_params() -> ChaoticParams
+
+pub fn decrypt_image_logistic(@types.Image, key? : Double, mu? : Double) -> @types.Image raise @types.LoadError
+
+pub fn decrypt_image_xor(@types.Image, String) -> @types.Image raise @types.LoadError
+
+pub fn embed_visible_watermark(@types.Image, String, Int, Int, Double) -> @types.Image raise @types.LoadError
+
+pub fn embed_watermark_lsb(@types.Image, Array[Byte], Int) -> (@types.Image, WatermarkInfo) raise @types.LoadError
+
+pub fn encrypt_image_logistic(@types.Image, key? : Double, mu? : Double) -> @types.Image raise @types.LoadError
+
+pub fn encrypt_image_xor(@types.Image, String) -> @types.Image raise @types.LoadError
+
+pub fn encryption_default_config() -> EncryptionConfig
+
+pub fn encryption_report_to_string(EncryptionResult, WatermarkInfo, ImageEncryptionQuality) -> String
+
+pub fn evaluate_encryption_quality(@types.Image, @types.Image) -> EncryptionQuality raise @types.LoadError
+
+pub fn evaluate_image_encryption_quality(@types.Image, @types.Image) -> ImageEncryptionQuality raise @types.LoadError
+
+pub fn extract_watermark_lsb(@types.Image, Int, Int) -> WatermarkExtractionResult raise @types.LoadError
+
+pub fn generate_chaotic_sequence_enc(ChaoticParams, Int) -> Array[Double]
+
+pub fn histogram_entropy(@types.Image) -> Double raise @types.LoadError
+
+pub fn key_sensitivity_test(@types.Image, Double, delta? : Double) -> Double raise @types.LoadError
+
+pub fn xor_decrypt(EncryptionResult, Array[Byte]) -> @types.Image
+
+pub fn xor_encrypt(@types.Image, Array[Byte]) -> EncryptionResult raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct ArnoldParams {
+  iterations : Int
+  a : Int
+  b : Int
+}
+
+pub(all) struct ChaoticParams {
+  x0 : Double
+  y0 : Double
+  z0 : Double
+  a : Double
+  b : Double
+  c : Double
+  iterations : Int
+}
+
+pub(all) enum EncryptionAlgorithm {
+  XOR
+  AES_Simplified
+  Chaotic
+  Arnold
+  Hill
+  RSA_Simplified
+  Unknown
+} derive(Eq)
+
+pub(all) struct EncryptionConfig {
+  method_type : String
+  key : Double
+  mu : Double
+  iterations : Int
+}
+
+pub(all) struct EncryptionQuality {
+  entropy : Double
+  correlation_h : Double
+  correlation_v : Double
+  correlation_d : Double
+  npcr : Double
+  uaci : Double
+}
+
+pub(all) struct EncryptionResult {
+  encrypted_data : Array[Byte]
+  width : Int
+  height : Int
+  channels : Int
+  algorithm : EncryptionAlgorithm
+  key_hash : String
+  encryption_time_ms : Double
+  file_size_original : Int
+  file_size_encrypted : Int
+}
+
+pub(all) struct ImageEncryptionQuality {
+  entropy : Double
+  correlation_horizontal : Double
+  correlation_vertical : Double
+  correlation_diagonal : Double
+  uaci : Double
+  npcr : Double
+  key_sensitivity : Double
+  psnr : Double
+}
+
+pub(all) struct WatermarkExtractionResult {
+  watermark_data : Array[Byte]
+  watermark_width : Int
+  watermark_height : Int
+  similarity : Double
+  extracted : Bool
+  extraction_time_ms : Double
+}
+
+pub(all) struct WatermarkInfo {
+  watermark_type : WatermarkType
+  watermark_data : Array[Byte]
+  watermark_width : Int
+  watermark_height : Int
+  strength : Double
+  embedded : Bool
+  embedding_position : String
+  key : String
+}
+
+pub(all) enum WatermarkType {
+  Visible
+  Invisible_LSB
+  Invisible_DCT
+  Invisible_DWT
+  Robust
+  Fragile
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

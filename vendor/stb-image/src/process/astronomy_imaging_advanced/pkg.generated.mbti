@@ -1,0 +1,192 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/astronomy_imaging_advanced"
+
+// Values
+pub fn astronomy_imaging_report_to_string(AstronomyImagingTaskType, AstronomyImagingConfig, String) -> String
+
+pub fn classify_galaxies(Array[DetectedCelestialObject], AstronomyImagingConfig) -> Array[GalaxyClassificationResult]
+
+pub fn create_default_astronomy_config() -> AstronomyImagingConfig
+
+pub fn detect_celestial_objects(Array[Double], Int, Int, AstronomyImagingConfig) -> Array[DetectedCelestialObject]
+
+pub fn perform_photometry(Array[DetectedCelestialObject], AstronomyImagingConfig) -> Array[PhotometryResult]
+
+pub fn stack_images(Array[Array[Double]], Int, Int, AstronomyImagingConfig) -> ImageStackingResult
+
+// Errors
+
+// Types and methods
+pub(all) struct AstronomyImagingConfig {
+  task_type : AstronomyImagingTaskType
+  detection_threshold : Double
+  photometry_aperture : Double
+  sky_annulus_inner : Double
+  sky_annulus_outer : Double
+  pixel_scale : Double
+  gain : Double
+  read_noise : Double
+  exposure_time : Double
+  filter_name : String
+  telescope_diameter : Double
+  focal_length : Double
+  use_wcs : Bool
+  use_calibration : Bool
+  use_dark_subtraction : Bool
+  use_flat_correction : Bool
+  stacking_method : String
+  num_stack_images : Int
+}
+
+pub(all) enum AstronomyImagingTaskType {
+  ObjectDetection
+  GalaxyClassification
+  Photometry
+  Spectroscopy
+  ImageStacking
+  CosmologicalParameterEstimation
+  TransitDetection
+  Unknown
+} derive(Eq)
+
+pub(all) enum CelestialObjectType {
+  Star
+  Galaxy
+  Nebula
+  Planet
+  Asteroid
+  Comet
+  Supernova
+  BlackHole
+  Unknown
+} derive(Eq)
+
+pub(all) struct CosmologicalParameterResult {
+  hubble_constant : Double
+  hubble_constant_error : Double
+  matter_density : Double
+  matter_density_error : Double
+  dark_energy_density : Double
+  dark_energy_density_error : Double
+  dark_energy_equation_of_state : Double
+  curvature : Double
+  age_of_universe : Double
+  sigma_8 : Double
+  ns : Double
+  confidence_level : Double
+}
+
+pub(all) struct DetectedCelestialObject {
+  object_id : Int
+  object_type : CelestialObjectType
+  ra : Double
+  dec : Double
+  x_pixel : Double
+  y_pixel : Double
+  brightness : Double
+  magnitude : Double
+  flux : Double
+  flux_error : Double
+  snr : Double
+  is_point_source : Bool
+  semi_major_axis : Double
+  semi_minor_axis : Double
+  position_angle : Double
+  confidence : Double
+}
+
+pub(all) struct GalaxyClassificationResult {
+  galaxy_id : Int
+  morphology : GalaxyMorphologyType
+  confidence : Double
+  all_morphologies : Array[GalaxyMorphologyType]
+  all_scores : Array[Double]
+  redshift : Double
+  redshift_error : Double
+  stellar_mass : Double
+  star_formation_rate : Double
+  is_agn : Bool
+}
+
+pub(all) enum GalaxyMorphologyType {
+  Elliptical
+  Spiral
+  BarredSpiral
+  Irregular
+  Lenticular
+  Dwarf
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImageStackingResult {
+  num_images : Int
+  stacked_image : Array[Double]
+  width : Int
+  height : Int
+  exposure_time_total : Double
+  noise_reduction_factor : Double
+  dynamic_range_improvement : Double
+  stacking_method : String
+  rejected_images : Int
+  quality_score : Double
+}
+
+pub(all) struct PhotometryResult {
+  object_id : Int
+  filter_name : String
+  magnitude : Double
+  magnitude_error : Double
+  flux : Double
+  flux_error : Double
+  snr : Double
+  aperture_radius : Double
+  sky_background : Double
+  sky_noise : Double
+  is_saturated : Bool
+  calibration_zero_point : Double
+}
+
+pub(all) enum SpectralType {
+  O
+  B
+  A
+  F
+  G
+  K
+  M
+  Unknown
+} derive(Eq)
+
+pub(all) struct SpectroscopyResult {
+  object_id : Int
+  spectral_type : SpectralType
+  temperature : Double
+  luminosity : Double
+  metallicity : Double
+  radial_velocity : Double
+  redshift : Double
+  spectral_lines : Array[String]
+  line_fluxes : Array[Double]
+  continuum : Array[Double]
+  wavelength_range : Array[Double]
+  snr : Double
+}
+
+pub(all) struct TransitDetectionResult {
+  object_id : Int
+  planet_candidate_id : Int
+  period : Double
+  period_error : Double
+  transit_depth : Double
+  transit_duration : Double
+  epoch : Double
+  snr : Double
+  confidence : Double
+  is_confirmed : Bool
+  false_alarm_probability : Double
+}
+
+// Type aliases
+
+// Traits
+

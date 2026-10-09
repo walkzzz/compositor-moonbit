@@ -1,0 +1,138 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/pose_estimation"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn calculate_joint_angle(HumanPose, Int, Int, Int) -> Double
+
+pub fn create_default_action_config() -> ActionRecognitionConfig
+
+pub fn create_default_pose_config() -> PoseEstimationConfig
+
+pub fn detect_keypoints(@types.Image, PoseEstimationConfig) -> Array[HumanPose] raise @types.LoadError
+
+pub fn extract_skeleton(HumanPose) -> Array[SkeletonConnection]
+
+pub fn get_coco_keypoint_names() -> Array[String]
+
+pub fn get_coco_skeleton_connections() -> Array[Array[Int]]
+
+pub fn pose_estimation_report_to_string(Array[HumanPose], ActionRecognitionResult) -> String
+
+pub fn recognize_action(Array[HumanPose], ActionRecognitionConfig) -> ActionRecognitionResult
+
+pub fn recognize_gesture(HumanPose) -> GestureRecognitionResult
+
+pub fn visualize_pose(@types.Image, HumanPose) -> @types.Image raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) enum ActionRecognitionAlgorithm {
+  C3D
+  I3D
+  TwoStream
+  TSN
+  TRN
+  SlowFast
+  TimeSformer
+  VideoMAE
+  Unknown
+} derive(Eq)
+
+pub(all) struct ActionRecognitionConfig {
+  algorithm : ActionRecognitionAlgorithm
+  num_classes : Int
+  window_size : Int
+  stride : Int
+  confidence_threshold : Double
+  use_temporal_smoothing : Bool
+  smoothing_window : Int
+}
+
+pub(all) struct ActionRecognitionResult {
+  action_name : String
+  confidence : Double
+  action_id : Int
+  duration_frames : Int
+  start_frame : Int
+  end_frame : Int
+  is_completed : Bool
+}
+
+pub(all) struct GestureRecognitionResult {
+  gesture_type : GestureType
+  confidence : Double
+  hand_keypoints : Array[Keypoint]
+  is_left_hand : Bool
+  bounding_box : Array[Double]
+}
+
+pub(all) enum GestureType {
+  OpenPalm
+  Fist
+  Pointing
+  Victory
+  ThumbsUp
+  ThumbsDown
+  OK
+  Peace
+  Rock
+  Unknown
+} derive(Eq)
+
+pub(all) struct HumanPose {
+  keypoints : Array[Keypoint]
+  num_keypoints : Int
+  bounding_box : Array[Double]
+  confidence : Double
+  pose_id : Int
+  is_tracked : Bool
+}
+
+pub(all) struct Keypoint {
+  x : Double
+  y : Double
+  confidence : Double
+  is_visible : Bool
+  part_name : String
+}
+
+pub(all) enum PoseEstimationAlgorithm {
+  OpenPose
+  MediaPipe
+  AlphaPose
+  HRNet
+  SimpleBaseline
+  DeepPose
+  PoseNet
+  MoveNet
+  Unknown
+} derive(Eq)
+
+pub(all) struct PoseEstimationConfig {
+  algorithm : PoseEstimationAlgorithm
+  num_keypoints : Int
+  confidence_threshold : Double
+  nms_threshold : Double
+  max_num_people : Int
+  use_tracking : Bool
+  use_smoothing : Bool
+  smoothing_factor : Double
+}
+
+pub(all) struct SkeletonConnection {
+  joint1 : Int
+  joint2 : Int
+  confidence : Double
+  length : Double
+  angle : Double
+}
+
+// Type aliases
+
+// Traits
+

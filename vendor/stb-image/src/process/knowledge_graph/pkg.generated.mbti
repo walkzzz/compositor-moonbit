@@ -1,0 +1,159 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/knowledge_graph"
+
+// Values
+pub fn add_entity(KnowledgeGraph, KGEntity) -> KnowledgeGraph
+
+pub fn add_relation(KnowledgeGraph, KGRelation) -> KnowledgeGraph
+
+pub fn compute_kg_statistics(KnowledgeGraph) -> (Double, Double, Double)
+
+pub fn create_default_kg_config() -> KGConfig
+
+pub fn create_empty_knowledge_graph(KGConstructionMethod) -> KnowledgeGraph
+
+pub fn extract_relation(String, String, String, KGConfig) -> RelationExtractionResult
+
+pub fn knowledge_graph_report_to_string(KnowledgeGraph, KGConfig, KGEmbedding) -> String
+
+pub fn link_entity(String, KnowledgeGraph, KGConfig) -> EntityLinkingResult
+
+pub fn reason_over_kg(String, KnowledgeGraph, KGConfig) -> KnowledgeReasoningResult
+
+pub fn train_kg_embedding(KnowledgeGraph, KGConfig) -> KGEmbedding
+
+// Errors
+
+// Types and methods
+pub(all) enum EntityLinkingMethod {
+  StringMatching
+  VectorSimilarity
+  GraphBased
+  Neural
+  Collective
+  Probabilistic
+  Unknown
+} derive(Eq)
+
+pub(all) struct EntityLinkingResult {
+  mention : String
+  candidate_entities : Array[String]
+  candidate_scores : Array[Double]
+  linked_entity : String
+  confidence : Double
+  method_type : EntityLinkingMethod
+  num_candidates : Int
+}
+
+pub(all) struct KGConfig {
+  construction_method : KGConstructionMethod
+  entity_linking_method : EntityLinkingMethod
+  relation_extraction_method : RelationExtractionMethod
+  reasoning_method : KnowledgeReasoningMethod
+  embedding_dim : Int
+  confidence_threshold : Double
+  max_hops : Int
+  use_temporal : Bool
+  use_spatial : Bool
+}
+
+pub(all) enum KGConstructionMethod {
+  RuleBased
+  Statistical
+  Neural
+  Hybrid
+  DistantSupervision
+  WeakSupervision
+  ActiveLearning
+  Unknown
+} derive(Eq)
+
+pub(all) struct KGEmbedding {
+  entity_embeddings : Array[Array[Double]]
+  relation_embeddings : Array[Array[Double]]
+  embedding_dim : Int
+  num_entities : Int
+  num_relations : Int
+  model_type : String
+  training_loss : Double
+}
+
+pub(all) struct KGEntity {
+  entity_id : String
+  entity_name : String
+  entity_type : String
+  description : String
+  properties : Array[String]
+  property_values : Array[String]
+  num_relations : Int
+  confidence : Double
+}
+
+pub(all) struct KGRelation {
+  relation_id : String
+  source_entity_id : String
+  target_entity_id : String
+  relation_type : String
+  relation_label : String
+  confidence : Double
+  evidence : String
+  timestamp : Double
+}
+
+pub(all) struct KnowledgeGraph {
+  entities : Array[KGEntity]
+  relations : Array[KGRelation]
+  num_entities : Int
+  num_relations : Int
+  num_entity_types : Int
+  num_relation_types : Int
+  construction_method : KGConstructionMethod
+}
+
+pub(all) enum KnowledgeReasoningMethod {
+  RuleBased
+  DescriptionLogic
+  EmbeddingBased
+  Neural
+  GraphNeuralNetwork
+  Probabilistic
+  Temporal
+  Spatial
+  Unknown
+} derive(Eq)
+
+pub(all) struct KnowledgeReasoningResult {
+  query : String
+  answer : String
+  confidence : Double
+  reasoning_path : Array[String]
+  method_type : KnowledgeReasoningMethod
+  num_hops : Int
+  supporting_facts : Array[String]
+}
+
+pub(all) enum RelationExtractionMethod {
+  PatternBased
+  FeatureBased
+  Neural
+  DistantSupervision
+  FewShot
+  ZeroShot
+  OpenIE
+  Unknown
+} derive(Eq)
+
+pub(all) struct RelationExtractionResult {
+  source_entity : String
+  target_entity : String
+  relation_type : String
+  confidence : Double
+  method_type : RelationExtractionMethod
+  sentence : String
+  evidence_span : Array[Int]
+}
+
+// Type aliases
+
+// Traits
+

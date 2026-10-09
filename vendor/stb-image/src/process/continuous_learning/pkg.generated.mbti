@@ -1,0 +1,139 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/continuous_learning"
+
+// Values
+pub fn add_to_memory(MemoryBuffer, Array[Double], Int, Int) -> MemoryBuffer
+
+pub fn compute_ewc_loss(Array[Double], EWCConfig) -> Double
+
+pub fn continual_learning_report_to_string(ContinualLearningMetrics, ContinualLearningConfig) -> String
+
+pub fn create_default_continual_config() -> ContinualLearningConfig
+
+pub fn create_default_ewc_config(Int) -> EWCConfig
+
+pub fn create_memory_buffer(Int, String) -> MemoryBuffer
+
+pub fn create_task_sequence(Int, Int, Int) -> Array[LearningTask]
+
+pub fn sample_from_memory(MemoryBuffer, Int) -> (Array[Array[Double]], Array[Int], Array[Int])
+
+pub fn simulate_continual_learning(Array[LearningTask], ContinualLearningConfig, Double) -> ContinualLearningMetrics
+
+pub fn update_fisher_information(EWCConfig, Array[Double]) -> EWCConfig
+
+// Errors
+
+// Types and methods
+pub(all) struct ContinualLearningConfig {
+  strategy : ContinualLearningStrategy
+  regularization_method : RegularizationMethod
+  replay_method : ReplayMethod
+  scenario : IncrementalLearningScenario
+  num_tasks : Int
+  ewc_lambda : Double
+  memory_size : Int
+  replay_ratio : Double
+  learning_rate : Double
+  batch_size : Int
+  num_epochs : Int
+  use_knowledge_distillation : Bool
+  distillation_temperature : Double
+  distillation_alpha : Double
+  use_dynamic_architecture : Bool
+  architecture_growth_rate : Double
+}
+
+pub(all) struct ContinualLearningMetrics {
+  average_accuracy : Double
+  final_accuracy : Double
+  backward_transfer : Double
+  forward_transfer : Double
+  forgetting_measure : Double
+  learning_accuracy : Array[Double]
+  task_accuracies : Array[Double]
+  num_tasks_completed : Int
+  memory_usage_mb : Double
+  training_time_s : Double
+}
+
+pub(all) enum ContinualLearningStrategy {
+  RegularizationBased
+  ReplayBased
+  ArchitectureBased
+  MetaLearningBased
+  Hybrid
+  Unknown
+} derive(Eq)
+
+pub(all) struct EWCConfig {
+  lambda : Double
+  fisher_information : Array[Double]
+  optimal_params : Array[Double]
+  num_params : Int
+  online : Bool
+  gamma : Double
+}
+
+pub(all) enum IncrementalLearningScenario {
+  TaskIncremental
+  DomainIncremental
+  ClassIncremental
+  TimeIncremental
+  DataIncremental
+  Unknown
+} derive(Eq)
+
+pub(all) struct KnowledgeDistillationConfigCL {
+  temperature : Double
+  alpha : Double
+  beta : Double
+  use_hint_loss : Bool
+  use_attention_transfer : Bool
+  teacher_task_ids : Array[Int]
+}
+
+pub(all) struct LearningTask {
+  task_id : Int
+  task_name : String
+  num_classes : Int
+  num_samples : Int
+  data_distribution : Array[Double]
+  difficulty : Double
+  is_completed : Bool
+}
+
+pub(all) struct MemoryBuffer {
+  buffer_size : Int
+  current_size : Int
+  samples : Array[Array[Double]]
+  labels : Array[Int]
+  task_ids : Array[Int]
+  sampling_strategy : String
+}
+
+pub(all) enum RegularizationMethod {
+  EWC
+  SI
+  MAS
+  RWalk
+  LwF
+  LFL
+  PackNet
+  HAT
+  Unknown
+} derive(Eq)
+
+pub(all) enum ReplayMethod {
+  ExperienceReplay
+  GenerativeReplay
+  DarkExperienceReplay
+  GradientEpisodeMemory
+  MaximalInterferedRetrieval
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

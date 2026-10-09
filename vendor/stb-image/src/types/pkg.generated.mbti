@@ -1,0 +1,102 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/types"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub const MAX_IMAGE_DIMENSION : Int = 65535
+
+pub fn check_dims(Int, Int, Int) -> Unit raise LoadError
+
+pub fn safe_mul(Int, Int) -> Int?
+
+pub fn safe_mul3(Int, Int, Int) -> Int?
+
+// Errors
+pub(all) suberror LoadError {
+  FileIO(String)
+  UnsupportedFormat(String)
+  DecodeFailed(String)
+  EncodeFailed(String)
+}
+
+// Types and methods
+pub(all) struct GifAnimation {
+  frames : Array[Image]
+  delays : Array[Int]
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Image {
+  width : Int
+  height : Int
+  channels : Int
+  data : Bytes
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Image16 {
+  width : Int
+  height : Int
+  channels : Int
+  data : Bytes
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ImageF {
+  width : Int
+  height : Int
+  channels : Int
+  data : Bytes
+} derive(Eq, @debug.Debug)
+
+pub(all) enum ImageFormat {
+  Png
+  Jpeg
+  Bmp
+  Gif
+  Tga
+  Psd
+  Hdr
+  Pnm
+  Qoi
+  Webp
+  Tiff
+  Ico
+  Cur
+  Icns
+  Apng
+  Unknown
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ImageInfo {
+  width : Int
+  height : Int
+  channels : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct PngAnimation {
+  frames : Array[Image]
+  delays : Array[Int]
+} derive(Eq, @debug.Debug)
+
+pub(all) enum ResizeEdge {
+  Clamp
+  Reflect
+  Wrap
+  Zero
+} derive(Eq, @debug.Debug)
+
+pub(all) enum ResizeFilter {
+  Default
+  Box
+  Triangle
+  CubicBSPline
+  CatmullROM
+  Mitchell
+  PointSample
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

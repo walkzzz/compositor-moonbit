@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/quality"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn compute_diff_image(@types.Image, @types.Image) -> @types.Image
+
+pub fn compute_mae(@types.Image, @types.Image) -> Double
+
+pub fn compute_mse(@types.Image, @types.Image) -> Double
+
+pub fn compute_psnr(@types.Image, @types.Image) -> Double
+
+pub fn compute_quality_metrics(@types.Image, @types.Image) -> QualityMetrics
+
+pub fn compute_ssim(@types.Image, @types.Image) -> Double
+
+pub fn images_equal(@types.Image, @types.Image) -> Bool
+
+// Errors
+
+// Types and methods
+pub(all) struct QualityMetrics {
+  mse : Double
+  mae : Double
+  psnr : Double
+  ssim : Double
+}
+
+// Type aliases
+
+// Traits
+

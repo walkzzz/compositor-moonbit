@@ -1,0 +1,108 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/production_utils"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn calculate_retry_delay(RetryConfig, Int) -> Double
+
+pub fn clamp_pixel_value(Int) -> Int
+
+pub fn clamp_pixel_value_double(Double) -> Double
+
+pub fn create_default_retry_config() -> RetryConfig
+
+pub fn create_memory_stats() -> MemoryUsageStats
+
+pub fn create_performance_timer(String) -> PerformanceTimer
+
+pub fn create_production_error(ProductionErrorCode, String, String) -> ProductionError
+
+pub fn is_valid_2d_index(Int, Int, Int, Int) -> Bool
+
+pub fn is_valid_index(Int, Int) -> Bool
+
+pub fn production_error_to_string(ProductionError) -> String
+
+pub fn validate_channels(@types.Image, Array[Int]) -> Bool
+
+pub fn validate_channels_or_raise(@types.Image, Array[Int], String) -> Unit raise @types.LoadError
+
+pub fn validate_image(@types.Image) -> ImageValidationResult
+
+pub fn validate_image_or_raise(@types.Image) -> Unit raise @types.LoadError
+
+pub fn validate_int_range(Int, Int, Int, String) -> Result[Unit, String]
+
+pub fn validate_int_range_or_raise(Int, Int, Int, String) -> Unit raise @types.LoadError
+
+pub fn validate_range(Double, Double, Double, String) -> Result[Unit, String]
+
+pub fn validate_range_or_raise(Double, Double, Double, String) -> Unit raise @types.LoadError
+
+pub fn validation_result_to_string(ImageValidationResult) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct ImageValidationResult {
+  is_valid : Bool
+  errors : Array[String]
+  warnings : Array[String]
+  width : Int
+  height : Int
+  channels : Int
+  data_size : Int
+  expected_data_size : Int
+}
+
+pub(all) struct MemoryUsageStats {
+  allocated_bytes : Int
+  freed_bytes : Int
+  current_usage_bytes : Int
+  peak_usage_bytes : Int
+  allocation_count : Int
+  free_count : Int
+}
+
+pub(all) struct PerformanceTimer {
+  start_time_ms : Double
+  end_time_ms : Double
+  elapsed_ms : Double
+  operation_name : String
+}
+
+pub(all) struct ProductionError {
+  code : ProductionErrorCode
+  message : String
+  function_name : String
+  timestamp_ms : Double
+  recoverable : Bool
+}
+
+pub(all) enum ProductionErrorCode {
+  InvalidInput
+  OutOfMemory
+  IndexOutOfBounds
+  UnsupportedFormat
+  OperationFailed
+  Timeout
+  InternalError
+  Unknown
+} derive(Eq)
+
+pub(all) struct RetryConfig {
+  max_retries : Int
+  initial_delay_ms : Double
+  max_delay_ms : Double
+  backoff_factor : Double
+  retry_on_timeout : Bool
+  retry_on_internal_error : Bool
+}
+
+// Type aliases
+
+// Traits
+

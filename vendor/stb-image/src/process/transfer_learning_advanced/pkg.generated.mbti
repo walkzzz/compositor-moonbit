@@ -1,0 +1,256 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/transfer_learning_advanced"
+
+// Values
+pub fn create_default_transfer_learning_config() -> TransferLearningConfig
+
+pub fn domain_adaptation(Array[Array[Double]], TransferLearningConfig) -> DomainAdaptationResult
+
+pub fn few_shot_learning(Array[Array[Double]], Array[Array[Double]], TransferLearningConfig) -> FewShotLearningResult
+
+pub fn fine_tune_model(Array[Array[Double]], Int, TransferLearningConfig) -> FineTuningResult
+
+pub fn knowledge_distillation(Array[Array[Double]], Int, Int, TransferLearningConfig) -> KnowledgeDistillationResult
+
+pub fn load_pretrained_model(PretrainedModelType, Int, Int) -> PretrainingResult
+
+pub fn multi_task_learning(Int, Int, Int, TransferLearningConfig) -> MultiTaskLearningResult
+
+pub fn transfer_learning(Array[Array[Double]], Array[Array[Double]], TransferLearningConfig) -> TransferLearningResult
+
+pub fn transfer_learning_report_to_string(TransferLearningTaskType, TransferLearningConfig, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum DomainAdaptationMethodType {
+  DANN
+  CDAN
+  MMD
+  CORAL
+  ADDA
+  CycleGAN
+  MCD
+  M3SDA
+  SHOT
+  FixMatch
+  Unknown
+} derive(Eq)
+
+pub(all) struct DomainAdaptationResult {
+  adapted_weights : Array[Array[Double]]
+  source_accuracy : Double
+  target_accuracy : Double
+  source_loss : Double
+  target_loss : Double
+  domain_gap : Double
+  adaptation_method : DomainAdaptationMethodType
+  num_epochs : Int
+  learning_rate : Double
+  adaptation_time_ms : Double
+  source_domain : String
+  target_domain : String
+  num_source_samples : Int
+  num_target_samples : Int
+}
+
+pub(all) enum FewShotLearningMethodType {
+  PrototypicalNetwork
+  MatchingNetwork
+  RelationNetwork
+  MAML
+  Reptile
+  MetaSGD
+  TADAM
+  FEAT
+  Baseline
+  BaselinePlus
+  Unknown
+} derive(Eq)
+
+pub(all) struct FewShotLearningResult {
+  learned_representations : Array[Array[Double]]
+  num_way : Int
+  num_shot : Int
+  num_query : Int
+  training_accuracy : Double
+  validation_accuracy : Double
+  test_accuracy : Double
+  confidence_interval : Double
+  few_shot_method : FewShotLearningMethodType
+  num_episodes : Int
+  learning_rate : Double
+  learning_time_ms : Double
+  num_classes : Int
+  num_support_samples : Int
+}
+
+pub(all) struct FineTuningResult {
+  fine_tuned_weights : Array[Array[Double]]
+  num_layers : Int
+  num_frozen_layers : Int
+  num_trainable_layers : Int
+  training_loss : Double
+  validation_loss : Double
+  training_accuracy : Double
+  validation_accuracy : Double
+  test_accuracy : Double
+  num_epochs : Int
+  learning_rate : Double
+  fine_tuning_time_ms : Double
+  fine_tuning_strategy : FineTuningStrategyType
+  learning_rate_scheduler : String
+  initial_accuracy : Double
+  final_accuracy : Double
+  accuracy_improvement : Double
+}
+
+pub(all) enum FineTuningStrategyType {
+  FullFineTuning
+  PartialFineTuning
+  LayerWiseFineTuning
+  DiscriminativeLearningRate
+  GradualUnfreezing
+  FreezeBackbone
+  AdapterTuning
+  LoRA
+  PromptTuning
+  PrefixTuning
+  Unknown
+} derive(Eq)
+
+pub(all) struct KnowledgeDistillationResult {
+  student_weights : Array[Array[Double]]
+  teacher_weights : Array[Array[Double]]
+  student_accuracy : Double
+  teacher_accuracy : Double
+  student_loss : Double
+  distillation_loss : Double
+  total_loss : Double
+  temperature : Double
+  alpha : Double
+  num_epochs : Int
+  learning_rate : Double
+  distillation_time_ms : Double
+  model_compression_ratio : Double
+  accuracy_gap : Double
+}
+
+pub(all) enum MultiTaskLearningMethodType {
+  HardParameterSharing
+  SoftParameterSharing
+  CrossStitch
+  TensorFactorization
+  MMoE
+  PLE
+  SharedBottom
+  MultiGateMixtureOfExperts
+  Unknown
+} derive(Eq)
+
+pub(all) struct MultiTaskLearningResult {
+  shared_weights : Array[Array[Double]]
+  task_specific_weights : Array[Array[Array[Double]]]
+  num_tasks : Int
+  task_names : Array[String]
+  task_accuracies : Array[Double]
+  task_losses : Array[Double]
+  average_accuracy : Double
+  average_loss : Double
+  multi_task_method : MultiTaskLearningMethodType
+  num_epochs : Int
+  learning_rate : Double
+  learning_time_ms : Double
+  negative_transfer : Bool
+}
+
+pub(all) enum PretrainedModelType {
+  ResNet
+  VGG
+  Inception
+  EfficientNet
+  VisionTransformer
+  SwinTransformer
+  ConvNeXt
+  MobileNet
+  DenseNet
+  AlexNet
+  Unknown
+} derive(Eq)
+
+pub(all) struct PretrainingResult {
+  pretrained_weights : Array[Array[Double]]
+  num_layers : Int
+  num_parameters : Int
+  pretraining_loss : Double
+  pretraining_accuracy : Double
+  num_epochs : Int
+  batch_size : Int
+  learning_rate : Double
+  pretraining_time_ms : Double
+  model_architecture : String
+  dataset_size : Int
+  pretrained_model_type : PretrainedModelType
+}
+
+pub(all) struct TransferLearningConfig {
+  task_type : TransferLearningTaskType
+  pretrained_model : PretrainedModelType
+  fine_tuning_strategy : FineTuningStrategyType
+  domain_adaptation_method : DomainAdaptationMethodType
+  multi_task_method : MultiTaskLearningMethodType
+  few_shot_method : FewShotLearningMethodType
+  num_frozen_layers : Int
+  learning_rate : Double
+  discriminative_learning_rates : Array[Double]
+  num_epochs : Int
+  batch_size : Int
+  temperature : Double
+  alpha : Double
+  num_way : Int
+  num_shot : Int
+  num_query : Int
+  num_episodes : Int
+  use_pretrained : Bool
+  pretrained_model_path : String
+  use_data_augmentation : Bool
+  use_gpu : Bool
+  random_state : Int
+}
+
+pub(all) struct TransferLearningResult {
+  transferred_model_weights : Array[Array[Double]]
+  num_layers : Int
+  num_frozen_layers : Int
+  num_trainable_layers : Int
+  training_loss : Double
+  validation_loss : Double
+  training_accuracy : Double
+  validation_accuracy : Double
+  test_accuracy : Double
+  source_accuracy : Double
+  target_accuracy : Double
+  transfer_gain : Double
+  learning_time_ms : Double
+  num_epochs : Int
+  converged : Bool
+}
+
+pub(all) enum TransferLearningTaskType {
+  Pretraining
+  FineTuning
+  FeatureExtraction
+  DomainAdaptation
+  MultiTaskLearning
+  LifelongLearning
+  ZeroShotLearning
+  FewShotLearning
+  MetaLearning
+  KnowledgeDistillation
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

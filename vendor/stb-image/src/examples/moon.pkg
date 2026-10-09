@@ -1,0 +1,4 @@
+import {
+  "walkzzz/image/src" @img,
+  "walkzzz/image/src/types",
+} for "test"

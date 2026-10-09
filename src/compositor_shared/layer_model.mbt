@@ -13,7 +13,7 @@
 ///|
 /// Layer blend modes. The set mirrors the original Compositor's
 /// Photoshop-style separable/non-separable modes.
-pub enum BlendMode {
+pub(all) enum BlendMode {
   Normal
   Multiply
   Screen
@@ -82,7 +82,7 @@ pub fn BlendMode::from_keyword(s : StringView) -> BlendMode {
 
 ///|
 /// An 8-bit grayscale layer mask. White reveals the layer, black hides it.
-pub struct Mask {
+pub(all) struct Mask {
   width : Int
   height : Int
   /// Grayscale samples, one byte per pixel, row major, top-left origin.
@@ -103,7 +103,7 @@ pub fn Mask::black(width : Int, height : Int) -> Mask {
 
 ///|
 /// A single document layer.
-pub struct Layer {
+pub(all) struct Layer {
   id : Int
   name : String
   visible : Bool
@@ -137,7 +137,7 @@ pub fn Layer::transparent(
 
 ///|
 /// An RGBA color with every channel normalized to `[0.0, 1.0]`.
-pub struct Color {
+pub(all) struct Color {
   r : Double
   g : Double
   b : Double
@@ -156,7 +156,7 @@ pub fn Color::rgba(r : Double, g : Double, b : Double, a : Double) -> Color {
 
 ///|
 /// Brush parameters shared by the brush and mask-brush tools.
-pub struct Brush {
+pub(all) struct Brush {
   /// Diameter in pixels.
   size : Double
   /// Stroke opacity in `[0.0, 1.0]`.
@@ -173,7 +173,7 @@ pub fn Brush::default() -> Brush {
 
 ///|
 /// The active editing tool.
-pub enum Tool {
+pub(all) enum Tool {
   Brush
   Move
   MaskBrush
@@ -192,7 +192,7 @@ pub struct Snapshot {
 
 ///|
 /// The global editor state.
-pub struct Model {
+pub(all) struct Model {
   width : Int
   height : Int
   layers : Array[Layer]

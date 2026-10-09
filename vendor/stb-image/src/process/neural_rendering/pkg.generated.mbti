@@ -1,0 +1,144 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/neural_rendering"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn create_default_camera() -> CameraParams
+
+pub fn create_default_gaussian_config() -> GaussianSplattingConfig
+
+pub fn create_default_nerf_config() -> NeRFConfig
+
+pub fn generate_rays(CameraParams) -> Array[Ray]
+
+pub fn generate_sample_gaussians(Int) -> Array[Gaussian3D]
+
+pub fn multiview_stereo_reconstruction(Array[@types.Image], Array[CameraParams]) -> ReconstructionResult
+
+pub fn neural_rendering_report_to_string(RenderingResult, NeuralRenderingAlgorithm) -> String
+
+pub fn reconstruction_report_to_string(ReconstructionResult, ReconstructionAlgorithm) -> String
+
+pub fn render_gaussian_splatting(CameraParams, Array[Gaussian3D], GaussianSplattingConfig) -> RenderingResult
+
+pub fn render_nerf(CameraParams, NeRFConfig) -> RenderingResult
+
+pub fn visualize_point_cloud(Array[Point3D], Int, Int) -> @types.Image
+
+pub fn volume_render(Ray, Array[Voxel], NeRFConfig) -> (Array[Double], Double)
+
+// Errors
+
+// Types and methods
+pub(all) struct CameraParams {
+  position : Array[Double]
+  rotation : Array[Double]
+  focal_length : Double
+  principal_point : Array[Double]
+  image_width : Int
+  image_height : Int
+  near_plane : Double
+  far_plane : Double
+}
+
+pub(all) struct Gaussian3D {
+  position : Array[Double]
+  rotation : Array[Double]
+  scale : Array[Double]
+  opacity : Double
+  color : Array[Double]
+  sh_coefficients : Array[Double]
+}
+
+pub(all) struct GaussianSplattingConfig {
+  num_gaussians : Int
+  sh_degree : Int
+  use_antialiasing : Bool
+  use_depth_test : Bool
+  opacity_threshold : Double
+  scale_activation : String
+}
+
+pub(all) struct NeRFConfig {
+  num_samples_per_ray : Int
+  num_importance_samples : Int
+  near_plane : Double
+  far_plane : Double
+  use_perturbation : Bool
+  use_white_background : Bool
+  raw_noise_std : Double
+  lindisp : Bool
+}
+
+pub(all) enum NeuralRenderingAlgorithm {
+  NeRF
+  NeRFStudio
+  InstantNGP
+  Plenoxels
+  TensoRF
+  GaussianSplatting
+  DreamFusion
+  StableDiffusion3D
+  Unknown
+} derive(Eq)
+
+pub(all) struct Point3D {
+  position : Array[Double]
+  color : Array[Double]
+  normal : Array[Double]
+  confidence : Double
+}
+
+pub(all) struct Ray {
+  origin : Array[Double]
+  direction : Array[Double]
+  t_min : Double
+  t_max : Double
+}
+
+pub(all) enum ReconstructionAlgorithm {
+  MultiViewStereo
+  StructureFromMotion
+  PhotometricStereo
+  ShapeFromShading
+  DepthFromDefocus
+  DepthFromFocus
+  LidarFusion
+  Unknown
+} derive(Eq)
+
+pub(all) struct ReconstructionResult {
+  point_cloud : Array[Point3D]
+  num_points : Int
+  cameras : Array[CameraParams]
+  num_cameras : Int
+  reconstruction_time_ms : Double
+  coverage : Double
+  accuracy : Double
+}
+
+pub(all) struct RenderingResult {
+  image : @types.Image
+  depth_map : @types.Image
+  normal_map : @types.Image
+  alpha_map : @types.Image
+  rendering_time_ms : Double
+  psnr : Double
+  ssim : Double
+}
+
+pub(all) struct Voxel {
+  position : Array[Double]
+  size : Double
+  density : Double
+  color : Array[Double]
+  is_occupied : Bool
+}
+
+// Type aliases
+
+// Traits
+

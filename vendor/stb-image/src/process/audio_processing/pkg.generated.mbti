@@ -1,0 +1,190 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/audio_processing"
+
+// Values
+pub fn audio_processing_report_to_string(AudioTaskType, AudioConfig, AudioData, String) -> String
+
+pub fn compute_mel_spectrogram(AudioData, AudioConfig) -> AudioFeatures
+
+pub fn compute_mfcc(AudioData, AudioConfig) -> AudioFeatures
+
+pub fn create_audio_data(Array[Double], Int, Int) -> AudioData
+
+pub fn create_default_audio_config() -> AudioConfig
+
+pub fn detect_speech_activity(AudioData, Double) -> VADResult
+
+pub fn extract_music_features(AudioData) -> MusicIRResult
+
+pub fn generate_sine_wave(Double, Double, Int, Double) -> AudioData
+
+pub fn identify_speaker(AudioData, Array[String]) -> SpeakerIdentificationResult
+
+pub fn pre_emphasis(AudioData, Double) -> AudioData
+
+pub fn recognize_speech(AudioData, AudioConfig) -> SpeechRecognitionResult
+
+pub fn recognize_speech_emotion(AudioData) -> SpeechEmotionResult
+
+// Errors
+
+// Types and methods
+pub(all) enum ASRModelType {
+  GMMHMM
+  DNNHMM
+  CTC
+  Attention
+  Transformer
+  Conformer
+  Whisper
+  Wav2Vec
+  Unknown
+} derive(Eq)
+
+pub(all) struct AudioClassificationResult {
+  audio : AudioData
+  predicted_class : String
+  confidence : Double
+  all_classes : Array[String]
+  all_scores : Array[Double]
+  num_classes : Int
+}
+
+pub(all) struct AudioConfig {
+  task_type : AudioTaskType
+  asr_model : ASRModelType
+  feature_type : AudioFeatureType
+  sample_rate : Int
+  frame_length : Int
+  hop_length : Int
+  n_mfcc : Int
+  n_mels : Int
+  n_fft : Int
+  use_pre_emphasis : Bool
+  pre_emphasis_coeff : Double
+  use_vad : Bool
+  language : String
+}
+
+pub(all) struct AudioData {
+  samples : Array[Double]
+  sample_rate : Int
+  num_channels : Int
+  num_samples : Int
+  duration_s : Double
+  bit_depth : Int
+  is_mono : Bool
+}
+
+pub(all) enum AudioFeatureType {
+  MFCC
+  MelSpectrogram
+  Spectrogram
+  Chroma
+  SpectralContrast
+  Tonnetz
+  ZeroCrossingRate
+  RMS
+  SpectralCentroid
+  SpectralBandwidth
+  Unknown
+} derive(Eq)
+
+pub(all) struct AudioFeatures {
+  feature_type : AudioFeatureType
+  features : Array[Array[Double]]
+  num_frames : Int
+  feature_dim : Int
+  sample_rate : Int
+  frame_length : Int
+  hop_length : Int
+}
+
+pub(all) enum AudioTaskType {
+  SpeechRecognition
+  SpeakerIdentification
+  SpeakerVerification
+  EmotionRecognition
+  AudioClassification
+  MusicInformationRetrieval
+  VoiceActivityDetection
+  NoiseReduction
+  Unknown
+} derive(Eq)
+
+pub(all) struct MusicIRResult {
+  audio : AudioData
+  tempo : Double
+  key : String
+  mode : String
+  time_signature : String
+  genre : String
+  mood : String
+  instruments : Array[String]
+  num_instruments : Int
+  danceability : Double
+  energy : Double
+  valence : Double
+}
+
+pub(all) struct SpeakerIdentificationResult {
+  audio : AudioData
+  speaker_id : String
+  confidence : Double
+  all_speakers : Array[String]
+  all_scores : Array[Double]
+  num_speakers : Int
+  embedding : Array[Double]
+  embedding_dim : Int
+}
+
+pub(all) struct SpeechEmotionResult {
+  audio : AudioData
+  emotion : SpeechEmotionType
+  confidence : Double
+  all_emotions : Array[SpeechEmotionType]
+  all_scores : Array[Double]
+  valence : Double
+  arousal : Double
+  dominance : Double
+}
+
+pub(all) enum SpeechEmotionType {
+  Neutral
+  Happy
+  Sad
+  Angry
+  Fearful
+  Disgusted
+  Surprised
+  Excited
+  Frustrated
+  Unknown
+} derive(Eq)
+
+pub(all) struct SpeechRecognitionResult {
+  audio : AudioData
+  transcript : String
+  confidence : Double
+  word_timestamps : Array[Double]
+  words : Array[String]
+  num_words : Int
+  model_type : ASRModelType
+  language : String
+  wer : Double
+}
+
+pub(all) struct VADResult {
+  audio : AudioData
+  speech_segments : Array[Array[Double]]
+  num_segments : Int
+  speech_duration : Double
+  silence_duration : Double
+  speech_ratio : Double
+  threshold : Double
+}
+
+// Type aliases
+
+// Traits
+

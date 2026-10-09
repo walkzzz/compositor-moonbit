@@ -1,0 +1,54 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/lib"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn decode_stream(Bytes, (Int, Array[Byte]) -> Unit) -> StreamInfo raise @types.LoadError
+
+pub fn decode_stream_channels(Bytes, Int, (Int, Array[Byte]) -> Unit) -> StreamInfo raise @types.LoadError
+
+pub fn decode_stream_chunked(Bytes, Int, (Int, @types.Image) -> Unit) -> StreamInfo raise @types.LoadError
+
+pub fn detect_format(Bytes) -> @types.ImageFormat
+
+pub fn encode_bmp(@types.Image) -> Bytes
+
+pub fn encode_gif(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_hdr(@types.ImageF) -> Bytes raise @types.LoadError
+
+pub fn encode_jpeg(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_pgm_auto(@types.Image) -> Bytes
+
+pub fn encode_png(@types.Image) -> Bytes
+
+pub fn encode_pnm_auto(@types.Image) -> Bytes
+
+pub fn encode_ppm_auto(@types.Image) -> Bytes
+
+pub fn encode_qoi(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_tga(@types.Image) -> Bytes
+
+pub fn load_16_from_bytes_auto(Bytes, req_channels? : Int?) -> @types.Image16 raise @types.LoadError
+
+pub fn load_from_bytes_auto(Bytes, req_channels? : Int?) -> @types.Image raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct StreamInfo {
+  width : Int
+  height : Int
+  channels : Int
+}
+
+// Type aliases
+pub using @types {type ImageFormat}
+
+// Traits
+

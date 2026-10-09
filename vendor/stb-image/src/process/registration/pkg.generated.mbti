@@ -1,0 +1,50 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/registration"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn affine_apply(AffineTransform, Double, Double) -> (Double, Double)
+
+pub fn affine_compose(AffineTransform, AffineTransform) -> AffineTransform
+
+pub fn affine_identity() -> AffineTransform
+
+pub fn affine_rotation(Double) -> AffineTransform
+
+pub fn affine_scale(Double, Double) -> AffineTransform
+
+pub fn affine_translation(Double, Double) -> AffineTransform
+
+pub fn align_images(@types.Image, @types.Image) -> (@types.Image, RegistrationResult) raise @types.LoadError
+
+pub fn estimate_translation(@types.Image, @types.Image, max_offset? : Int) -> RegistrationResult raise @types.LoadError
+
+pub fn warp_affine_transform(@types.Image, AffineTransform, out_width? : Int, out_height? : Int) -> @types.Image raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct AffineTransform {
+  a : Double
+  b : Double
+  c : Double
+  d : Double
+  e : Double
+  f : Double
+}
+
+pub(all) struct RegistrationResult {
+  dx : Double
+  dy : Double
+  rotation : Double
+  scale : Double
+  confidence : Double
+}
+
+// Type aliases
+
+// Traits
+

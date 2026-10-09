@@ -1,0 +1,7 @@
+import {
+  "walkzzz/image/src/types",
+  "moonbitlang/core/math",
+}
+
+import {
+} for "test"

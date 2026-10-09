@@ -1,0 +1,129 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/scene_understanding"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn answer_visual_question(@types.Image, String, SceneUnderstandingConfig) -> VisualQuestionAnsweringResult
+
+pub fn classify_scene(@types.Image, SceneUnderstandingConfig) -> SceneClassificationResult
+
+pub fn create_default_scene_config() -> SceneUnderstandingConfig
+
+pub fn generate_caption(@types.Image, SceneUnderstandingConfig) -> ImageCaptioningResult
+
+pub fn generate_scene_graph(@types.Image, SceneUnderstandingConfig) -> SceneGraph
+
+pub fn get_common_scene_types() -> Array[String]
+
+pub fn scene_understanding_report_to_string(SceneClassificationResult, ImageCaptioningResult, VisualQuestionAnsweringResult, SceneGraph) -> String
+
+pub fn understand_scene(@types.Image, SceneUnderstandingConfig) -> (SceneClassificationResult, ImageCaptioningResult, SceneGraph)
+
+// Errors
+
+// Types and methods
+pub(all) enum ImageCaptioningAlgorithm {
+  ShowAndTell
+  ShowAttendAndTell
+  UpDown
+  TransformerCaption
+  Oscar
+  VinVL
+  BLIP
+  CLIPCaption
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImageCaptioningResult {
+  caption : String
+  confidence : Double
+  alternative_captions : Array[String]
+  num_captions : Int
+  bleu_score : Double
+  cider_score : Double
+  generation_time_ms : Double
+}
+
+pub(all) enum SceneClassificationAlgorithm {
+  ResNet
+  VGG
+  Inception
+  EfficientNet
+  VisionTransformer
+  SwinTransformer
+  ConvNeXt
+  DenseNet
+  MobileNet
+  Unknown
+} derive(Eq)
+
+pub(all) struct SceneClassificationResult {
+  scene_type : String
+  confidence : Double
+  top_predictions : Array[String]
+  top_confidences : Array[Double]
+  num_classes : Int
+  scene_category : String
+}
+
+pub(all) struct SceneGraph {
+  nodes : Array[SceneGraphNode]
+  relations : Array[SceneGraphRelation]
+  num_objects : Int
+  num_relations : Int
+}
+
+pub(all) struct SceneGraphNode {
+  object_id : Int
+  object_name : String
+  bounding_box : Array[Double]
+  attributes : Array[String]
+  confidence : Double
+}
+
+pub(all) struct SceneGraphRelation {
+  subject_id : Int
+  object_id : Int
+  relation : String
+  confidence : Double
+}
+
+pub(all) struct SceneUnderstandingConfig {
+  classification_algorithm : SceneClassificationAlgorithm
+  captioning_algorithm : ImageCaptioningAlgorithm
+  vqa_algorithm : VisualQuestionAnsweringAlgorithm
+  classification_threshold : Double
+  caption_temperature : Double
+  max_caption_length : Int
+  use_attention : Bool
+  use_scene_graph : Bool
+}
+
+pub(all) enum VisualQuestionAnsweringAlgorithm {
+  VQA
+  VisualBERT
+  LXMERT
+  UNITER
+  ViLBERT
+  CLIP_VQA
+  BLIP_VQA
+  GPT4V
+  Unknown
+} derive(Eq)
+
+pub(all) struct VisualQuestionAnsweringResult {
+  answer : String
+  confidence : Double
+  alternative_answers : Array[String]
+  question_type : String
+  answer_type : String
+  reasoning_steps : Array[String]
+}
+
+// Type aliases
+
+// Traits
+

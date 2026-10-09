@@ -1,0 +1,202 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/computational_photography_advanced"
+
+// Values
+pub fn computational_photography_report_to_string(ComputationalPhotographyTaskType, ComputationalPhotographyConfig, String) -> String
+
+pub fn create_default_computational_photography_config() -> ComputationalPhotographyConfig
+
+pub fn create_hdr_image(Array[Array[Double]], Array[Double], Int, Int, ComputationalPhotographyConfig) -> HDRImage
+
+pub fn deblur_image(Array[Double], Int, Int, ComputationalPhotographyConfig) -> DeblurringResult
+
+pub fn dehaze_image(Array[Double], Int, Int, ComputationalPhotographyConfig) -> DehazingResult
+
+pub fn focus_stack(Array[Array[Double]], Int, Int, ComputationalPhotographyConfig) -> FocusStackingResult
+
+pub fn multi_frame_denoise(Array[Array[Double]], Int, Int, ComputationalPhotographyConfig) -> MultiFrameDenoisingResult
+
+pub fn stitch_panorama(Array[Array[Double]], Int, Int, ComputationalPhotographyConfig) -> PanoramaImage
+
+pub fn tone_map_hdr(HDRImage, ComputationalPhotographyConfig) -> Array[Double]
+
+// Errors
+
+// Types and methods
+pub(all) struct ColorManagementResult {
+  corrected_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  input_color_space : String
+  output_color_space : String
+  white_balance_temperature : Double
+  white_balance_tint : Double
+  gamma_correction : Double
+  color_temperature_shift : Double
+  saturation_adjustment : Double
+}
+
+pub(all) struct ComputationalPhotographyConfig {
+  task_type : ComputationalPhotographyTaskType
+  hdr_tone_mapping : HDRToneMappingMethod
+  panorama_stitching : PanoramaStitchingMethod
+  deblurring_method : DeblurringMethod
+  dehazing_method : DehazingMethod
+  target_color_space : String
+  input_color_space : String
+  gamma : Double
+  white_balance_temperature : Double
+  white_balance_tint : Double
+  exposure_compensation : Double
+  contrast_enhancement : Double
+  saturation_enhancement : Double
+  sharpening_amount : Double
+  denoising_strength : Double
+  sr_scale_factor : Double
+  sr_method : String
+  focus_stacking_method : String
+  panorama_projection : String
+  use_gpu : Bool
+}
+
+pub(all) struct ComputationalPhotographySRResult {
+  sr_image : Array[Double]
+  original_width : Int
+  original_height : Int
+  sr_width : Int
+  sr_height : Int
+  scale_factor : Double
+  sr_method : String
+  psnr : Double
+  ssim : Double
+  num_input_frames : Int
+}
+
+pub(all) enum ComputationalPhotographyTaskType {
+  HDRImaging
+  PanoramaStitching
+  FocusStacking
+  MultiFrameDenoising
+  SuperResolution
+  Deblurring
+  Dehazing
+  ColorManagement
+  Unknown
+} derive(Eq)
+
+pub(all) enum DeblurringMethod {
+  Wiener
+  RichardsonLucy
+  BlindDeconvolution
+  DeepLearning
+  Unknown
+} derive(Eq)
+
+pub(all) struct DeblurringResult {
+  deblurred_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  deblurring_method : DeblurringMethod
+  kernel_size : Int
+  kernel_estimate : Array[Array[Double]]
+  psnr_improvement : Double
+  ssim_improvement : Double
+  iterations : Int
+  is_blind : Bool
+}
+
+pub(all) enum DehazingMethod {
+  DarkChannelPrior
+  ColorAttenuation
+  DehazeNet
+  AODNet
+  Unknown
+} derive(Eq)
+
+pub(all) struct DehazingResult {
+  dehazed_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  dehazing_method : DehazingMethod
+  transmission_map : Array[Double]
+  atmospheric_light : Array[Double]
+  haze_density : Double
+  visibility_improvement : Double
+  contrast_improvement : Double
+}
+
+pub(all) struct FocusStackingResult {
+  focused_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  num_input_images : Int
+  focus_map : Array[Array[Int]]
+  sharpness_map : Array[Array[Double]]
+  stacking_method : String
+  depth_estimation : Array[Double]
+}
+
+pub(all) struct HDRImage {
+  hdr_data : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  min_luminance : Double
+  max_luminance : Double
+  exposure_values : Array[Double]
+  num_exposures : Int
+  tone_mapped : Bool
+}
+
+pub(all) enum HDRToneMappingMethod {
+  Reinhard
+  Durand
+  Mantiuk
+  Drago
+  Ward
+  Linear
+  Unknown
+} derive(Eq)
+
+pub(all) struct MultiFrameDenoisingResult {
+  denoised_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  num_input_frames : Int
+  noise_reduction_db : Double
+  detail_preservation : Double
+  denoising_method : String
+  motion_compensation : Bool
+}
+
+pub(all) struct PanoramaImage {
+  panorama_data : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  num_input_images : Int
+  stitching_method : PanoramaStitchingMethod
+  focal_length : Double
+  projection_type : String
+  blending_method : String
+  seam_line : Array[Array[Int]]
+}
+
+pub(all) enum PanoramaStitchingMethod {
+  SIFT
+  SURF
+  ORB
+  AKAZE
+  PhaseCorrelation
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,244 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/representation_learning_advanced"
+
+// Values
+pub fn create_default_representation_learning_config() -> RepresentationLearningConfig
+
+pub fn learn_representation(Array[Array[Double]], RepresentationLearningConfig) -> RepresentationLearningResult
+
+pub fn representation_learning_report_to_string(RepresentationLearningTaskType, RepresentationLearningConfig, String) -> String
+
+pub fn train_autoencoder(Array[Array[Double]], RepresentationLearningConfig) -> AutoencoderResult
+
+pub fn train_contrastive(Array[Array[Double]], RepresentationLearningConfig) -> ContrastiveLearningResult
+
+pub fn train_gan(Int, Int, Int, RepresentationLearningConfig) -> GANResult
+
+pub fn train_vae(Array[Array[Double]], RepresentationLearningConfig) -> VAEResult
+
+// Errors
+
+// Types and methods
+pub(all) struct AutoencoderResult {
+  encoded_representations : Array[Array[Double]]
+  reconstructed_data : Array[Array[Double]]
+  num_samples : Int
+  original_dimension : Int
+  latent_dimension : Int
+  reconstruction_error : Double
+  training_loss : Double
+  validation_loss : Double
+  num_epochs : Int
+  learning_rate : Double
+  autoencoder_type : AutoencoderType
+  learning_time_ms : Double
+  encoder_weights : Array[Array[Double]]
+  decoder_weights : Array[Array[Double]]
+}
+
+pub(all) enum AutoencoderType {
+  Undercomplete
+  Sparse
+  Denoising
+  Contractive
+  Convolutional
+  Recurrent
+  Variational
+  Conditional
+  Adversarial
+  Unknown
+} derive(Eq)
+
+pub(all) enum ContrastiveLearningMethodType {
+  SimCLR
+  MoCo
+  BYOL
+  SwAV
+  DINO
+  CLIP
+  ALIGN
+  SimSiam
+  BarlowTwins
+  VICReg
+  Unknown
+} derive(Eq)
+
+pub(all) struct ContrastiveLearningResult {
+  learned_representations : Array[Array[Double]]
+  num_samples : Int
+  representation_dimension : Int
+  training_loss : Double
+  validation_loss : Double
+  num_epochs : Int
+  learning_rate : Double
+  temperature : Double
+  batch_size : Int
+  contrastive_method : ContrastiveLearningMethodType
+  learning_time_ms : Double
+  positive_pairs : Int
+  negative_pairs : Int
+  top1_accuracy : Double
+  top5_accuracy : Double
+}
+
+pub(all) struct FineTuningResult {
+  fine_tuned_weights : Array[Array[Double]]
+  num_layers : Int
+  num_frozen_layers : Int
+  num_trainable_layers : Int
+  training_loss : Double
+  validation_loss : Double
+  training_accuracy : Double
+  validation_accuracy : Double
+  test_accuracy : Double
+  num_epochs : Int
+  learning_rate : Double
+  fine_tuning_time_ms : Double
+  learning_rate_scheduler : String
+}
+
+pub(all) struct GANResult {
+  generated_samples : Array[Array[Double]]
+  num_generated : Int
+  generator_loss : Double
+  discriminator_loss : Double
+  total_loss : Double
+  num_epochs : Int
+  learning_rate : Double
+  gan_type : GANType
+  latent_dimension : Int
+  learning_time_ms : Double
+  inception_score : Double
+  fid_score : Double
+}
+
+pub(all) enum GANType {
+  VanillaGAN
+  DCGAN
+  WGAN
+  WGANGP
+  CycleGAN
+  Pix2Pix
+  StyleGAN
+  ProGAN
+  BigGAN
+  ConditionalGAN
+  Unknown
+} derive(Eq)
+
+pub(all) struct PretrainingResult {
+  pretrained_model_weights : Array[Array[Double]]
+  num_layers : Int
+  num_parameters : Int
+  pretraining_loss : Double
+  pretraining_accuracy : Double
+  num_epochs : Int
+  batch_size : Int
+  learning_rate : Double
+  pretraining_time_ms : Double
+  model_architecture : String
+  dataset_size : Int
+}
+
+pub(all) struct RepresentationLearningConfig {
+  task_type : RepresentationLearningTaskType
+  autoencoder_type : AutoencoderType
+  gan_type : GANType
+  contrastive_method : ContrastiveLearningMethodType
+  self_supervised_task : SelfSupervisedTaskType
+  latent_dimension : Int
+  hidden_dimensions : Array[Int]
+  learning_rate : Double
+  num_epochs : Int
+  batch_size : Int
+  temperature : Double
+  margin : Double
+  regularization : Double
+  dropout_rate : Double
+  use_pretrained : Bool
+  pretrained_model_path : String
+  freeze_layers : Bool
+  num_frozen_layers : Int
+  use_data_augmentation : Bool
+  use_gpu : Bool
+  random_state : Int
+}
+
+pub(all) struct RepresentationLearningResult {
+  learned_representations : Array[Array[Double]]
+  num_samples : Int
+  original_dimension : Int
+  representation_dimension : Int
+  reconstruction_error : Double
+  training_loss : Double
+  validation_loss : Double
+  training_accuracy : Double
+  validation_accuracy : Double
+  learning_time_ms : Double
+  num_epochs : Int
+  converged : Bool
+  encoder_layers : Array[Int]
+  decoder_layers : Array[Int]
+}
+
+pub(all) enum RepresentationLearningTaskType {
+  Autoencoder
+  VariationalAutoencoder
+  GenerativeAdversarialNetwork
+  ContrastiveLearning
+  SelfSupervisedLearning
+  Pretraining
+  FineTuning
+  RepresentationLearning
+  FeatureLearning
+  Unknown
+} derive(Eq)
+
+pub(all) struct SelfSupervisedLearningResult {
+  learned_representations : Array[Array[Double]]
+  num_samples : Int
+  representation_dimension : Int
+  pretraining_task : SelfSupervisedTaskType
+  pretraining_loss : Double
+  pretraining_accuracy : Double
+  num_pretraining_epochs : Int
+  downstream_accuracy : Double
+  learning_time_ms : Double
+  linear_probe_accuracy : Double
+  fine_tuning_accuracy : Double
+}
+
+pub(all) enum SelfSupervisedTaskType {
+  RotationPrediction
+  Colorization
+  JigsawPuzzle
+  RelativePosition
+  ContextPrediction
+  MaskedImageModeling
+  MaskedAutoencoder
+  ContrastivePredictiveCoding
+  DeepCluster
+  SeLa
+  Unknown
+} derive(Eq)
+
+pub(all) struct VAEResult {
+  encoded_representations : Array[Array[Double]]
+  reconstructed_data : Array[Array[Double]]
+  latent_means : Array[Array[Double]]
+  latent_log_vars : Array[Array[Double]]
+  num_samples : Int
+  original_dimension : Int
+  latent_dimension : Int
+  reconstruction_loss : Double
+  kl_divergence : Double
+  total_loss : Double
+  num_epochs : Int
+  learning_rate : Double
+  learning_time_ms : Double
+}
+
+// Type aliases
+
+// Traits
+

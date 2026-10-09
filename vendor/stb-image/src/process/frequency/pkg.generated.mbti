@@ -1,0 +1,98 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/frequency"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn dct_2d(@types.Image) -> Array[Array[Double]]
+
+pub fn dct_2d_16(@types.Image16) -> Array[Array[Double]]
+
+pub fn dct_2d_f(@types.ImageF) -> Array[Array[Double]]
+
+pub fn fft_2d(@types.Image) -> Array[FFTResult] raise @types.LoadError
+
+pub fn fft_2d_16(@types.Image16) -> Array[FFTResult] raise @types.LoadError
+
+pub fn fft_2d_f(@types.ImageF) -> Array[FFTResult] raise @types.LoadError
+
+pub fn fft_magnitude(FFTResult, Bool) -> @types.Image
+
+pub fn fft_magnitude_16(FFTResult, Bool) -> @types.Image16
+
+pub fn fft_magnitude_f(FFTResult, Bool) -> @types.ImageF
+
+pub fn fft_shift(FFTResult) -> FFTResult
+
+pub fn freq_filter(@types.Image, FreqFilterType, Float, band_width? : Float) -> @types.Image raise @types.LoadError
+
+pub fn freq_filter_gaussian(@types.Image, FreqFilterType, Float, band_width? : Float) -> @types.Image raise @types.LoadError
+
+pub fn haar_denoise(@types.Image, threshold? : Float, soft? : Bool, levels? : Int) -> @types.Image raise @types.LoadError
+
+pub fn haar_denoise_16(@types.Image16, threshold? : Float, soft? : Bool, levels? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn haar_denoise_f(@types.ImageF, threshold? : Float, soft? : Bool, levels? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn haar_inverse_transform_2d(HaarWaveletResult) -> @types.Image
+
+pub fn haar_inverse_transform_2d_16(HaarWaveletResult) -> @types.Image16
+
+pub fn haar_inverse_transform_2d_f(HaarWaveletResult) -> @types.ImageF
+
+pub fn haar_transform_1d(Array[Float]) -> Array[Float]
+
+pub fn haar_transform_2d(@types.Image, levels? : Int) -> HaarWaveletResult raise @types.LoadError
+
+pub fn haar_transform_2d_16(@types.Image16, levels? : Int) -> HaarWaveletResult raise @types.LoadError
+
+pub fn haar_transform_2d_f(@types.ImageF, levels? : Int) -> HaarWaveletResult raise @types.LoadError
+
+pub fn idct_2d(Array[Array[Double]]) -> @types.Image
+
+pub fn idct_2d_16(Array[Array[Double]]) -> @types.Image16
+
+pub fn idct_2d_f(Array[Array[Double]]) -> @types.ImageF
+
+pub fn ifft_2d(FFTResult) -> @types.Image
+
+pub fn ifft_2d_16(FFTResult) -> @types.Image16
+
+pub fn ifft_2d_f(FFTResult) -> @types.ImageF
+
+pub fn ihaar_transform_1d(Array[Float]) -> Array[Float]
+
+// Errors
+
+// Types and methods
+pub struct Complex {
+  re : Float
+  im : Float
+}
+
+pub struct FFTResult {
+  width : Int
+  height : Int
+  data : Array[Complex]
+}
+
+pub(all) enum FreqFilterType {
+  LowPass
+  HighPass
+  BandPass
+  BandStop
+}
+
+pub struct HaarWaveletResult {
+  width : Int
+  height : Int
+  levels : Int
+  coefficients : Array[Float]
+}
+
+// Type aliases
+
+// Traits
+

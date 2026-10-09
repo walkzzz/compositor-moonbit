@@ -245,8 +245,41 @@ fn adjust_active(model : Model, f : (Bytes) -> Bytes) -> Model {
 }
 
 // ---------------------------------------------------------------------------
-// Project loaded
+// Image import / project loaded
 // ---------------------------------------------------------------------------
+
+/// Open a decoded RGBA image. The canvas adopts the image dimensions and the
+/// image becomes the single document layer with cleared history.
+fn import_image(
+  name : String,
+  width : Int,
+  height : Int,
+  rgba : Bytes,
+) -> Model {
+  let layer : Layer = {
+    id: 0,
+    name,
+    visible: true,
+    opacity: 1.0,
+    blend: Normal,
+    image: Some(rgba),
+    mask: None,
+  }
+  {
+    width,
+    height,
+    layers: [layer],
+    active_layer: Some(0),
+    tool: Brush,
+    brush: Brush::default(),
+    next_id: 1,
+    drawing: false,
+    last_x: 0.0,
+    last_y: 0.0,
+    undo: [],
+    redo: [],
+  }
+}
 
 fn project_loaded(model : Model, json : String) -> Model {
   match decode_project(json) {
@@ -275,6 +308,8 @@ pub fn update(model : Model, msg : Msg) -> Model {
   match msg {
     NewCanvas(width, height) => init_model(width, height)
     ProjectLoaded(json) => project_loaded(model, json)
+    ImportImage(name, width, height, rgba) =>
+      import_image(name, width, height, rgba)
 
     AddLayer => add_layer(model)
     DuplicateLayer(id) => duplicate_layer(model, id)
@@ -282,7 +317,7 @@ pub fn update(model : Model, msg : Msg) -> Model {
     SelectLayer(id) => { ..model, active_layer: Some(id) }
     ToggleLayerVisible(id) =>
       map_layer(push_history(model), id, layer =>
-        { ..layer, visible: layer.visible.not() })
+        { ..layer, visible: !layer.visible })
     RenameLayer(id, name) =>
       map_layer(push_history(model), id, layer => { ..layer, name })
     MoveLayerUp(id) => move_layer(model, id, true)

@@ -1,0 +1,105 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/forensics_enhanced"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn analyze_cfa_pattern(@types.Image) -> CfaAnalysisResult
+
+pub fn analyze_dct_coefficients(@types.Image) -> DctCoefficientResult
+
+pub fn analyze_ela(@types.Image, Int) -> ElaAnalysisResult raise @types.LoadError
+
+pub fn analyze_illumination_consistency(@types.Image) -> IlluminationConsistencyResult
+
+pub fn analyze_jpeg_ghost(@types.Image) -> JpegGhostResult
+
+pub fn analyze_metadata_forensics(@types.Image) -> MetadataForensicsResult
+
+pub fn analyze_noise_residual(@types.Image) -> NoiseResidualResult
+
+pub fn detect_clone_regions(@types.Image, Int, Double) -> CloneDetectionResult raise @types.LoadError
+
+pub fn detect_tamper_comprehensive(@types.Image, Int) -> TamperDetectionResult raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct CfaAnalysisResult {
+  cfa_pattern : String
+  bayer_pattern_score : Double
+  cfa_artifact_level : Double
+  is_cfa_consistent : Bool
+}
+
+pub(all) struct CloneDetectionResult {
+  clone_region_count : Int
+  clone_regions : Array[(Int, Int, Int, Int)]
+  clone_similarity : Double
+  has_clone : Bool
+}
+
+pub(all) struct DctCoefficientResult {
+  coefficient_distribution : Array[Double]
+  high_freq_coefficient_ratio : Double
+  zero_coefficient_ratio : Double
+  blockiness_artifact : Double
+  double_jpeg_indicator : Double
+}
+
+pub(all) struct ElaAnalysisResult {
+  ela_mean : Double
+  ela_std : Double
+  ela_max : Double
+  ela_distribution : Array[Double]
+  tampered_region_ratio : Double
+}
+
+pub(all) struct IlluminationConsistencyResult {
+  illumination_direction : Double
+  shadow_consistency : Double
+  highlight_distribution : Double
+  illumination_inconsistency : Double
+  has_inconsistent_lighting : Bool
+}
+
+pub(all) struct JpegGhostResult {
+  ghost_quality_levels : Array[Int]
+  ghost_region_count : Int
+  has_ghost : Bool
+  primary_quality : Int
+  secondary_quality : Int
+}
+
+pub(all) struct MetadataForensicsResult {
+  has_metadata : Bool
+  software_signature : String
+  creation_time : String
+  device_info : String
+  metadata_consistency : Double
+  has_inconsistency : Bool
+}
+
+pub(all) struct NoiseResidualResult {
+  residual_mean : Double
+  residual_std : Double
+  residual_energy : Double
+  sensor_pattern : Array[Double]
+  pattern_consistency : Double
+}
+
+pub(all) struct TamperDetectionResult {
+  is_tampered : Bool
+  tamper_probability : Double
+  tamper_type : String
+  tampered_regions : Array[(Int, Int, Int, Int)]
+  confidence : Double
+  analysis_details : String
+}
+
+// Type aliases
+
+// Traits
+

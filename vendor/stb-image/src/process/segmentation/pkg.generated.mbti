@@ -1,0 +1,115 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/segmentation"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn calculate_segmentation_metrics(Array[Int], Array[Int], Int) -> SegmentationMetrics
+
+pub fn create_default_grabcut_config() -> GrabCutConfig
+
+pub fn create_default_kmeans_config() -> KMeansConfig
+
+pub fn create_default_watershed_config() -> WatershedConfig
+
+pub fn grabcut_segmentation(@types.Image, Int, Int, Int, Int, GrabCutConfig) -> SemanticSegmentationResult raise @types.LoadError
+
+pub fn kmeans_segmentation(@types.Image, KMeansConfig) -> SemanticSegmentationResult raise @types.LoadError
+
+pub fn otsu_threshold_value(@types.Image) -> Double raise @types.LoadError
+
+pub fn segmentation_report_to_string(SemanticSegmentationResult, SegmentationMetrics) -> String
+
+pub fn segmentation_to_image(SemanticSegmentationResult) -> @types.Image
+
+pub fn superpixel_segmentation(@types.Image, Int) -> SuperpixelResult raise @types.LoadError
+
+pub fn threshold_segmentation(@types.Image, Double) -> SemanticSegmentationResult raise @types.LoadError
+
+pub fn watershed_segmentation(@types.Image, WatershedConfig) -> SemanticSegmentationResult raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct GrabCutConfig {
+  num_iterations : Int
+  gamma : Double
+  use_gmm : Bool
+}
+
+pub(all) struct InstanceSegmentationResult {
+  width : Int
+  height : Int
+  masks : Array[Array[Bool]]
+  boxes : Array[(Int, Int, Int, Int)]
+  class_ids : Array[Int]
+  class_names : Array[String]
+  confidences : Array[Double]
+  num_instances : Int
+}
+
+pub(all) struct KMeansConfig {
+  num_clusters : Int
+  max_iterations : Int
+  tolerance : Double
+  use_color_space : Bool
+  random_seed : Int
+}
+
+pub(all) struct SegmentationLabel {
+  id : Int
+  name : String
+  color : (Int, Int, Int)
+  pixel_count : Int
+}
+
+pub(all) struct SegmentationMetrics {
+  pixel_accuracy : Double
+  mean_iou : Double
+  mean_accuracy : Double
+  frequency_weighted_iou : Double
+  dice_coefficient : Double
+  true_positives : Int
+  false_positives : Int
+  false_negatives : Int
+}
+
+pub(all) struct SemanticSegmentationResult {
+  width : Int
+  height : Int
+  labels : Array[Int]
+  label_info : Array[SegmentationLabel]
+  num_classes : Int
+  inference_time_ms : Double
+}
+
+pub(all) struct Superpixel {
+  id : Int
+  center_x : Double
+  center_y : Double
+  size : Int
+  mean_color : Double
+  label : Int
+}
+
+pub(all) struct SuperpixelResult {
+  width : Int
+  height : Int
+  labels : Array[Int]
+  superpixels : Array[Superpixel]
+  num_superpixels : Int
+}
+
+pub(all) struct WatershedConfig {
+  min_region_size : Int
+  max_regions : Int
+  use_markers : Bool
+  connectivity : Int
+}
+
+// Type aliases
+
+// Traits
+

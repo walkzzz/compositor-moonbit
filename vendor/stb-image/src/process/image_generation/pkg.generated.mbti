@@ -1,0 +1,126 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_generation"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn colorize_image(@types.Image, EditingConfig) -> EditingResult
+
+pub fn compose_images(@types.Image, @types.Image, @types.Image, CompositionConfig) -> @types.Image
+
+pub fn create_default_editing_config() -> EditingConfig
+
+pub fn create_default_generation_config() -> GenerationConfig
+
+pub fn edit_image(@types.Image, @types.Image, EditingConfig) -> EditingResult
+
+pub fn editing_report_to_string(EditingResult) -> String
+
+pub fn generate_from_latent(LatentVector, GenerationConfig) -> GenerationResult
+
+pub fn generate_random_image(GenerationConfig) -> GenerationResult
+
+pub fn generate_random_latent(Int, Int) -> LatentVector
+
+pub fn generation_report_to_string(GenerationResult) -> String
+
+pub fn inpaint_image(@types.Image, @types.Image, EditingConfig) -> EditingResult
+
+pub fn outpaint_image(@types.Image, Int, Int, EditingConfig) -> EditingResult
+
+pub fn remove_background(@types.Image, EditingConfig) -> EditingResult
+
+// Errors
+
+// Types and methods
+pub(all) struct CompositionConfig {
+  blend_mode : String
+  opacity : Double
+  feather_radius : Int
+  use_mask : Bool
+  color_match : Bool
+  perspective_correct : Bool
+}
+
+pub(all) struct EditingConfig {
+  algorithm : ImageEditingAlgorithm
+  strength : Double
+  num_steps : Int
+  guidance_scale : Double
+  preserve_background : Bool
+  edge_aware : Bool
+  use_reference : Bool
+}
+
+pub(all) struct EditingResult {
+  image : @types.Image
+  algorithm : ImageEditingAlgorithm
+  original_image : @types.Image
+  mask : @types.Image
+  editing_time_ms : Double
+  quality_score : Double
+  consistency_score : Double
+}
+
+pub(all) struct GenerationConfig {
+  algorithm : ImageGenerationAlgorithm
+  width : Int
+  height : Int
+  channels : Int
+  seed : Int
+  num_steps : Int
+  guidance_scale : Double
+  temperature : Double
+  use_pretrained : Bool
+}
+
+pub(all) struct GenerationResult {
+  image : @types.Image
+  algorithm : ImageGenerationAlgorithm
+  seed : Int
+  latent_vector : Array[Double]
+  generation_time_ms : Double
+  quality_score : Double
+  diversity_score : Double
+}
+
+pub(all) enum ImageEditingAlgorithm {
+  Inpainting
+  Outpainting
+  SuperResolution
+  Colorization
+  StyleTransfer
+  FaceEditing
+  BackgroundRemoval
+  ObjectRemoval
+  ImageComposition
+  Unknown
+} derive(Eq)
+
+pub(all) enum ImageGenerationAlgorithm {
+  GAN
+  DCGAN
+  StyleGAN
+  CycleGAN
+  Pix2Pix
+  ProGAN
+  BigGAN
+  VQGAN
+  DiffusionModel
+  VAE
+  Unknown
+} derive(Eq)
+
+pub(all) struct LatentVector {
+  vector : Array[Double]
+  dimension : Int
+  norm : Double
+  is_normalized : Bool
+}
+
+// Type aliases
+
+// Traits
+

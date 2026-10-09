@@ -1,0 +1,173 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/federated_learning"
+
+// Values
+pub fn add_dp_noise(Double, DifferentialPrivacyConfig) -> Double
+
+pub fn create_default_dp_config() -> DifferentialPrivacyConfig
+
+pub fn create_default_federated_config() -> FederatedLearningConfig
+
+pub fn create_default_he_config() -> HomomorphicEncryptionConfig
+
+pub fn create_default_mpc_config() -> SecureMPCConfig
+
+pub fn create_federated_clients(Int, Int, FederatedLearningConfig) -> Array[FederatedClient]
+
+pub fn decrypt_data(EncryptedData, HomomorphicEncryptionConfig) -> Array[Double]
+
+pub fn encrypt_data(Array[Double], HomomorphicEncryptionConfig) -> EncryptedData
+
+pub fn encrypted_add(EncryptedData, EncryptedData, HomomorphicEncryptionConfig) -> EncryptedData
+
+pub fn evaluate_privacy_protection(Double, Double, DifferentialPrivacyConfig) -> PrivacyProtectionResult
+
+pub fn federated_learning_report_to_string(FederatedTrainingResult, PrivacyProtectionResult, FederatedLearningConfig) -> String
+
+pub fn simulate_federated_training(Array[FederatedClient], FederatedLearningConfig, Double) -> FederatedTrainingResult
+
+// Errors
+
+// Types and methods
+pub(all) enum DPMechanism {
+  Laplace
+  Gaussian
+  Exponential
+  Staircase
+  TruncatedLaplace
+  Unknown
+} derive(Eq)
+
+pub(all) struct DifferentialPrivacyConfig {
+  epsilon : Double
+  delta : Double
+  mechanism : DPMechanism
+  sensitivity : Double
+  clipping_norm : Double
+  use_noise_multiplier : Bool
+  noise_multiplier : Double
+  num_samples : Int
+  sampling_rate : Double
+}
+
+pub(all) struct EncryptedData {
+  ciphertext : Array[Int]
+  encryption_type : HomomorphicEncryptionType
+  key_id : Int
+  size_bytes : Int
+  is_encrypted : Bool
+}
+
+pub(all) struct FederatedClient {
+  client_id : Int
+  data_size : Int
+  local_epochs : Int
+  learning_rate : Double
+  batch_size : Int
+  participation_rate : Double
+  is_active : Bool
+}
+
+pub(all) enum FederatedLearningAlgorithm {
+  FedAvg
+  FedProx
+  FedAdam
+  FedAdagrad
+  FedYogi
+  Scaffold
+  FedNova
+  FedDyn
+  QFedAvg
+  Unknown
+} derive(Eq)
+
+pub(all) struct FederatedLearningConfig {
+  algorithm : FederatedLearningAlgorithm
+  num_clients : Int
+  num_rounds : Int
+  client_fraction : Double
+  local_epochs : Int
+  learning_rate : Double
+  batch_size : Int
+  mu_proximal : Double
+  use_differential_privacy : Bool
+  dp_epsilon : Double
+  dp_delta : Double
+  dp_mechanism : DPMechanism
+  use_secure_aggregation : Bool
+  use_compression : Bool
+  compression_ratio : Double
+}
+
+pub(all) struct FederatedTrainingResult {
+  num_rounds_completed : Int
+  final_accuracy : Double
+  final_loss : Double
+  num_clients_participated : Int
+  communication_cost_mb : Double
+  training_time_s : Double
+  convergence_round : Int
+  privacy_budget_used : Double
+}
+
+pub(all) struct HomomorphicEncryptionConfig {
+  encryption_type : HomomorphicEncryptionType
+  key_size : Int
+  polynomial_degree : Int
+  plaintext_modulus : Int
+  coefficient_modulus : Array[Int]
+  scale : Double
+  use_batching : Bool
+  use_relin : Bool
+}
+
+pub(all) enum HomomorphicEncryptionType {
+  Paillier
+  RSA
+  ElGamal
+  BFV
+  BGV
+  CKKS
+  FHEW
+  TFHE
+  Unknown
+} derive(Eq)
+
+pub(all) struct PrivacyProtectionResult {
+  technology : PrivacyTechnology
+  privacy_budget : Double
+  epsilon : Double
+  delta : Double
+  accuracy_loss : Double
+  overhead_time_ms : Double
+  overhead_memory_mb : Double
+  security_level : String
+}
+
+pub(all) enum PrivacyTechnology {
+  DifferentialPrivacy
+  HomomorphicEncryption
+  SecureMultiPartyComputation
+  FederatedLearning
+  ZeroKnowledgeProof
+  TrustedExecutionEnvironment
+  SecureAggregation
+  Anonymization
+  Unknown
+} derive(Eq)
+
+pub(all) struct SecureMPCConfig {
+  num_parties : Int
+  protocol : String
+  threshold : Int
+  use_secret_sharing : Bool
+  secret_sharing_type : String
+  use_garbled_circuits : Bool
+  use_oblivious_transfer : Bool
+  communication_rounds : Int
+}
+
+// Type aliases
+
+// Traits
+

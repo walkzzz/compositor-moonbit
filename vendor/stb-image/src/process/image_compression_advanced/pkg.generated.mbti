@@ -1,0 +1,135 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_compression_advanced"
+
+// Values
+pub fn compress_image(Array[Double], Int, Int, ImageCompressionConfig) -> CompressionResult
+
+pub fn create_default_compression_config() -> ImageCompressionConfig
+
+pub fn decompress_image(Array[Byte], Int, Int, ImageCompressionConfig) -> DecompressionResult
+
+pub fn evaluate_compression_quality(Array[Double], Array[Double], Int, Int) -> CompressionQualityResult
+
+pub fn image_compression_report_to_string(ImageCompressionTaskType, ImageCompressionConfig, String) -> String
+
+pub fn optimize_rate_distortion(Array[Double], Int, Int, ImageCompressionConfig) -> RateDistortionOptimizationResult
+
+// Errors
+
+// Types and methods
+pub(all) enum CompressionMode {
+  Lossless
+  Lossy
+  NearLossless
+  Unknown
+} derive(Eq)
+
+pub(all) struct CompressionQualityResult {
+  psnr : Double
+  ssim : Double
+  ms_ssim : Double
+  vif : Double
+  fsim : Double
+  overall_quality : Double
+  bitrate : Double
+  bits_per_pixel : Double
+}
+
+pub(all) struct CompressionResult {
+  compressed_data : Array[Byte]
+  compressed_size_bytes : Int
+  original_size_bytes : Int
+  compression_ratio : Double
+  bits_per_pixel : Double
+  compression_mode : CompressionMode
+  compression_standard : CompressionStandardType
+  quality : Int
+  psnr : Double
+  ssim : Double
+  encoding_time_ms : Double
+  decoding_time_ms : Double
+}
+
+pub(all) enum CompressionStandardType {
+  JPEG
+  JPEG2000
+  PNG
+  WebP
+  HEIC
+  AVIF
+  BPG
+  FLIF
+  Unknown
+} derive(Eq)
+
+pub(all) struct DecompressionResult {
+  decompressed_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  decompression_time_ms : Double
+  compression_standard : CompressionStandardType
+  quality_score : Double
+}
+
+pub(all) struct ImageCompressionConfig {
+  task_type : ImageCompressionTaskType
+  compression_standard : CompressionStandardType
+  compression_mode : CompressionMode
+  quality : Int
+  target_bitrate_kbps : Double
+  target_compression_ratio : Double
+  transform_type : TransformType
+  block_size : Int
+  use_chroma_subsampling : Bool
+  chroma_subsampling : String
+  use_entropy_coding : Bool
+  entropy_coding_method : String
+  use_prediction : Bool
+  prediction_method : String
+  use_loop_filter : Bool
+  loop_filter_strength : Int
+  use_gpu : Bool
+  use_multithreading : Bool
+  num_threads : Int
+}
+
+pub(all) enum ImageCompressionTaskType {
+  LosslessCompression
+  LossyCompression
+  JPEGCompression
+  PNGCompression
+  WebPCompression
+  HEICCompression
+  AVIFCompression
+  FractalCompression
+  WaveletCompression
+  NeuralCompression
+  Unknown
+} derive(Eq)
+
+pub(all) struct RateDistortionOptimizationResult {
+  optimal_quality : Int
+  optimal_bitrate : Double
+  optimal_psnr : Double
+  optimal_ssim : Double
+  rate_distortion_curve : Array[Array[Double]]
+  num_points : Int
+  lambda : Double
+  optimization_method : String
+}
+
+pub(all) enum TransformType {
+  DCT
+  DWT
+  DFT
+  Hadamard
+  KLT
+  PCA
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

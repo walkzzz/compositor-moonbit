@@ -1,0 +1,234 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/forensics"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn analyze_color_distribution(@types.Image) -> ColorAnalysisResult raise @types.LoadError
+
+pub fn analyze_color_quantization(@types.Image) -> ColorQuantizationResult raise @types.LoadError
+
+pub fn analyze_compression_artifacts(@types.Image) -> CompressionAnalysisResult raise @types.LoadError
+
+pub fn analyze_details(@types.Image) -> DetailAnalysisResult raise @types.LoadError
+
+pub fn analyze_edge_directions(@types.Image) -> Double raise @types.LoadError
+
+pub fn analyze_edges(@types.Image) -> EdgeAnalysisResult raise @types.LoadError
+
+pub fn analyze_frequency_domain(@types.Image) -> FrequencyAnalysisResult raise @types.LoadError
+
+pub fn analyze_geometry(@types.Image) -> GeometryAnalysisResult raise @types.LoadError
+
+pub fn analyze_noise_pattern(@types.Image) -> NoiseAnalysisResult raise @types.LoadError
+
+pub fn analyze_pixel_distribution(@types.Image) -> Double raise @types.LoadError
+
+pub fn analyze_solid_areas(@types.Image) -> Double raise @types.LoadError
+
+pub fn analyze_texture(@types.Image) -> TextureAnalysisResult raise @types.LoadError
+
+pub fn create_default_enhanced_verification_config() -> EnhancedVerificationConfig
+
+pub fn create_default_source_verification_config() -> SourceVerificationConfig
+
+pub fn detect_text_regions(@types.Image) -> TextDetectionResult raise @types.LoadError
+
+pub fn detect_ui_elements(@types.Image) -> UIDetectionResult raise @types.LoadError
+
+pub fn enhanced_verification_report_to_string(EnhancedVerificationResult) -> String
+
+pub fn intelligent_decision(SourceVerificationResult, UIDetectionResult, TextDetectionResult, GeometryAnalysisResult, ColorQuantizationResult, Double, Double, Double, EnhancedVerificationConfig) -> (ImageSourceType, Double, Double, Double, String)
+
+pub fn source_verification_report_to_string(SourceVerificationResult) -> String
+
+pub fn verify_image_source(@types.Image, SourceVerificationConfig) -> SourceVerificationResult raise @types.LoadError
+
+pub fn verify_image_source_enhanced(@types.Image, EnhancedVerificationConfig) -> EnhancedVerificationResult raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct ColorAnalysisResult {
+  color_histogram_smoothness : Double
+  color_transition_naturalness : Double
+  color_quantization_level : Double
+  skin_tone_accuracy : Double
+  ai_color_indicator : Double
+}
+
+pub(all) struct ColorQuantizationResult {
+  unique_color_count : Int
+  color_quantization_level : Double
+  top_color_ratio : Double
+  top_10_color_ratio : Double
+  color_palette_size : Int
+  color_quantization_indicator : Double
+}
+
+pub(all) struct CompressionAnalysisResult {
+  blocking_artifact_level : Double
+  ringing_artifact_level : Double
+  compression_noise_level : Double
+  quantization_table_consistency : Double
+  ai_compression_indicator : Double
+}
+
+pub(all) struct DetailAnalysisResult {
+  eye_detail_consistency : Double
+  finger_detail_consistency : Double
+  hair_detail_consistency : Double
+  text_readability : Double
+  symmetry_consistency : Double
+  ai_detail_indicator : Double
+}
+
+pub(all) struct EdgeAnalysisResult {
+  edge_sharpness : Double
+  edge_continuity : Double
+  edge_consistency : Double
+  edge_artifact_level : Double
+  ai_edge_indicator : Double
+}
+
+pub(all) struct EnhancedVerificationConfig {
+  use_ui_detection : Bool
+  use_text_detection : Bool
+  use_geometry_analysis : Bool
+  use_color_quantization : Bool
+  use_solid_area_analysis : Bool
+  use_edge_direction_analysis : Bool
+  basic_weight : Double
+  enhanced_weight : Double
+  decision_threshold : Double
+}
+
+pub(all) struct EnhancedVerificationFeatures {
+  ui_indicator : Double
+  text_indicator : Double
+  geometry_indicator : Double
+  color_quantization_indicator : Double
+  solid_area_indicator : Double
+  edge_direction_indicator : Double
+  pixel_distribution_indicator : Double
+  overall_enhanced_score : Double
+}
+
+pub(all) struct EnhancedVerificationResult {
+  source_type : ImageSourceType
+  ai_probability : Double
+  physical_probability : Double
+  confidence : Double
+  decision_threshold : Double
+  basic_features : SourceVerificationFeatures
+  enhanced_features : EnhancedVerificationFeatures
+  ui_detection : UIDetectionResult
+  text_detection : TextDetectionResult
+  geometry_analysis : GeometryAnalysisResult
+  color_quantization : ColorQuantizationResult
+  decision_reason : String
+  processing_time_ms : Double
+}
+
+pub(all) struct FrequencyAnalysisResult {
+  high_frequency_energy : Double
+  low_frequency_energy : Double
+  frequency_spectrum_flatness : Double
+  spectral_centroid : Double
+  spectral_spread : Double
+  ai_frequency_indicator : Double
+}
+
+pub(all) struct GeometryAnalysisResult {
+  horizontal_edge_ratio : Double
+  vertical_edge_ratio : Double
+  diagonal_edge_ratio : Double
+  rectangle_like_region_count : Int
+  straight_line_count : Int
+  geometry_regularity : Double
+  geometry_indicator : Double
+}
+
+pub(all) enum ImageSourceType {
+  AIGenerated
+  PhysicalCaptured
+  Unknown
+  Mixed
+} derive(Eq)
+
+pub(all) struct NoiseAnalysisResult {
+  noise_level : Double
+  noise_correlation : Double
+  noise_spectrum_flatness : Double
+  noise_pattern_regularity : Double
+  ai_noise_indicator : Double
+}
+
+pub(all) struct SourceVerificationConfig {
+  decision_threshold : Double
+  use_noise_analysis : Bool
+  use_frequency_analysis : Bool
+  use_color_analysis : Bool
+  use_texture_analysis : Bool
+  use_edge_analysis : Bool
+  use_compression_analysis : Bool
+  use_detail_analysis : Bool
+  weights : Array[Double]
+}
+
+pub(all) struct SourceVerificationFeatures {
+  noise_pattern_score : Double
+  frequency_domain_score : Double
+  color_distribution_score : Double
+  texture_score : Double
+  edge_score : Double
+  compression_artifact_score : Double
+  detail_score : Double
+  metadata_score : Double
+  overall_score : Double
+}
+
+pub(all) struct SourceVerificationResult {
+  source_type : ImageSourceType
+  ai_probability : Double
+  physical_probability : Double
+  confidence : Double
+  decision_threshold : Double
+  features : SourceVerificationFeatures
+  processing_time_ms : Double
+}
+
+pub(all) struct TextDetectionResult {
+  text_area_count : Int
+  text_area_ratio : Double
+  dense_edge_region_count : Int
+  small_edge_density : Double
+  text_like_region_ratio : Double
+  text_indicator : Double
+}
+
+pub(all) struct TextureAnalysisResult {
+  texture_regularity : Double
+  texture_complexity : Double
+  micro_texture_consistency : Double
+  macro_texture_consistency : Double
+  ai_texture_indicator : Double
+}
+
+pub(all) struct UIDetectionResult {
+  has_window_border : Bool
+  has_toolbar : Bool
+  has_button_like_elements : Bool
+  ui_element_count : Int
+  ui_area_ratio : Double
+  horizontal_line_count : Int
+  vertical_line_count : Int
+  ui_indicator : Double
+}
+
+// Type aliases
+
+// Traits
+

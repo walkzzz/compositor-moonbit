@@ -1,0 +1,116 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/registration_advanced"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn apply_affine_transform(@types.Image, TransformMatrix) -> @types.Image
+
+pub fn apply_translation(@types.Image, Int, Int) -> @types.Image
+
+pub fn calculate_mutual_information(@types.Image, @types.Image) -> Double
+
+pub fn create_default_registration_config_advanced() -> RegistrationConfigAdvanced
+
+pub fn detect_harris_corners(@types.Image, Double) -> Array[FeaturePoint]
+
+pub fn estimate_affine_transform(Array[FeatureMatch]) -> TransformMatrix
+
+pub fn feature_based_registration(@types.Image, @types.Image, RegistrationConfigAdvanced) -> RegistrationResultAdvanced
+
+pub fn match_feature_points(Array[FeaturePoint], Array[FeaturePoint], Double) -> Array[FeatureMatch]
+
+pub fn normalized_cross_correlation(@types.Image, @types.Image) -> Double
+
+pub fn phase_correlation_registration(@types.Image, @types.Image) -> RegistrationResultAdvanced
+
+pub fn register_images_advanced(@types.Image, @types.Image, RegistrationConfigAdvanced) -> RegistrationResultAdvanced
+
+pub fn registration_report_to_string_advanced(RegistrationResultAdvanced) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct FeatureMatch {
+  point1 : FeaturePoint
+  point2 : FeaturePoint
+  distance : Double
+  is_inlier : Bool
+}
+
+pub(all) struct FeaturePoint {
+  x : Double
+  y : Double
+  response : Double
+  orientation : Double
+  scale : Double
+  descriptor : Array[Double]
+}
+
+pub(all) enum RegistrationAlgorithm {
+  PhaseCorrelation
+  FeatureBased
+  IntensityBased
+  MutualInformation
+  NormalizedCrossCorrelation
+  SumOfSquaredDifferences
+  OpticalFlow
+  Demons
+  Bspline
+  Unknown
+} derive(Eq)
+
+pub(all) struct RegistrationConfigAdvanced {
+  algorithm : RegistrationAlgorithm
+  transform_type : TransformType
+  max_iterations : Int
+  convergence_threshold : Double
+  pyramid_levels : Int
+  search_radius : Int
+  use_multiresolution : Bool
+  use_robust_estimation : Bool
+}
+
+pub(all) struct RegistrationResultAdvanced {
+  registered_image : @types.Image
+  algorithm : RegistrationAlgorithm
+  transform_type : TransformType
+  transform_matrix : Array[Double]
+  translation_x : Double
+  translation_y : Double
+  rotation_angle : Double
+  scale_x : Double
+  scale_y : Double
+  correlation : Double
+  mutual_information : Double
+  rmse : Double
+  processing_time_ms : Double
+  num_feature_points : Int
+  num_inliers : Int
+}
+
+pub(all) struct TransformMatrix {
+  matrix : Array[Double]
+  transform_type : TransformType
+  width : Int
+  height : Int
+}
+
+pub(all) enum TransformType {
+  Translation
+  Rigid
+  Similarity
+  Affine
+  Perspective
+  Polynomial
+  ThinPlateSpline
+  Bspline
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

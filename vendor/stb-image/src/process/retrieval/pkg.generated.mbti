@@ -1,0 +1,175 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/retrieval"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn add_to_index(CBIRImageIndex, CBIRImageFeature) -> CBIRImageIndex
+
+pub fn batch_extract_features(Array[(@types.Image, String)]) -> Array[ImageFeature]
+
+pub fn calculate_similarity(Array[Double], Array[Double], SimilarityMetric) -> Double
+
+pub fn cosine_similarity_cbir(Array[Double], Array[Double]) -> Double
+
+pub fn create_default_color_histogram_config() -> ColorHistogramConfig
+
+pub fn create_default_hog_config() -> HOGConfig
+
+pub fn create_default_lbp_config() -> LBPConfig
+
+pub fn create_image_index() -> CBIRImageIndex
+
+pub fn database_add_image(ImageDatabase, ImageFeature) -> ImageDatabase
+
+pub fn database_remove_image(ImageDatabase, String) -> ImageDatabase
+
+pub fn database_size(ImageDatabase) -> Int
+
+pub fn euclidean_distance_cbir(Array[Double], Array[Double]) -> Double
+
+pub fn extract_color_histogram(@types.Image, ColorHistogramConfig) -> CBIRImageFeature
+
+pub fn extract_combined_features(@types.Image) -> CBIRImageFeature
+
+pub fn extract_hog_feature(@types.Image, HOGConfig) -> CBIRImageFeature
+
+pub fn extract_image_features(@types.Image, String) -> ImageFeature
+
+pub fn extract_lbp_feature(@types.Image, LBPConfig) -> CBIRImageFeature
+
+pub fn histogram_intersection_cbir(Array[Double], Array[Double]) -> Double
+
+pub fn image_database_new() -> ImageDatabase
+
+pub fn image_similarity(@types.Image, @types.Image, method_type? : String) -> Double
+
+pub fn manhattan_distance_cbir(Array[Double], Array[Double]) -> Double
+
+pub fn retrieval_report_to_string(CBIRRetrievalResultList, CBIRImageFeature) -> String
+
+pub fn retrieve_images(CBIRImageFeature, CBIRImageIndex, Int, SimilarityMetric) -> CBIRRetrievalResultList
+
+pub fn search_similar_images(ImageDatabase, ImageFeature, top_k? : Int, method_type? : String) -> Array[SearchResult]
+
+// Errors
+
+// Types and methods
+pub(all) struct CBIRImageFeature {
+  feature_type : FeatureType
+  feature_vector : Array[Double]
+  feature_length : Int
+  image_id : String
+  image_path : String
+  width : Int
+  height : Int
+  extraction_time_ms : Double
+}
+
+pub(all) struct CBIRImageIndex {
+  features : Array[CBIRImageFeature]
+  num_images : Int
+  index_type : String
+  built : Bool
+  build_time_ms : Double
+}
+
+pub(all) struct CBIRRetrievalResult {
+  image_id : String
+  image_path : String
+  similarity : Double
+  distance : Double
+  rank : Int
+  width : Int
+  height : Int
+}
+
+pub(all) struct CBIRRetrievalResultList {
+  results : Array[CBIRRetrievalResult]
+  num_results : Int
+  query_image_id : String
+  retrieval_time_ms : Double
+  total_images_in_index : Int
+}
+
+pub(all) struct ColorHistogramConfig {
+  num_bins : Int
+  color_space : String
+  normalize : Bool
+  cumulative : Bool
+}
+
+pub(all) enum FeatureType {
+  ColorHistogram
+  ColorCorrelogram
+  Texture
+  Shape
+  SIFT
+  SURF
+  ORB
+  HOG
+  LBP
+  Gabor
+  DeepFeature
+  Combined
+  Unknown
+} derive(Eq)
+
+pub(all) struct GaborConfig {
+  num_scales : Int
+  num_orientations : Int
+  wavelength : Double
+  aspect_ratio : Double
+}
+
+pub(all) struct HOGConfig {
+  cell_size : Int
+  block_size : Int
+  num_bins : Int
+  normalize : Bool
+}
+
+pub(all) struct ImageDatabase {
+  features : Array[ImageFeature]
+  index : Array[String]
+}
+
+pub(all) struct ImageFeature {
+  image_id : String
+  features : Array[Double]
+  width : Int
+  height : Int
+}
+
+pub(all) struct LBPConfig {
+  radius : Int
+  num_points : Int
+  uniform : Bool
+  rotation_invariant : Bool
+}
+
+pub(all) struct SearchResult {
+  image_id : String
+  similarity : Double
+  rank : Int
+}
+
+pub(all) enum SimilarityMetric {
+  Cosine
+  Euclidean
+  Manhattan
+  Chebyshev
+  Correlation
+  Intersection
+  ChiSquare
+  Hellinger
+  JensenShannon
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

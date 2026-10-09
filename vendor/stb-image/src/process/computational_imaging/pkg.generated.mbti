@@ -1,0 +1,142 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/computational_imaging"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn coded_aperture_reconstruct(@types.Image, CodedAperturePattern) -> ImagingReconstructionResult
+
+pub fn computational_imaging_report_to_string(ImagingReconstructionResult, String) -> String
+
+pub fn create_default_coded_aperture(Int) -> CodedAperturePattern
+
+pub fn create_default_lightfield_camera() -> LightFieldCameraParams
+
+pub fn create_default_phase_config() -> PhaseRetrievalConfig
+
+pub fn ct_reconstruct_fbp(CTProjectionData, Int) -> ImagingReconstructionResult
+
+pub fn generate_hologram(@types.Image, Double, Double, Double) -> Hologram
+
+pub fn generate_sample_lightfield(@types.Image, LightFieldCameraParams) -> LightFieldData
+
+pub fn lightfield_refocus(LightFieldData, Double, Double) -> RefocusResult
+
+pub fn phase_retrieval(@types.Image, PhaseRetrievalConfig) -> ImagingReconstructionResult
+
+pub fn reconstruct_hologram(Hologram) -> ImagingReconstructionResult
+
+pub fn synthesize_view(LightFieldData, Double, Double) -> ViewSynthesisResult
+
+// Errors
+
+// Types and methods
+pub(all) struct CTProjectionData {
+  projections : Array[@types.Image]
+  num_angles : Int
+  num_detectors : Int
+  angular_range : Double
+  source_distance : Double
+  detector_distance : Double
+}
+
+pub(all) struct CodedAperturePattern {
+  pattern : @types.Image
+  pattern_size : Int
+  code_type : String
+  num_elements : Int
+}
+
+pub(all) enum ComputationalImagingAlgorithm {
+  LightField
+  Holography
+  ComputedTomography
+  PhaseRetrieval
+  CodedAperture
+  SinglePixel
+  GhostImaging
+  Ptychography
+  Unknown
+} derive(Eq)
+
+pub(all) struct Hologram {
+  intensity : @types.Image
+  phase : @types.Image
+  hologram_type : HologramType
+  wavelength : Double
+  distance : Double
+  pixel_size : Double
+}
+
+pub(all) enum HologramType {
+  Fresnel
+  Fourier
+  ImagePlane
+  Digital
+  ComputerGenerated
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImagingReconstructionResult {
+  image : @types.Image
+  algorithm : ComputationalImagingAlgorithm
+  num_iterations : Int
+  convergence_error : Double
+  reconstruction_time_ms : Double
+  psnr : Double
+  ssim : Double
+}
+
+pub(all) struct LightFieldCameraParams {
+  num_views_x : Int
+  num_views_y : Int
+  micro_lens_pitch : Double
+  focal_length : Double
+  sensor_pitch : Double
+  num_aperture_samples : Int
+}
+
+pub(all) struct LightFieldData {
+  views : Array[@types.Image]
+  num_views_x : Int
+  num_views_y : Int
+  total_views : Int
+  representation : LightFieldRepresentation
+}
+
+pub(all) enum LightFieldRepresentation {
+  TwoPlane
+  Lumigraph
+  FourierSlice
+  Convolutional
+  Unknown
+} derive(Eq)
+
+pub(all) struct PhaseRetrievalConfig {
+  num_iterations : Int
+  algorithm : String
+  support_threshold : Double
+  use_hybrid_input_output : Bool
+  beta : Double
+}
+
+pub(all) struct RefocusResult {
+  image : @types.Image
+  focus_depth : Double
+  aperture_size : Double
+  num_views_used : Int
+}
+
+pub(all) struct ViewSynthesisResult {
+  image : @types.Image
+  view_position : Array[Double]
+  num_source_views : Int
+  interpolation_method : String
+}
+
+// Type aliases
+
+// Traits
+

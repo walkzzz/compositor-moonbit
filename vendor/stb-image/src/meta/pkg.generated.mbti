@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/meta"
+
+import {
+  "moonbitlang/core/debug",
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn create_exif_segment(ExifInfo) -> Bytes
+
+pub fn read_exif_from_bytes(Bytes) -> ExifInfo?
+
+pub fn read_png_text_chunks(Bytes) -> Array[PngTextChunk]
+
+pub fn write_exif_to_bytes(ExifInfo, Bytes) -> Bytes raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct ExifInfo {
+  make : String
+  model : String
+  orientation : Int
+  date_time : String
+} derive(Eq, @debug.Debug)
+
+pub(all) struct PngTextChunk {
+  keyword : String
+  text : String
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

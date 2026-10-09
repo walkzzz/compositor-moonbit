@@ -1,0 +1,181 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/remote_sensing_advanced"
+
+// Values
+pub fn calculate_ndvi(Array[Double], Array[Double], Int) -> Array[Double]
+
+pub fn calculate_ndwi(Array[Double], Array[Double], Int) -> Array[Double]
+
+pub fn classify_land_cover(Array[Double], Int, Int, RemoteSensingConfig) -> LandCoverClassificationResult
+
+pub fn create_default_remote_sensing_config() -> RemoteSensingConfig
+
+pub fn detect_changes(Array[Double], Array[Double], Int, Int, RemoteSensingConfig) -> ChangeDetectionResult
+
+pub fn detect_remote_sensing_objects(Array[Double], Int, Int, RemoteSensingConfig) -> Array[DetectedRemoteSensingObject]
+
+pub fn remote_sensing_report_to_string(RemoteSensingTaskType, RemoteSensingConfig, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct ChangeDetectionResult {
+  change_map : Array[Array[Bool]]
+  change_mask : Array[Array[Int]]
+  num_change_regions : Int
+  total_change_area : Double
+  change_types : Array[ChangeType]
+  change_areas : Array[Double]
+  confidence : Double
+  kappa_coefficient : Double
+  false_alarm_rate : Double
+  missed_detection_rate : Double
+}
+
+pub(all) enum ChangeType {
+  NewConstruction
+  Demolition
+  Expansion
+  Reduction
+  LandUseChange
+  VegetationChange
+  WaterChange
+  NoChange
+  Unknown
+} derive(Eq)
+
+pub(all) struct DetectedRemoteSensingObject {
+  object_id : Int
+  object_type : RemoteSensingObjectType
+  bounding_box : Array[Double]
+  polygon : Array[Array[Double]]
+  confidence : Double
+  area : Double
+  perimeter : Double
+  orientation : Double
+  geolocation : Array[Double]
+}
+
+pub(all) struct LandCoverClassificationResult {
+  classification_map : Array[Array[Int]]
+  num_classes : Int
+  class_names : Array[String]
+  class_distribution : Array[Double]
+  overall_accuracy : Double
+  kappa_coefficient : Double
+  confusion_matrix : Array[Array[Int]]
+  confidence_map : Array[Array[Double]]
+}
+
+pub(all) enum LandCoverType {
+  Water
+  Forest
+  Grassland
+  Cropland
+  Urban
+  Barren
+  Wetland
+  Snow
+  Cloud
+  Shadow
+  Unknown
+} derive(Eq)
+
+pub(all) struct RemoteSensingConfig {
+  task_type : RemoteSensingTaskType
+  image_type : RemoteSensingImageType
+  num_bands : Int
+  spatial_resolution : Double
+  spectral_resolution : Double
+  temporal_resolution_days : Int
+  projection : String
+  datum : String
+  classification_method : String
+  detection_threshold : Double
+  change_threshold : Double
+  use_ndvi : Bool
+  use_ndwi : Bool
+  use_ndbi : Bool
+  use_texture : Bool
+  use_elevation : Bool
+  cloud_cover_threshold : Double
+}
+
+pub(all) struct RemoteSensingFusionResult {
+  fused_image : Array[Double]
+  width : Int
+  height : Int
+  num_bands : Int
+  fusion_method : String
+  spectral_angle_mapper : Double
+  erreur_relative_globale : Double
+  correlation_coefficient : Double
+  structural_similarity : Double
+  peak_signal_to_noise_ratio : Double
+}
+
+pub(all) enum RemoteSensingImageType {
+  Optical
+  SAR
+  Multispectral
+  Hyperspectral
+  Thermal
+  LiDAR
+  DEM
+  Unknown
+} derive(Eq)
+
+pub(all) enum RemoteSensingObjectType {
+  Building
+  Road
+  Bridge
+  Vehicle
+  Ship
+  Aircraft
+  Tank
+  Airport
+  Harbor
+  Stadium
+  Unknown
+} derive(Eq)
+
+pub(all) struct RemoteSensingSuperResolutionResult {
+  sr_image : Array[Double]
+  original_width : Int
+  original_height : Int
+  sr_width : Int
+  sr_height : Int
+  scale_factor : Double
+  sr_method : String
+  psnr : Double
+  ssim : Double
+  sam : Double
+}
+
+pub(all) enum RemoteSensingTaskType {
+  LandCoverClassification
+  ObjectDetection
+  ChangeDetection
+  ImageFusion
+  SuperResolution
+  TimeSeriesAnalysis
+  SceneClassification
+  Unknown
+} derive(Eq)
+
+pub(all) struct TimeSeriesAnalysisResult {
+  num_timestamps : Int
+  time_interval_days : Int
+  trend_map : Array[Array[Double]]
+  seasonal_map : Array[Array[Double]]
+  anomaly_map : Array[Array[Bool]]
+  breakpoints : Array[Array[Int]]
+  ndvi_trend : Double
+  vegetation_change_rate : Double
+  phenology_metrics : Array[Double]
+}
+
+// Type aliases
+
+// Traits
+

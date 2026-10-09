@@ -1,0 +1,217 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_translation_advanced"
+
+// Values
+pub fn advanced_style_transfer(Array[Double], Array[Double], Int, Int, ImageTranslationConfig) -> AdvancedStyleTransferResult
+
+pub fn create_default_translation_config() -> ImageTranslationConfig
+
+pub fn image_translation_report_to_string(ImageTranslationTaskType, ImageTranslationConfig, String) -> String
+
+pub fn transfer_day_night(Array[Double], Int, Int, ImageTranslationConfig) -> DayNightTransferResult
+
+pub fn transfer_season(Array[Double], Int, Int, ImageTranslationConfig) -> SeasonTransferResult
+
+pub fn transfer_weather(Array[Double], Int, Int, ImageTranslationConfig) -> WeatherTransferResult
+
+pub fn translate_image(Array[Double], Int, Int, ImageTranslationConfig) -> ImageTranslationResult
+
+// Errors
+
+// Types and methods
+pub(all) struct AdvancedStyleTransferResult {
+  stylized_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  content_image : Array[Double]
+  style_image : Array[Double]
+  style_strength : Double
+  content_strength : Double
+  total_variation_weight : Double
+  transfer_method : TranslationModelType
+  num_iterations : Int
+  content_loss : Double
+  style_loss : Double
+  total_loss : Double
+  transfer_time_ms : Double
+}
+
+pub(all) struct DayNightTransferResult {
+  translated_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  is_night : Bool
+  translation_strength : Double
+  brightness_reduction : Double
+  color_temperature_shift : Double
+  light_source_added : Bool
+  num_light_sources : Int
+  content_preservation : Double
+  translation_time_ms : Double
+  realism_score : Double
+}
+
+pub(all) struct DomainAdaptationResult {
+  adapted_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  source_domain : String
+  target_domain : String
+  adaptation_method : TranslationModelType
+  domain_classifier_accuracy : Double
+  feature_alignment_score : Double
+  content_preservation : Double
+  adaptation_strength : Double
+  adaptation_time_ms : Double
+}
+
+pub(all) struct ImageTranslationConfig {
+  task_type : ImageTranslationTaskType
+  model_type : TranslationModelType
+  source_domain : String
+  target_domain : String
+  translation_strength : Double
+  content_weight : Double
+  style_weight : Double
+  total_variation_weight : Double
+  num_iterations : Int
+  learning_rate : Double
+  source_season : SeasonType
+  target_season : SeasonType
+  source_weather : WeatherType
+  target_weather : WeatherType
+  target_is_night : Bool
+  colorization : Bool
+  texture_synthesis : Bool
+  use_gpu : Bool
+  use_pretrained : Bool
+  pretrained_model : String
+}
+
+pub(all) struct ImageTranslationResult {
+  translated_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  source_domain : String
+  target_domain : String
+  translation_model : TranslationModelType
+  translation_strength : Double
+  content_preservation : Double
+  style_similarity : Double
+  num_iterations : Int
+  translation_time_ms : Double
+  quality_score : Double
+}
+
+pub(all) enum ImageTranslationTaskType {
+  StyleTransfer
+  DomainAdaptation
+  ImageToImageTranslation
+  SeasonTransfer
+  WeatherTransfer
+  DayNightTransfer
+  SketchToPhoto
+  MapToSatellite
+  Unknown
+} derive(Eq)
+
+pub(all) struct MapToSatelliteResult {
+  satellite_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  map_image : Array[Double]
+  translation_method : TranslationModelType
+  building_detection : Bool
+  road_detection : Bool
+  vegetation_detection : Bool
+  water_detection : Bool
+  content_preservation : Double
+  translation_time_ms : Double
+  accuracy_score : Double
+}
+
+pub(all) struct SeasonTransferResult {
+  translated_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  source_season : SeasonType
+  target_season : SeasonType
+  translation_strength : Double
+  vegetation_change : Double
+  color_palette_shift : Array[Double]
+  content_preservation : Double
+  translation_time_ms : Double
+  realism_score : Double
+}
+
+pub(all) enum SeasonType {
+  Spring
+  Summer
+  Autumn
+  Winter
+  Unknown
+} derive(Eq)
+
+pub(all) struct SketchToPhotoResult {
+  photo_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  sketch_image : Array[Double]
+  colorization : Bool
+  texture_synthesis : Bool
+  detail_level : Double
+  content_preservation : Double
+  translation_time_ms : Double
+  realism_score : Double
+}
+
+pub(all) enum TranslationModelType {
+  CycleGAN
+  Pix2Pix
+  UNIT
+  MUNIT
+  DRIT
+  StarGAN
+  AdaIN
+  FastStyleTransfer
+  Unknown
+} derive(Eq)
+
+pub(all) struct WeatherTransferResult {
+  translated_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  source_weather : WeatherType
+  target_weather : WeatherType
+  translation_strength : Double
+  rain_intensity : Double
+  snow_intensity : Double
+  fog_density : Double
+  content_preservation : Double
+  translation_time_ms : Double
+  realism_score : Double
+}
+
+pub(all) enum WeatherType {
+  Sunny
+  Cloudy
+  Rainy
+  Snowy
+  Foggy
+  Stormy
+  Hazy
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

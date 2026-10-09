@@ -1,0 +1,164 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/security_surveillance_advanced"
+
+// Values
+pub fn analyze_behavior(DetectedPerson, SecuritySurveillanceConfig) -> BehaviorAnalysisResult
+
+pub fn analyze_crowd(Array[DetectedPerson], Int, Int, SecuritySurveillanceConfig) -> CrowdAnalysisResult
+
+pub fn create_default_security_config() -> SecuritySurveillanceConfig
+
+pub fn detect_intrusion(Array[DetectedPerson], Array[Int], SecuritySurveillanceConfig) -> Array[IntrusionEvent]
+
+pub fn detect_people(Array[Double], Int, Int, SecuritySurveillanceConfig) -> Array[DetectedPerson]
+
+pub fn recognize_license_plate(Array[Double], Int, Int, SecuritySurveillanceConfig) -> LicensePlateResult
+
+pub fn security_surveillance_report_to_string(SecuritySurveillanceTaskType, SecuritySurveillanceConfig, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum AlertLevel {
+  Info
+  Warning
+  Critical
+  Emergency
+  Unknown
+} derive(Eq)
+
+pub(all) struct AnomalyEvent {
+  event_id : Int
+  event_type : String
+  description : String
+  timestamp : Double
+  location : Array[Double]
+  confidence : Double
+  alert_level : AlertLevel
+  affected_people : Array[Int]
+  num_affected_people : Int
+  is_verified : Bool
+  video_clip_url : String
+}
+
+pub(all) struct BehaviorAnalysisResult {
+  person_id : Int
+  behavior_type : BehaviorType
+  confidence : Double
+  timestamp : Double
+  duration : Double
+  location : Array[Double]
+  is_suspicious : Bool
+  risk_score : Double
+}
+
+pub(all) enum BehaviorType {
+  Walking
+  Running
+  Falling
+  Fighting
+  Aggressive
+  Suspicious
+  Crowding
+  Panic
+  Unknown
+} derive(Eq)
+
+pub(all) struct CrowdAnalysisResult {
+  num_people : Int
+  density : Double
+  density_map : Array[Array[Double]]
+  crowd_direction : Array[Double]
+  crowd_speed : Double
+  is_overcrowded : Bool
+  panic_level : Double
+  hotspots : Array[Array[Double]]
+  num_hotspots : Int
+}
+
+pub(all) struct DetectedPerson {
+  person_id : Int
+  bounding_box : Array[Int]
+  confidence : Double
+  face_embedding : Array[Double]
+  body_embedding : Array[Double]
+  velocity : Array[Double]
+  trajectory : Array[Array[Int]]
+  age_estimate : Int
+  gender_estimate : String
+  is_known : Bool
+  identity : String
+}
+
+pub(all) struct IntrusionEvent {
+  event_id : Int
+  intrusion_type : IntrusionType
+  timestamp : Double
+  location : Array[Double]
+  bounding_box : Array[Int]
+  confidence : Double
+  alert_level : AlertLevel
+  person_id : Int
+  is_acknowledged : Bool
+  video_clip_start : Double
+  video_clip_end : Double
+}
+
+pub(all) enum IntrusionType {
+  PerimeterBreach
+  AreaEntry
+  LineCrossing
+  Loitering
+  ObjectLeft
+  ObjectRemoved
+  Unknown
+} derive(Eq)
+
+pub(all) struct LicensePlateResult {
+  plate_number : String
+  confidence : Double
+  bounding_box : Array[Int]
+  vehicle_type : String
+  vehicle_color : String
+  plate_color : String
+  plate_type : String
+  timestamp : Double
+  is_valid : Bool
+}
+
+pub(all) struct SecuritySurveillanceConfig {
+  task_type : SecuritySurveillanceTaskType
+  detection_threshold : Double
+  recognition_threshold : Double
+  alert_threshold : Double
+  intrusion_zones : Array[Array[Int]]
+  tripwires : Array[Array[Int]]
+  loitering_time : Double
+  min_person_size : Int
+  max_person_size : Int
+  use_face_recognition : Bool
+  use_behavior_analysis : Bool
+  use_crowd_analysis : Bool
+  use_license_plate : Bool
+  alert_cooldown : Double
+  auto_alert : Bool
+  recording_on_alert : Bool
+  num_cameras : Int
+  fps : Int
+}
+
+pub(all) enum SecuritySurveillanceTaskType {
+  IntrusionDetection
+  FaceRecognition
+  BehaviorAnalysis
+  CrowdAnalysis
+  LicensePlateRecognition
+  AnomalyEventDetection
+  ObjectTracking
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

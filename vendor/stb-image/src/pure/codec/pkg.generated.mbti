@@ -1,0 +1,115 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/pure/codec"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn decode_apng_pure(Bytes) -> @types.PngAnimation raise @types.LoadError
+
+pub fn decode_bmp_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_cur_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_gif_animation_pure(Bytes) -> @types.GifAnimation raise @types.LoadError
+
+pub fn decode_gif_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_hdr_pure(Bytes) -> @types.ImageF raise @types.LoadError
+
+pub fn decode_icns_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_ico_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_jpeg_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_png_16_pure(Bytes, req_channels? : Int?) -> @types.Image16 raise @types.LoadError
+
+pub fn decode_png_pure(Bytes, req_channels? : Int?) -> @types.Image raise @types.LoadError
+
+pub fn decode_pnm_16_pure(Bytes) -> @types.Image16 raise @types.LoadError
+
+pub fn decode_pnm_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_psd_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_qoi_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_tga_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_tiff_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_vp8_frame(Bytes, Int) -> @types.Image raise @types.LoadError
+
+pub fn decode_vp8_inter_frame(Bytes, Int, Vp8ReferenceFrames) -> (@types.Image, Vp8ReferenceFrames) raise @types.LoadError
+
+pub fn decode_webp_pure(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn encode_apng_pure(@types.PngAnimation) -> Bytes raise @types.LoadError
+
+pub fn encode_bmp_pure(@types.Image) -> Bytes
+
+pub fn encode_cur_pure(@types.Image) -> Bytes
+
+pub fn encode_cur_with_hotspot_pure(@types.Image, Int, Int) -> Bytes
+
+pub fn encode_gif_animation_pure(@types.GifAnimation) -> Bytes raise @types.LoadError
+
+pub fn encode_gif_pure(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_hdr_pure(@types.ImageF) -> Bytes raise @types.LoadError
+
+pub fn encode_icns_pure(@types.Image) -> Bytes
+
+pub fn encode_ico_pure(@types.Image) -> Bytes
+
+pub fn encode_ico_with_sizes_pure(Array[@types.Image]) -> Bytes
+
+pub fn encode_jpeg_pure(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_pgm_pure(@types.Image) -> Bytes
+
+pub fn encode_png_pure(@types.Image) -> Bytes
+
+pub fn encode_pnm_pure(@types.Image) -> Bytes
+
+pub fn encode_ppm_pure(@types.Image) -> Bytes
+
+pub fn encode_qoi_pure(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_tga_pure(@types.Image) -> Bytes
+
+pub fn encode_tiff_pure(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_webp_lossy_full(@types.Image, quality? : Int) -> Bytes raise @types.LoadError
+
+pub fn encode_webp_lossy_pure(@types.Image, quality? : Int) -> Bytes raise @types.LoadError
+
+pub fn tiff_deflate_decode(Bytes) -> Array[Byte] raise @types.LoadError
+
+pub fn tiff_lzw_decode(Bytes) -> Array[Byte] raise @types.LoadError
+
+pub fn tiff_packbits_decode(Bytes) -> Array[Byte] raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub struct Vp8ReferenceFrames {
+  last_y : Array[Int]
+  last_u : Array[Int]
+  last_v : Array[Int]
+  golden_y : Array[Int]
+  golden_u : Array[Int]
+  golden_v : Array[Int]
+  altref_y : Array[Int]
+  altref_u : Array[Int]
+  altref_v : Array[Int]
+  width : Int
+  height : Int
+}
+
+// Type aliases
+
+// Traits
+

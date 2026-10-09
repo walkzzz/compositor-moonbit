@@ -1,0 +1,159 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/nlp_advanced"
+
+// Values
+pub fn analyze_sentiment(String) -> SentimentAnalysisResult
+
+pub fn classify_text(String, Array[String], NLPConfig) -> TextClassificationResult
+
+pub fn create_default_nlp_config() -> NLPConfig
+
+pub fn embed_text(String, Int) -> TextEmbedding
+
+pub fn nlp_report_to_string(NLPTaskType, NLPConfig, String) -> String
+
+pub fn recognize_entities(String) -> NERResult
+
+pub fn summarize_text(String, Int) -> TextSummarizationResult
+
+pub fn tokenize(String) -> Array[String]
+
+// Errors
+
+// Types and methods
+pub(all) struct MachineTranslationResult {
+  source_text : String
+  target_text : String
+  source_language : String
+  target_language : String
+  confidence : Double
+  bleu_score : Double
+  method_type : String
+}
+
+pub(all) enum NEREntityType {
+  Person
+  Organization
+  Location
+  Date
+  Time
+  Money
+  Percent
+  Product
+  Event
+  Unknown
+} derive(Eq)
+
+pub(all) struct NERResult {
+  text : String
+  entities : Array[String]
+  entity_types : Array[NEREntityType]
+  entity_spans : Array[Array[Int]]
+  confidences : Array[Double]
+  num_entities : Int
+}
+
+pub(all) struct NLPConfig {
+  task_type : NLPTaskType
+  classification_model : TextClassificationModel
+  max_length : Int
+  batch_size : Int
+  learning_rate : Double
+  num_epochs : Int
+  use_pretrained : Bool
+  pretrained_model : String
+  temperature : Double
+  top_p : Double
+  top_k : Int
+  num_beams : Int
+}
+
+pub(all) enum NLPTaskType {
+  TextClassification
+  NamedEntityRecognition
+  SentimentAnalysis
+  TextSummarization
+  MachineTranslation
+  QuestionAnswering
+  TextGeneration
+  LanguageModeling
+  Unknown
+} derive(Eq)
+
+pub(all) struct QuestionAnsweringResult {
+  question : String
+  context : String
+  answer : String
+  confidence : Double
+  answer_start : Int
+  answer_end : Int
+  method_type : String
+}
+
+pub(all) struct SentimentAnalysisResult {
+  text : String
+  sentiment : SentimentType
+  sentiment_score : Double
+  confidence : Double
+  positive_score : Double
+  negative_score : Double
+  neutral_score : Double
+  aspect_sentiments : Array[String]
+}
+
+pub(all) enum SentimentType {
+  VeryPositive
+  Positive
+  Neutral
+  Negative
+  VeryNegative
+  Unknown
+} derive(Eq)
+
+pub(all) enum TextClassificationModel {
+  NaiveBayes
+  SVM
+  LogisticRegression
+  CNN
+  RNN
+  LSTM
+  GRU
+  Transformer
+  BERT
+  RoBERTa
+  Unknown
+} derive(Eq)
+
+pub(all) struct TextClassificationResult {
+  text : String
+  predicted_class : String
+  confidence : Double
+  all_classes : Array[String]
+  all_scores : Array[Double]
+  model_type : TextClassificationModel
+  num_classes : Int
+}
+
+pub(all) struct TextEmbedding {
+  text : String
+  embedding : Array[Double]
+  embedding_dim : Int
+  model_type : String
+  token_ids : Array[Int]
+  num_tokens : Int
+}
+
+pub(all) struct TextSummarizationResult {
+  original_text : String
+  summary : String
+  compression_ratio : Double
+  original_length : Int
+  summary_length : Int
+  method_type : String
+  rouge_score : Double
+}
+
+// Type aliases
+
+// Traits
+

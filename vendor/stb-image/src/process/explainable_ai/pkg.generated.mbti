@@ -1,0 +1,133 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/explainable_ai"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn compute_feature_importance(@types.Image, ExplainableAIConfig) -> FeatureImportanceResult raise @types.LoadError
+
+pub fn create_default_explainable_ai_config() -> ExplainableAIConfig
+
+pub fn explainable_ai_report_to_string(FeatureImportanceResult, SaliencyMapResult, ModelPerformanceMetrics) -> String
+
+pub fn generate_confusion_matrix(Array[Int], Array[Int], Int, Array[String]) -> ConfusionMatrix
+
+pub fn generate_roc_curve(Array[Double], Array[Int], Int) -> ROCCurveData
+
+pub fn generate_saliency_map(@types.Image, ExplainableAIConfig) -> SaliencyMapResult raise @types.LoadError
+
+pub fn visualize_feature_maps(@types.Image, Int, String) -> FeatureMapVisualization raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct ConfusionMatrix {
+  matrix : Array[Array[Int]]
+  num_classes : Int
+  class_names : Array[String]
+  accuracy : Double
+  precision : Array[Double]
+  recall : Array[Double]
+  f1_scores : Array[Double]
+}
+
+pub(all) struct EmbeddingVisualization {
+  points : Array[Array[Double]]
+  labels : Array[Int]
+  num_points : Int
+  dimensions : Int
+  method_type : String
+  perplexity : Double
+}
+
+pub(all) enum ExplainabilityMethod {
+  LIME
+  SHAP
+  GradCAM
+  IntegratedGradients
+  SaliencyMap
+  OcclusionSensitivity
+  FeatureVisualization
+  ActivationMaximization
+  ConceptActivationVectors
+  Unknown
+} derive(Eq)
+
+pub(all) struct ExplainableAIConfig {
+  method_type : ExplainabilityMethod
+  num_samples : Int
+  num_features : Int
+  perturbation_scale : Double
+  target_class : Int
+  use_smoothing : Bool
+  smoothing_sigma : Double
+  normalize : Bool
+}
+
+pub(all) struct FeatureImportanceResult {
+  feature_names : Array[String]
+  importance_scores : Array[Double]
+  num_features : Int
+  method_type : ExplainabilityMethod
+  top_features : Array[String]
+  top_scores : Array[Double]
+}
+
+pub(all) struct FeatureMapVisualization {
+  feature_maps : Array[@types.Image]
+  num_maps : Int
+  layer_name : String
+  map_size : Int
+  num_channels : Int
+}
+
+pub(all) struct ModelPerformanceMetrics {
+  accuracy : Double
+  precision : Double
+  recall : Double
+  f1_score : Double
+  auc_roc : Double
+  auc_pr : Double
+  loss : Double
+  inference_time_ms : Double
+  memory_mb : Double
+  model_size_mb : Double
+  num_parameters : Int
+  flops : Int
+}
+
+pub(all) enum ModelVisualizationType {
+  FeatureMap
+  Filter
+  Activation
+  Embedding
+  ConfusionMatrix
+  ROCCurve
+  PRCurve
+  LossCurve
+  AccuracyCurve
+  Unknown
+} derive(Eq)
+
+pub(all) struct ROCCurveData {
+  fpr : Array[Double]
+  tpr : Array[Double]
+  thresholds : Array[Double]
+  auc : Double
+  num_points : Int
+}
+
+pub(all) struct SaliencyMapResult {
+  saliency_map : @types.Image
+  method_type : ExplainabilityMethod
+  target_class : String
+  confidence : Double
+  num_iterations : Int
+}
+
+// Type aliases
+
+// Traits
+

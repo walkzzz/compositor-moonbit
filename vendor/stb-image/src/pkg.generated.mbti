@@ -1,0 +1,3658 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src"
+
+import {
+  "walkzzz/image/src/lib",
+  "walkzzz/image/src/meta",
+  "walkzzz/image/src/process/advanced_imaging",
+  "walkzzz/image/src/process/barcode",
+  "walkzzz/image/src/process/color",
+  "walkzzz/image/src/process/compression",
+  "walkzzz/image/src/process/computational_imaging",
+  "walkzzz/image/src/process/denoise",
+  "walkzzz/image/src/process/detection",
+  "walkzzz/image/src/process/edge",
+  "walkzzz/image/src/process/encryption",
+  "walkzzz/image/src/process/enhance",
+  "walkzzz/image/src/process/face_recognition",
+  "walkzzz/image/src/process/feature",
+  "walkzzz/image/src/process/forensics",
+  "walkzzz/image/src/process/forensics_enhanced",
+  "walkzzz/image/src/process/frequency",
+  "walkzzz/image/src/process/fusion",
+  "walkzzz/image/src/process/fusion_enhanced",
+  "walkzzz/image/src/process/image_generation",
+  "walkzzz/image/src/process/image_retrieval_advanced",
+  "walkzzz/image/src/process/inpainting",
+  "walkzzz/image/src/process/intelligent_vision",
+  "walkzzz/image/src/process/medical",
+  "walkzzz/image/src/process/neural_rendering",
+  "walkzzz/image/src/process/ocr",
+  "walkzzz/image/src/process/photo_enhance",
+  "walkzzz/image/src/process/pose_estimation",
+  "walkzzz/image/src/process/quality",
+  "walkzzz/image/src/process/registration",
+  "walkzzz/image/src/process/registration_advanced",
+  "walkzzz/image/src/process/remote_sensing",
+  "walkzzz/image/src/process/retrieval",
+  "walkzzz/image/src/process/scene_understanding",
+  "walkzzz/image/src/process/segment",
+  "walkzzz/image/src/process/segmentation",
+  "walkzzz/image/src/process/slam",
+  "walkzzz/image/src/process/stereo3d",
+  "walkzzz/image/src/process/stitch",
+  "walkzzz/image/src/process/style_transfer",
+  "walkzzz/image/src/process/stylize",
+  "walkzzz/image/src/process/superres",
+  "walkzzz/image/src/process/transform",
+  "walkzzz/image/src/process/video",
+  "walkzzz/image/src/process/vlm_multimodal",
+  "walkzzz/image/src/process/watermark",
+  "walkzzz/image/src/types",
+  "walkzzz/image/src/util",
+}
+
+// Values
+pub const MAX_IMAGE_DIMENSION : Int = 65535
+
+pub fn adaptive_threshold_gaussian(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn adaptive_threshold_gaussian_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn adaptive_threshold_gaussian_f(@types.ImageF, Int, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adaptive_threshold_mean(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn adaptive_threshold_mean_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn adaptive_threshold_mean_f(@types.ImageF, Int, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adaptive_threshold_ocr(@types.Image, block_size? : Int, c? : Int) -> @types.Image raise @types.LoadError
+
+pub fn add_border(@types.Image, Int, Int, Int, Int, Array[Byte]) -> @types.Image raise @types.LoadError
+
+pub fn add_face_to_database_fr(@face_recognition.FaceDatabase, @face_recognition.FaceFeature, String) -> @face_recognition.FaceDatabase
+
+pub fn add_noise_gaussian(@types.Image, Float, UInt) -> @types.Image
+
+pub fn add_noise_salt_pepper(@types.Image, Float, UInt) -> @types.Image
+
+pub fn add_to_index_cbir(@retrieval.CBIRImageIndex, @retrieval.CBIRImageFeature) -> @retrieval.CBIRImageIndex
+
+pub fn adjacent_correlation(@types.Image, direction? : String) -> Double raise @types.LoadError
+
+pub fn adjust_brightness(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn adjust_brightness_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn adjust_brightness_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adjust_contrast(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn adjust_contrast_16(@types.Image16, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn adjust_contrast_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adjust_gamma(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn adjust_gamma_16(@types.Image16, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn adjust_gamma_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adjust_hue(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn adjust_saturation(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn advanced_chinese_ocr_default_config() -> @ocr.AdvancedChineseOcrConfig
+
+pub fn advanced_imaging_report_to_string_ai(@advanced_imaging.ImagingModality, @types.Image, @advanced_imaging.AdvancedImagingConfig) -> String
+
+pub fn affine_apply(@registration.AffineTransform, Double, Double) -> (Double, Double)
+
+pub fn affine_compose(@registration.AffineTransform, @registration.AffineTransform) -> @registration.AffineTransform
+
+pub fn affine_identity() -> @registration.AffineTransform
+
+pub fn affine_rotation(Double) -> @registration.AffineTransform
+
+pub fn affine_scale(Double, Double) -> @registration.AffineTransform
+
+pub fn affine_translation(Double, Double) -> @registration.AffineTransform
+
+pub fn ahash(@types.Image) -> Array[Int] raise @types.LoadError
+
+pub fn ahash_16(@types.Image16) -> Array[Int] raise @types.LoadError
+
+pub fn ahash_f(@types.ImageF) -> Array[Int] raise @types.LoadError
+
+pub fn align_images(@types.Image, @types.Image) -> (@types.Image, @registration.RegistrationResult) raise @types.LoadError
+
+pub fn alpha_blend(@types.Image, @types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn analyze_cfa_pattern_fe(@types.Image) -> @forensics_enhanced.CfaAnalysisResult
+
+pub fn analyze_color_distribution_fs(@types.Image) -> @forensics.ColorAnalysisResult raise @types.LoadError
+
+pub fn analyze_color_quantization_fs(@types.Image) -> @forensics.ColorQuantizationResult raise @types.LoadError
+
+pub fn analyze_complex_layout(Array[@ocr.TextBlock], Int, Int) -> @ocr.ComplexLayoutAnalysis
+
+pub fn analyze_compression_artifacts_fs(@types.Image) -> @forensics.CompressionAnalysisResult raise @types.LoadError
+
+pub fn analyze_dct_coefficients_fe(@types.Image) -> @forensics_enhanced.DctCoefficientResult
+
+pub fn analyze_details_fs(@types.Image) -> @forensics.DetailAnalysisResult raise @types.LoadError
+
+pub fn analyze_document_layout(@types.Image) -> @ocr.DocumentStructure raise @types.LoadError
+
+pub fn analyze_edges_fs(@types.Image) -> @forensics.EdgeAnalysisResult raise @types.LoadError
+
+pub fn analyze_ela_fe(@types.Image, Int) -> @forensics_enhanced.ElaAnalysisResult raise @types.LoadError
+
+pub fn analyze_face_attributes_fr(@types.Image, @face_recognition.FaceDetectionResult, @face_recognition.FaceDatabase, @face_recognition.FaceRecognitionConfig) -> @face_recognition.FaceAttributeAnalysis raise @types.LoadError
+
+pub fn analyze_frequency_domain_fs(@types.Image) -> @forensics.FrequencyAnalysisResult raise @types.LoadError
+
+pub fn analyze_geometry_fs(@types.Image) -> @forensics.GeometryAnalysisResult raise @types.LoadError
+
+pub fn analyze_illumination_consistency_fe(@types.Image) -> @forensics_enhanced.IlluminationConsistencyResult
+
+pub fn analyze_jpeg_ghost_fe(@types.Image) -> @forensics_enhanced.JpegGhostResult
+
+pub fn analyze_layout_enhanced(@types.Image, config? : @ocr.DocumentUnderstandingEnhancedConfig) -> Array[@ocr.DocumentBlock] raise @types.LoadError
+
+pub fn analyze_layout_scan(@types.Image) -> Array[@ocr.TextBlock] raise @types.LoadError
+
+pub fn analyze_markdown_element_distribution(@ocr.MarkdownDocument) -> Array[(String, Int)]
+
+pub fn analyze_metadata_forensics_fe(@types.Image) -> @forensics_enhanced.MetadataForensicsResult
+
+pub fn analyze_noise_pattern_fs(@types.Image) -> @forensics.NoiseAnalysisResult raise @types.LoadError
+
+pub fn analyze_noise_residual_fe(@types.Image) -> @forensics_enhanced.NoiseResidualResult
+
+pub fn analyze_polarization_ai(@types.Image, @types.Image, @types.Image, @types.Image) -> @advanced_imaging.PolarizationData
+
+pub fn analyze_table_results(Array[@ocr.EnhancedTableResult]) -> Array[(String, Int)]
+
+pub fn analyze_table_structure(Array[@ocr.TableLine], Array[@ocr.TableLine]) -> @ocr.TableStructure raise @types.LoadError
+
+pub fn analyze_texture_fs(@types.Image) -> @forensics.TextureAnalysisResult raise @types.LoadError
+
+pub fn answer_visual_question_su(@types.Image, String, @scene_understanding.SceneUnderstandingConfig) -> @scene_understanding.VisualQuestionAnsweringResult
+
+pub fn apply_affine_transform_ra(@types.Image, @registration_advanced.TransformMatrix) -> @types.Image
+
+pub fn apply_augmentation(@ocr.DLTrainingSample, @ocr.AugmentationConfig) -> @ocr.DLTrainingSample
+
+pub fn apply_colormap(@types.Image, @color.Colormap) -> @types.Image raise @types.LoadError
+
+pub fn apply_depth_of_field(@types.Image, @photo_enhance.DepthOfFieldConfig) -> @types.Image
+
+pub fn apply_homography(@stitch.Homography, Double, Double) -> (Double, Double)
+
+pub fn apply_lut(@types.Image, Array[Byte]) -> @types.Image raise @types.LoadError
+
+pub fn apply_translation_fe(@types.Image, Int, Int) -> @types.Image
+
+pub fn apply_translation_ra(@types.Image, Int, Int) -> @types.Image
+
+pub fn apply_window_level(@types.Image, @medical.WindowLevel) -> @types.Image
+
+pub fn apply_window_level_medical(@medical.MedicalImage, @medical.WindowLevelConfig) -> @types.Image
+
+pub fn approx_poly_dp(Array[@edge.ContourPoint], Float, closed? : Bool) -> Array[@edge.ContourPoint] raise @types.LoadError
+
+pub fn arnold_scramble_enc(@types.Image, @encryption.ArnoldParams) -> @encryption.EncryptionResult raise @types.LoadError
+
+pub fn augment_features(Array[Double], noise_level? : Double) -> Array[Double]
+
+pub fn augment_random_noise(@ocr.DLTrainingSample, Double) -> @ocr.DLTrainingSample
+
+pub fn augment_random_rotation(@ocr.DLTrainingSample, Double) -> @ocr.DLTrainingSample
+
+pub fn augment_random_scale(@ocr.DLTrainingSample, Double) -> @ocr.DLTrainingSample
+
+pub fn augment_random_shift(@ocr.DLTrainingSample, Double) -> @ocr.DLTrainingSample
+
+pub fn background_normalization(@types.Image, kernel_size? : Int) -> @types.Image raise @types.LoadError
+
+pub fn barcode_default_config() -> @barcode.BarcodeConfig
+
+pub fn batch_correct_texts(Array[String], context_type? : String) -> Array[@ocr.CorrectionResult] raise @types.LoadError
+
+pub fn batch_embed_watermark(Array[@types.Image], @types.Image, key? : Int) -> Array[@types.Image]
+
+pub fn batch_encrypt(Array[@types.Image], Double) -> Array[@types.Image] raise @types.LoadError
+
+pub fn batch_extract_features(Array[(@types.Image, String)]) -> Array[@retrieval.ImageFeature]
+
+pub fn batch_photo_enhance(Array[@types.Image], String) -> Array[@types.Image]
+
+pub fn batch_recognize_chars(Array[@types.Image], @ocr.DLCnnModelConfig, Array[String]) -> Array[@ocr.DLInferenceResult] raise @types.LoadError
+
+pub fn batch_scan_ocr(Array[@types.Image], @ocr.ScanOCRConfig) -> Array[@ocr.OCRPageResult] raise @types.LoadError
+
+pub fn batch_summary_to_string(@ocr.BatchResultSummary) -> String
+
+pub fn bbox_iou(@detection.BoundingBox, @detection.BoundingBox) -> Double raise @types.LoadError
+
+pub fn bbox_new(Int, Int, Int, Int, score? : Double, class_id? : Int) -> @detection.BoundingBox raise @types.LoadError
+
+pub fn bench_run() -> Unit
+
+pub fn bicubic_interpolate_sr(@types.Image, Double) -> @types.Image
+
+pub fn bilateral_filter(@types.Image, Int, Float, Float) -> @types.Image raise @types.LoadError
+
+pub fn bilateral_filter_16(@types.Image16, Int, Float, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn bilateral_filter_denoise_dn(@types.Image, Int, Double, Double) -> @types.Image raise @types.LoadError
+
+pub fn bilateral_filter_f(@types.ImageF, Int, Float, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn bilateral_filter_fast(@types.Image, Int, Float, Float, Int) -> @types.Image raise @types.LoadError
+
+pub fn bilateral_filter_fast_16(@types.Image16, Int, Float, Float, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn bilateral_filter_fast_f(@types.ImageF, Int, Float, Float, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn bilinear_interpolate_sr(@types.Image, Double) -> @types.Image
+
+pub fn blend_color_burn(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_color_dodge(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_darken(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_difference(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_exclusion(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_hard_light(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_lighten(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_linear_burn(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_linear_dodge(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_multiply(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_overlay(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_screen(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn blend_soft_light(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn box_blur(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn box_blur_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn box_blur_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn brightness_value(@types.Image) -> Float
+
+pub fn build_document_structure_tree(Array[@ocr.DocumentBlock]) -> Array[@ocr.DocumentTreeNode]
+
+pub fn build_enhanced_elements(Array[@ocr.TextLineAttributes], Int, Int) -> @ocr.EnhancedDocument raise @types.LoadError
+
+pub fn build_gaussian_kernel_lut(Double, Int) -> Array[Double] raise @types.LoadError
+
+pub fn build_gaussian_pyramid(@types.Image, Int) -> Array[@types.Image] raise @types.LoadError
+
+pub fn build_gaussian_pyramid_16(@types.Image16, Int) -> Array[@types.Image16] raise @types.LoadError
+
+pub fn build_gaussian_pyramid_f(@types.ImageF, Int) -> Array[@types.ImageF] raise @types.LoadError
+
+pub fn build_grayscale_lut() -> Array[Int]
+
+pub fn build_index_advanced(Array[Array[Double]], @image_retrieval_advanced.IndexStructureType) -> @image_retrieval_advanced.IndexConstructionResult
+
+pub fn build_laplacian_pyramid(@types.Image, Int) -> Array[@types.Image] raise @types.LoadError
+
+pub fn build_laplacian_pyramid_16(@types.Image16, Int) -> Array[@types.Image16] raise @types.LoadError
+
+pub fn build_laplacian_pyramid_f(@types.ImageF, Int) -> Array[@types.ImageF] raise @types.LoadError
+
+pub fn build_markdown_document(@ocr.OCRPageResult, title? : String) -> @ocr.MarkdownDocument raise @types.LoadError
+
+pub fn build_threshold_lut(Int) -> Array[Int]
+
+pub fn cache_friendly_horizontal_projection(@types.Image) -> Array[Int] raise @types.LoadError
+
+pub fn cache_friendly_vertical_projection(@types.Image) -> Array[Int] raise @types.LoadError
+
+pub fn calculate_accuracy(Array[Int], Array[Int]) -> Double
+
+pub fn calculate_accuracy_improvement(Array[@ocr.CorrectionResult], Array[String]) -> (Double, Double, Double)
+
+pub fn calculate_accuracy_stats(Array[String], Array[String]) -> @ocr.AccuracyStats raise @types.LoadError
+
+pub fn calculate_all_vegetation_indices_rs(@remote_sensing.RemoteSensingImage) -> @remote_sensing.VegetationIndices
+
+pub fn calculate_batch_progress(Array[@ocr.BatchTask], Double) -> @ocr.BatchProgress raise @types.LoadError
+
+pub fn calculate_bits_per_pixel_cp(Int, Int, Int) -> Double
+
+pub fn calculate_brightness_dn(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_char_accuracy(String, String) -> Double
+
+pub fn calculate_chinese_similarity(@ocr.DictCharEntry, @ocr.DictCharEntry) -> Double
+
+pub fn calculate_color_statistics_st(@types.Image) -> @style_transfer.ColorStatistics raise @types.LoadError
+
+pub fn calculate_compression_quality_cp(@types.Image, @types.Image, Int, Int) -> @compression.CompressionQualityMetrics raise @types.LoadError
+
+pub fn calculate_compression_ratio_cp(Int, Int) -> Double
+
+pub fn calculate_contrast_dn(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_correlation_enc(@types.Image, @types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_cosine_similarity_fr(@face_recognition.FaceFeature, @face_recognition.FaceFeature) -> Double
+
+pub fn calculate_detection_metrics(Array[@detection.YoloBoundingBox], Array[@detection.YoloBoundingBox], Double) -> @detection.YoloDetectionMetrics raise @types.LoadError
+
+pub fn calculate_edit_distance(String, String) -> Int
+
+pub fn calculate_fusion_quality_fe(@types.Image) -> Double
+
+pub fn calculate_image_entropy_cp(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_image_entropy_enc(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_image_quality_metrics_sr(@types.Image, @types.Image) -> @superres.ImageQualityMetrics
+
+pub fn calculate_iou(@detection.YoloBoundingBox, @detection.YoloBoundingBox) -> Double raise @types.LoadError
+
+pub fn calculate_joint_angle_pe(@pose_estimation.HumanPose, Int, Int, Int) -> Double
+
+pub fn calculate_learning_rate(@ocr.LRSchedulerConfig, Int, Double, Double) -> Double raise @types.LoadError
+
+pub fn calculate_medical_image_quality_medical(@medical.MedicalImage) -> @medical.MedicalImageQuality
+
+pub fn calculate_mutual_information_ra(@types.Image, @types.Image) -> Double
+
+pub fn calculate_ndbi_rs(@remote_sensing.RemoteSensingImage, Int, Int) -> Array[Double]
+
+pub fn calculate_ndvi_rs(@remote_sensing.RemoteSensingImage, Int, Int) -> Array[Double]
+
+pub fn calculate_ndwi_rs(@remote_sensing.RemoteSensingImage, Int, Int) -> Array[Double]
+
+pub fn calculate_noise_level_dn(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_psnr_enc(@types.Image, @types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_psnr_sr_api(@types.Image, @types.Image) -> Double
+
+pub fn calculate_remote_sensing_quality_rs(@remote_sensing.RemoteSensingImage) -> @remote_sensing.RemoteSensingQuality
+
+pub fn calculate_roi_stats_medical(@medical.MedicalImage, Array[Bool]) -> (Double, Double, Int)
+
+pub fn calculate_segmentation_metrics(Array[Int], Array[Int], Int) -> @segmentation.SegmentationMetrics
+
+pub fn calculate_sharpness_dn(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_similarity_advanced(Array[Double], Array[Double], @image_retrieval_advanced.SimilarityMetricType) -> Double
+
+pub fn calculate_similarity_cbir(Array[Double], Array[Double], @retrieval.SimilarityMetric) -> Double
+
+pub fn calculate_spectral_signature_rs(@remote_sensing.RemoteSensingImage, Int, Int) -> @remote_sensing.SpectralSignature
+
+pub fn calculate_ssim_sr_api(@types.Image, @types.Image) -> Double
+
+pub fn calculate_texture_features_rs(@types.Image, Int, Int, Int) -> @remote_sensing.TextureFeatures raise @types.LoadError
+
+pub fn calculate_texture_features_st(@types.Image) -> @style_transfer.StyleTransferTextureFeatures raise @types.LoadError
+
+pub fn calculate_word_accuracy(String, String) -> Double
+
+pub fn calibrate_confidence(@ocr.OcrResult, factor? : Double) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn calibrate_confidence_enhanced(Double, Array[Double]) -> Double
+
+pub fn canny_edge(@types.Image, low_threshold? : Int, high_threshold? : Int) -> @types.Image raise @types.LoadError
+
+pub fn canny_edge_16(@types.Image16, low_threshold? : Int, high_threshold? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn canny_edge_f(@types.ImageF, low_threshold? : Float, high_threshold? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn cartoon(@types.Image, levels? : Int, edge_threshold? : Double) -> @types.Image
+
+pub fn cartoonize_st(@types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn chaotic_encrypt_enc(@types.Image, @encryption.ChaoticParams) -> @encryption.EncryptionResult raise @types.LoadError
+
+pub fn chebyshev_distance(Array[Double], Array[Double]) -> Double raise @types.LoadError
+
+pub fn check_accuracy_threshold(@ocr.AccuracyStats, min_char_accuracy? : Double, min_word_accuracy? : Double, min_f1_score? : Double) -> (Bool, Array[String]) raise @types.LoadError
+
+pub fn check_dims(Int, Int, Int) -> Unit raise @types.LoadError
+
+pub fn check_early_stopping(@ocr.TrainingState, @ocr.TrainingConfig, Double) -> (Bool, @ocr.TrainingState)
+
+pub fn chinese_ocr_default_config() -> @ocr.ChineseOcrConfig
+
+pub fn clahe(@types.Image, Int, Float) -> @types.Image raise @types.LoadError
+
+pub fn clahe_enhance(@types.Image, clip_limit? : Double, tile_size? : Int) -> @types.Image
+
+pub fn classification_colormap(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn classify_land_cover_simple_rs(@remote_sensing.RemoteSensingImage) -> @remote_sensing.ClassificationResult
+
+pub fn classify_markdown_element(@ocr.TextBlock, avg_font_size? : Double) -> @ocr.MarkdownElementType
+
+pub fn classify_scene_su(@types.Image, @scene_understanding.SceneUnderstandingConfig) -> @scene_understanding.SceneClassificationResult
+
+pub fn cmyk_to_rgb(Int, Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn cmyk_to_rgb_16(Int, Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn cmyk_to_rgb_f(Float, Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn cnn_confusion_matrix(Array[@ocr.DLTrainingSample], @ocr.DLCnnModelConfig, Array[String]) -> Array[Array[Int]] raise @types.LoadError
+
+pub fn cnn_infer(Array[Double], @ocr.DLCnnModelConfig, Array[String]) -> @ocr.DLInferenceResult
+
+pub fn cnn_recognize_char(@types.Image, @ocr.DLCnnModelConfig, Array[String]) -> @ocr.DLInferenceResult raise @types.LoadError
+
+pub fn cnn_recognize_digits(@types.Image, @ocr.DLCnnModelConfig) -> @ocr.DLInferenceResult raise @types.LoadError
+
+pub fn cnn_recognize_letters(@types.Image, @ocr.DLCnnModelConfig) -> @ocr.DLInferenceResult raise @types.LoadError
+
+pub fn cnn_train(Array[@ocr.DLTrainingSample], Array[Double], Array[Double], Array[Double], Array[Double], Int, Int, Int, Int, Int, Int, Double, Int) -> (Array[Double], Array[Double], Array[Double], Array[Double], Array[@ocr.DLTrainingHistory]) raise @types.LoadError
+
+pub fn cnn_train_step(Array[Double], Int, Array[Double], Array[Double], Array[Double], Array[Double], Int, Int, Int, Int, Int, Int, Double) -> (Array[Double], Array[Double], Array[Double], Array[Double], Double) raise @types.LoadError
+
+pub fn coded_aperture_reconstruct_ci(@types.Image, @computational_imaging.CodedAperturePattern) -> @computational_imaging.ImagingReconstructionResult
+
+pub fn color_enhance(@types.Image, saturation? : Double, contrast? : Double) -> @types.Image
+
+pub fn color_transfer_st(@types.Image, @types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn colorize_image_ig(@types.Image, @image_generation.EditingConfig) -> @image_generation.EditingResult
+
+pub fn combined_features(@types.Image) -> Array[Double] raise @types.LoadError
+
+pub fn compare_hist(Array[Int], Array[Int], @feature.HistCompareMethod) -> Float raise @types.LoadError
+
+pub fn complete_char_segmentation(@types.Image, min_char_width? : Int, max_char_width? : Int) -> Array[(Int, Int, Int, Int)] raise @types.LoadError
+
+pub fn compose_images_ig(@types.Image, @types.Image, @types.Image, @image_generation.CompositionConfig) -> @types.Image
+
+pub fn compress_image_cp(@types.Image, @compression.CompressionConfig) -> @compression.CompressionResult raise @types.LoadError
+
+pub fn compress_jpeg_simple_cp(@types.Image, Double) -> @compression.CompressionResult raise @types.LoadError
+
+pub fn compress_png_simple_cp(@types.Image) -> @compression.CompressionResult raise @types.LoadError
+
+pub fn compression_report_to_string_cp(@compression.CompressionResult, @compression.CompressionQualityMetrics) -> String
+
+pub fn computational_imaging_report_to_string_ci(@computational_imaging.ImagingReconstructionResult, String) -> String
+
+pub fn computational_photography_report(@photo_enhance.HdrImage, @photo_enhance.PanoramaResult) -> String
+
+pub fn compute_confusion_matrix(Array[Int], Array[Int], Int) -> Array[Array[Int]]
+
+pub fn compute_diff_image(@types.Image, @types.Image) -> @types.Image
+
+pub fn compute_disparity(@types.Image, @types.Image, max_disparity? : Int, block_size? : Int) -> @types.Image
+
+pub fn compute_distance(Array[Double], Array[Double], @ocr.DistanceMetric) -> Double raise @types.LoadError
+
+pub fn compute_energy(@types.Image) -> Array[Double]
+
+pub fn compute_energy_16(@types.Image16) -> Array[Double]
+
+pub fn compute_energy_f(@types.ImageF) -> Array[Double]
+
+pub fn compute_evi(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn compute_frame_difference(@types.Image, @types.Image, threshold? : Double) -> Double
+
+pub fn compute_glcm(@types.Image, Int, Int, levels? : Int) -> Array[Array[Int]] raise @types.LoadError
+
+pub fn compute_glcm_16(@types.Image16, Int, Int, levels? : Int) -> Array[Array[Int]] raise @types.LoadError
+
+pub fn compute_glcm_f(@types.ImageF, Int, Int, levels? : Int) -> Array[Array[Int]] raise @types.LoadError
+
+pub fn compute_image_text_similarity_vlm(@types.Image, String, @vlm_multimodal.VLMConfig) -> @vlm_multimodal.VisionTextEmbedding
+
+pub fn compute_mae(@types.Image, @types.Image) -> Double
+
+pub fn compute_mse(@types.Image, @types.Image) -> Double
+
+pub fn compute_ndbi(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn compute_ndvi(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn compute_ndwi(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn compute_optical_flow(@types.Image, @types.Image, block_size? : Int, search_range? : Int) -> @video.OpticalFlowField
+
+pub fn compute_per_class_accuracy(Array[Array[Int]]) -> Array[Double]
+
+pub fn compute_psnr(@types.Image, @types.Image) -> Double
+
+pub fn compute_quality_metrics(@types.Image, @types.Image) -> @quality.QualityMetrics
+
+pub fn compute_reading_order(Array[@ocr.DocumentElement]) -> Array[Int] raise @types.LoadError
+
+pub fn compute_ssim(@types.Image, @types.Image) -> Double
+
+pub fn compute_stats(@types.Image) -> @util.ImageStats
+
+pub fn compute_stats_16(@types.Image16) -> @util.ImageStats
+
+pub fn compute_stats_f(@types.ImageF) -> @util.ImageStatsF
+
+pub fn connected_components(@types.Image, Int) -> (@segment.ConnectedComponentLabelImage, Array[@segment.ConnectedComponent]) raise @types.LoadError
+
+pub fn connected_components_analysis(@types.Image, connectivity? : Int) -> @ocr.OcrConnectedComponentsResult raise @types.LoadError
+
+pub fn contour_area(@edge.Contour) -> Float
+
+pub fn contour_perimeter(@edge.Contour) -> Float
+
+pub fn contrast_value(@types.Image) -> Float
+
+pub fn conv2d(Array[Double], Int, Int, Int, Array[Double], Int, Int, Int, Int) -> Array[Double] raise @types.LoadError
+
+pub fn convert_iphone_png_to_rgb(Bool) -> Unit
+
+pub fn convex_hull(Array[@edge.ContourPoint]) -> Array[@edge.ContourPoint]
+
+pub fn convolve(@types.Image, Array[Float], Float, Float) -> @types.Image raise @types.LoadError
+
+pub fn convolve_16(@types.Image16, Array[Float], Float, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn convolve_f(@types.ImageF, Array[Float], Float, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn correct_common_patterns(String) -> @ocr.CorrectionResult
+
+pub fn correct_similar_chars(String, String) -> @ocr.CorrectionResult raise @types.LoadError
+
+pub fn correct_slant(@types.Image, max_slant? : Double) -> @types.Image raise @types.LoadError
+
+pub fn cosine_distance(Array[Double], Array[Double]) -> Double raise @types.LoadError
+
+pub fn cosine_similarity(Array[Double], Array[Double]) -> Double
+
+pub fn cosine_similarity_cbir_api(Array[Double], Array[Double]) -> Double
+
+pub fn create_animation(Array[@types.Image], fps? : Double) -> @video.VideoFrames
+
+pub fn create_batch_tasks(Array[String], String, String) -> Array[@ocr.BatchTask] raise @types.LoadError
+
+pub fn create_data_loader(Array[@ocr.DLTrainingSample], Int, Bool) -> @ocr.DataLoader raise @types.LoadError
+
+pub fn create_default_action_config_pe() -> @pose_estimation.ActionRecognitionConfig
+
+pub fn create_default_advanced_imaging_config_ai(@advanced_imaging.ImagingModality) -> @advanced_imaging.AdvancedImagingConfig
+
+pub fn create_default_api_server_config() -> @ocr.ApiServerConfig
+
+pub fn create_default_arnold_params_enc() -> @encryption.ArnoldParams
+
+pub fn create_default_batch_config() -> @ocr.BatchOcrConfig
+
+pub fn create_default_camera_intrinsics_3d(Int, Int) -> @stereo3d.CameraIntrinsics3d
+
+pub fn create_default_camera_nr() -> @neural_rendering.CameraParams
+
+pub fn create_default_chaotic_params_enc() -> @encryption.ChaoticParams
+
+pub fn create_default_char_cnn_config(Int) -> @ocr.DLCnnModelConfig
+
+pub fn create_default_chinese_dictionary() -> @ocr.DictChineseDict
+
+pub fn create_default_cli_config() -> @ocr.CliConfig
+
+pub fn create_default_coded_aperture_ci(Int) -> @computational_imaging.CodedAperturePattern
+
+pub fn create_default_color_histogram_config_cbir() -> @retrieval.ColorHistogramConfig
+
+pub fn create_default_compression_config_cp() -> @compression.CompressionConfig
+
+pub fn create_default_denoise_config_dn() -> @denoise.DenoiseConfig
+
+pub fn create_default_diffusion_config_vlm() -> @vlm_multimodal.DiffusionConfig
+
+pub fn create_default_docker_config() -> @ocr.DockerConfig
+
+pub fn create_default_dof_config(Int, Int) -> @photo_enhance.DepthOfFieldConfig
+
+pub fn create_default_editing_config_ig() -> @image_generation.EditingConfig
+
+pub fn create_default_enhanced_verification_config_fs() -> @forensics.EnhancedVerificationConfig
+
+pub fn create_default_enhancement_config_sr() -> @superres.EnhancementConfig
+
+pub fn create_default_face_config_fr() -> @face_recognition.FaceRecognitionConfig
+
+pub fn create_default_fusion_config_fe() -> @fusion_enhanced.FusionConfig
+
+pub fn create_default_fusion_config_vlm() -> @vlm_multimodal.FusionConfig
+
+pub fn create_default_gaussian_config_nr() -> @neural_rendering.GaussianSplattingConfig
+
+pub fn create_default_genai_config_vlm() -> @vlm_multimodal.GenerativeAIConfig
+
+pub fn create_default_generation_config_ig() -> @image_generation.GenerationConfig
+
+pub fn create_default_grabcut_config() -> @segmentation.GrabCutConfig
+
+pub fn create_default_handwriting_config() -> @ocr.HandwritingRecognitionConfig
+
+pub fn create_default_hdr_config() -> @photo_enhance.ToneMappingConfig
+
+pub fn create_default_hog_config_cbir() -> @retrieval.HOGConfig
+
+pub fn create_default_inpainting_config_ip() -> @inpainting.InpaintingConfig
+
+pub fn create_default_intelligent_vision_config_iv() -> @intelligent_vision.IntelligentVisionConfig
+
+pub fn create_default_interpolation_config_sr() -> @superres.InterpolationConfig
+
+pub fn create_default_kmeans_config() -> @segmentation.KMeansConfig
+
+pub fn create_default_language_model() -> @ocr.LanguageModelState
+
+pub fn create_default_lbp_config_cbir() -> @retrieval.LBPConfig
+
+pub fn create_default_lightfield_camera_ci() -> @computational_imaging.LightFieldCameraParams
+
+pub fn create_default_medical_segmentation_config() -> @medical.MedicalSegmentationConfig
+
+pub fn create_default_model_package_config() -> @ocr.ModelPackageConfig
+
+pub fn create_default_nerf_config_nr() -> @neural_rendering.NeRFConfig
+
+pub fn create_default_night_config() -> @photo_enhance.NightEnhanceConfig
+
+pub fn create_default_panorama_config() -> @photo_enhance.PanoramaConfig
+
+pub fn create_default_phase_config_ci() -> @computational_imaging.PhaseRetrievalConfig
+
+pub fn create_default_pose_config_pe() -> @pose_estimation.PoseEstimationConfig
+
+pub fn create_default_registration_config_advanced_ra() -> @registration_advanced.RegistrationConfigAdvanced
+
+pub fn create_default_registration_config_fe() -> @fusion_enhanced.RegistrationConfig
+
+pub fn create_default_remote_sensing_image(Int, Int, Int) -> @remote_sensing.RemoteSensingImage
+
+pub fn create_default_retrieval_config() -> @image_retrieval_advanced.ImageRetrievalConfig
+
+pub fn create_default_scene_config_su() -> @scene_understanding.SceneUnderstandingConfig
+
+pub fn create_default_slam_config_sl() -> @slam.SLAMConfig
+
+pub fn create_default_source_verification_config_fs() -> @forensics.SourceVerificationConfig
+
+pub fn create_default_stabilization_config() -> @video.VideoStabilizationConfig
+
+pub fn create_default_stereo_config_3d() -> @stereo3d.StereoConfig3d
+
+pub fn create_default_style_transfer_config_st() -> @style_transfer.StyleTransferConfig
+
+pub fn create_default_training_config() -> @ocr.TrainingConfig
+
+pub fn create_default_vlm_config_vlm() -> @vlm_multimodal.VLMConfig
+
+pub fn create_default_watershed_config() -> @segmentation.WatershedConfig
+
+pub fn create_default_window_level_medical(String) -> @medical.WindowLevelConfig
+
+pub fn create_default_yolo_config() -> @detection.YoloConfig
+
+pub fn create_exif_segment(@meta.ExifInfo) -> Bytes
+
+pub fn create_face_database_fr(@face_recognition.FaceRecognitionAlgorithm, Double) -> @face_recognition.FaceDatabase
+
+pub fn create_feature_extractor(String, Int) -> @ocr.DLFeatureExtractor
+
+pub fn create_handwriting_template(String, @ocr.HandwritingStyle, Array[@types.Image]) -> @ocr.HandwritingTemplate raise @types.LoadError
+
+pub fn create_image_index_cbir() -> @retrieval.CBIRImageIndex
+
+pub fn create_neural_layer(@ocr.DLLayerType, String, Array[Int]) -> @ocr.DLNeuralLayer
+
+pub fn create_rect_mask(Int, Int, Int, Int, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn create_rect_mask_ip(Int, Int, Int, Int, Int, Int) -> @types.Image
+
+pub fn create_training_history(Int, Double, Double, Double, Double, Double, Double) -> @ocr.DLTrainingHistory
+
+pub fn create_training_sample(@types.Image, Int, String) -> @ocr.DLTrainingSample raise @types.LoadError
+
+pub fn create_training_state() -> @ocr.TrainingState
+
+pub fn crop(@types.Image, Int, Int, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn crop_16(@types.Image16, Int, Int, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn crop_f(@types.ImageF, Int, Int, Int, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn cross_entropy_loss(Array[Double], Int) -> Double
+
+pub fn ct_reconstruct_fbp_ci(@computational_imaging.CTProjectionData, Int) -> @computational_imaging.ImagingReconstructionResult
+
+pub fn dark_channel(@types.Image, patch_size? : Int) -> @types.Image raise @types.LoadError
+
+pub fn database_add_image(@retrieval.ImageDatabase, @retrieval.ImageFeature) -> @retrieval.ImageDatabase
+
+pub fn database_remove_image(@retrieval.ImageDatabase, String) -> @retrieval.ImageDatabase
+
+pub fn database_size(@retrieval.ImageDatabase) -> Int
+
+pub fn dataset_add_sample(@ocr.TrainingDataset, Array[Double], String) -> @ocr.TrainingDataset
+
+pub fn dataset_create() -> @ocr.TrainingDataset
+
+pub fn dataset_stats(@ocr.TrainingDataset) -> (Int, Int, Array[(String, Int)])
+
+pub fn dct_2d(@types.Image) -> Array[Array[Double]]
+
+pub fn dct_2d_16(@types.Image16) -> Array[Array[Double]]
+
+pub fn dct_2d_f(@types.ImageF) -> Array[Array[Double]]
+
+pub fn deblur_motion(@types.Image, kernel_size? : Int, angle? : Double) -> @types.Image
+
+pub fn decode_any(Bytes, req_channels? : Int?) -> @types.Image raise @types.LoadError
+
+pub fn decode_apng(Bytes) -> @types.PngAnimation raise @types.LoadError
+
+pub fn decode_barcode(@types.Image, config? : @barcode.BarcodeConfig) -> Array[@barcode.BarcodeResult] raise @types.LoadError
+
+pub fn decode_code128(@types.Image) -> @barcode.BarcodeResult? raise @types.LoadError
+
+pub fn decode_code39(@types.Image) -> @barcode.BarcodeResult? raise @types.LoadError
+
+pub fn decode_cur(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_ean13(@types.Image, config? : @barcode.BarcodeConfig) -> @barcode.BarcodeResult? raise @types.LoadError
+
+pub fn decode_icns(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_ico(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_linear_barcode(@types.Image) -> Array[@barcode.BarcodeResult] raise @types.LoadError
+
+pub fn decode_qoi(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_qrcode(@types.Image, config? : @barcode.BarcodeConfig) -> @barcode.BarcodeResult? raise @types.LoadError
+
+pub fn decode_qrcode_full(@types.Image) -> @barcode.QrDecodeResult? raise @types.LoadError
+
+pub fn decode_stream(Bytes, (Int, Array[Byte]) -> Unit) -> @lib.StreamInfo raise @types.LoadError
+
+pub fn decode_stream_channels(Bytes, Int, (Int, Array[Byte]) -> Unit) -> @lib.StreamInfo raise @types.LoadError
+
+pub fn decode_stream_chunked(Bytes, Int, (Int, @types.Image) -> Unit) -> @lib.StreamInfo raise @types.LoadError
+
+pub fn decode_tiff(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decode_upca(@types.Image) -> @barcode.BarcodeResult? raise @types.LoadError
+
+pub fn decode_vp8_frame(Bytes, Int) -> @types.Image raise @types.LoadError
+
+pub fn decode_webp(Bytes) -> @types.Image raise @types.LoadError
+
+pub fn decompose_chinese_char(String) -> @ocr.ChineseCharStructure raise @types.LoadError
+
+pub fn decrypt_image_logistic(@types.Image, key? : Double, mu? : Double) -> @types.Image raise @types.LoadError
+
+pub fn decrypt_image_xor(@types.Image, String) -> @types.Image raise @types.LoadError
+
+pub fn dehaze(@types.Image, patch_size? : Int, omega? : Float, t0? : Float) -> @types.Image raise @types.LoadError
+
+pub fn dehaze_16(@types.Image16, patch_size? : Int, omega? : Float, t0? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn dehaze_advanced(@types.Image, config? : @enhance.DehazeConfig) -> @types.Image raise @types.LoadError
+
+pub fn dehaze_clahe_ip(@types.Image, Double, Int) -> @types.Image
+
+pub fn dehaze_dark_channel_ip(@types.Image, Double, Double) -> @inpainting.DehazeResult
+
+pub fn dehaze_default_config() -> @enhance.DehazeConfig
+
+pub fn dehaze_f(@types.ImageF, patch_size? : Int, omega? : Float, t0? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn dehaze_ip(@types.Image, @inpainting.DehazeAlgorithm) -> @inpainting.DehazeResult
+
+pub fn dehaze_recover(@types.Image, @types.Image, Array[Int], t_min? : Double) -> @types.Image raise @types.LoadError
+
+pub fn denoise(@types.Image, String) -> @types.Image raise @types.LoadError
+
+pub fn denoise_bilateral(@types.Image, diameter? : Int, sigma_color? : Double, sigma_space? : Double) -> @types.Image raise @types.LoadError
+
+pub fn denoise_image_dn(@types.Image, @denoise.DenoiseConfig) -> @denoise.DenoiseResult raise @types.LoadError
+
+pub fn denoise_image_sr(@types.Image, Double) -> @types.Image
+
+pub fn denoise_median(@types.Image, kernel_size? : Int) -> @types.Image raise @types.LoadError
+
+pub fn denoise_nlm(@types.Image, config? : @enhance.NlmConfig) -> @types.Image raise @types.LoadError
+
+pub fn denoise_report_to_string_dn(@denoise.DenoiseResult) -> String
+
+pub fn dense_backward(Array[Double], Array[Double], Int, Int) -> (Array[Double], Array[Double], Array[Double])
+
+pub fn dense_forward(Array[Double], Array[Double], Array[Double], Int, Int, String) -> Array[Double]
+
+pub fn depth_map_to_image_3d(@stereo3d.DepthMap3d) -> @types.Image
+
+pub fn depth_to_colormap(@types.Image, colormap? : String) -> @types.Image
+
+pub fn depth_to_point_cloud_3d(@stereo3d.DepthMap3d, @stereo3d.CameraIntrinsics3d) -> @stereo3d.PointCloud3D
+
+pub fn depth_to_pointcloud(@types.Image, fx? : Double, fy? : Double, cx? : Double, cy? : Double, scale? : Double) -> @stereo3d.PointCloud
+
+pub fn derain_ip(@types.Image, @inpainting.DerainAlgorithm) -> @inpainting.DerainResult
+
+pub fn derain_morphological_ip(@types.Image) -> @inpainting.DerainResult
+
+pub fn deskew(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn detect_changes_simple_rs(@remote_sensing.RemoteSensingImage, @remote_sensing.RemoteSensingImage, Double) -> @remote_sensing.ChangeDetectionResult
+
+pub fn detect_char_language(@types.Image) -> @ocr.LanguageType raise @types.LoadError
+
+pub fn detect_clone_regions_fe(@types.Image, Int, Double) -> @forensics_enhanced.CloneDetectionResult raise @types.LoadError
+
+pub fn detect_column_boundaries(Array[@ocr.TextLineAttributes], Int, @ocr.LayoutType) -> Array[Int]
+
+pub fn detect_columns(@types.Image) -> (Int, Array[(Int, Int)]) raise @types.LoadError
+
+pub fn detect_crops_iv(@types.Image, @intelligent_vision.IntelligentVisionConfig) -> Array[@intelligent_vision.CropDetectionResult]
+
+pub fn detect_defects_iv(@types.Image, @intelligent_vision.IntelligentVisionConfig) -> Array[@intelligent_vision.DefectDetectionResult]
+
+pub fn detect_distortions(@types.Image) -> Array[@ocr.DistortionDetectionResult] raise @types.LoadError
+
+pub fn detect_document_columns(@types.Image) -> Int raise @types.LoadError
+
+pub fn detect_document_language(@types.Image) -> @ocr.LanguageType raise @types.LoadError
+
+pub fn detect_exposure_type(@types.Image) -> (@photo_enhance.ExposureType, Double)
+
+pub fn detect_faces_fr(@types.Image, @face_recognition.FaceRecognitionConfig) -> Array[@face_recognition.FaceDetectionResult] raise @types.LoadError
+
+pub fn detect_features_simple(@types.Image, max_features? : Int) -> Array[@stitch.FeaturePoint]
+
+pub fn detect_features_slam_sl(@types.Image, Int, Double) -> Array[Array[Double]]
+
+pub fn detect_format(Bytes) -> @types.ImageFormat
+
+pub fn detect_handwriting_slant(@types.Image) -> Double raise @types.LoadError
+
+pub fn detect_harris_corners_ra(@types.Image, Double) -> Array[@registration_advanced.FeaturePoint]
+
+pub fn detect_header_footer(Array[@ocr.TextLineAttributes], Int) -> (Int, Int) raise @types.LoadError
+
+pub fn detect_horizontal_lines(@types.Image, min_length? : Int, max_gap? : Int) -> Array[@ocr.TableLine] raise @types.LoadError
+
+pub fn detect_horizontal_table_lines(@types.Image, min_length? : Int, max_gap? : Int) -> Array[(Int, Int, Int)] raise @types.LoadError
+
+pub fn detect_image_regions_markdown(@types.Image, min_area? : Int) -> Array[@ocr.MarkdownImage] raise @types.LoadError
+
+pub fn detect_intrusion_iv(@types.Image, Array[Double], @intelligent_vision.IntelligentVisionConfig) -> @intelligent_vision.IntrusionDetectionResult
+
+pub fn detect_keypoints_pe(@types.Image, @pose_estimation.PoseEstimationConfig) -> Array[@pose_estimation.HumanPose] raise @types.LoadError
+
+pub fn detect_lanes_iv(@types.Image, @intelligent_vision.IntelligentVisionConfig) -> @intelligent_vision.LaneDetectionResult
+
+pub fn detect_language_enhanced(@types.Image) -> @ocr.LanguageDetectionResult raise @types.LoadError
+
+pub fn detect_layout_type(Array[@ocr.TextLineAttributes], Int, Int) -> @ocr.LayoutType raise @types.LoadError
+
+pub fn detect_lesions_simple_medical(@medical.MedicalImage, Double, Double) -> Array[@medical.Lesion]
+
+pub fn detect_list_item(@ocr.TextLineAttributes) -> @ocr.ListItemInfo
+
+pub fn detect_loop_closure_sl(Array[Array[Double]], Array[@slam.KeyFrame], Double) -> @slam.LoopClosureResult
+
+pub fn detect_objects_iv(@types.Image, @intelligent_vision.IntelligentVisionConfig) -> Array[@intelligent_vision.DetectionResultIV]
+
+pub fn detect_objects_simple(@types.Image, @detection.YoloConfig) -> @detection.YoloDetectionResult raise @types.LoadError
+
+pub fn detect_paragraphs(Array[@ocr.DocumentBlock], max_line_spacing_ratio? : Double) -> Array[Array[Int]]
+
+pub fn detect_qr_finder_patterns(@types.Image) -> Array[@barcode.QrFinderPattern] raise @types.LoadError
+
+pub fn detect_scene_change(@types.Image, @types.Image, threshold? : Double) -> (Bool, Double)
+
+pub fn detect_skew_angle(@types.Image) -> Double raise @types.LoadError
+
+pub fn detect_skew_angle_robust(@types.Image) -> Double raise @types.LoadError
+
+pub fn detect_stars_iv(@types.Image, @intelligent_vision.IntelligentVisionConfig) -> @intelligent_vision.StarDetectionResult
+
+pub fn detect_table_enhanced(@types.Image, min_table_size? : Int) -> Array[@ocr.EnhancedTableResult] raise @types.LoadError
+
+pub fn detect_tamper_comprehensive_fe(@types.Image, Int) -> @forensics_enhanced.TamperDetectionResult raise @types.LoadError
+
+pub fn detect_text_lines_projection(@types.Image, min_height? : Int, max_gap? : Int) -> Array[@ocr.TextLineInfo] raise @types.LoadError
+
+pub fn detect_text_regions(@types.Image) -> Array[@ocr.TextRegion] raise @types.LoadError
+
+pub fn detect_text_regions_fs(@types.Image) -> @forensics.TextDetectionResult raise @types.LoadError
+
+pub fn detect_titles(Array[@ocr.DocumentBlock], title_font_size_threshold? : Int) -> Array[Int]
+
+pub fn detect_touching_chars(@types.Image, min_char_width? : Int, max_char_width? : Int) -> Array[Int] raise @types.LoadError
+
+pub fn detect_ui_elements_fs(@types.Image) -> @forensics.UIDetectionResult raise @types.LoadError
+
+pub fn detect_vertical_lines(@types.Image, min_length? : Int, max_gap? : Int) -> Array[@ocr.TableLine] raise @types.LoadError
+
+pub fn detect_vertical_table_lines(@types.Image, min_length? : Int, max_gap? : Int) -> Array[(Int, Int, Int)] raise @types.LoadError
+
+pub fn detection_report_to_string(@detection.YoloDetectionResult, @detection.YoloDetectionMetrics) -> String
+
+pub fn determine_reading_order_markdown(Array[@ocr.MarkdownElement]) -> Array[Int]
+
+pub fn dhash(@types.Image) -> Array[Int] raise @types.LoadError
+
+pub fn dhash_16(@types.Image16) -> Array[Int] raise @types.LoadError
+
+pub fn dhash_f(@types.ImageF) -> Array[Int] raise @types.LoadError
+
+pub fn dictionary_create(Array[String]) -> @ocr.Dictionary raise @types.LoadError
+
+pub fn dictionary_create_common_english() -> @ocr.Dictionary
+
+pub fn dictionary_match(String, @ocr.Dictionary, max_distance? : Int) -> Array[(String, Int)] raise @types.LoadError
+
+pub fn diffusion_generate_vlm(String, String, @vlm_multimodal.DiffusionConfig, Int) -> @vlm_multimodal.DiffusionResult
+
+pub fn digit_ocr_default_config() -> @ocr.DigitOcrConfig
+
+pub fn dilate(@types.Image) -> @types.Image
+
+pub fn dilate_16(@types.Image16) -> @types.Image16
+
+pub fn dilate_custom(@types.Image, @segment.StructuringElement) -> @types.Image
+
+pub fn dilate_custom_16(@types.Image16, @segment.StructuringElement) -> @types.Image16
+
+pub fn dilate_custom_f(@types.ImageF, @segment.StructuringElement) -> @types.ImageF
+
+pub fn dilate_f(@types.ImageF) -> @types.ImageF
+
+pub fn disparity_to_depth(@types.Image, baseline? : Double, focal_length? : Double) -> @types.Image
+
+pub fn distance_transform(@types.Image, distance_type? : Int) -> Array[Float] raise @types.LoadError
+
+pub fn document_enhance(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn document_statistics_enhanced(Array[@ocr.DocumentBlock]) -> (Int, Int, Int, Int, Int, Int, Int)
+
+pub fn document_structure_stats(@ocr.DocumentStructure) -> (Int, Int, Int, Int, Int)
+
+pub fn document_understanding_enhanced_default_config() -> @ocr.DocumentUnderstandingEnhancedConfig
+
+pub fn draw_circle(@types.Image, Int, Int, Int, Array[Byte], thickness? : Int, fill? : Bool) -> @types.Image
+
+pub fn draw_circle_16(@types.Image16, Int, Int, Int, Array[Int], thickness? : Int, fill? : Bool) -> @types.Image16
+
+pub fn draw_circle_f(@types.ImageF, Int, Int, Int, Array[Float], thickness? : Int, fill? : Bool) -> @types.ImageF
+
+pub fn draw_contours(@types.Image, Array[@edge.Contour], Array[Byte]) -> @types.Image raise @types.LoadError
+
+pub fn draw_contours_16(@types.Image16, Array[@edge.Contour], Array[Int]) -> @types.Image16 raise @types.LoadError
+
+pub fn draw_contours_f(@types.ImageF, Array[@edge.Contour], Array[Float]) -> @types.ImageF raise @types.LoadError
+
+pub fn draw_copy(@types.Image, @types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn draw_corners(@types.Image, Array[@feature.CornerPoint], color? : Array[Byte], radius? : Int) -> @types.Image raise @types.LoadError
+
+pub fn draw_detections(@types.Image, Array[@detection.BoundingBox]) -> @types.Image raise @types.LoadError
+
+pub fn draw_line(@types.Image, Int, Int, Int, Int, Array[Byte], thickness? : Int) -> @types.Image
+
+pub fn draw_line_16(@types.Image16, Int, Int, Int, Int, Array[Int], thickness? : Int) -> @types.Image16
+
+pub fn draw_line_f(@types.ImageF, Int, Int, Int, Int, Array[Float], thickness? : Int) -> @types.ImageF
+
+pub fn draw_over(@types.Image, @types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn draw_polygon(@types.Image, Array[(Int, Int)], Array[Byte], thickness? : Int, fill? : Bool) -> @types.Image
+
+pub fn draw_polygon_16(@types.Image16, Array[(Int, Int)], Array[Int], thickness? : Int) -> @types.Image16
+
+pub fn draw_polygon_f(@types.ImageF, Array[(Int, Int)], Array[Float], thickness? : Int) -> @types.ImageF
+
+pub fn draw_rectangle(@types.Image, Int, Int, Int, Int, Array[Byte], thickness? : Int, fill? : Bool) -> @types.Image
+
+pub fn draw_rectangle_16(@types.Image16, Int, Int, Int, Int, Array[Int], thickness? : Int, fill? : Bool) -> @types.Image16
+
+pub fn draw_rectangle_f(@types.ImageF, Int, Int, Int, Int, Array[Float], thickness? : Int, fill? : Bool) -> @types.ImageF
+
+pub fn drop_fall_segmentation(@types.Image, start_x? : Int) -> @ocr.DropFallResult raise @types.LoadError
+
+pub fn edge_detect_laplacian(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn edge_detect_laplacian_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn edge_detect_laplacian_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn edge_detect_prewitt(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn edge_detect_prewitt_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn edge_detect_prewitt_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn edge_detect_sobel(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn edge_detect_sobel_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn edge_detect_sobel_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn edit_distance(String, String) -> Int raise @types.LoadError
+
+pub fn edit_image_ig(@types.Image, @types.Image, @image_generation.EditingConfig) -> @image_generation.EditingResult
+
+pub fn editing_report_to_string_ig(@image_generation.EditingResult) -> String
+
+pub fn elastic_match(Array[Double], Array[Double], elasticity? : Double, grid_size? : Int) -> Double
+
+pub fn embed_text_watermark(@types.Image, String, key? : Int) -> @types.Image
+
+pub fn embed_visible_watermark_enc(@types.Image, String, Int, Int, Double) -> @types.Image raise @types.LoadError
+
+pub fn embed_watermark_lsb(@types.Image, @types.Image, key? : Int) -> @types.Image
+
+pub fn embed_watermark_lsb_enc(@types.Image, Array[Byte], Int) -> (@types.Image, @encryption.WatermarkInfo) raise @types.LoadError
+
+pub fn encode_apng(@types.PngAnimation) -> Bytes raise @types.LoadError
+
+pub fn encode_cur(@types.Image) -> Bytes
+
+pub fn encode_gif(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_gif_animation(@types.GifAnimation) -> Bytes raise @types.LoadError
+
+pub fn encode_icns(@types.Image) -> Bytes
+
+pub fn encode_ico(@types.Image) -> Bytes
+
+pub fn encode_ico_sizes(Array[@types.Image]) -> Bytes
+
+pub fn encode_pgm(@types.Image) -> Bytes
+
+pub fn encode_pnm(@types.Image) -> Bytes
+
+pub fn encode_ppm(@types.Image) -> Bytes
+
+pub fn encode_qoi(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_tiff(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn encode_webp_lossy(@types.Image, quality? : Int) -> Bytes raise @types.LoadError
+
+pub fn encrypt_image_logistic(@types.Image, key? : Double, mu? : Double) -> @types.Image raise @types.LoadError
+
+pub fn encrypt_image_xor(@types.Image, String) -> @types.Image raise @types.LoadError
+
+pub fn encryption_default_config() -> @encryption.EncryptionConfig
+
+pub fn encryption_report_to_string_enc(@encryption.EncryptionResult, @encryption.WatermarkInfo, @encryption.ImageEncryptionQuality) -> String
+
+pub fn english_ocr_default_config() -> @ocr.EnglishOcrConfig
+
+pub fn enhance_image_advanced_dn(@types.Image, @denoise.EnhancementAlgorithm) -> @denoise.EnhancementResult raise @types.LoadError
+
+pub fn enhance_image_sr(@types.Image, @superres.EnhancementConfig) -> @types.Image
+
+pub fn enhance_night(@types.Image, @photo_enhance.NightEnhanceConfig) -> @types.Image
+
+pub fn enhanced_chinese_ocr_default_config() -> @ocr.EnhancedChineseOcrConfig
+
+pub fn enhanced_document_to_markdown(@ocr.EnhancedDocument, include_header_footer? : Bool) -> String
+
+pub fn enhanced_element_distribution(@ocr.EnhancedDocument) -> Array[(String, Int)]
+
+pub fn enhanced_table_to_markdown(@ocr.EnhancedTableResult) -> String
+
+pub fn enhanced_verification_report_to_string_fs(@forensics.EnhancedVerificationResult) -> String
+
+pub fn ensemble_default_config() -> @ocr.EnsembleConfig
+
+pub fn ensemble_predict(Array[Double], @ocr.KnnClassifier, Array[(String, Array[Double])], config? : @ocr.EnsembleConfig) -> @ocr.ClassificationResult raise @types.LoadError
+
+pub fn entropy_value(@types.Image) -> Float
+
+pub fn erode(@types.Image) -> @types.Image
+
+pub fn erode_16(@types.Image16) -> @types.Image16
+
+pub fn erode_custom(@types.Image, @segment.StructuringElement) -> @types.Image
+
+pub fn erode_custom_16(@types.Image16, @segment.StructuringElement) -> @types.Image16
+
+pub fn erode_custom_f(@types.ImageF, @segment.StructuringElement) -> @types.ImageF
+
+pub fn erode_f(@types.ImageF) -> @types.ImageF
+
+pub fn estimate_affine_transform_ra(Array[@registration_advanced.FeatureMatch]) -> @registration_advanced.TransformMatrix
+
+pub fn estimate_age_gender_fr(@types.Image, @face_recognition.FaceDetectionResult) -> @face_recognition.AgeGenderEstimationResult raise @types.LoadError
+
+pub fn estimate_atmospheric_light(@types.Image, @types.Image, top_percent? : Int) -> Array[Int] raise @types.LoadError
+
+pub fn estimate_camera_pose_sl(@slam.FeatureTrackingResult, @slam.SLAMConfig, @slam.CameraPose) -> @slam.CameraPose
+
+pub fn estimate_homography_ransac(Array[@stitch.MatchPair], Array[@stitch.FeaturePoint], Array[@stitch.FeaturePoint], iterations? : Int, threshold? : Double) -> (@stitch.Homography?, Array[@stitch.MatchPair])
+
+pub fn estimate_memory_usage(Int, Int, Int, Int) -> @ocr.MemoryUsageStats
+
+pub fn estimate_normals_3d(@stereo3d.PointCloud3D, Double) -> Array[(Double, Double, Double)]
+
+pub fn estimate_translation(@types.Image, @types.Image, max_offset? : Int) -> @registration.RegistrationResult raise @types.LoadError
+
+pub fn estimate_transmission(@types.Image, Array[Int], omega? : Double, patch_size? : Int) -> @types.Image raise @types.LoadError
+
+pub fn euclidean_distance(Array[Double], Array[Double]) -> Double raise @types.LoadError
+
+pub fn euclidean_distance_cbir_api(Array[Double], Array[Double]) -> Double
+
+pub fn evaluate_cnn_model(Array[@ocr.DLTrainingSample], @ocr.DLCnnModelConfig, Array[String]) -> (Double, Double) raise @types.LoadError
+
+pub fn evaluate_encryption_quality(@types.Image, @types.Image) -> @encryption.EncryptionQuality raise @types.LoadError
+
+pub fn evaluate_face_quality_fr(@types.Image, @face_recognition.FaceDetectionResult) -> Double raise @types.LoadError
+
+pub fn evaluate_image_encryption_quality_enc(@types.Image, @types.Image) -> @encryption.ImageEncryptionQuality raise @types.LoadError
+
+pub fn evaluate_scan_quality(@types.Image) -> @ocr.ScanQuality raise @types.LoadError
+
+pub fn expand_query_advanced(Array[Double], Array[Array[Double]], @image_retrieval_advanced.ImageRetrievalConfig) -> @image_retrieval_advanced.QueryExpansionResult
+
+pub fn extract_all_cells(@types.Image, @ocr.TableStructure, padding? : Int) -> Array[@types.Image] raise @types.LoadError
+
+pub fn extract_cell_image(@types.Image, @ocr.TableCell, padding? : Int) -> @types.Image raise @types.LoadError
+
+pub fn extract_channel(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn extract_char_image(@types.Image, @ocr.CharSegment, target_size? : Int, padding? : Int) -> @types.Image raise @types.LoadError
+
+pub fn extract_color_histogram_cbir(@types.Image, @retrieval.ColorHistogramConfig) -> @retrieval.CBIRImageFeature
+
+pub fn extract_combined_enhanced_features(@types.Image, @ocr.OcrAccuracyEnhancedConfig) -> Array[Double] raise @types.LoadError
+
+pub fn extract_combined_features_cbir(@types.Image) -> @retrieval.CBIRImageFeature
+
+pub fn extract_combined_ocr_features(@types.Image) -> Array[Double] raise @types.LoadError
+
+pub fn extract_directional_features(@types.Image) -> Array[Double]
+
+pub fn extract_document_text(Array[@ocr.DocumentBlock], include_headers? : Bool, include_footers? : Bool) -> String
+
+pub fn extract_face_feature_fr(@types.Image, @face_recognition.FaceDetectionResult, @face_recognition.FaceRecognitionConfig) -> @face_recognition.FaceFeature raise @types.LoadError
+
+pub fn extract_features(@ocr.DLFeatureExtractor, @types.Image) -> Array[Double]
+
+pub fn extract_features_advanced(Array[Double], Int, Int, @image_retrieval_advanced.ImageRetrievalConfig) -> @image_retrieval_advanced.FeatureExtractionResult
+
+pub fn extract_gabor_ocr_features(@types.Image, num_orientations? : Int, num_frequencies? : Int) -> Array[Double]
+
+pub fn extract_handwriting_features(@types.Image, String) -> @ocr.HandwritingCharFeature raise @types.LoadError
+
+pub fn extract_handwriting_stroke_features(@types.Image) -> @ocr.HandwritingStrokeFeatures raise @types.LoadError
+
+pub fn extract_headings(@ocr.DocumentStructure) -> Array[@ocr.DocumentElement]
+
+pub fn extract_hog_feature_cbir(@types.Image, @retrieval.HOGConfig) -> @retrieval.CBIRImageFeature
+
+pub fn extract_hw_stroke_features(@types.Image) -> Array[@ocr.StrokeFeature]
+
+pub fn extract_image_features(@types.Image, String) -> @retrieval.ImageFeature
+
+pub fn extract_images_enhanced(@types.Image, min_area? : Int) -> Array[@ocr.ExtractedImage]
+
+pub fn extract_keyframes(Array[@types.Image], Double, method_type? : String) -> Array[@video.Keyframe]
+
+pub fn extract_lbp_feature_cbir(@types.Image, @retrieval.LBPConfig) -> @retrieval.CBIRImageFeature
+
+pub fn extract_paragraphs(@ocr.DocumentStructure) -> Array[@ocr.DocumentElement]
+
+pub fn extract_skeleton_pe(@pose_estimation.HumanPose) -> Array[@pose_estimation.SkeletonConnection]
+
+pub fn extract_stroke_features(@types.Image) -> Array[Double] raise @types.LoadError
+
+pub fn extract_text_line_image(@types.Image, @ocr.TextLineInfo, padding? : Int) -> @types.Image raise @types.LoadError
+
+pub fn extract_text_lines(@types.Image) -> Array[@types.Image] raise @types.LoadError
+
+pub fn extract_text_watermark(@types.Image, Int, key? : Int) -> String
+
+pub fn extract_title(@ocr.DocumentStructure) -> String
+
+pub fn extract_watermark_lsb(@types.Image) -> @types.Image
+
+pub fn extract_watermark_lsb_enc(@types.Image, Int, Int) -> @encryption.WatermarkExtractionResult raise @types.LoadError
+
+pub fn extract_zernike_moments(@types.Image, max_order? : Int) -> Array[Double] raise @types.LoadError
+
+pub fn face_recognition_report_to_string_fr(@face_recognition.FaceAttributeAnalysis) -> String
+
+pub fn failure_reason() -> String
+
+pub fn false_color_composite(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn fast_connected_components(@types.Image) -> Array[Int] raise @types.LoadError
+
+pub fn fast_downsample_2x(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn fast_gaussian_blur_1d(@types.Image, Array[Double]) -> @types.Image raise @types.LoadError
+
+pub fn fast_threshold_lut(@types.Image, Array[Int]) -> @types.Image raise @types.LoadError
+
+pub fn feature_based_registration_ra(@types.Image, @types.Image, @registration_advanced.RegistrationConfigAdvanced) -> @registration_advanced.RegistrationResultAdvanced
+
+pub fn fft_2d(@types.Image) -> Array[@frequency.FFTResult] raise @types.LoadError
+
+pub fn fft_2d_16(@types.Image16) -> Array[@frequency.FFTResult] raise @types.LoadError
+
+pub fn fft_2d_f(@types.ImageF) -> Array[@frequency.FFTResult] raise @types.LoadError
+
+pub fn fft_magnitude(@frequency.FFTResult, Bool) -> @types.Image
+
+pub fn fft_magnitude_16(@frequency.FFTResult, Bool) -> @types.Image16
+
+pub fn fft_magnitude_f(@frequency.FFTResult, Bool) -> @types.ImageF
+
+pub fn fft_shift(@frequency.FFTResult) -> @frequency.FFTResult
+
+pub fn fill_alpha(@types.Image, Int, Byte, Byte, Byte) -> @types.Image raise @types.LoadError
+
+pub fn filter_components_by_area(@ocr.OcrConnectedComponentsResult, Int, Int) -> Array[@ocr.OcrConnectedComponent] raise @types.LoadError
+
+pub fn filter_components_by_aspect_ratio(@ocr.OcrConnectedComponentsResult, Double, Double) -> Array[@ocr.OcrConnectedComponent] raise @types.LoadError
+
+pub fn filter_noise_segments(Array[(Int, Int, Int, Int)], Int, Int, min_area_ratio? : Double, max_area_ratio? : Double) -> Array[(Int, Int, Int, Int)] raise @types.LoadError
+
+pub fn find_contours(@types.Image) -> Array[@edge.Contour] raise @types.LoadError
+
+pub fn find_contours_16(@types.Image16) -> Array[@edge.Contour] raise @types.LoadError
+
+pub fn find_contours_f(@types.ImageF) -> Array[@edge.Contour] raise @types.LoadError
+
+pub fn find_horizontal_seam(Array[Double], Int, Int) -> Array[Int]
+
+pub fn find_line_intersections(Array[(Int, Int, Int)], Array[(Int, Int, Int)]) -> Array[(Int, Int)]
+
+pub fn find_similar_chinese_chars(@ocr.DictChineseDict, String, top_n? : Int) -> Array[@ocr.DictCharMatch] raise @types.LoadError
+
+pub fn find_vertical_seam(Array[Double], Int, Int) -> Array[Int]
+
+pub fn flip_horizontal(@types.Image) -> @types.Image
+
+pub fn flip_horizontal_16(@types.Image16) -> @types.Image16
+
+pub fn flip_horizontal_f(@types.ImageF) -> @types.ImageF
+
+pub fn flip_vertical(@types.Image) -> @types.Image
+
+pub fn flip_vertical_16(@types.Image16) -> @types.Image16
+
+pub fn flip_vertical_f(@types.ImageF) -> @types.ImageF
+
+pub fn flip_vertically_on_write(Bool) -> Unit
+
+pub fn flood_fill(@types.Image, Int, Int, Array[Byte], threshold? : Int) -> @types.Image raise @types.LoadError
+
+pub fn floyd_steinberg(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn floyd_steinberg_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn floyd_steinberg_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn freq_filter(@types.Image, @frequency.FreqFilterType, Float, band_width? : Float) -> @types.Image raise @types.LoadError
+
+pub fn freq_filter_gaussian(@types.Image, @frequency.FreqFilterType, Float, band_width? : Float) -> @types.Image raise @types.LoadError
+
+pub fn full_postprocess_correction(String, context_type? : String) -> @ocr.CorrectionResult raise @types.LoadError
+
+pub fn fuse_alpha(@types.Image, @types.Image, alpha? : Double) -> @types.Image
+
+pub fn fuse_exposure(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_images(@types.Image, @types.Image, config? : @fusion.FusionConfig) -> @types.Image
+
+pub fn fuse_images_fe(Array[@types.Image], @fusion_enhanced.FusionConfig) -> @fusion_enhanced.FusionResult
+
+pub fn fuse_laplacian_pyramid_fe(Array[@types.Image], Int) -> @types.Image
+
+pub fn fuse_maximum_fe(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_minimum_fe(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_modalities_vlm(Array[Double], Array[Double], @vlm_multimodal.FusionConfig) -> @vlm_multimodal.FusionResult
+
+pub fn fuse_multifocus(@types.Image, @types.Image) -> @types.Image
+
+pub fn fuse_simple_mean_fe(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_weighted_average_fe(Array[@types.Image], Array[Double]) -> @types.Image
+
+pub fn fusion_default_config() -> @fusion.FusionConfig
+
+pub fn fusion_report_to_string_fe(@fusion_enhanced.FusionResult, Double) -> String
+
+pub fn fusion_report_to_string_vlm(@vlm_multimodal.FusionResult) -> String
+
+pub fn gabor_filter(@types.Image, Int, Float, Float, lambda? : Float, gamma? : Float, phi? : Float) -> @types.Image raise @types.LoadError
+
+pub fn gabor_filter_16(@types.Image16, Int, Float, Float, lambda? : Float, gamma? : Float, phi? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn gabor_filter_bank(@types.Image, Int, Float, num_orientations? : Int, lambda? : Float, gamma? : Float) -> @types.Image raise @types.LoadError
+
+pub fn gabor_filter_bank_16(@types.Image16, Int, Float, num_orientations? : Int, lambda? : Float, gamma? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn gabor_filter_bank_f(@types.ImageF, Int, Float, num_orientations? : Int, lambda? : Float, gamma? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn gabor_filter_f(@types.ImageF, Int, Float, Float, lambda? : Float, gamma? : Float, phi? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn gabor_kernel(Int, Float, Float, lambda? : Float, gamma? : Float, phi? : Float) -> Array[Array[Float]] raise @types.LoadError
+
+pub fn gamma_correction_enhance_dn(@types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn gamma_tonemap(@types.ImageF, Float) -> @types.Image raise @types.LoadError
+
+pub fn gamma_tonemap_16(@types.ImageF, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn gamma_tonemap_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn gaussian_blur(@types.Image, Int, Float) -> @types.Image raise @types.LoadError
+
+pub fn gaussian_blur_16(@types.Image16, Int, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn gaussian_blur_f(@types.ImageF, Int, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn gaussian_filter_denoise_dn(@types.Image, Int, Double) -> @types.Image raise @types.LoadError
+
+pub fn generate_3500_chinese_templates(char_set? : String) -> Array[(String, Array[Double])]
+
+pub fn generate_accuracy_report(@ocr.AccuracyStats, String) -> String
+
+pub fn generate_api_config_json(@ocr.ApiServerConfig) -> String
+
+pub fn generate_batch_summary(Array[@ocr.BatchTask], Double) -> @ocr.BatchResultSummary raise @types.LoadError
+
+pub fn generate_caption_su(@types.Image, @scene_understanding.SceneUnderstandingConfig) -> @scene_understanding.ImageCaptioningResult
+
+pub fn generate_chinese_char_info_db() -> Array[@ocr.ChineseCharInfo]
+
+pub fn generate_chinese_dictionary_report(@ocr.DictChineseDict) -> String
+
+pub fn generate_chinese_templates(char_set? : String) -> Array[(String, Array[Double])]
+
+pub fn generate_cli_help() -> String
+
+pub fn generate_correction_report(Array[@ocr.CorrectionResult]) -> String
+
+pub fn generate_deployment_package(@ocr.DockerConfig, @ocr.ApiServerConfig, @ocr.ModelPackageConfig) -> String
+
+pub fn generate_digit_templates() -> Array[(String, Array[Double])]
+
+pub fn generate_docker_compose(@ocr.DockerConfig) -> String
+
+pub fn generate_dockerfile(@ocr.DockerConfig) -> String
+
+pub fn generate_english_templates(case_sensitive? : Bool) -> Array[(String, Array[Double])]
+
+pub fn generate_enhanced_chinese_templates(char_set_size? : Int) -> Array[(String, Array[Double])]
+
+pub fn generate_enhanced_handwriting_templates(char_set? : String, num_variants? : Int) -> Array[(String, Array[Double])]
+
+pub fn generate_env_config(@ocr.DeploymentEnvironment) -> String
+
+pub fn generate_from_latent_ig(@image_generation.LatentVector, @image_generation.GenerationConfig) -> @image_generation.GenerationResult
+
+pub fn generate_handwriting_templates(char_set? : String) -> Array[(String, Array[Double])]
+
+pub fn generate_health_check_config(@ocr.ApiServerConfig) -> String
+
+pub fn generate_hologram_ci(@types.Image, Double, Double, Double) -> @computational_imaging.Hologram
+
+pub fn generate_hyperspectral_cube_ai(@types.Image, Int, Double, Double) -> @advanced_imaging.HyperspectralData
+
+pub fn generate_image_extraction_report(Array[@ocr.ExtractedImage]) -> String
+
+pub fn generate_markdown_image_placeholder(@ocr.MarkdownImage, Int) -> String
+
+pub fn generate_model_manifest(@ocr.ModelPackageConfig) -> String
+
+pub fn generate_performance_report(@ocr.PerformanceBenchmark, String) -> String
+
+pub fn generate_punctuation_templates() -> Array[@ocr.PunctuationTemplate]
+
+pub fn generate_random_image_ig(@image_generation.GenerationConfig) -> @image_generation.GenerationResult
+
+pub fn generate_random_latent_ig(Int, Int) -> @image_generation.LatentVector
+
+pub fn generate_rays_nr(@neural_rendering.CameraParams) -> Array[@neural_rendering.Ray]
+
+pub fn generate_robustness_report(@ocr.ScanQuality, Array[@ocr.DistortionDetectionResult], @ocr.ComplexLayoutAnalysis) -> @ocr.RobustnessReport
+
+pub fn generate_sample_gaussians_nr(Int) -> Array[@neural_rendering.Gaussian3D]
+
+pub fn generate_sample_lightfield_ci(@types.Image, @computational_imaging.LightFieldCameraParams) -> @computational_imaging.LightFieldData
+
+pub fn generate_scene_graph_su(@types.Image, @scene_understanding.SceneUnderstandingConfig) -> @scene_understanding.SceneGraph
+
+pub fn generate_training_progress_report(@ocr.TrainingState, @ocr.TrainingConfig) -> String
+
+pub fn generate_training_report(Array[@ocr.DLTrainingHistory], @ocr.DLCnnModelConfig) -> String
+
+pub fn generate_video_summary(Array[@types.Image], Double) -> @video.VideoSummary
+
+pub fn generation_report_to_string_ig(@image_generation.GenerationResult) -> String
+
+pub fn get_affine_transform(Array[(Float, Float)], Array[(Float, Float)]) -> @transform.AffineMatrix?
+
+pub fn get_coco_keypoint_names_pe() -> Array[String]
+
+pub fn get_coco_skeleton_connections_pe() -> Array[Array[Int]]
+
+pub fn get_common_scene_types_su() -> Array[String]
+
+pub fn get_elements_in_reading_order(@ocr.DocumentStructure) -> Array[@ocr.DocumentElement]
+
+pub fn get_perspective_transform(Array[(Float, Float)], Array[(Float, Float)]) -> @transform.PerspectiveMatrix?
+
+pub fn get_rotation_matrix_2d((Float, Float), Float, Float) -> @transform.AffineMatrix
+
+pub fn glcm_features(Array[Array[Int]]) -> @feature.GlcmFeatures
+
+pub fn glcm_features_multi_direction(@types.Image, levels? : Int) -> Array[@feature.GlcmFeatures] raise @types.LoadError
+
+pub fn glcm_features_multi_direction_16(@types.Image16, levels? : Int) -> Array[@feature.GlcmFeatures] raise @types.LoadError
+
+pub fn glcm_features_multi_direction_f(@types.ImageF, levels? : Int) -> Array[@feature.GlcmFeatures] raise @types.LoadError
+
+pub fn good_features_to_track(@types.Image, Int, Float, min_distance? : Int) -> Array[@feature.CornerPoint] raise @types.LoadError
+
+pub fn good_features_to_track_16(@types.Image16, Int, Float, min_distance? : Int) -> Array[@feature.CornerPoint] raise @types.LoadError
+
+pub fn good_features_to_track_f(@types.ImageF, Int, Float, min_distance? : Int) -> Array[@feature.CornerPoint] raise @types.LoadError
+
+pub fn grab_cut(@types.Image, Int, Int, Int, Int, iterations? : Int) -> @types.Image raise @types.LoadError
+
+pub fn grabcut_segmentation(@types.Image, Int, Int, Int, Int, @segmentation.GrabCutConfig) -> @segmentation.SemanticSegmentationResult raise @types.LoadError
+
+pub fn gradient_map(@types.Image, Array[(Int, Byte, Byte, Byte)]) -> @types.Image raise @types.LoadError
+
+pub fn grid_features(@types.Image, grid_rows? : Int, grid_cols? : Int) -> @ocr.GridFeatures raise @types.LoadError
+
+pub fn guided_filter(@types.Image, Array[Float], radius? : Int, eps? : Float) -> Array[Float] raise @types.LoadError
+
+pub fn guided_filter_16(@types.Image16, Array[Float], radius? : Int, eps? : Float) -> Array[Float] raise @types.LoadError
+
+pub fn guided_filter_f(@types.ImageF, Array[Float], radius? : Int, eps? : Float) -> Array[Float] raise @types.LoadError
+
+pub fn guided_filter_image(@types.Image, @types.Image, radius? : Int, eps? : Double) -> @types.Image raise @types.LoadError
+
+pub fn haar_denoise(@types.Image, threshold? : Float, soft? : Bool, levels? : Int) -> @types.Image raise @types.LoadError
+
+pub fn haar_denoise_16(@types.Image16, threshold? : Float, soft? : Bool, levels? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn haar_denoise_f(@types.ImageF, threshold? : Float, soft? : Bool, levels? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn haar_inverse_transform_2d(@frequency.HaarWaveletResult) -> @types.Image
+
+pub fn haar_inverse_transform_2d_16(@frequency.HaarWaveletResult) -> @types.Image16
+
+pub fn haar_inverse_transform_2d_f(@frequency.HaarWaveletResult) -> @types.ImageF
+
+pub fn haar_transform_1d(Array[Float]) -> Array[Float]
+
+pub fn haar_transform_2d(@types.Image, levels? : Int) -> @frequency.HaarWaveletResult raise @types.LoadError
+
+pub fn haar_transform_2d_16(@types.Image16, levels? : Int) -> @frequency.HaarWaveletResult raise @types.LoadError
+
+pub fn haar_transform_2d_f(@types.ImageF, levels? : Int) -> @frequency.HaarWaveletResult raise @types.LoadError
+
+pub fn hamming_distance(Array[Int], Array[Int]) -> Int raise @types.LoadError
+
+pub fn handwriting_feature_similarity(@ocr.HandwritingCharFeature, @ocr.HandwritingCharFeature) -> Double
+
+pub fn handwriting_ocr_default_config() -> @ocr.HandwritingOcrConfig
+
+pub fn handwriting_ocr_enhanced_default_config() -> @ocr.HandwritingOcrEnhancedConfig
+
+pub fn handwriting_postprocess(String, Double) -> (String, Double)
+
+pub fn handwriting_report_to_string(@ocr.HandwritingRecognitionResult) -> String
+
+pub fn harris_corners(@types.Image, k? : Float, threshold? : Float, min_distance? : Int) -> Array[@feature.CornerPoint] raise @types.LoadError
+
+pub fn harris_corners_16(@types.Image16, k? : Float, threshold? : Float, min_distance? : Int) -> Array[@feature.CornerPoint] raise @types.LoadError
+
+pub fn harris_corners_f(@types.ImageF, k? : Float, threshold? : Float, min_distance? : Int) -> Array[@feature.CornerPoint] raise @types.LoadError
+
+pub fn hdr_default_config() -> @enhance.HdrConfig
+
+pub fn hdr_fusion_average(Array[@types.Image]) -> @types.Image raise @types.LoadError
+
+pub fn hdr_fusion_weighted(Array[@types.Image]) -> @types.Image raise @types.LoadError
+
+pub fn hdr_merge(Array[@types.Image], Array[Double]) -> @photo_enhance.HdrImage
+
+pub fn hdr_process(Array[@types.Image], config? : @enhance.HdrConfig) -> @types.Image raise @types.LoadError
+
+pub fn hdr_to_ldr_gamma(Float) -> Unit
+
+pub fn hdr_to_ldr_scale(Float) -> Unit
+
+pub fn histogram(@types.Image) -> Array[Int] raise @types.LoadError
+
+pub fn histogram_16(@types.Image16) -> Array[Int] raise @types.LoadError
+
+pub fn histogram_entropy(@types.Image) -> Double raise @types.LoadError
+
+pub fn histogram_equalization_enhance_dn(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn histogram_equalize(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn histogram_equalize_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn histogram_equalize_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn histogram_f(@types.ImageF) -> Array[Int] raise @types.LoadError
+
+pub fn histogram_intersection_cbir_api(Array[Double], Array[Double]) -> Double
+
+pub fn histogram_matching(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn histogram_matching_16(@types.Image16, @types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn histogram_matching_f(@types.ImageF, @types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn histogram_normalize(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn histogram_normalize_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn histogram_normalize_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn hog_features(@types.Image, cell_size? : Int, num_bins? : Int) -> @ocr.HogFeatures raise @types.LoadError
+
+pub fn horizontal_projection(@types.Image) -> @ocr.ProjectionResult raise @types.LoadError
+
+pub fn horn_schunck(@types.Image, @types.Image, alpha? : Float, iterations? : Int) -> (Array[Float], Array[Float]) raise @types.LoadError
+
+pub fn horn_schunck_16(@types.Image16, @types.Image16, alpha? : Float, iterations? : Int) -> (Array[Float], Array[Float]) raise @types.LoadError
+
+pub fn horn_schunck_f(@types.ImageF, @types.ImageF, alpha? : Float, iterations? : Int) -> (Array[Float], Array[Float]) raise @types.LoadError
+
+pub fn hough_circles(@types.Image, dp? : Int, min_dist? : Int, param1? : Int, param2? : Int, min_radius? : Int, max_radius? : Int) -> Array[@edge.Circle] raise @types.LoadError
+
+pub fn hough_circles_16(@types.Image16, dp? : Int, min_dist? : Int, param1? : Int, param2? : Int, min_radius? : Int, max_radius? : Int) -> Array[@edge.Circle] raise @types.LoadError
+
+pub fn hough_circles_f(@types.ImageF, dp? : Int, min_dist? : Int, param1? : Int, param2? : Int, min_radius? : Int, max_radius? : Int) -> Array[@edge.Circle] raise @types.LoadError
+
+pub fn hough_lines(@types.Image, Int, theta_resolution? : Float, rho_resolution? : Float) -> Array[@edge.HoughLine] raise @types.LoadError
+
+pub fn hough_lines_16(@types.Image16, Int, theta_resolution? : Float, rho_resolution? : Float) -> Array[@edge.HoughLine] raise @types.LoadError
+
+pub fn hough_lines_f(@types.ImageF, Int, theta_resolution? : Float, rho_resolution? : Float) -> Array[@edge.HoughLine] raise @types.LoadError
+
+pub fn hough_lines_nms(Array[@edge.HoughLine], rho_threshold? : Float, theta_threshold? : Float) -> Array[@edge.HoughLine] raise @types.LoadError
+
+pub fn hsl_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsl_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsl_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn hstack(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn hsv_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsv_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsv_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn hu_moments(@edge.Moments) -> Array[Double] raise @types.LoadError
+
+pub fn hu_moments_features(@types.Image) -> Array[Double] raise @types.LoadError
+
+pub fn icp_registration_3d(@stereo3d.PointCloud3D, @stereo3d.PointCloud3D, Int, Double) -> @stereo3d.RegistrationResult3d
+
+pub fn idct_2d(Array[Array[Double]]) -> @types.Image
+
+pub fn idct_2d_16(Array[Array[Double]]) -> @types.Image16
+
+pub fn idct_2d_f(Array[Array[Double]]) -> @types.ImageF
+
+pub fn identity_homography() -> @stitch.Homography
+
+pub fn ifft_2d(@frequency.FFTResult) -> @types.Image
+
+pub fn ifft_2d_16(@frequency.FFTResult) -> @types.Image16
+
+pub fn ifft_2d_f(@frequency.FFTResult) -> @types.ImageF
+
+pub fn ihaar_transform_1d(Array[Float]) -> Array[Float]
+
+pub fn image_database_new() -> @retrieval.ImageDatabase
+
+pub fn image_moments(Array[@edge.ContourPoint]) -> @edge.Moments
+
+pub fn image_retrieval_report_to_string_advanced(@image_retrieval_advanced.ImageRetrievalTaskType, @image_retrieval_advanced.ImageRetrievalConfig, String) -> String
+
+pub fn image_similarity(@types.Image, @types.Image, method_type? : String) -> Double
+
+pub fn image_to_text_vlm(@types.Image, @vlm_multimodal.GenerativeAIConfig) -> @vlm_multimodal.GenerativeAIResult
+
+pub fn images_equal(@types.Image, @types.Image) -> Bool
+
+pub fn info_from_bytes(Bytes) -> @types.ImageInfo? raise @types.LoadError
+
+pub fn infrared_pseudocolor_ai(@types.Image, @advanced_imaging.InfraredImagingType) -> @types.Image
+
+pub fn initialize_object_tracking(@detection.YoloDetectionResult) -> Array[@detection.YoloTrackedObject] raise @types.LoadError
+
+pub fn initialize_slam_sl(@slam.SLAMConfig) -> @slam.SLAMState
+
+pub fn initialize_tracking(@types.Image, Int, Int, Int, Int, String) -> @video.TrackedObject
+
+pub fn inpaint(@types.Image, @types.Image, iterations? : Int) -> @types.Image raise @types.LoadError
+
+pub fn inpaint_16(@types.Image16, @types.Image16, iterations? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn inpaint_advanced(@types.Image, @types.Image, radius? : Int) -> @types.Image raise @types.LoadError
+
+pub fn inpaint_default_config() -> @enhance.InpaintConfig
+
+pub fn inpaint_diffusion_ip(@types.Image, @types.Image, Int) -> @types.Image
+
+pub fn inpaint_f(@types.ImageF, @types.ImageF, iterations? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn inpaint_fast(@types.Image, @types.Image, radius? : Int) -> @types.Image raise @types.LoadError
+
+pub fn inpaint_fast_16(@types.Image16, @types.Image16, radius? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn inpaint_fast_f(@types.ImageF, @types.ImageF, radius? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn inpaint_image_ig(@types.Image, @types.Image, @image_generation.EditingConfig) -> @image_generation.EditingResult
+
+pub fn inpaint_ip(@types.Image, @types.Image, @inpainting.InpaintingConfig) -> @inpainting.InpaintingResult
+
+pub fn inpaint_simple_ip(@types.Image, @types.Image, Int) -> @types.Image
+
+pub fn inpainting_report_to_string_ip(@inpainting.InpaintingResult) -> String
+
+pub fn integral_image(@types.Image) -> @feature.IntegralImage raise @types.LoadError
+
+pub fn integral_image_16(@types.Image16) -> @feature.IntegralImage raise @types.LoadError
+
+pub fn integral_image_f(@types.ImageF) -> @feature.IntegralImage raise @types.LoadError
+
+pub fn integral_image_sq(@types.Image) -> @feature.IntegralImageSq raise @types.LoadError
+
+pub fn integral_image_sq_16(@types.Image16) -> @feature.IntegralImageSq raise @types.LoadError
+
+pub fn integral_image_sq_f(@types.ImageF) -> @feature.IntegralImageSq raise @types.LoadError
+
+pub fn integral_mean(@feature.IntegralImage, Int, Int, Int, Int) -> Float raise @types.LoadError
+
+pub fn integral_sum(@feature.IntegralImage, Int, Int, Int, Int) -> Int64 raise @types.LoadError
+
+pub fn integral_sum_sq(@feature.IntegralImageSq, Int, Int, Int, Int) -> Int64 raise @types.LoadError
+
+pub fn integral_variance(@feature.IntegralImage, @feature.IntegralImageSq, Int, Int, Int, Int) -> Float raise @types.LoadError
+
+pub fn intelligent_vision_report_to_string_iv(String, Int, Double, @intelligent_vision.IntelligentVisionConfig) -> String
+
+pub fn interpolate_frames(@types.Image, @types.Image, num_frames? : Int) -> Array[@types.Image]
+
+pub fn invert(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn invert_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn invert_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn invert_homography(@stitch.Homography) -> @stitch.Homography?
+
+pub fn is_16_bit_from_bytes(Bytes) -> Bool
+
+pub fn is_code_block_line(@ocr.TextLineAttributes, Int) -> Bool
+
+pub fn is_hdr_from_bytes(Bytes) -> Bool
+
+pub fn is_heading_line(@ocr.TextLineAttributes, Double) -> (Bool, Int)
+
+pub fn is_quote_line(@ocr.TextLineAttributes, Int) -> Bool
+
+pub fn is_supported_format(Bytes) -> Bool
+
+pub fn key_sensitivity_test(@types.Image, Double, delta? : Double) -> Double raise @types.LoadError
+
+pub fn kmeans_quantize(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn kmeans_quantize_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn kmeans_quantize_f(@types.ImageF, Int, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn kmeans_segment(@types.Image, Int, max_iters? : Int) -> (@segment.SegmentLabelImage, Array[@segment.SegmentRegion]) raise @types.LoadError
+
+pub fn kmeans_segment_16(@types.Image16, Int, max_iters? : Int) -> (@segment.SegmentLabelImage, Array[@segment.SegmentRegion]) raise @types.LoadError
+
+pub fn kmeans_segment_f(@types.ImageF, Int, max_iters? : Int) -> (@segment.SegmentLabelImage, Array[@segment.SegmentRegion]) raise @types.LoadError
+
+pub fn kmeans_segmentation(@types.Image, @segmentation.KMeansConfig) -> @segmentation.SemanticSegmentationResult raise @types.LoadError
+
+pub fn knn_add_sample(@ocr.KnnClassifier, Array[Double], String) -> @ocr.KnnClassifier raise @types.LoadError
+
+pub fn knn_add_samples(@ocr.KnnClassifier, Array[(Array[Double], String)]) -> @ocr.KnnClassifier raise @types.LoadError
+
+pub fn knn_create(k? : Int, distance_metric? : String) -> @ocr.KnnClassifier raise @types.LoadError
+
+pub fn knn_predict(@ocr.KnnClassifier, Array[Double]) -> @ocr.ClassificationResult raise @types.LoadError
+
+pub fn lab_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn lab_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn lab_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn land_cover_classification(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn language_model_postprocess(String, Array[String], Array[Double]) -> (String, Array[Double])
+
+pub fn lbp(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn lbp_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn lbp_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn lbp_features(@types.Image, radius? : Int, num_points? : Int, num_bins? : Int) -> @ocr.LbpFeatures raise @types.LoadError
+
+pub fn lbp_uniform(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn lbp_uniform_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn lbp_uniform_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn ldr_to_hdr_gamma(Float) -> Unit
+
+pub fn ldr_to_hdr_scale(Float) -> Unit
+
+pub fn lightfield_refocus_ci(@computational_imaging.LightFieldData, Double, Double) -> @computational_imaging.RefocusResult
+
+pub fn load_f_from_bytes(Bytes) -> @types.ImageF raise @types.LoadError
+
+pub fn load_from_bytes(Bytes, req_channels? : Int?) -> @types.Image raise @types.LoadError
+
+pub fn load_gif_from_bytes(Bytes) -> @types.GifAnimation raise @types.LoadError
+
+pub fn load_model(String) -> @ocr.DLCnnModelConfig?
+
+pub fn lookup_by_pinyin(@ocr.DictChineseDict, String) -> Array[@ocr.DictCharEntry] raise @types.LoadError
+
+pub fn lookup_by_radical(@ocr.DictChineseDict, String) -> Array[@ocr.DictCharEntry] raise @types.LoadError
+
+pub fn lookup_by_structure(@ocr.DictChineseDict, @ocr.DictCharStructure) -> Array[@ocr.DictCharEntry]
+
+pub fn lookup_char(@ocr.DictChineseDict, String) -> @ocr.DictCharEntry? raise @types.LoadError
+
+pub fn low_light_default_config() -> @photo_enhance.LowLightConfig
+
+pub fn low_light_enhance(@types.Image, config? : @photo_enhance.LowLightConfig) -> @types.Image
+
+pub fn lucas_kanade(@types.Image, @types.Image, Array[(Int, Int)], window_size? : Int, max_iter? : Int) -> Array[@feature.FlowResult] raise @types.LoadError
+
+pub fn lucas_kanade_16(@types.Image16, @types.Image16, Array[(Int, Int)], window_size? : Int, max_iter? : Int) -> Array[@feature.FlowResult] raise @types.LoadError
+
+pub fn lucas_kanade_f(@types.ImageF, @types.ImageF, Array[(Int, Int)], window_size? : Int, max_iter? : Int) -> Array[@feature.FlowResult] raise @types.LoadError
+
+pub fn manhattan_distance(Array[Double], Array[Double]) -> Double raise @types.LoadError
+
+pub fn manhattan_distance_cbir_api(Array[Double], Array[Double]) -> Double
+
+pub fn mark_task_completed(@ocr.BatchTask, Int, Double, Double) -> @ocr.BatchTask
+
+pub fn mark_task_failed(@ocr.BatchTask, String, Double) -> @ocr.BatchTask
+
+pub fn markdown_document_to_string(@ocr.MarkdownDocument) -> String
+
+pub fn markdown_table_to_string(@ocr.MarkdownTable) -> String
+
+pub fn mask_blend(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn match_feature_points_ra(Array[@registration_advanced.FeaturePoint], Array[@registration_advanced.FeaturePoint], Double) -> Array[@registration_advanced.FeatureMatch]
+
+pub fn match_features(Array[@stitch.FeaturePoint], Array[@stitch.FeaturePoint], ratio_threshold? : Double) -> Array[@stitch.MatchPair]
+
+pub fn max_pool2d(Array[Double], Int, Int, Int, Int) -> Array[Double] raise @types.LoadError
+
+pub fn max_pool2d_backward(Array[Double], Array[Double], Int, Int, Int, Int) -> Array[Double]
+
+pub fn mean_filter_denoise_dn(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn mean_value(@types.Image) -> Float
+
+pub fn mean_value_16(@types.Image16) -> Float
+
+pub fn mean_value_f(@types.ImageF) -> Float
+
+pub fn measure_area(@types.Image, pixel_area? : Double) -> Double
+
+pub fn measure_distance(Int, Int, Int, Int, pixel_spacing? : Double) -> Double
+
+pub fn median_blur(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn median_blur_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn median_blur_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn median_cut(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn median_cut_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn median_cut_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn median_filter_denoise_dn(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn median_value(@types.Image) -> Int
+
+pub fn medical_colormap(@types.Image, colormap? : String) -> @types.Image
+
+pub fn medical_contrast_enhance(@types.Image, clip_limit? : Double, tile_size? : Int) -> @types.Image
+
+pub fn medical_denoise(@types.Image, iterations? : Int, kappa? : Double) -> @types.Image
+
+pub fn medical_image_registration_medical(@medical.MedicalImage, @medical.MedicalImage, Int) -> @medical.MedicalRegistrationResult
+
+pub fn medical_image_report_to_string_medical(@medical.MedicalImage, Array[@medical.Lesion], @medical.MedicalImageQuality) -> String
+
+pub fn medical_threshold_segmentation_medical(@medical.MedicalImage, Double, Double) -> Array[Bool]
+
+pub fn merge_adjacent_components(Array[@ocr.OcrConnectedComponent], Int) -> Array[@ocr.OcrConnectedComponent] raise @types.LoadError
+
+pub fn merge_small_segments(Array[(Int, Int, Int, Int)], Int, Int) -> Array[(Int, Int, Int, Int)] raise @types.LoadError
+
+pub fn min_enclosing_circle(Array[@edge.ContourPoint]) -> (@edge.ContourPoint, Float)
+
+pub fn morph_blackhat(@types.Image) -> @types.Image
+
+pub fn morph_blackhat_16(@types.Image16) -> @types.Image16
+
+pub fn morph_blackhat_f(@types.ImageF) -> @types.ImageF
+
+pub fn morph_close(@types.Image) -> @types.Image
+
+pub fn morph_close_16(@types.Image16) -> @types.Image16
+
+pub fn morph_close_custom(@types.Image, @segment.StructuringElement) -> @types.Image
+
+pub fn morph_close_custom_16(@types.Image16, @segment.StructuringElement) -> @types.Image16
+
+pub fn morph_close_custom_f(@types.ImageF, @segment.StructuringElement) -> @types.ImageF
+
+pub fn morph_close_f(@types.ImageF) -> @types.ImageF
+
+pub fn morph_gradient(@types.Image) -> @types.Image
+
+pub fn morph_gradient_16(@types.Image16) -> @types.Image16
+
+pub fn morph_gradient_f(@types.ImageF) -> @types.ImageF
+
+pub fn morph_open(@types.Image) -> @types.Image
+
+pub fn morph_open_16(@types.Image16) -> @types.Image16
+
+pub fn morph_open_custom(@types.Image, @segment.StructuringElement) -> @types.Image
+
+pub fn morph_open_custom_16(@types.Image16, @segment.StructuringElement) -> @types.Image16
+
+pub fn morph_open_custom_f(@types.ImageF, @segment.StructuringElement) -> @types.ImageF
+
+pub fn morph_open_f(@types.ImageF) -> @types.ImageF
+
+pub fn morph_tophat(@types.Image) -> @types.Image
+
+pub fn morph_tophat_16(@types.Image16) -> @types.Image16
+
+pub fn morph_tophat_f(@types.ImageF) -> @types.ImageF
+
+pub fn mri_synthesize_ai(Int, Int, Double) -> @advanced_imaging.MRIData
+
+pub fn mse(@types.Image, @types.Image) -> Double raise @types.LoadError
+
+pub fn mse_16(@types.Image16, @types.Image16) -> Double raise @types.LoadError
+
+pub fn mse_f(@types.ImageF, @types.ImageF) -> Double raise @types.LoadError
+
+pub fn msr(@types.Image, sigmas? : Array[Float], gain? : Float, offset? : Float) -> @types.Image raise @types.LoadError
+
+pub fn msr_16(@types.Image16, sigmas? : Array[Float], gain? : Float, offset? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn msr_f(@types.ImageF, sigmas? : Array[Float], gain? : Float, offset? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn msrcr(@types.Image, sigmas? : Array[Float], gain? : Float, offset? : Float, alpha? : Float, beta? : Float) -> @types.Image raise @types.LoadError
+
+pub fn msrcr_16(@types.Image16, sigmas? : Array[Float], gain? : Float, offset? : Float, alpha? : Float, beta? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn msrcr_f(@types.ImageF, sigmas? : Array[Float], gain? : Float, offset? : Float, alpha? : Float, beta? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn multi_band_blend(@types.Image, @types.Image, @types.Image, num_bands? : Int) -> @types.Image raise @types.LoadError
+
+pub fn multi_band_blend_16(@types.Image16, @types.Image16, @types.Image16, num_bands? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn multi_band_blend_f(@types.ImageF, @types.ImageF, @types.ImageF, num_bands? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn multi_scale_recognize(@types.Image, Array[(String, Array[Double])], Array[Int], distance_metric? : String) -> (String, Double)
+
+pub fn multilingual_ocr_default_config() -> @ocr.MultilingualOcrConfig
+
+pub fn multilingual_ocr_enhanced_default_config() -> @ocr.MultilingualOcrEnhancedConfig
+
+pub fn multispectral_new(Int, Int, Array[@types.Image], band_names? : Array[String]) -> @remote_sensing.MultispectralImage
+
+pub fn multiview_stereo_reconstruction_nr(Array[@types.Image], Array[@neural_rendering.CameraParams]) -> @neural_rendering.ReconstructionResult
+
+pub fn nearest_neighbor_interpolate_sr(@types.Image, Double) -> @types.Image
+
+pub fn neural_rendering_report_to_string_nr(@neural_rendering.RenderingResult, @neural_rendering.NeuralRenderingAlgorithm) -> String
+
+pub fn next_batch(@ocr.DataLoader) -> (Array[@ocr.DLTrainingSample], @ocr.DataLoader) raise @types.LoadError
+
+pub fn ngram_create(Array[String], n? : Int) -> @ocr.NgramModel raise @types.LoadError
+
+pub fn ngram_score(String, @ocr.NgramModel) -> Double raise @types.LoadError
+
+pub fn niblack_threshold(@types.Image, window_size? : Int, k? : Double) -> @types.Image raise @types.LoadError
+
+pub fn nlm_default_config() -> @enhance.NlmConfig
+
+pub fn nlm_denoise(@types.Image, patch_size? : Int, search_size? : Int, h? : Int) -> @types.Image raise @types.LoadError
+
+pub fn nlm_denoise_16(@types.Image16, patch_size? : Int, search_size? : Int, h? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn nlm_denoise_f(@types.ImageF, patch_size? : Int, search_size? : Int, h? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn nlm_denoise_fast(@types.Image, patch_size? : Int, search_size? : Int, h? : Int, step? : Int) -> @types.Image raise @types.LoadError
+
+pub fn nlm_denoise_fast_16(@types.Image16, patch_size? : Int, search_size? : Int, h? : Int, step? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn nlm_denoise_fast_f(@types.ImageF, patch_size? : Int, search_size? : Int, h? : Int, step? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn nms(Array[@detection.BoundingBox], iou_threshold? : Double) -> Array[@detection.BoundingBox] raise @types.LoadError
+
+pub fn non_max_suppression(Array[@detection.YoloBoundingBox], Double, Int) -> Array[@detection.YoloBoundingBox] raise @types.LoadError
+
+pub fn normalize_features(Array[Double]) -> Array[Double] raise @types.LoadError
+
+pub fn normalize_handwriting_size(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn normalize_image(Array[Double], Double, Double) -> Array[Double] raise @types.LoadError
+
+pub fn normalize_punctuation(String, Array[String]) -> String
+
+pub fn normalized_cross_correlation_ra(@types.Image, @types.Image) -> Double
+
+pub fn ocr_accuracy_enhanced_default_config() -> @ocr.OcrAccuracyEnhancedConfig
+
+pub fn ocr_pipeline_stats(@types.Image) -> (Int, Int, Double) raise @types.LoadError
+
+pub fn ocr_postprocess(@ocr.OcrResult, config? : @ocr.PostProcessConfig, dictionary? : @ocr.Dictionary, ngram_model? : @ocr.NgramModel) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn ocr_preprocess(@types.Image, binarization_method? : String) -> @types.Image raise @types.LoadError
+
+pub fn ocr_result_to_hocr(@ocr.OCRPageResult) -> String
+
+pub fn ocr_result_to_json(@ocr.OCRPageResult) -> String
+
+pub fn ocr_result_to_text(@ocr.OCRPageResult) -> String
+
+pub fn oil_paint(@types.Image, radius? : Int, intensity? : Int) -> @types.Image
+
+pub fn oil_painting_st(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn optimize_reading_order(Array[@ocr.DocumentBlock], Int) -> Array[Int]
+
+pub fn orb_detect(@types.Image, max_features? : Int, threshold? : Int) -> Array[@feature.OrbDescriptor] raise @types.LoadError
+
+pub fn orb_detect_16(@types.Image16, max_features? : Int, threshold? : Int) -> Array[@feature.OrbDescriptor] raise @types.LoadError
+
+pub fn orb_detect_f(@types.ImageF, max_features? : Int, threshold? : Int) -> Array[@feature.OrbDescriptor] raise @types.LoadError
+
+pub fn orb_hamming(@feature.OrbDescriptor, @feature.OrbDescriptor) -> Int
+
+pub fn orb_match(Array[@feature.OrbDescriptor], Array[@feature.OrbDescriptor], max_distance? : Int) -> Array[@feature.DescriptorMatch] raise @types.LoadError
+
+pub fn otsu_threshold(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn otsu_threshold_value(@types.Image) -> Double raise @types.LoadError
+
+pub fn outpaint_image_ig(@types.Image, Int, Int, @image_generation.EditingConfig) -> @image_generation.EditingResult
+
+pub fn pad(@types.Image, Int, Int, Array[Byte]) -> @types.Image raise @types.LoadError
+
+pub fn parse_cli_args(Array[String]) -> @ocr.CliConfig raise @types.LoadError
+
+pub fn pet_synthesize_ai(Int, Int, String) -> @advanced_imaging.PETData
+
+pub fn phase_correlation_registration_ra(@types.Image, @types.Image) -> @registration_advanced.RegistrationResultAdvanced
+
+pub fn phase_retrieval_ci(@types.Image, @computational_imaging.PhaseRetrievalConfig) -> @computational_imaging.ImagingReconstructionResult
+
+pub fn phash(@types.Image) -> Array[Int] raise @types.LoadError
+
+pub fn phash_16(@types.Image16) -> Array[Int] raise @types.LoadError
+
+pub fn phash_f(@types.ImageF) -> Array[Int] raise @types.LoadError
+
+pub fn pixelate(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn point_cloud_new() -> @stereo3d.PointCloud
+
+pub fn pointcloud_voxel_downsample(@stereo3d.PointCloud, voxel_size? : Double) -> @stereo3d.PointCloud
+
+pub fn pose_estimation_report_to_string_pe(Array[@pose_estimation.HumanPose], @pose_estimation.ActionRecognitionResult) -> String
+
+pub fn posterize(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn postprocess_default_config() -> @ocr.PostProcessConfig
+
+pub fn predictive_encode_cp(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn premultiply_alpha(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn premultiply_alpha_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn premultiply_alpha_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn process_frame_slam_sl(@slam.SLAMState, @types.Image, @slam.SLAMConfig) -> @slam.SLAMState
+
+pub fn progress_bar_to_string(Double, width? : Int) -> String
+
+pub fn projection_features(@types.Image) -> @ocr.ProjectionFeatures raise @types.LoadError
+
+pub fn psnr(@types.Image, @types.Image) -> Double raise @types.LoadError
+
+pub fn psnr_16(@types.Image16, @types.Image16) -> Double raise @types.LoadError
+
+pub fn psnr_f(@types.ImageF, @types.ImageF) -> Double raise @types.LoadError
+
+pub fn pyr_down(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn pyr_down_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn pyr_down_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn pyr_up(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn pyr_up_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn pyr_up_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn quantize_image_cp(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn quantum_ghost_imaging_ai(Int, Int, Int, @advanced_imaging.QuantumImagingAlgorithm) -> @types.Image
+
+pub fn ransac_homography(Array[((Float, Float), (Float, Float))], iterations? : Int, threshold? : Float) -> Array[Float]? raise @types.LoadError
+
+pub fn read_exif_from_bytes(Bytes) -> @meta.ExifInfo?
+
+pub fn read_png_text_chunks(Bytes) -> Array[@meta.PngTextChunk]
+
+pub fn recognize_action(Array[@types.Image], Int, Int) -> @video.ActionRecognitionResult
+
+pub fn recognize_action_pe(Array[@pose_estimation.HumanPose], @pose_estimation.ActionRecognitionConfig) -> @pose_estimation.ActionRecognitionResult
+
+pub fn recognize_by_components(@ocr.DictChineseDict, @ocr.DictCharStructure, Array[String], stroke_count_hint? : Int) -> Array[(String, Double)]
+
+pub fn recognize_chinese(@types.Image, config? : @ocr.ChineseOcrConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_chinese_advanced(@types.Image, config? : @ocr.AdvancedChineseOcrConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_digits(@types.Image, config? : @ocr.DigitOcrConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_english(@types.Image, config? : @ocr.EnglishOcrConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_enhanced_chinese(@types.Image, config? : @ocr.EnhancedChineseOcrConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_expression_fr(@types.Image, @face_recognition.FaceDetectionResult) -> @face_recognition.ExpressionRecognitionResult raise @types.LoadError
+
+pub fn recognize_face_in_database_fr(@face_recognition.FaceDatabase, @face_recognition.FaceFeature, Array[Double]) -> @face_recognition.FaceRecognitionResult
+
+pub fn recognize_gesture_pe(@pose_estimation.HumanPose) -> @pose_estimation.GestureRecognitionResult
+
+pub fn recognize_handwriting(@types.Image, config? : @ocr.HandwritingOcrConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_handwriting_char(@types.Image, Array[@ocr.HandwritingTemplate], @ocr.HandwritingRecognitionConfig) -> @ocr.HandwritingRecognitionResult raise @types.LoadError
+
+pub fn recognize_handwriting_enhanced(@types.Image, config? : @ocr.HandwritingOcrEnhancedConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_multilingual(@types.Image, config? : @ocr.MultilingualOcrConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_multilingual_enhanced(@types.Image, config? : @ocr.MultilingualOcrEnhancedConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_ocr_enhanced(@types.Image, Array[(String, Array[Double])], config? : @ocr.OcrAccuracyEnhancedConfig) -> @ocr.OcrResult raise @types.LoadError
+
+pub fn recognize_symbols_markdown(String) -> Array[@ocr.MarkdownSymbol]
+
+pub fn recognize_table(@types.Image, min_line_length? : Int) -> @ocr.TableStructure raise @types.LoadError
+
+pub fn recognize_traffic_signs_iv(@types.Image, @intelligent_vision.IntelligentVisionConfig) -> Array[@intelligent_vision.TrafficSignResult]
+
+pub fn reconstruct_hologram_ci(@computational_imaging.Hologram) -> @computational_imaging.ImagingReconstructionResult
+
+pub fn reconstruction_report_to_string_nr(@neural_rendering.ReconstructionResult, @neural_rendering.ReconstructionAlgorithm) -> String
+
+pub fn record_training_metrics(@ocr.TrainingState, @ocr.TrainingMetrics) -> @ocr.TrainingState
+
+pub fn reed_solomon_decode(Array[Int], Int) -> (Array[Int], Int)
+
+pub fn region_growing(@types.Image, Array[(Int, Int)], threshold? : Double) -> @segment.SegmentationResult
+
+pub fn region_growing_segment(@types.Image, Array[(Int, Int)], threshold? : Int) -> (@segment.SegmentLabelImage, Array[@segment.SegmentRegion]) raise @types.LoadError
+
+pub fn region_growing_segmentation_medical(@medical.MedicalImage, Int, Int, Int, Double) -> Array[Bool]
+
+pub fn register_images_advanced_ra(@types.Image, @types.Image, @registration_advanced.RegistrationConfigAdvanced) -> @registration_advanced.RegistrationResultAdvanced
+
+pub fn register_images_fe(@types.Image, @types.Image, @fusion_enhanced.RegistrationConfig) -> @fusion_enhanced.RegistrationResult
+
+pub fn register_phase_correlation_fe(@types.Image, @types.Image) -> @fusion_enhanced.RegistrationResult
+
+pub fn registration_report_to_string_advanced_ra(@registration_advanced.RegistrationResultAdvanced) -> String
+
+pub fn reinhard_tonemap(@types.ImageF, key? : Float) -> @types.Image raise @types.LoadError
+
+pub fn reinhard_tonemap_16(@types.ImageF, key? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn reinhard_tonemap_f(@types.ImageF, key? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn relevance_feedback_advanced(Array[Double], Array[Int], Array[Int], Array[Array[Double]], @image_retrieval_advanced.ImageRetrievalConfig) -> @image_retrieval_advanced.RelevanceFeedbackResult
+
+pub fn relu(Double) -> Double
+
+pub fn relu_backward(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn remote_sensing_report_to_string_rs(@remote_sensing.RemoteSensingImage, @remote_sensing.ClassificationResult, @remote_sensing.ChangeDetectionResult, @remote_sensing.RemoteSensingQuality) -> String
+
+pub fn remove_background_ig(@types.Image, @image_generation.EditingConfig) -> @image_generation.EditingResult
+
+pub fn remove_horizontal_seam(@types.Image, Array[Int]) -> @types.Image
+
+pub fn remove_horizontal_seam_16(@types.Image16, Array[Int]) -> @types.Image16
+
+pub fn remove_horizontal_seam_f(@types.ImageF, Array[Int]) -> @types.ImageF
+
+pub fn remove_small_objects(@types.Image, max_size? : Int) -> @types.Image raise @types.LoadError
+
+pub fn remove_vertical_seam(@types.Image, Array[Int]) -> @types.Image
+
+pub fn remove_vertical_seam_16(@types.Image16, Array[Int]) -> @types.Image16
+
+pub fn remove_vertical_seam_f(@types.ImageF, Array[Int]) -> @types.ImageF
+
+pub fn remove_watermark(@types.Image, Int, Int, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn render_gaussian_splatting_nr(@neural_rendering.CameraParams, Array[@neural_rendering.Gaussian3D], @neural_rendering.GaussianSplattingConfig) -> @neural_rendering.RenderingResult
+
+pub fn render_nerf_nr(@neural_rendering.CameraParams, @neural_rendering.NeRFConfig) -> @neural_rendering.RenderingResult
+
+pub fn replace_color(@types.Image, Array[Byte], Array[Byte], Int) -> @types.Image raise @types.LoadError
+
+pub fn resize(@types.Image, Int, Int, filter? : @types.ResizeFilter, edge? : @types.ResizeEdge) -> @types.Image raise @types.LoadError
+
+pub fn resize_16(@types.Image16, Int, Int) -> @types.Image16
+
+pub fn resize_f(@types.ImageF, Int, Int) -> @types.ImageF
+
+pub fn resize_image_for_cnn(@types.Image, Int, Int) -> Array[Double] raise @types.LoadError
+
+pub fn resize_to_contain(@types.Image, Int, Int, Array[Byte]) -> @types.Image raise @types.LoadError
+
+pub fn resize_to_cover(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn retrieval_report_to_string_cbir(@retrieval.CBIRRetrievalResultList, @retrieval.CBIRImageFeature) -> String
+
+pub fn retrieve_images_advanced(Array[Double], Int, Int, Array[Array[Double]], @image_retrieval_advanced.ImageRetrievalConfig) -> @image_retrieval_advanced.RetrievalResult
+
+pub fn retrieve_images_cbir(@retrieval.CBIRImageFeature, @retrieval.CBIRImageIndex, Int, @retrieval.SimilarityMetric) -> @retrieval.CBIRRetrievalResultList
+
+pub fn rgb_to_cmyk(Int, Int, Int) -> (Int, Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_cmyk_16(Int, Int, Int) -> (Int, Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_cmyk_f(Float, Float, Float) -> (Float, Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsl(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsl_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsl_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsv(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsv_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsv_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_lab(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_lab_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_lab_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_xyz(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_xyz_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_xyz_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_ycbcr(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_ycbcr_16(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_ycbcr_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn robustness_report_to_string(@ocr.RobustnessReport) -> String
+
+pub fn rotate(@types.Image, Float) -> @types.Image
+
+pub fn rotate_180(@types.Image) -> @types.Image
+
+pub fn rotate_180_16(@types.Image16) -> @types.Image16
+
+pub fn rotate_180_f(@types.ImageF) -> @types.ImageF
+
+pub fn rotate_270(@types.Image) -> @types.Image
+
+pub fn rotate_270_16(@types.Image16) -> @types.Image16
+
+pub fn rotate_270_f(@types.ImageF) -> @types.ImageF
+
+pub fn rotate_90(@types.Image) -> @types.Image
+
+pub fn rotate_90_16(@types.Image16) -> @types.Image16
+
+pub fn rotate_90_f(@types.ImageF) -> @types.ImageF
+
+pub fn rotate_document(@types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn run_length_decode_cp(Bytes) -> Bytes
+
+pub fn run_length_encode_cp(Bytes) -> Bytes
+
+pub fn safe_mul(Int, Int) -> Int?
+
+pub fn safe_mul3(Int, Int, Int) -> Int?
+
+pub fn sauvola_threshold(@types.Image, window_size? : Int, k? : Double, r? : Double) -> @types.Image raise @types.LoadError
+
+pub fn save_model(@ocr.DLCnnModelConfig, Array[Double], String) -> Bool
+
+pub fn scan_document_preprocess(@types.Image, @ocr.ScanOCRConfig) -> @types.Image raise @types.LoadError
+
+pub fn scan_ocr_default_config() -> @ocr.ScanOCRConfig
+
+pub fn scan_ocr_recognize(@types.Image, @ocr.ScanOCRConfig) -> @ocr.OCRPageResult raise @types.LoadError
+
+pub fn scene_understanding_report_to_string_su(@scene_understanding.SceneClassificationResult, @scene_understanding.ImageCaptioningResult, @scene_understanding.VisualQuestionAnsweringResult, @scene_understanding.SceneGraph) -> String
+
+pub fn se_cross(Int) -> @segment.StructuringElement
+
+pub fn se_ellipse(Int) -> @segment.StructuringElement
+
+pub fn se_rect(Int, Int) -> @segment.StructuringElement
+
+pub fn seam_carve_resize(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn seam_carve_resize_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn seam_carve_resize_f(@types.ImageF, Int, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn search_similar_images(@retrieval.ImageDatabase, @retrieval.ImageFeature, top_k? : Int, method_type? : String) -> Array[@retrieval.SearchResult]
+
+pub fn segment_by_connected_components(@types.Image, min_area? : Int, max_area? : Int) -> Array[(Int, Int, Int, Int)] raise @types.LoadError
+
+pub fn segment_chars_projection(@types.Image, @ocr.TextLineInfo, min_width? : Int, max_gap? : Int) -> Array[@ocr.CharSegment] raise @types.LoadError
+
+pub fn segment_connected_strokes(@types.Image, @ocr.HandwritingRecognitionConfig) -> @ocr.StrokeSegmentationResult
+
+pub fn segment_cursive_chars(@types.Image, min_char_width? : Int, max_char_width? : Int) -> Array[(Int, Int, Int, Int)]
+
+pub fn segment_page(@types.Image) -> Array[@ocr.TextRegion] raise @types.LoadError
+
+pub fn segment_paragraphs(Array[@ocr.TextLineAttributes]) -> Array[Array[@ocr.TextLineAttributes]]
+
+pub fn segment_to_color(@segment.SegmentLabelImage) -> @types.Image raise @types.LoadError
+
+pub fn segmentation_report_to_string(@segmentation.SemanticSegmentationResult, @segmentation.SegmentationMetrics) -> String
+
+pub fn segmentation_to_color(@segment.SegmentationResult, Int, Int) -> @types.Image
+
+pub fn segmentation_to_image(@segmentation.SemanticSegmentationResult) -> @types.Image
+
+pub fn select_adaptive_config(@ocr.ScanQuality) -> @ocr.AdaptivePreprocessConfig raise @types.LoadError
+
+pub fn set_alpha(@types.Image, Byte) -> @types.Image raise @types.LoadError
+
+pub fn set_flip_vertically_on_load(Bool) -> Unit
+
+pub fn set_unpremultiply_on_load(Bool) -> Unit
+
+pub fn shadow_removal(@types.Image, kernel_size? : Int) -> @types.Image raise @types.LoadError
+
+pub fn sharpen(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn sharpen_16(@types.Image16, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn sharpen_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn sharpen_image_sr(@types.Image, Double) -> @types.Image
+
+pub fn sift_detect(@types.Image, max_features? : Int, contrast_threshold? : Float) -> Array[@feature.SiftDescriptor] raise @types.LoadError
+
+pub fn sift_detect_16(@types.Image16, max_features? : Int, contrast_threshold? : Float) -> Array[@feature.SiftDescriptor] raise @types.LoadError
+
+pub fn sift_detect_f(@types.ImageF, max_features? : Int, contrast_threshold? : Float) -> Array[@feature.SiftDescriptor] raise @types.LoadError
+
+pub fn sift_match(Array[@feature.SiftDescriptor], Array[@feature.SiftDescriptor], max_distance? : Float, ratio_test? : Float) -> Array[@feature.SiftMatch] raise @types.LoadError
+
+pub fn sigmoid(Double) -> Double
+
+pub fn sigmoid_backward(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn skeletonize(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn sketch(@types.Image, blend? : Double) -> @types.Image
+
+pub fn sketch_effect_st(@types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn slam_report_to_string_sl(@slam.SLAMState) -> String
+
+pub fn slic(@types.Image, Int, Int, Int) -> @segment.SuperpixelResult raise @types.LoadError
+
+pub fn slic_16(@types.Image16, Int, Int, Int) -> @segment.SuperpixelResult raise @types.LoadError
+
+pub fn slic_f(@types.ImageF, Int, Int, Int) -> @segment.SuperpixelResult raise @types.LoadError
+
+pub fn smart_reading_order(Array[@ocr.EnhancedDocumentElement], @ocr.LayoutType, Array[Int]) -> Array[Int] raise @types.LoadError
+
+pub fn smart_segment_chars(@types.Image, @ocr.MultilingualOcrEnhancedConfig) -> Array[(Int, Int, Int, Int, String)] raise @types.LoadError
+
+pub fn smart_spacing_process(String, Array[String]) -> String
+
+pub fn softmax(Array[Double]) -> Array[Double]
+
+pub fn softmax_cross_entropy_backward(Array[Double], Int) -> Array[Double] raise @types.LoadError
+
+pub fn source_verification_report_to_string_fs(@forensics.SourceVerificationResult) -> String
+
+pub fn split_train_validation(Array[@ocr.DLTrainingSample], Double, Bool) -> (Array[@ocr.DLTrainingSample], Array[@ocr.DLTrainingSample])
+
+pub fn sr_default_config() -> @superres.SuperResolutionConfig
+
+pub fn ssim(@types.Image, @types.Image) -> Double raise @types.LoadError
+
+pub fn ssim_16(@types.Image16, @types.Image16) -> Double raise @types.LoadError
+
+pub fn ssim_f(@types.ImageF, @types.ImageF) -> Double raise @types.LoadError
+
+pub fn ssr(@types.Image, sigma? : Float, gain? : Float, offset? : Float) -> @types.Image raise @types.LoadError
+
+pub fn ssr_16(@types.Image16, sigma? : Float, gain? : Float, offset? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn ssr_f(@types.ImageF, sigma? : Float, gain? : Float, offset? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn stabilize_video(Array[@types.Image], @video.VideoStabilizationConfig) -> Array[@types.Image]
+
+pub fn standardize_features(Array[Double]) -> Array[Double] raise @types.LoadError
+
+pub fn statistical_features(@types.Image) -> @ocr.StatisticalFeatures raise @types.LoadError
+
+pub fn statistical_outlier_removal_3d(@stereo3d.PointCloud3D, Int, Double) -> @stereo3d.PointCloud3D
+
+pub fn stereo_match_3d(@types.Image, @types.Image, @stereo3d.StereoConfig3d) -> @stereo3d.DepthMap3d
+
+pub fn stitch_default_config() -> @stitch.StitchConfig
+
+pub fn stitch_images(@types.Image, @types.Image, config? : @stitch.StitchConfig) -> @types.Image?
+
+pub fn stitch_panorama(Array[@types.Image], @photo_enhance.PanoramaConfig) -> @photo_enhance.PanoramaResult
+
+pub fn structure_based_filter(@types.Image, Array[@ocr.ChineseCharInfo], max_candidates? : Int) -> Array[@ocr.ChineseCharInfo]
+
+pub fn style_transfer_report_to_string_st(@style_transfer.StyleTransferResult, @style_transfer.ColorStatistics, @style_transfer.ColorStatistics, @style_transfer.StyleTransferTextureFeatures) -> String
+
+pub fn style_transfer_st(@types.Image, @types.Image, @style_transfer.StyleTransferConfig) -> @style_transfer.StyleTransferResult raise @types.LoadError
+
+pub fn stylize(@types.Image, String, config? : @stylize.StylizeConfig) -> @types.Image
+
+pub fn stylize_default_config() -> @stylize.StylizeConfig
+
+pub fn super_resolution(@types.Image, config? : @superres.SuperResolutionConfig) -> @types.Image
+
+pub fn super_resolution_bicubic(@types.Image, Double) -> @types.Image
+
+pub fn super_resolution_edge_preserving(@types.Image, Double, edge_threshold? : Double, sharpen_amount? : Double) -> @types.Image
+
+pub fn super_resolution_lanczos(@types.Image, Double, a? : Int) -> @types.Image
+
+pub fn super_resolution_report_to_string_sr(@superres.SuperResolutionResult, @superres.ImageQualityMetrics) -> String
+
+pub fn super_resolve_sr(@types.Image, @superres.InterpolationConfig) -> @superres.SuperResolutionResult
+
+pub fn superpixel_segmentation(@types.Image, Int) -> @segmentation.SuperpixelResult raise @types.LoadError
+
+pub fn swap_channels(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn synthesize_view_ci(@computational_imaging.LightFieldData, Double, Double) -> @computational_imaging.ViewSynthesisResult
+
+pub fn template_match(@types.Image, @types.Image, match_method? : @feature.TemplateMatchMethod) -> Array[@feature.TemplateMatchResult] raise @types.LoadError
+
+pub fn template_match_16(@types.Image16, @types.Image16, match_method? : @feature.TemplateMatchMethod) -> Array[@feature.TemplateMatchResult] raise @types.LoadError
+
+pub fn template_match_best(@types.Image, @types.Image, match_method? : @feature.TemplateMatchMethod) -> @feature.TemplateMatchResult? raise @types.LoadError
+
+pub fn template_match_best_16(@types.Image16, @types.Image16, match_method? : @feature.TemplateMatchMethod) -> @feature.TemplateMatchResult? raise @types.LoadError
+
+pub fn template_match_best_f(@types.ImageF, @types.ImageF, match_method? : @feature.TemplateMatchMethod) -> @feature.TemplateMatchResult? raise @types.LoadError
+
+pub fn template_match_f(@types.ImageF, @types.ImageF, match_method? : @feature.TemplateMatchMethod) -> Array[@feature.TemplateMatchResult] raise @types.LoadError
+
+pub fn template_matcher_add(@ocr.TemplateMatcher, String, Array[Double]) -> @ocr.TemplateMatcher raise @types.LoadError
+
+pub fn template_matcher_create(distance_metric? : String) -> @ocr.TemplateMatcher
+
+pub fn template_matcher_predict(@ocr.TemplateMatcher, Array[Double]) -> @ocr.ClassificationResult raise @types.LoadError
+
+pub fn text_to_image_vlm(String, @vlm_multimodal.GenerativeAIConfig, Int) -> @vlm_multimodal.GenerativeAIResult
+
+pub fn thermal_to_temperature_ai(@types.Image, Double, Double, Double) -> @advanced_imaging.ThermalData
+
+pub fn threshold(@types.Image, Int) -> @types.Image
+
+pub fn threshold_otsu(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn threshold_otsu_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn threshold_otsu_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn threshold_segmentation(@types.Image, Double) -> @segmentation.SemanticSegmentationResult raise @types.LoadError
+
+pub fn tile(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn to_grayscale(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn to_grayscale_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn to_grayscale_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn to_rgb(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn to_rgb_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn to_rgb_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn to_rgba(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn to_rgba_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn to_rgba_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn tone_map(@photo_enhance.HdrImage, @photo_enhance.ToneMappingConfig) -> @types.Image
+
+pub fn tone_mapping_gamma(@types.Image, gamma? : Double) -> @types.Image raise @types.LoadError
+
+pub fn tone_mapping_reinhard(@types.Image, key? : Double) -> @types.Image raise @types.LoadError
+
+pub fn tone_mapping_sigmoid(@types.Image, strength? : Double) -> @types.Image raise @types.LoadError
+
+pub fn track_features_slam_sl(@types.Image, @types.Image, Array[Array[Double]], Int) -> @slam.FeatureTrackingResult
+
+pub fn transpose(@types.Image) -> @types.Image
+
+pub fn transpose_16(@types.Image16) -> @types.Image16
+
+pub fn transpose_f(@types.ImageF) -> @types.ImageF
+
+pub fn triangulate_points_sl(Array[Array[Double]], @slam.CameraPose, @slam.CameraPose, @slam.SLAMConfig) -> Array[@slam.MapPoint]
+
+pub fn true_color_composite(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn ultrasound_synthesize_ai(Int, Int, Double, Double) -> @advanced_imaging.UltrasoundData
+
+pub fn understand_document(@types.Image) -> @ocr.DocumentStructure raise @types.LoadError
+
+pub fn understand_document_enhanced(@types.Image, config? : @ocr.DocumentUnderstandingEnhancedConfig) -> (Array[@ocr.DocumentBlock], Array[@ocr.DocumentTreeNode], String) raise @types.LoadError
+
+pub fn understand_scene_su(@types.Image, @scene_understanding.SceneUnderstandingConfig) -> (@scene_understanding.SceneClassificationResult, @scene_understanding.ImageCaptioningResult, @scene_understanding.SceneGraph)
+
+pub fn unpremultiply_alpha(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn unpremultiply_alpha_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn unpremultiply_alpha_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn unrolled_pixel_sum(@types.Image) -> Int raise @types.LoadError
+
+pub fn unsharp_mask_enhance_dn(@types.Image, Double, Int) -> @types.Image raise @types.LoadError
+
+pub fn update_object_tracking(Array[@detection.YoloTrackedObject], @detection.YoloDetectionResult, Int) -> Array[@detection.YoloTrackedObject] raise @types.LoadError
+
+pub fn update_task_progress(@ocr.BatchTask, Double, Int, Int) -> @ocr.BatchTask
+
+pub fn update_tracking(@video.TrackedObject, @types.Image) -> @video.TrackedObject
+
+pub fn update_weights_sgd(Array[Double], Array[Double], Double) -> Array[Double] raise @types.LoadError
+
+pub fn upscale_2x(@types.Image) -> @types.Image
+
+pub fn upscale_4x(@types.Image) -> @types.Image
+
+pub fn variance_value(@types.Image) -> Float
+
+pub fn vegetation_coverage(@types.Image, ndvi_soil? : Double, ndvi_veg? : Double) -> @types.Image raise @types.LoadError
+
+pub fn verify_image_source_enhanced_fs(@types.Image, @forensics.EnhancedVerificationConfig) -> @forensics.EnhancedVerificationResult raise @types.LoadError
+
+pub fn verify_image_source_fs(@types.Image, @forensics.SourceVerificationConfig) -> @forensics.SourceVerificationResult raise @types.LoadError
+
+pub fn vertical_projection(@types.Image) -> @ocr.ProjectionResult raise @types.LoadError
+
+pub fn video_concat(@video.VideoFrames, @video.VideoFrames) -> @video.VideoFrames
+
+pub fn video_fade_in(@video.VideoFrames, duration_frames? : Int) -> @video.VideoFrames
+
+pub fn video_fade_out(@video.VideoFrames, duration_frames? : Int) -> @video.VideoFrames
+
+pub fn video_frame_average(@video.VideoFrames) -> @types.Image
+
+pub fn video_frame_count(@video.VideoFrames) -> Int
+
+pub fn video_frames_new(Array[@types.Image], fps? : Double) -> @video.VideoFrames
+
+pub fn video_get_frame(@video.VideoFrames, Int) -> @types.Image?
+
+pub fn video_reverse(@video.VideoFrames) -> @video.VideoFrames
+
+pub fn video_sample(@video.VideoFrames, interval? : Int) -> @video.VideoFrames
+
+pub fn vision_3d_report_to_string(@stereo3d.PointCloud3D, @stereo3d.DepthMap3d, @stereo3d.RegistrationResult3d) -> String
+
+pub fn visualize_distance_transform(Array[Float], Int, Int) -> @types.Image
+
+pub fn visualize_point_cloud_nr(Array[@neural_rendering.Point3D], Int, Int) -> @types.Image
+
+pub fn visualize_pose_pe(@types.Image, @pose_estimation.HumanPose) -> @types.Image raise @types.LoadError
+
+pub fn vlm_report_to_string_vlm(@vlm_multimodal.VisionTextEmbedding, @vlm_multimodal.VisionLanguageModelType) -> String
+
+pub fn voxel_downsample_3d(@stereo3d.PointCloud3D, Double) -> @stereo3d.PointCloud3D
+
+pub fn vstack(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn warp_affine(@types.Image, (Float, Float, Float, Float, Float, Float), Int, Int) -> @types.Image
+
+pub fn warp_affine_16(@types.Image16, (Float, Float, Float, Float, Float, Float), Int, Int) -> @types.Image16
+
+pub fn warp_affine_f(@types.ImageF, (Float, Float, Float, Float, Float, Float), Int, Int) -> @types.ImageF
+
+pub fn warp_affine_transform(@types.Image, @registration.AffineTransform, out_width? : Int, out_height? : Int) -> @types.Image raise @types.LoadError
+
+pub fn warp_perspective(@types.Image, @transform.PerspectiveMatrix, Int, Int) -> @types.Image
+
+pub fn warp_perspective_16(@types.Image16, @transform.PerspectiveMatrix, Int, Int) -> @types.Image16
+
+pub fn warp_perspective_f(@types.ImageF, @transform.PerspectiveMatrix, Int, Int) -> @types.ImageF
+
+pub fn watercolor(@types.Image, blur_radius? : Int) -> @types.Image
+
+pub fn watermark_default_config() -> @watermark.WatermarkConfig
+
+pub fn watermark_psnr(@types.Image, @types.Image) -> Double
+
+pub fn watermark_robustness_test(@types.Image, @types.Image, noise_level? : Double) -> Double
+
+pub fn watershed(@types.Image, Array[Int]) -> Array[Int] raise @types.LoadError
+
+pub fn watershed_16(@types.Image16, Array[Int]) -> Array[Int] raise @types.LoadError
+
+pub fn watershed_auto(@types.Image) -> (Array[Int], Int) raise @types.LoadError
+
+pub fn watershed_auto_16(@types.Image16) -> (Array[Int], Int) raise @types.LoadError
+
+pub fn watershed_auto_f(@types.ImageF) -> (Array[Int], Int) raise @types.LoadError
+
+pub fn watershed_default_config() -> @segment.WatershedConfig
+
+pub fn watershed_f(@types.ImageF, Array[Int]) -> Array[Int] raise @types.LoadError
+
+pub fn watershed_segment(@types.Image, config? : @segment.WatershedConfig) -> @segment.SegmentationResult
+
+pub fn watershed_segmentation(@types.Image, @segmentation.WatershedConfig) -> @segmentation.SemanticSegmentationResult raise @types.LoadError
+
+pub fn weighted_knn_classify(Array[Double], Array[(String, Array[Double])], k? : Int, distance_metric? : String) -> (String, Double, Array[(String, Double)])
+
+pub fn white_balance(@types.Image) -> @types.Image
+
+pub fn window_level_bone() -> @medical.WindowLevel
+
+pub fn window_level_brain() -> @medical.WindowLevel
+
+pub fn window_level_lung() -> @medical.WindowLevel
+
+pub fn window_level_mediastinum() -> @medical.WindowLevel
+
+pub fn write_bmp_to_bytes(@types.Image) -> Bytes
+
+pub fn write_exif_to_bytes(@meta.ExifInfo, Bytes) -> Bytes raise @types.LoadError
+
+pub fn write_hdr_to_bytes(@types.ImageF) -> Bytes raise @types.LoadError
+
+pub fn write_jpeg_to_bytes(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn write_png_to_bytes(@types.Image) -> Bytes
+
+pub fn write_tga_to_bytes(@types.Image) -> Bytes
+
+pub fn xor_decrypt_enc(@encryption.EncryptionResult, Array[Byte]) -> @types.Image
+
+pub fn xor_encrypt_enc(@types.Image, Array[Byte]) -> @encryption.EncryptionResult raise @types.LoadError
+
+pub fn xray_enhance_ai(@types.Image, Double) -> @advanced_imaging.XRayData
+
+pub fn xyz_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn xyz_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn xyz_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn ycbcr_to_rgb(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn ycbcr_to_rgb_16(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn ycbcr_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+pub using @ocr {type AccuracyStats}
+
+pub using @pose_estimation {type ActionRecognitionAlgorithm as ActionRecognitionAlgorithmPE}
+
+pub using @pose_estimation {type ActionRecognitionConfig as ActionRecognitionConfigPE}
+
+pub using @video {type ActionRecognitionResult}
+
+pub using @pose_estimation {type ActionRecognitionResult as ActionRecognitionResultPE}
+
+pub using @video {type ActionType}
+
+pub using @ocr {type AdaptivePreprocessConfig}
+
+pub using @ocr {type AdvancedChineseOcrConfig}
+
+pub using @advanced_imaging {type AdvancedImagingConfig as AdvancedImagingConfigAI}
+
+pub using @transform {type AffineMatrix}
+
+pub using @registration {type AffineTransform}
+
+pub using @face_recognition {type AgeGenderEstimationResult as AgeGenderEstimationResultFR}
+
+pub using @intelligent_vision {type AgriculturalVisionTask as AgriculturalVisionTaskIV}
+
+pub using @encryption {type ArnoldParams}
+
+pub using @style_transfer {type ArtStyle}
+
+pub using @intelligent_vision {type AstronomicalImageTask as AstronomicalImageTaskIV}
+
+pub using @ocr {type AugmentationConfig}
+
+pub using @ocr {type AugmentationType}
+
+pub using @intelligent_vision {type AutonomousDrivingTask as AutonomousDrivingTaskIV}
+
+pub using @barcode {type BarcodeConfig}
+
+pub using @barcode {type BarcodeResult}
+
+pub using @barcode {type BarcodeType}
+
+pub using @ocr {type BatchOcrConfig}
+
+pub using @ocr {type BatchProgress}
+
+pub using @ocr {type BatchResultSummary}
+
+pub using @ocr {type BatchTask}
+
+pub using @ocr {type BatchTaskStatus}
+
+pub using @detection {type BoundingBox}
+
+pub using @stereo3d {type BoundingBox3d}
+
+pub using @retrieval {type CBIRImageFeature}
+
+pub using @retrieval {type CBIRImageIndex}
+
+pub using @retrieval {type CBIRRetrievalResult}
+
+pub using @retrieval {type CBIRRetrievalResultList}
+
+pub using @computational_imaging {type CTProjectionData as CTProjectionDataCI}
+
+pub using @stereo3d {type CameraExtrinsics3d}
+
+pub using @stereo3d {type CameraIntrinsics3d}
+
+pub using @neural_rendering {type CameraParams as CameraParamsNR}
+
+pub using @slam {type CameraPose as CameraPoseSL}
+
+pub using @forensics_enhanced {type CfaAnalysisResult}
+
+pub using @remote_sensing {type ChangeDetectionResult}
+
+pub using @encryption {type ChaoticParams}
+
+pub using @ocr {type CharRecognitionResult}
+
+pub using @ocr {type CharSegment}
+
+pub using @ocr {type ChineseCharInfo}
+
+pub using @ocr {type ChineseCharStructure}
+
+pub using @ocr {type ChineseOcrConfig}
+
+pub using @ocr {type ChineseRadical}
+
+pub using @edge {type Circle}
+
+pub using @ocr {type ClassificationResult}
+
+pub using @forensics_enhanced {type CloneDetectionResult}
+
+pub using @barcode {type Code128Charset}
+
+pub using @computational_imaging {type CodedAperturePattern as CodedAperturePatternCI}
+
+pub using @forensics {type ColorAnalysisResult}
+
+pub using @retrieval {type ColorHistogramConfig}
+
+pub using @forensics {type ColorQuantizationResult}
+
+pub using @style_transfer {type ColorStatistics}
+
+pub using @color {type Colormap}
+
+pub using @ocr {type CommonErrorPattern}
+
+pub using @frequency {type Complex}
+
+pub using @ocr {type ComplexLayoutAnalysis}
+
+pub using @ocr {type ComplexLayoutType}
+
+pub using @image_generation {type CompositionConfig as CompositionConfigIG}
+
+pub using @compression {type CompressionAlgorithm}
+
+pub using @forensics {type CompressionAnalysisResult}
+
+pub using @compression {type CompressionConfig}
+
+pub using @compression {type CompressionQualityMetrics}
+
+pub using @compression {type CompressionResult}
+
+pub using @computational_imaging {type ComputationalImagingAlgorithm as ComputationalImagingAlgorithmCI}
+
+pub using @ocr {type ConfusionEntry}
+
+pub using @ocr {type ConfusionMatrix}
+
+pub using @segment {type ConnectedComponent}
+
+pub using @segment {type ConnectedComponentLabelImage}
+
+pub using @edge {type Contour}
+
+pub using @edge {type ContourPoint}
+
+pub using @feature {type CornerPoint}
+
+pub using @ocr {type CorrectionEntry}
+
+pub using @ocr {type CorrectionResult}
+
+pub using @intelligent_vision {type CropDetectionResult as CropDetectionResultIV}
+
+pub using @compression {type DCTBlock}
+
+pub using @ocr {type DLCnnModelConfig}
+
+pub using @ocr {type DLConv2DConfig}
+
+pub using @ocr {type DLDenseConfig}
+
+pub using @ocr {type DLFeatureExtractor}
+
+pub using @ocr {type DLInferenceResult}
+
+pub using @ocr {type DLLayerType}
+
+pub using @ocr {type DLNeuralLayer}
+
+pub using @ocr {type DLTrainingHistory}
+
+pub using @ocr {type DLTrainingSample}
+
+pub using @ocr {type DataLoader}
+
+pub using @forensics_enhanced {type DctCoefficientResult}
+
+pub using @intelligent_vision {type DefectDetectionResult as DefectDetectionResultIV}
+
+pub using @inpainting {type DehazeAlgorithm}
+
+pub using @enhance {type DehazeConfig}
+
+pub using @inpainting {type DehazeResult}
+
+pub using @denoise {type DenoiseAlgorithm}
+
+pub using @denoise {type DenoiseConfig}
+
+pub using @denoise {type DenoiseResult}
+
+pub using @ocr {type DeploymentEnvironment}
+
+pub using @stereo3d {type DepthMap3d}
+
+pub using @photo_enhance {type DepthOfFieldConfig}
+
+pub using @inpainting {type DerainAlgorithm}
+
+pub using @inpainting {type DerainResult}
+
+pub using @feature {type DescriptorMatch}
+
+pub using @forensics {type DetailAnalysisResult}
+
+pub using @intelligent_vision {type DetectionResultIV}
+
+pub using @ocr {type DictCharEntry}
+
+pub using @ocr {type DictCharMatch}
+
+pub using @ocr {type DictCharStructure}
+
+pub using @ocr {type DictChineseDict}
+
+pub using @ocr {type DictComponent}
+
+pub using @ocr {type DictComponentResult}
+
+pub using @ocr {type Dictionary}
+
+pub using @ocr {type DictionaryEntry}
+
+pub using @vlm_multimodal {type DiffusionConfig as DiffusionConfigVLM}
+
+pub using @vlm_multimodal {type DiffusionModelType as DiffusionModelTypeVLM}
+
+pub using @vlm_multimodal {type DiffusionResult as DiffusionResultVLM}
+
+pub using @ocr {type DigitOcrConfig}
+
+pub using @ocr {type DistanceMetric}
+
+pub using @ocr {type DistortionDetectionResult}
+
+pub using @ocr {type DistortionType}
+
+pub using @ocr {type DocumentBlock}
+
+pub using @ocr {type DocumentBlockType}
+
+pub using @ocr {type DocumentElement}
+
+pub using @ocr {type DocumentElementType}
+
+pub using @ocr {type DocumentStructure}
+
+pub using @ocr {type DocumentTreeNode}
+
+pub using @ocr {type DocumentUnderstandingEnhancedConfig}
+
+pub using @ocr {type DropFallResult}
+
+pub using @forensics {type EdgeAnalysisResult}
+
+pub using @image_generation {type EditingConfig as EditingConfigIG}
+
+pub using @image_generation {type EditingResult as EditingResultIG}
+
+pub using @forensics_enhanced {type ElaAnalysisResult}
+
+pub using @encryption {type EncryptionAlgorithm}
+
+pub using @encryption {type EncryptionConfig}
+
+pub using @encryption {type EncryptionQuality}
+
+pub using @encryption {type EncryptionResult}
+
+pub using @ocr {type EnglishOcrConfig}
+
+pub using @ocr {type EnhancedChineseOcrConfig}
+
+pub using @ocr {type EnhancedDocument}
+
+pub using @ocr {type EnhancedDocumentElement}
+
+pub using @ocr {type EnhancedTableResult}
+
+pub using @forensics {type EnhancedVerificationConfig}
+
+pub using @forensics {type EnhancedVerificationFeatures}
+
+pub using @forensics {type EnhancedVerificationResult}
+
+pub using @denoise {type EnhancementAlgorithm}
+
+pub using @superres {type EnhancementConfig}
+
+pub using @denoise {type EnhancementResult}
+
+pub using @ocr {type EnsembleConfig}
+
+pub using @ocr {type ErrorAnalysisEntry}
+
+pub using @ocr {type ErrorAnalysisReport}
+
+pub using @meta {type ExifInfo}
+
+pub using @photo_enhance {type ExposureType}
+
+pub using @face_recognition {type ExpressionRecognitionResult as ExpressionRecognitionResultFR}
+
+pub using @face_recognition {type ExpressionType as ExpressionTypeFR}
+
+pub using @ocr {type ExtractedImage}
+
+pub using @frequency {type FFTResult}
+
+pub using @face_recognition {type FaceAttributeAnalysis as FaceAttributeAnalysisFR}
+
+pub using @face_recognition {type FaceDatabase as FaceDatabaseFR}
+
+pub using @face_recognition {type FaceDetectionAlgorithm as FaceDetectionAlgorithmFR}
+
+pub using @face_recognition {type FaceDetectionResult as FaceDetectionResultFR}
+
+pub using @face_recognition {type FaceFeature as FaceFeatureFR}
+
+pub using @face_recognition {type FaceRecognitionAlgorithm as FaceRecognitionAlgorithmFR}
+
+pub using @face_recognition {type FaceRecognitionConfig as FaceRecognitionConfigFR}
+
+pub using @face_recognition {type FaceRecognitionResult as FaceRecognitionResultFR}
+
+pub using @image_retrieval_advanced {type FeatureDescriptorType}
+
+pub using @image_retrieval_advanced {type FeatureExtractionResult}
+
+pub using @registration_advanced {type FeatureMatch as FeatureMatchRA}
+
+pub using @stitch {type FeaturePoint}
+
+pub using @registration_advanced {type FeaturePoint as FeaturePointRA}
+
+pub using @slam {type FeatureTrackingResult as FeatureTrackingResultSL}
+
+pub using @retrieval {type FeatureType}
+
+pub using @feature {type FlowResult}
+
+pub using @frequency {type FreqFilterType}
+
+pub using @forensics {type FrequencyAnalysisResult}
+
+pub using @fusion_enhanced {type FusionAlgorithm}
+
+pub using @fusion {type FusionConfig}
+
+pub using @vlm_multimodal {type FusionConfig as FusionConfigVLM}
+
+pub using @fusion_enhanced {type FusionConfig as FusionEnhancedConfig}
+
+pub using @fusion_enhanced {type FusionResult}
+
+pub using @vlm_multimodal {type FusionResult as FusionResultVLM}
+
+pub using @retrieval {type GaborConfig}
+
+pub using @neural_rendering {type Gaussian3D as Gaussian3DNR}
+
+pub using @neural_rendering {type GaussianSplattingConfig as GaussianSplattingConfigNR}
+
+pub using @image_generation {type GenerationConfig as GenerationConfigIG}
+
+pub using @image_generation {type GenerationResult as GenerationResultIG}
+
+pub using @vlm_multimodal {type GenerativeAIConfig as GenerativeAIConfigVLM}
+
+pub using @vlm_multimodal {type GenerativeAIResult as GenerativeAIResultVLM}
+
+pub using @vlm_multimodal {type GenerativeAITaskType as GenerativeAITaskTypeVLM}
+
+pub using @forensics {type GeometryAnalysisResult}
+
+pub using @pose_estimation {type GestureRecognitionResult as GestureRecognitionResultPE}
+
+pub using @pose_estimation {type GestureType as GestureTypePE}
+
+pub using @types {type GifAnimation}
+
+pub using @feature {type GlcmFeatures}
+
+pub using @segmentation {type GrabCutConfig}
+
+pub using @ocr {type GridFeatures}
+
+pub using @retrieval {type HOGConfig}
+
+pub using @frequency {type HaarWaveletResult}
+
+pub using @ocr {type HandwritingCharFeature}
+
+pub using @ocr {type HandwritingOcrConfig}
+
+pub using @ocr {type HandwritingOcrEnhancedConfig}
+
+pub using @ocr {type HandwritingRecognitionConfig}
+
+pub using @ocr {type HandwritingRecognitionResult}
+
+pub using @ocr {type HandwritingStrokeFeatures}
+
+pub using @ocr {type HandwritingStyle}
+
+pub using @ocr {type HandwritingTemplate}
+
+pub using @enhance {type HdrConfig}
+
+pub using @photo_enhance {type HdrImage}
+
+pub using @feature {type HistCompareMethod}
+
+pub using @ocr {type HogFeatures}
+
+pub using @computational_imaging {type Hologram as HologramCI}
+
+pub using @computational_imaging {type HologramType as HologramTypeCI}
+
+pub using @stitch {type Homography}
+
+pub using @edge {type HoughLine}
+
+pub using @compression {type HuffmanTable}
+
+pub using @pose_estimation {type HumanPose as HumanPosePE}
+
+pub using @advanced_imaging {type HyperspectralData as HyperspectralDataAI}
+
+pub using @forensics_enhanced {type IlluminationConsistencyResult}
+
+pub using @types {type Image}
+
+pub using @types {type Image16}
+
+pub using @scene_understanding {type ImageCaptioningAlgorithm as ImageCaptioningAlgorithmSU}
+
+pub using @scene_understanding {type ImageCaptioningResult as ImageCaptioningResultSU}
+
+pub using @retrieval {type ImageDatabase}
+
+pub using @image_generation {type ImageEditingAlgorithm as ImageEditingAlgorithmIG}
+
+pub using @encryption {type ImageEncryptionQuality}
+
+pub using @types {type ImageF}
+
+pub using @retrieval {type ImageFeature}
+
+pub using @types {type ImageFormat}
+
+pub using @image_generation {type ImageGenerationAlgorithm as ImageGenerationAlgorithmIG}
+
+pub using @types {type ImageInfo}
+
+pub using @superres {type ImageQualityMetrics}
+
+pub using @image_retrieval_advanced {type ImageRetrievalConfig}
+
+pub using @image_retrieval_advanced {type ImageRetrievalTaskType}
+
+pub using @forensics {type ImageSourceType}
+
+pub using @util {type ImageStats}
+
+pub using @util {type ImageStatsF}
+
+pub using @advanced_imaging {type ImagingModality as ImagingModalityAI}
+
+pub using @computational_imaging {type ImagingReconstructionResult as ImagingReconstructionResultCI}
+
+pub using @image_retrieval_advanced {type IndexConstructionResult}
+
+pub using @image_retrieval_advanced {type IndexStructureType}
+
+pub using @intelligent_vision {type IndustrialInspectionTask as IndustrialInspectionTaskIV}
+
+pub using @advanced_imaging {type InfraredImagingType as InfraredImagingTypeAI}
+
+pub using @enhance {type InpaintConfig}
+
+pub using @inpainting {type InpaintingAlgorithm}
+
+pub using @inpainting {type InpaintingConfig}
+
+pub using @inpainting {type InpaintingResult}
+
+pub using @segmentation {type InstanceSegmentationResult}
+
+pub using @feature {type IntegralImage}
+
+pub using @feature {type IntegralImageSq}
+
+pub using @intelligent_vision {type IntelligentVisionConfig as IntelligentVisionConfigIV}
+
+pub using @superres {type InterpolationConfig}
+
+pub using @intelligent_vision {type IntrusionDetectionResult as IntrusionDetectionResultIV}
+
+pub using @forensics_enhanced {type JpegGhostResult}
+
+pub using @segmentation {type KMeansConfig}
+
+pub using @slam {type KeyFrame as KeyFrameSL}
+
+pub using @video {type Keyframe}
+
+pub using @video {type KeyframeType}
+
+pub using @pose_estimation {type Keypoint as KeypointPE}
+
+pub using @ocr {type KnnClassifier}
+
+pub using @retrieval {type LBPConfig}
+
+pub using @ocr {type LRSchedulerConfig}
+
+pub using @ocr {type LRSchedulerType}
+
+pub using @remote_sensing {type LandCoverClass}
+
+pub using @intelligent_vision {type LaneDetectionResult as LaneDetectionResultIV}
+
+pub using @ocr {type LanguageDetectionResult}
+
+pub using @ocr {type LanguageModelState}
+
+pub using @ocr {type LanguageType}
+
+pub using @image_generation {type LatentVector as LatentVectorIG}
+
+pub using @ocr {type LayoutType}
+
+pub using @ocr {type LbpFeatures}
+
+pub using @medical {type Lesion}
+
+pub using @computational_imaging {type LightFieldCameraParams as LightFieldCameraParamsCI}
+
+pub using @computational_imaging {type LightFieldData as LightFieldDataCI}
+
+pub using @computational_imaging {type LightFieldRepresentation as LightFieldRepresentationCI}
+
+pub using @ocr {type ListItemInfo}
+
+pub using @ocr {type ListItemType}
+
+pub using @types {type LoadError}
+
+pub using @slam {type LoopClosureResult as LoopClosureResultSL}
+
+pub using @photo_enhance {type LowLightConfig}
+
+pub using @advanced_imaging {type MRIData as MRIDataAI}
+
+pub using @slam {type MapPoint as MapPointSL}
+
+pub using @ocr {type MarkdownDocument}
+
+pub using @ocr {type MarkdownElement}
+
+pub using @ocr {type MarkdownElementType}
+
+pub using @ocr {type MarkdownImage}
+
+pub using @ocr {type MarkdownSymbol}
+
+pub using @ocr {type MarkdownTable}
+
+pub using @stitch {type MatchPair}
+
+pub using @medical {type MedicalImage}
+
+pub using @medical {type MedicalImageQuality}
+
+pub using @medical {type MedicalImageType}
+
+pub using @medical {type MedicalRegistrationResult}
+
+pub using @medical {type MedicalSegmentationConfig}
+
+pub using @ocr {type MemoryUsageStats}
+
+pub using @stereo3d {type Mesh3d}
+
+pub using @forensics_enhanced {type MetadataForensicsResult}
+
+pub using @edge {type Moments}
+
+pub using @ocr {type MultilingualOcrConfig}
+
+pub using @ocr {type MultilingualOcrEnhancedConfig}
+
+pub using @vlm_multimodal {type MultimodalFusionStrategy as MultimodalFusionStrategyVLM}
+
+pub using @remote_sensing {type MultispectralImage}
+
+pub using @neural_rendering {type NeRFConfig as NeRFConfigNR}
+
+pub using @neural_rendering {type NeuralRenderingAlgorithm as NeuralRenderingAlgorithmNR}
+
+pub using @ocr {type NgramModel}
+
+pub using @photo_enhance {type NightEnhanceConfig}
+
+pub using @enhance {type NlmConfig}
+
+pub using @forensics {type NoiseAnalysisResult}
+
+pub using @forensics_enhanced {type NoiseResidualResult}
+
+pub using @denoise {type NoiseType}
+
+pub using @ocr {type OCRPageResult}
+
+pub using @detection {type ObjectClass}
+
+pub using @ocr {type OcrAccuracyEnhancedConfig}
+
+pub using @ocr {type OcrCharResult}
+
+pub using @ocr {type OcrConnectedComponent}
+
+pub using @ocr {type OcrConnectedComponentsResult}
+
+pub using @ocr {type OcrErrorType}
+
+pub using @ocr {type OcrResult}
+
+pub using @video {type OpticalFlowField}
+
+pub using @video {type OpticalFlowVector}
+
+pub using @ocr {type OptimizerConfig}
+
+pub using @ocr {type OptimizerType}
+
+pub using @feature {type OrbDescriptor}
+
+pub using @feature {type OrbKeyPoint}
+
+pub using @advanced_imaging {type PETData as PETDataAI}
+
+pub using @ocr {type PageRegion}
+
+pub using @ocr {type PageRegionType}
+
+pub using @photo_enhance {type PanoramaConfig}
+
+pub using @photo_enhance {type PanoramaResult}
+
+pub using @ocr {type PerformanceBenchmark}
+
+pub using @transform {type PerspectiveMatrix}
+
+pub using @computational_imaging {type PhaseRetrievalConfig as PhaseRetrievalConfigCI}
+
+pub using @types {type PngAnimation}
+
+pub using @meta {type PngTextChunk}
+
+pub using @neural_rendering {type Point3D as Point3DNR}
+
+pub using @stereo3d {type Point3d}
+
+pub using @stereo3d {type PointCloud}
+
+pub using @stereo3d {type PointCloud3D}
+
+pub using @advanced_imaging {type PolarizationData as PolarizationDataAI}
+
+pub using @pose_estimation {type PoseEstimationAlgorithm as PoseEstimationAlgorithmPE}
+
+pub using @pose_estimation {type PoseEstimationConfig as PoseEstimationConfigPE}
+
+pub using @ocr {type PostProcessConfig}
+
+pub using @ocr {type ProjectionFeatures}
+
+pub using @ocr {type ProjectionResult}
+
+pub using @ocr {type PunctuationTemplate}
+
+pub using @barcode {type QrDecodeResult}
+
+pub using @barcode {type QrFinderPattern}
+
+pub using @quality {type QualityMetrics}
+
+pub using @compression {type QuantizationTableType}
+
+pub using @advanced_imaging {type QuantumImagingAlgorithm as QuantumImagingAlgorithmAI}
+
+pub using @image_retrieval_advanced {type QueryExpansionResult}
+
+pub using @neural_rendering {type Ray as RayNR}
+
+pub using @neural_rendering {type ReconstructionAlgorithm as ReconstructionAlgorithmNR}
+
+pub using @neural_rendering {type ReconstructionResult as ReconstructionResultNR}
+
+pub using @computational_imaging {type RefocusResult as RefocusResultCI}
+
+pub using @medical {type RegionOfInterest}
+
+pub using @fusion_enhanced {type RegistrationAlgorithm}
+
+pub using @registration_advanced {type RegistrationAlgorithm as RegistrationAlgorithmRA}
+
+pub using @fusion_enhanced {type RegistrationConfig}
+
+pub using @registration_advanced {type RegistrationConfigAdvanced}
+
+pub using @fusion_enhanced {type RegistrationResult as RegistrationEnhancedResult}
+
+pub using @registration {type RegistrationResult}
+
+pub using @stereo3d {type RegistrationResult3d}
+
+pub using @registration_advanced {type RegistrationResultAdvanced}
+
+pub using @image_retrieval_advanced {type RelevanceFeedbackResult}
+
+pub using @remote_sensing {type RemoteSensingImage}
+
+pub using @remote_sensing {type RemoteSensingImageType}
+
+pub using @remote_sensing {type RemoteSensingQuality}
+
+pub using @neural_rendering {type RenderingResult as RenderingResultNR}
+
+pub using @types {type ResizeEdge}
+
+pub using @types {type ResizeFilter}
+
+pub using @image_retrieval_advanced {type RetrievalResult}
+
+pub using @intelligent_vision {type RobotVisionTask as RobotVisionTaskIV}
+
+pub using @ocr {type RobustnessReport}
+
+pub using @slam {type SLAMAlgorithm as SLAMAlgorithmSL}
+
+pub using @slam {type SLAMConfig as SLAMConfigSL}
+
+pub using @slam {type SLAMState as SLAMStateSL}
+
+pub using @ocr {type ScanOCRConfig}
+
+pub using @ocr {type ScanQuality}
+
+pub using @ocr {type ScanQualityLevel}
+
+pub using @scene_understanding {type SceneClassificationAlgorithm as SceneClassificationAlgorithmSU}
+
+pub using @scene_understanding {type SceneClassificationResult as SceneClassificationResultSU}
+
+pub using @scene_understanding {type SceneGraphNode as SceneGraphNodeSU}
+
+pub using @scene_understanding {type SceneGraphRelation as SceneGraphRelationSU}
+
+pub using @scene_understanding {type SceneGraph as SceneGraphSU}
+
+pub using @scene_understanding {type SceneUnderstandingConfig as SceneUnderstandingConfigSU}
+
+pub using @retrieval {type SearchResult}
+
+pub using @intelligent_vision {type SecurityMonitoringTask as SecurityMonitoringTaskIV}
+
+pub using @segment {type SegmentLabelImage}
+
+pub using @segment {type SegmentRegion}
+
+pub using @segmentation {type SegmentationLabel}
+
+pub using @segmentation {type SegmentationMetrics}
+
+pub using @segment {type SegmentationResult}
+
+pub using @segmentation {type SemanticSegmentationResult}
+
+pub using @feature {type SiftDescriptor}
+
+pub using @feature {type SiftKeyPoint}
+
+pub using @feature {type SiftMatch}
+
+pub using @ocr {type SimilarCharMapping}
+
+pub using @retrieval {type SimilarityMetric}
+
+pub using @image_retrieval_advanced {type SimilarityMetricType}
+
+pub using @image_retrieval_advanced {type SimilarityResult}
+
+pub using @pose_estimation {type SkeletonConnection as SkeletonConnectionPE}
+
+pub using @forensics {type SourceVerificationConfig}
+
+pub using @forensics {type SourceVerificationFeatures}
+
+pub using @forensics {type SourceVerificationResult}
+
+pub using @remote_sensing {type SpectralSignature}
+
+pub using @ocr {type SplitPoint}
+
+pub using @intelligent_vision {type StarDetectionResult as StarDetectionResultIV}
+
+pub using @ocr {type StatisticalFeatures}
+
+pub using @stereo3d {type StereoConfig3d}
+
+pub using @stitch {type StitchConfig}
+
+pub using @lib {type StreamInfo}
+
+pub using @ocr {type StrokeFeature}
+
+pub using @ocr {type StrokeSegmentationResult}
+
+pub using @ocr {type StrokeType}
+
+pub using @segment {type StructuringElement}
+
+pub using @style_transfer {type StyleTransferAlgorithm}
+
+pub using @style_transfer {type StyleTransferConfig}
+
+pub using @style_transfer {type StyleTransferResult}
+
+pub using @style_transfer {type StyleTransferTextureFeatures}
+
+pub using @stylize {type StylizeConfig}
+
+pub using @superres {type SuperResolutionAlgorithm}
+
+pub using @superres {type SuperResolutionConfig}
+
+pub using @superres {type SuperResolutionResult}
+
+pub using @segmentation {type Superpixel}
+
+pub using @segment {type SuperpixelResult}
+
+pub using @ocr {type TableCell}
+
+pub using @ocr {type TableCellContent}
+
+pub using @ocr {type TableDetectionResult}
+
+pub using @ocr {type TableLine}
+
+pub using @ocr {type TableLineType}
+
+pub using @ocr {type TableStructure}
+
+pub using @forensics_enhanced {type TamperDetectionResult}
+
+pub using @feature {type TemplateMatchMethod}
+
+pub using @feature {type TemplateMatchResult}
+
+pub using @ocr {type TemplateMatcher}
+
+pub using @ocr {type TextBlock}
+
+pub using @forensics {type TextDetectionResult}
+
+pub using @ocr {type TextLine}
+
+pub using @ocr {type TextLineAttributes}
+
+pub using @ocr {type TextLineInfo}
+
+pub using @ocr {type TextRegion}
+
+pub using @ocr {type TextRegionType}
+
+pub using @forensics {type TextureAnalysisResult}
+
+pub using @remote_sensing {type TextureFeatures}
+
+pub using @advanced_imaging {type ThermalData as ThermalDataAI}
+
+pub using @photo_enhance {type ToneMappingConfig}
+
+pub using @photo_enhance {type ToneMappingType}
+
+pub using @video {type TrackedObject}
+
+pub using @video {type TrackingResult}
+
+pub using @intelligent_vision {type TrafficSignResult as TrafficSignResultIV}
+
+pub using @ocr {type TrainingConfig}
+
+pub using @ocr {type TrainingDataset}
+
+pub using @ocr {type TrainingMetrics}
+
+pub using @ocr {type TrainingSample}
+
+pub using @ocr {type TrainingState}
+
+pub using @fusion_enhanced {type TransformMatrix}
+
+pub using @registration_advanced {type TransformMatrix as TransformMatrixRA}
+
+pub using @registration_advanced {type TransformType as TransformTypeRA}
+
+pub using @forensics {type UIDetectionResult}
+
+pub using @advanced_imaging {type UltrasoundData as UltrasoundDataAI}
+
+pub using @vlm_multimodal {type VLMConfig as VLMConfigVLM}
+
+pub using @remote_sensing {type VegetationIndices}
+
+pub using @video {type VideoFrames}
+
+pub using @video {type VideoStabilizationConfig}
+
+pub using @video {type VideoSummary}
+
+pub using @computational_imaging {type ViewSynthesisResult as ViewSynthesisResultCI}
+
+pub using @vlm_multimodal {type VisionLanguageModelType as VisionLanguageModelTypeVLM}
+
+pub using @vlm_multimodal {type VisionTextEmbedding as VisionTextEmbeddingVLM}
+
+pub using @scene_understanding {type VisualQuestionAnsweringAlgorithm as VisualQuestionAnsweringAlgorithmSU}
+
+pub using @scene_understanding {type VisualQuestionAnsweringResult as VisualQuestionAnsweringResultSU}
+
+pub using @neural_rendering {type Voxel as VoxelNR}
+
+pub using @watermark {type WatermarkConfig}
+
+pub using @encryption {type WatermarkExtractionResult}
+
+pub using @encryption {type WatermarkInfo}
+
+pub using @encryption {type WatermarkType}
+
+pub using @segment {type WatershedConfig}
+
+pub using @medical {type WindowLevel}
+
+pub using @medical {type WindowLevelConfig}
+
+pub using @advanced_imaging {type XRayData as XRayDataAI}
+
+pub using @detection {type YoloBoundingBox}
+
+pub using @detection {type YoloConfig}
+
+pub using @detection {type YoloDetectionMetrics}
+
+pub using @detection {type YoloDetectionResult}
+
+pub using @detection {type YoloTrackedObject}
+
+pub using @detection {type YoloTrackingResult}
+
+// Traits
+

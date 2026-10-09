@@ -1,0 +1,37 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/watermark"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn batch_embed_watermark(Array[@types.Image], @types.Image, key? : Int) -> Array[@types.Image]
+
+pub fn embed_text_watermark(@types.Image, String, key? : Int) -> @types.Image
+
+pub fn embed_watermark_lsb(@types.Image, @types.Image, key? : Int) -> @types.Image
+
+pub fn extract_text_watermark(@types.Image, Int, key? : Int) -> String
+
+pub fn extract_watermark_lsb(@types.Image) -> @types.Image
+
+pub fn watermark_default_config() -> WatermarkConfig
+
+pub fn watermark_psnr(@types.Image, @types.Image) -> Double
+
+pub fn watermark_robustness_test(@types.Image, @types.Image, noise_level? : Double) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct WatermarkConfig {
+  method_type : String
+  strength : Double
+  key : Int
+}
+
+// Type aliases
+
+// Traits
+

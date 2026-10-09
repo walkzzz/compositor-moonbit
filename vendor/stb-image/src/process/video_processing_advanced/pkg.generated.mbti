@@ -1,0 +1,169 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/video_processing_advanced"
+
+// Values
+pub fn create_default_video_config() -> VideoProcessingConfig
+
+pub fn enhance_video(Array[VideoFrame], VideoProcessingConfig) -> VideoEnhancementResult
+
+pub fn summarize_video(Array[VideoFrame], VideoProcessingConfig) -> VideoSummarizationResult
+
+pub fn video_processing_report_to_string(VideoProcessingTaskType, VideoProcessingConfig, String) -> String
+
+pub fn video_super_resolution(Array[VideoFrame], VideoProcessingConfig) -> VideoSuperResolutionResult
+
+// Errors
+
+// Types and methods
+pub(all) enum VideoCodecType {
+  H264
+  H265
+  VP8
+  VP9
+  AV1
+  MPEG2
+  MPEG4
+  Unknown
+} derive(Eq)
+
+pub(all) struct VideoDecodingResult {
+  decoded_frames : Array[VideoFrame]
+  num_frames : Int
+  width : Int
+  height : Int
+  fps : Double
+  duration_ms : Double
+  decoding_time_ms : Double
+  codec : VideoCodecType
+  is_lossless : Bool
+}
+
+pub(all) struct VideoEncodingResult {
+  encoded_data : Array[Byte]
+  encoded_size_bytes : Int
+  original_size_bytes : Int
+  compression_ratio : Double
+  bitrate_kbps : Double
+  codec : VideoCodecType
+  num_frames : Int
+  encoding_time_ms : Double
+  quality_psnr : Double
+  quality_ssim : Double
+}
+
+pub(all) struct VideoEnhancementResult {
+  enhanced_frames : Array[VideoFrame]
+  num_frames : Int
+  enhancement_method : String
+  brightness_improvement : Double
+  contrast_improvement : Double
+  sharpness_improvement : Double
+  noise_reduction : Double
+  quality_score : Double
+  processing_time_ms : Double
+}
+
+pub(all) struct VideoFrame {
+  frame_data : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  frame_index : Int
+  timestamp_ms : Double
+  frame_type : VideoFrameType
+  quality_score : Double
+  motion_vectors : Array[Array[Double]]
+}
+
+pub(all) enum VideoFrameType {
+  IFrame
+  PFrame
+  BFrame
+  Unknown
+} derive(Eq)
+
+pub(all) struct VideoProcessingConfig {
+  task_type : VideoProcessingTaskType
+  codec : VideoCodecType
+  target_fps : Double
+  target_bitrate_kbps : Double
+  target_width : Int
+  target_height : Int
+  quality : Int
+  use_gpu : Bool
+  use_hardware_acceleration : Bool
+  denoise_strength : Double
+  sharpen_strength : Double
+  brightness_adjustment : Double
+  contrast_adjustment : Double
+  saturation_adjustment : Double
+  stabilization_crop_ratio : Double
+  sr_scale_factor : Double
+  sr_method : String
+  keyframe_detection_threshold : Double
+  max_keyframes : Int
+}
+
+pub(all) enum VideoProcessingTaskType {
+  VideoEncoding
+  VideoDecoding
+  VideoEnhancement
+  VideoSuperResolution
+  VideoDenoising
+  VideoStabilization
+  VideoSummarization
+  Unknown
+} derive(Eq)
+
+pub(all) struct VideoStabilizationResult {
+  stabilized_frames : Array[VideoFrame]
+  num_frames : Int
+  stabilization_method : String
+  cropping_ratio : Double
+  smoothness_score : Double
+  jitter_reduction : Double
+  processing_time_ms : Double
+  transformation_matrices : Array[Array[Double]]
+}
+
+pub(all) struct VideoStream {
+  frames : Array[VideoFrame]
+  num_frames : Int
+  width : Int
+  height : Int
+  fps : Double
+  duration_ms : Double
+  codec : VideoCodecType
+  bitrate_kbps : Double
+  num_channels : Int
+  color_space : String
+}
+
+pub(all) struct VideoSummarizationResult {
+  keyframes : Array[VideoFrame]
+  num_keyframes : Int
+  summary_duration_ms : Double
+  original_duration_ms : Double
+  compression_ratio : Double
+  keyframe_indices : Array[Int]
+  importance_scores : Array[Double]
+  summarization_method : String
+}
+
+pub(all) struct VideoSuperResolutionResult {
+  sr_frames : Array[VideoFrame]
+  original_width : Int
+  original_height : Int
+  sr_width : Int
+  sr_height : Int
+  scale_factor : Double
+  sr_method : String
+  psnr : Double
+  ssim : Double
+  processing_time_ms : Double
+}
+
+// Type aliases
+
+// Traits
+

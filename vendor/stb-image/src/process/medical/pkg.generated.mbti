@@ -1,0 +1,147 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/medical"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn apply_window_level(@types.Image, WindowLevel) -> @types.Image
+
+pub fn apply_window_level_medical(MedicalImage, WindowLevelConfig) -> @types.Image
+
+pub fn calculate_medical_image_quality(MedicalImage) -> MedicalImageQuality
+
+pub fn calculate_roi_stats(MedicalImage, Array[Bool]) -> (Double, Double, Int)
+
+pub fn create_default_medical_segmentation_config() -> MedicalSegmentationConfig
+
+pub fn create_default_window_level(String) -> WindowLevelConfig
+
+pub fn detect_lesions_simple(MedicalImage, Double, Double) -> Array[Lesion]
+
+pub fn measure_area(@types.Image, pixel_area? : Double) -> Double
+
+pub fn measure_distance(Int, Int, Int, Int, pixel_spacing? : Double) -> Double
+
+pub fn medical_colormap(@types.Image, colormap? : String) -> @types.Image
+
+pub fn medical_contrast_enhance(@types.Image, clip_limit? : Double, tile_size? : Int) -> @types.Image
+
+pub fn medical_denoise(@types.Image, iterations? : Int, kappa? : Double) -> @types.Image
+
+pub fn medical_image_registration(MedicalImage, MedicalImage, Int) -> MedicalRegistrationResult
+
+pub fn medical_image_report_to_string(MedicalImage, Array[Lesion], MedicalImageQuality) -> String
+
+pub fn medical_threshold_segmentation(MedicalImage, Double, Double) -> Array[Bool]
+
+pub fn region_growing_segmentation(MedicalImage, Int, Int, Int, Double) -> Array[Bool]
+
+pub fn window_level_bone() -> WindowLevel
+
+pub fn window_level_brain() -> WindowLevel
+
+pub fn window_level_lung() -> WindowLevel
+
+pub fn window_level_mediastinum() -> WindowLevel
+
+// Errors
+
+// Types and methods
+pub(all) struct Lesion {
+  id : Int
+  lesion_type : String
+  x : Double
+  y : Double
+  z : Double
+  diameter : Double
+  volume : Double
+  intensity : Double
+  margin : String
+  shape : String
+  density : String
+  confidence : Double
+  birads_category : Int
+}
+
+pub(all) struct MedicalImage {
+  width : Int
+  height : Int
+  slices : Int
+  data : Array[Double]
+  image_type : MedicalImageType
+  pixel_spacing_x : Double
+  pixel_spacing_y : Double
+  slice_thickness : Double
+  window_center : Double
+  window_width : Double
+}
+
+pub(all) struct MedicalImageQuality {
+  snr : Double
+  cnr : Double
+  sharpness : Double
+  noise_level : Double
+  artifact_score : Double
+  overall_quality : Double
+}
+
+pub(all) enum MedicalImageType {
+  CT
+  MRI
+  XRay
+  Ultrasound
+  PET
+  SPECT
+  Mammography
+  Fluoroscopy
+  Unknown
+} derive(Eq)
+
+pub(all) struct MedicalRegistrationResult {
+  transformation : Array[Double]
+  similarity : Double
+  iterations : Int
+  converged : Bool
+  registration_type : String
+}
+
+pub(all) struct MedicalSegmentationConfig {
+  method_type : String
+  lower_threshold : Double
+  upper_threshold : Double
+  seed_points : Array[(Int, Int, Int)]
+  smoothness : Double
+  curvature_weight : Double
+}
+
+pub(all) struct RegionOfInterest {
+  id : Int
+  name : String
+  x : Int
+  y : Int
+  width : Int
+  height : Int
+  slice : Int
+  volume : Double
+  mean_intensity : Double
+  std_intensity : Double
+  confidence : Double
+}
+
+pub(all) struct WindowLevel {
+  window_width : Double
+  window_level : Double
+}
+
+pub(all) struct WindowLevelConfig {
+  center : Double
+  width : Double
+  preset : String
+}
+
+// Type aliases
+
+// Traits
+

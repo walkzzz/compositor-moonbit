@@ -1,0 +1,183 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_watermark_advanced"
+
+// Values
+pub fn attack_watermark(Array[Double], Int, Int, WatermarkAttackType, Double) -> WatermarkAttackResult
+
+pub fn create_default_watermark_config() -> ImageWatermarkConfig
+
+pub fn detect_watermark(Array[Double], Int, Int, Int, ImageWatermarkConfig) -> WatermarkDetectionResult
+
+pub fn embed_visible_watermark(Array[Double], Int, Int, ImageWatermarkConfig) -> Array[Double]
+
+pub fn embed_watermark(Array[Double], Int, Int, Array[Byte], ImageWatermarkConfig) -> WatermarkEmbeddingResult
+
+pub fn image_watermark_report_to_string(ImageWatermarkTaskType, ImageWatermarkConfig, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct DigitalFingerprintResult {
+  fingerprinted_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  fingerprint_data : Array[Byte]
+  fingerprint_size_bytes : Int
+  user_id : String
+  embedding_domain : WatermarkDomain
+  fingerprint_strength : Double
+  psnr : Double
+  ssim : Double
+  traceability_score : Double
+  collusion_resistance : Double
+  embedding_time_ms : Double
+}
+
+pub(all) struct ImageWatermarkConfig {
+  task_type : ImageWatermarkTaskType
+  watermark_type : WatermarkType
+  embedding_domain : WatermarkDomain
+  watermark_strength : Double
+  use_encryption : Bool
+  encryption_key : Array[Byte]
+  use_error_correction : Bool
+  error_correction_level : Int
+  use_scrambling : Bool
+  visible_config : VisibleWatermarkConfig
+  use_gpu : Bool
+}
+
+pub(all) enum ImageWatermarkTaskType {
+  VisibleWatermark
+  InvisibleWatermark
+  RobustWatermark
+  FragileWatermark
+  SemiFragileWatermark
+  DigitalFingerprint
+  WatermarkAttack
+  WatermarkDetection
+  Unknown
+} derive(Eq)
+
+pub(all) struct VisibleWatermarkConfig {
+  watermark_text : String
+  watermark_image : Array[Double]
+  watermark_type : WatermarkType
+  position_x : Int
+  position_y : Int
+  opacity : Double
+  scale : Double
+  rotation : Double
+  tile_mode : Bool
+  tile_spacing_x : Int
+  tile_spacing_y : Int
+  font_size : Int
+  font_color : Array[Double]
+  use_shadow : Bool
+  shadow_offset_x : Int
+  shadow_offset_y : Int
+  shadow_opacity : Double
+}
+
+pub(all) struct WatermarkAttackResult {
+  attacked_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  attack_type : WatermarkAttackType
+  attack_parameters : Array[Double]
+  psnr : Double
+  ssim : Double
+  image_quality_score : Double
+  watermark_survival_rate : Double
+  attack_time_ms : Double
+}
+
+pub(all) enum WatermarkAttackType {
+  JPEGCompression
+  NoiseAddition
+  Filtering
+  Cropping
+  Scaling
+  Rotation
+  Shearing
+  BrightnessChange
+  ContrastChange
+  GeometricAttack
+  CollusionAttack
+  Unknown
+} derive(Eq)
+
+pub(all) struct WatermarkDetectionResult {
+  detected_watermark : Array[Byte]
+  watermark_size_bytes : Int
+  is_detected : Bool
+  detection_confidence : Double
+  correlation_coefficient : Double
+  ber : Double
+  nc : Double
+  detection_domain : WatermarkDomain
+  detection_time_ms : Double
+  watermark_type : WatermarkType
+}
+
+pub(all) enum WatermarkDomain {
+  SpatialDomain
+  DCTDomain
+  DWTDomain
+  FFTDomain
+  DFTomain
+  WaveletDomain
+  ContourletDomain
+  Unknown
+} derive(Eq)
+
+pub(all) struct WatermarkEmbeddingResult {
+  watermarked_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  watermark_data : Array[Byte]
+  watermark_size_bytes : Int
+  watermark_type : WatermarkType
+  embedding_domain : WatermarkDomain
+  watermark_strength : Double
+  psnr : Double
+  ssim : Double
+  imperceptibility_score : Double
+  robustness_score : Double
+  capacity_bits : Int
+  embedding_time_ms : Double
+}
+
+pub(all) struct WatermarkPerformanceResult {
+  imperceptibility_psnr : Double
+  imperceptibility_ssim : Double
+  robustness_against_jpeg : Double
+  robustness_against_noise : Double
+  robustness_against_filtering : Double
+  robustness_against_cropping : Double
+  robustness_against_scaling : Double
+  robustness_against_rotation : Double
+  overall_robustness : Double
+  capacity_bits : Int
+  embedding_time_ms : Double
+  detection_time_ms : Double
+  overall_score : Double
+}
+
+pub(all) enum WatermarkType {
+  TextWatermark
+  ImageWatermark
+  LogoWatermark
+  BinaryWatermark
+  QRCodeWatermark
+  EncryptedWatermark
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

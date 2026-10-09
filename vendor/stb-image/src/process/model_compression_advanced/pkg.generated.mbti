@@ -1,0 +1,197 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/model_compression_advanced"
+
+// Values
+pub fn compress_model(Array[Array[Double]], ModelCompressionConfig) -> ModelCompressionResult
+
+pub fn compression_report_to_string(ModelCompressionTaskType, ModelCompressionConfig, String) -> String
+
+pub fn create_default_compression_config() -> ModelCompressionConfig
+
+pub fn distill_model(Array[Array[Double]], Int, Int, ModelCompressionConfig) -> DistillationResult
+
+pub fn low_rank_decomposition(Array[Array[Double]], ModelCompressionConfig) -> LowRankResult
+
+pub fn prune_model(Array[Array[Double]], ModelCompressionConfig) -> PruningResult
+
+pub fn quantize_model(Array[Array[Double]], ModelCompressionConfig) -> QuantizationResult
+
+// Errors
+
+// Types and methods
+pub(all) struct DistillationResult {
+  student_weights : Array[Array[Double]]
+  teacher_weights : Array[Array[Double]]
+  student_accuracy : Double
+  teacher_accuracy : Double
+  student_loss : Double
+  distillation_loss : Double
+  total_loss : Double
+  temperature : Double
+  alpha : Double
+  distillation_type : KnowledgeDistillationType
+  num_epochs : Int
+  learning_rate : Double
+  distillation_time_ms : Double
+  model_compression_ratio : Double
+  accuracy_gap : Double
+}
+
+pub(all) enum KnowledgeDistillationType {
+  ResponseBased
+  FeatureBased
+  RelationBased
+  AttentionTransfer
+  FitNet
+  RKD
+  PKT
+  CRD
+  DML
+  OnlineDistillation
+  Unknown
+} derive(Eq)
+
+pub(all) enum LowRankFactorizationType {
+  SVD
+  CPDecomposition
+  TuckerDecomposition
+  TensorTrain
+  CanonicalPolyadic
+  HierarchicalTucker
+  Unknown
+} derive(Eq)
+
+pub(all) struct LowRankResult {
+  decomposed_weights : Array[Array[Array[Double]]]
+  original_weights : Array[Array[Double]]
+  num_layers : Int
+  rank : Int
+  decomposition_type : LowRankFactorizationType
+  original_params : Int
+  decomposed_params : Int
+  compression_ratio : Double
+  reconstruction_error : Double
+  original_accuracy : Double
+  decomposed_accuracy : Double
+  accuracy_drop : Double
+  decomposition_time_ms : Double
+}
+
+pub(all) struct ModelCompressionConfig {
+  task_type : ModelCompressionTaskType
+  quantization_type : QuantizationType
+  pruning_type : PruningType
+  distillation_type : KnowledgeDistillationType
+  low_rank_type : LowRankFactorizationType
+  target_compression_ratio : Double
+  target_accuracy_drop : Double
+  bit_width : Int
+  pruning_ratio : Double
+  temperature : Double
+  alpha : Double
+  rank : Int
+  num_fine_tune_epochs : Int
+  learning_rate : Double
+  use_calibration : Bool
+  calibration_samples : Int
+  use_fine_tuning : Bool
+  random_state : Int
+}
+
+pub(all) struct ModelCompressionResult {
+  original_params : Int
+  compressed_params : Int
+  original_flops : Int
+  compressed_flops : Int
+  compression_ratio : Double
+  speedup_ratio : Double
+  original_accuracy : Double
+  compressed_accuracy : Double
+  accuracy_drop : Double
+  original_model_size_mb : Double
+  compressed_model_size_mb : Double
+  compression_time_ms : Double
+  compression_method : String
+  quantized_weights : Array[Array[Double]]
+  pruned_mask : Array[Array[Bool]]
+}
+
+pub(all) enum ModelCompressionTaskType {
+  Quantization
+  Pruning
+  KnowledgeDistillation
+  LowRankFactorization
+  WeightSharing
+  NetworkSlimming
+  StructuredPruning
+  UnstructuredPruning
+  MixedPrecision
+  Unknown
+} derive(Eq)
+
+pub(all) struct PruningResult {
+  pruned_weights : Array[Array[Double]]
+  pruning_mask : Array[Array[Bool]]
+  original_weights : Array[Array[Double]]
+  num_layers : Int
+  pruning_type : PruningType
+  pruning_ratio : Double
+  original_params : Int
+  remaining_params : Int
+  original_accuracy : Double
+  pruned_accuracy : Double
+  accuracy_drop : Double
+  fine_tuned_accuracy : Double
+  num_fine_tune_epochs : Int
+  pruning_time_ms : Double
+}
+
+pub(all) enum PruningType {
+  Unstructured
+  Structured
+  ChannelPruning
+  FilterPruning
+  LayerPruning
+  BlockPruning
+  HeadPruning
+  NeuronPruning
+  WeightPruning
+  GradualPruning
+  Unknown
+} derive(Eq)
+
+pub(all) struct QuantizationResult {
+  quantized_weights : Array[Array[Double]]
+  quantization_scale : Array[Double]
+  zero_point : Array[Double]
+  original_weights : Array[Array[Double]]
+  num_layers : Int
+  quantization_type : QuantizationType
+  bit_width : Int
+  original_accuracy : Double
+  quantized_accuracy : Double
+  accuracy_drop : Double
+  model_size_reduction : Double
+  quantization_error : Double
+  calibration_samples : Int
+  quantization_time_ms : Double
+}
+
+pub(all) enum QuantizationType {
+  INT8
+  INT4
+  INT2
+  INT1
+  FP16
+  BF16
+  FP8
+  MixedPrecision
+  PerChannel
+  PerTensor
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

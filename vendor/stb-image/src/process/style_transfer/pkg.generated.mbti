@@ -1,0 +1,108 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/style_transfer"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn calculate_color_statistics(@types.Image) -> ColorStatistics raise @types.LoadError
+
+pub fn calculate_texture_features(@types.Image) -> StyleTransferTextureFeatures raise @types.LoadError
+
+pub fn cartoonize(@types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn color_transfer(@types.Image, @types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn create_default_style_transfer_config() -> StyleTransferConfig
+
+pub fn oil_painting(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn sketch_effect(@types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn style_transfer(@types.Image, @types.Image, StyleTransferConfig) -> StyleTransferResult raise @types.LoadError
+
+pub fn style_transfer_report_to_string(StyleTransferResult, ColorStatistics, ColorStatistics, StyleTransferTextureFeatures) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum ArtStyle {
+  Impressionist
+  Cubist
+  Surrealist
+  Abstract
+  PopArt
+  Minimalist
+  Baroque
+  Renaissance
+  Modern
+  Contemporary
+  Unknown
+} derive(Eq)
+
+pub(all) struct ColorStatistics {
+  mean_r : Double
+  mean_g : Double
+  mean_b : Double
+  std_r : Double
+  std_g : Double
+  std_b : Double
+  min_r : Double
+  min_g : Double
+  min_b : Double
+  max_r : Double
+  max_g : Double
+  max_b : Double
+}
+
+pub(all) enum StyleTransferAlgorithm {
+  ColorTransfer
+  TextureSynthesis
+  NeuralStyle
+  FastStyle
+  CycleGAN
+  AdaIN
+  Cartoon
+  OilPainting
+  Watercolor
+  Sketch
+  Unknown
+} derive(Eq)
+
+pub(all) struct StyleTransferConfig {
+  algorithm : StyleTransferAlgorithm
+  style_strength : Double
+  content_strength : Double
+  iterations : Int
+  learning_rate : Double
+  use_color_preservation : Bool
+  resolution : Int
+}
+
+pub(all) struct StyleTransferResult {
+  image : @types.Image
+  content_image_path : String
+  style_image_path : String
+  algorithm : StyleTransferAlgorithm
+  style_strength : Double
+  content_strength : Double
+  processing_time_ms : Double
+  iterations : Int
+}
+
+pub(all) struct StyleTransferTextureFeatures {
+  contrast : Double
+  homogeneity : Double
+  energy : Double
+  correlation : Double
+  entropy : Double
+  coarseness : Double
+  directionality : Double
+  regularity : Double
+}
+
+// Type aliases
+
+// Traits
+

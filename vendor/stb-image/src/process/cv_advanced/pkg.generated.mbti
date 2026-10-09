@@ -1,0 +1,133 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/cv_advanced"
+
+// Values
+pub fn calculate_iou(Array[Int], Array[Int]) -> Double
+
+pub fn create_default_cv_advanced_config() -> CVAdvancedConfig
+
+pub fn create_tracked_object(Int, Array[Int], String, Double) -> TrackedObject
+
+pub fn cv_advanced_report_to_string(CVAdvancedTaskType, CVAdvancedConfig, String) -> String
+
+pub fn generate_caption(String) -> ImageCaptioningResult
+
+pub fn parse_scene(String, Int, Int, CVAdvancedConfig) -> SceneParsingResult
+
+pub fn recognize_action(String, Int, CVAdvancedConfig) -> ActionRecognitionResult
+
+pub fn update_tracked_object(TrackedObject, Array[Int], Double) -> TrackedObject
+
+pub fn visual_question_answering(String, String) -> VQAResult
+
+// Errors
+
+// Types and methods
+pub(all) enum ActionRecognitionAlgorithm {
+  C3D
+  I3D
+  TwoStream
+  SlowFast
+  TimeSformer
+  VideoMAE
+  X3D
+  Unknown
+} derive(Eq)
+
+pub(all) struct ActionRecognitionResult {
+  video_id : String
+  action_label : String
+  confidence : Double
+  all_actions : Array[String]
+  all_scores : Array[Double]
+  start_time : Double
+  end_time : Double
+  num_frames : Int
+}
+
+pub(all) struct CVAdvancedConfig {
+  task_type : CVAdvancedTaskType
+  tracking_algorithm : TrackingAlgorithm
+  action_algorithm : ActionRecognitionAlgorithm
+  tracking_window_size : Int
+  confidence_threshold : Double
+  iou_threshold : Double
+  max_age : Int
+  min_hits : Int
+  num_actions : Int
+  num_scene_classes : Int
+  use_temporal : Bool
+  use_attention : Bool
+}
+
+pub(all) enum CVAdvancedTaskType {
+  ObjectTracking
+  ActionRecognition
+  SceneParsing
+  VisualQuestionAnswering
+  ImageCaptioning
+  VisualReasoning
+  VideoUnderstanding
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImageCaptioningResult {
+  image_id : String
+  caption : String
+  confidence : Double
+  all_captions : Array[String]
+  all_scores : Array[Double]
+  bleu_score : Double
+  meteor_score : Double
+  cider_score : Double
+}
+
+pub(all) struct SceneParsingResult {
+  image_id : String
+  scene_type : String
+  confidence : Double
+  semantic_map : Array[Array[Int]]
+  num_classes : Int
+  class_distribution : Array[Double]
+  objects : Array[String]
+  num_objects : Int
+}
+
+pub(all) struct TrackedObject {
+  object_id : Int
+  bounding_box : Array[Int]
+  class_label : String
+  confidence : Double
+  velocity : Array[Double]
+  trajectory : Array[Array[Int]]
+  age : Int
+  hits : Int
+  is_active : Bool
+}
+
+pub(all) enum TrackingAlgorithm {
+  KCF
+  MOSSE
+  CSRT
+  MedianFlow
+  TLD
+  GOTURN
+  SiamRPN
+  SiamMask
+  Unknown
+} derive(Eq)
+
+pub(all) struct VQAResult {
+  image_id : String
+  question : String
+  answer : String
+  confidence : Double
+  answer_type : String
+  reasoning_steps : Array[String]
+  num_steps : Int
+}
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,157 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/remote_sensing"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn calculate_all_vegetation_indices(RemoteSensingImage) -> VegetationIndices
+
+pub fn calculate_ndbi(RemoteSensingImage, Int, Int) -> Array[Double]
+
+pub fn calculate_ndvi(RemoteSensingImage, Int, Int) -> Array[Double]
+
+pub fn calculate_ndwi(RemoteSensingImage, Int, Int) -> Array[Double]
+
+pub fn calculate_remote_sensing_quality(RemoteSensingImage) -> RemoteSensingQuality
+
+pub fn calculate_spectral_signature(RemoteSensingImage, Int, Int) -> SpectralSignature
+
+pub fn calculate_texture_features(@types.Image, Int, Int, Int) -> TextureFeatures raise @types.LoadError
+
+pub fn classification_colormap(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn classify_land_cover_simple(RemoteSensingImage) -> ClassificationResult
+
+pub fn compute_evi(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn compute_ndbi(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn compute_ndvi(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn compute_ndwi(@types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn create_default_remote_sensing_image(Int, Int, Int) -> RemoteSensingImage
+
+pub fn detect_changes_simple(RemoteSensingImage, RemoteSensingImage, Double) -> ChangeDetectionResult
+
+pub fn false_color_composite(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn land_cover_classification(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn multispectral_new(Int, Int, Array[@types.Image], band_names? : Array[String]) -> MultispectralImage
+
+pub fn remote_sensing_report_to_string(RemoteSensingImage, ClassificationResult, ChangeDetectionResult, RemoteSensingQuality) -> String
+
+pub fn true_color_composite(@types.Image, @types.Image, @types.Image) -> @types.Image raise @types.LoadError
+
+pub fn vegetation_coverage(@types.Image, ndvi_soil? : Double, ndvi_veg? : Double) -> @types.Image raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) struct ChangeDetectionResult {
+  width : Int
+  height : Int
+  change_mask : Array[Bool]
+  change_percentage : Double
+  num_changed_pixels : Int
+  change_intensity : Array[Double]
+  threshold : Double
+}
+
+pub(all) struct ClassificationResult {
+  width : Int
+  height : Int
+  labels : Array[Int]
+  class_names : Array[String]
+  class_colors : Array[(Int, Int, Int)]
+  num_classes : Int
+  overall_accuracy : Double
+  kappa_coefficient : Double
+}
+
+pub(all) enum LandCoverClass {
+  Water
+  Forest
+  Grassland
+  Cropland
+  Urban
+  Barren
+  Wetland
+  Snow
+  Cloud
+  Shadow
+  Unknown
+} derive(Eq)
+
+pub(all) struct MultispectralImage {
+  width : Int
+  height : Int
+  bands : Array[@types.Image]
+  band_names : Array[String]
+}
+
+pub(all) struct RemoteSensingImage {
+  width : Int
+  height : Int
+  bands : Int
+  data : Array[Double]
+  image_type : RemoteSensingImageType
+  wavelength : Array[Double]
+  resolution : Double
+  acquisition_date : String
+  cloud_cover : Double
+}
+
+pub(all) enum RemoteSensingImageType {
+  Optical
+  Multispectral
+  Hyperspectral
+  SAR
+  Thermal
+  LiDAR
+  Unknown
+} derive(Eq)
+
+pub(all) struct RemoteSensingQuality {
+  snr : Double
+  cloud_cover : Double
+  geometric_accuracy : Double
+  radiometric_accuracy : Double
+  overall_quality : Double
+}
+
+pub(all) struct SpectralSignature {
+  wavelengths : Array[Double]
+  reflectance : Array[Double]
+  num_bands : Int
+  mean_reflectance : Double
+  std_reflectance : Double
+  absorption_features : Array[(Double, Double)]
+}
+
+pub(all) struct TextureFeatures {
+  contrast : Double
+  homogeneity : Double
+  energy : Double
+  correlation : Double
+  entropy : Double
+  variance : Double
+  dissimilarity : Double
+}
+
+pub(all) struct VegetationIndices {
+  ndvi : Array[Double]
+  ndwi : Array[Double]
+  ndbi : Array[Double]
+  evi : Array[Double]
+  savi : Array[Double]
+  msavi : Array[Double]
+}
+
+// Type aliases
+
+// Traits
+

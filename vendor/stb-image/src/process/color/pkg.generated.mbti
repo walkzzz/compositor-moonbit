@@ -1,0 +1,236 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/color"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn adaptive_threshold_gaussian(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn adaptive_threshold_gaussian_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn adaptive_threshold_gaussian_f(@types.ImageF, Int, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adaptive_threshold_mean(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn adaptive_threshold_mean_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn adaptive_threshold_mean_f(@types.ImageF, Int, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adjust_brightness(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn adjust_brightness_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn adjust_brightness_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adjust_contrast(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn adjust_contrast_16(@types.Image16, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn adjust_contrast_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adjust_gamma(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn adjust_gamma_16(@types.Image16, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn adjust_gamma_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn adjust_hue(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn adjust_saturation(@types.Image, Float) -> @types.Image raise @types.LoadError
+
+pub fn apply_colormap(@types.Image, Colormap) -> @types.Image raise @types.LoadError
+
+pub fn clahe(@types.Image, Int, Float) -> @types.Image raise @types.LoadError
+
+pub fn cmyk_to_rgb(Int, Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn cmyk_to_rgb_16(Int, Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn cmyk_to_rgb_f(Float, Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn dehaze(@types.Image, patch_size? : Int, omega? : Float, t0? : Float) -> @types.Image raise @types.LoadError
+
+pub fn dehaze_16(@types.Image16, patch_size? : Int, omega? : Float, t0? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn dehaze_f(@types.ImageF, patch_size? : Int, omega? : Float, t0? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn floyd_steinberg(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn floyd_steinberg_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn floyd_steinberg_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn gamma_tonemap(@types.ImageF, Float) -> @types.Image raise @types.LoadError
+
+pub fn gamma_tonemap_16(@types.ImageF, Float) -> @types.Image16 raise @types.LoadError
+
+pub fn gamma_tonemap_f(@types.ImageF, Float) -> @types.ImageF raise @types.LoadError
+
+pub fn guided_filter(@types.Image, Array[Float], radius? : Int, eps? : Float) -> Array[Float] raise @types.LoadError
+
+pub fn guided_filter_16(@types.Image16, Array[Float], radius? : Int, eps? : Float) -> Array[Float] raise @types.LoadError
+
+pub fn guided_filter_f(@types.ImageF, Array[Float], radius? : Int, eps? : Float) -> Array[Float] raise @types.LoadError
+
+pub fn hsl_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsl_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsl_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn hsv_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsv_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn hsv_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn invert(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn invert_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn invert_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn kmeans_quantize(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn kmeans_quantize_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn kmeans_quantize_f(@types.ImageF, Int, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn lab_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn lab_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn lab_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn median_cut(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn median_cut_16(@types.Image16, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn median_cut_f(@types.ImageF, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn msr(@types.Image, sigmas? : Array[Float], gain? : Float, offset? : Float) -> @types.Image raise @types.LoadError
+
+pub fn msr_16(@types.Image16, sigmas? : Array[Float], gain? : Float, offset? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn msr_f(@types.ImageF, sigmas? : Array[Float], gain? : Float, offset? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn msrcr(@types.Image, sigmas? : Array[Float], gain? : Float, offset? : Float, alpha? : Float, beta? : Float) -> @types.Image raise @types.LoadError
+
+pub fn msrcr_16(@types.Image16, sigmas? : Array[Float], gain? : Float, offset? : Float, alpha? : Float, beta? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn msrcr_f(@types.ImageF, sigmas? : Array[Float], gain? : Float, offset? : Float, alpha? : Float, beta? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn premultiply_alpha(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn premultiply_alpha_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn premultiply_alpha_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn reinhard_tonemap(@types.ImageF, key? : Float) -> @types.Image raise @types.LoadError
+
+pub fn reinhard_tonemap_16(@types.ImageF, key? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn reinhard_tonemap_f(@types.ImageF, key? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn rgb_to_cmyk(Int, Int, Int) -> (Int, Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_cmyk_16(Int, Int, Int) -> (Int, Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_cmyk_f(Float, Float, Float) -> (Float, Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsl(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsl_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsl_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsv(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsv_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_hsv_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_lab(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_lab_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_lab_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_xyz(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_xyz_16(Int, Int, Int) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_xyz_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn rgb_to_ycbcr(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_ycbcr_16(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn rgb_to_ycbcr_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn ssr(@types.Image, sigma? : Float, gain? : Float, offset? : Float) -> @types.Image raise @types.LoadError
+
+pub fn ssr_16(@types.Image16, sigma? : Float, gain? : Float, offset? : Float) -> @types.Image16 raise @types.LoadError
+
+pub fn ssr_f(@types.ImageF, sigma? : Float, gain? : Float, offset? : Float) -> @types.ImageF raise @types.LoadError
+
+pub fn threshold_otsu(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn threshold_otsu_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn threshold_otsu_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn to_grayscale(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn to_grayscale_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn to_grayscale_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn to_rgb(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn to_rgb_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn to_rgb_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn to_rgba(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn to_rgba_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn to_rgba_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn unpremultiply_alpha(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn unpremultiply_alpha_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn unpremultiply_alpha_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn xyz_to_rgb(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn xyz_to_rgb_16(Float, Float, Float) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn xyz_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+pub fn ycbcr_to_rgb(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn ycbcr_to_rgb_16(Int, Int, Int) -> (Int, Int, Int) raise @types.LoadError
+
+pub fn ycbcr_to_rgb_f(Float, Float, Float) -> (Float, Float, Float) raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) enum Colormap {
+  JET
+  HOT
+  COOL
+  GRAY
+  BONE
+  COPPER
+}
+
+// Type aliases
+
+// Traits
+

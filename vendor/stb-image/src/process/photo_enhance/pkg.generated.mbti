@@ -1,0 +1,119 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/photo_enhance"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn apply_depth_of_field(@types.Image, DepthOfFieldConfig) -> @types.Image
+
+pub fn batch_photo_enhance(Array[@types.Image], String) -> Array[@types.Image]
+
+pub fn clahe_enhance(@types.Image, clip_limit? : Double, tile_size? : Int) -> @types.Image
+
+pub fn color_enhance(@types.Image, saturation? : Double, contrast? : Double) -> @types.Image
+
+pub fn computational_photography_report(HdrImage, PanoramaResult) -> String
+
+pub fn create_default_dof_config(Int, Int) -> DepthOfFieldConfig
+
+pub fn create_default_hdr_config() -> ToneMappingConfig
+
+pub fn create_default_night_config() -> NightEnhanceConfig
+
+pub fn create_default_panorama_config() -> PanoramaConfig
+
+pub fn deblur_motion(@types.Image, kernel_size? : Int, angle? : Double) -> @types.Image
+
+pub fn detect_exposure_type(@types.Image) -> (ExposureType, Double)
+
+pub fn enhance_night(@types.Image, NightEnhanceConfig) -> @types.Image
+
+pub fn hdr_merge(Array[@types.Image], Array[Double]) -> HdrImage
+
+pub fn low_light_default_config() -> LowLightConfig
+
+pub fn low_light_enhance(@types.Image, config? : LowLightConfig) -> @types.Image
+
+pub fn stitch_panorama(Array[@types.Image], PanoramaConfig) -> PanoramaResult
+
+pub fn tone_map(HdrImage, ToneMappingConfig) -> @types.Image
+
+pub fn white_balance(@types.Image) -> @types.Image
+
+// Errors
+
+// Types and methods
+pub(all) struct DepthOfFieldConfig {
+  focal_point_x : Int
+  focal_point_y : Int
+  aperture : Double
+  blur_strength : Double
+}
+
+pub(all) enum ExposureType {
+  Underexposed
+  Normal
+  Overexposed
+  Unknown
+} derive(Eq)
+
+pub(all) struct HdrImage {
+  width : Int
+  height : Int
+  channels : Int
+  data : Array[Double]
+  exposure_values : Array[Double]
+  num_exposures : Int
+}
+
+pub(all) struct LowLightConfig {
+  method_type : String
+  gamma : Double
+  strength : Double
+}
+
+pub(all) struct NightEnhanceConfig {
+  denoise_strength : Double
+  brightness_boost : Double
+  contrast_enhance : Double
+  noise_reduction : Bool
+}
+
+pub(all) struct PanoramaConfig {
+  overlap_threshold : Double
+  max_features : Int
+  ransac_iterations : Int
+  blend_width : Int
+  crop_black_borders : Bool
+}
+
+pub(all) struct PanoramaResult {
+  width : Int
+  height : Int
+  num_images : Int
+  inliers : Int
+  confidence : Double
+}
+
+pub(all) struct ToneMappingConfig {
+  algorithm : ToneMappingType
+  exposure : Double
+  gamma : Double
+  saturation : Double
+  contrast : Double
+}
+
+pub(all) enum ToneMappingType {
+  Reinhard
+  Drago
+  ACES
+  Linear
+  Gamma
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,67 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/stitch"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn apply_homography(Homography, Double, Double) -> (Double, Double)
+
+pub fn detect_features_simple(@types.Image, max_features? : Int) -> Array[FeaturePoint]
+
+pub fn estimate_homography_ransac(Array[MatchPair], Array[FeaturePoint], Array[FeaturePoint], iterations? : Int, threshold? : Double) -> (Homography?, Array[MatchPair])
+
+pub fn identity_homography() -> Homography
+
+pub fn invert_homography(Homography) -> Homography?
+
+pub fn match_features(Array[FeaturePoint], Array[FeaturePoint], ratio_threshold? : Double) -> Array[MatchPair]
+
+pub fn stitch_default_config() -> StitchConfig
+
+pub fn stitch_images(@types.Image, @types.Image, config? : StitchConfig) -> @types.Image?
+
+// Errors
+
+// Types and methods
+pub(all) struct FeaturePoint {
+  x : Double
+  y : Double
+  response : Double
+  orientation : Double
+  descriptor : Array[Double]
+}
+
+pub(all) struct Homography {
+  h00 : Double
+  h01 : Double
+  h02 : Double
+  h10 : Double
+  h11 : Double
+  h12 : Double
+  h20 : Double
+  h21 : Double
+  h22 : Double
+}
+
+pub(all) struct MatchPair {
+  query_idx : Int
+  train_idx : Int
+  distance : Double
+}
+
+pub(all) struct StitchConfig {
+  max_features : Int
+  ratio_threshold : Double
+  ransac_iterations : Int
+  ransac_threshold : Double
+  min_inliers : Int
+  blend_width : Int
+  use_multi_band : Bool
+}
+
+// Type aliases
+
+// Traits
+

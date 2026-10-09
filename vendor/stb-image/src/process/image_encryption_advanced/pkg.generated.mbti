@@ -1,0 +1,185 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_encryption_advanced"
+
+// Values
+pub fn chaotic_encrypt(Array[Double], Int, Int, ImageEncryptionConfig) -> ChaoticEncryptionResult
+
+pub fn create_default_encryption_config() -> ImageEncryptionConfig
+
+pub fn decrypt_image(Array[Byte], Int, Int, Array[Byte], ImageEncryptionConfig) -> DecryptionResult
+
+pub fn embed_steganography(Array[Double], Int, Int, Array[Byte], ImageEncryptionConfig) -> SteganographyResult
+
+pub fn embed_watermark(Array[Double], Int, Int, Array[Byte], ImageEncryptionConfig) -> DigitalWatermarkResult
+
+pub fn encrypt_image(Array[Double], Int, Int, Array[Byte], ImageEncryptionConfig) -> EncryptionResult
+
+pub fn image_encryption_report_to_string(ImageEncryptionTaskType, ImageEncryptionConfig, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct ChaoticEncryptionResult {
+  encrypted_data : Array[Byte]
+  encrypted_size_bytes : Int
+  original_size_bytes : Int
+  chaotic_system : ChaoticSystemType
+  initial_condition : Array[Double]
+  control_parameters : Array[Double]
+  num_iterations : Int
+  key_space_size : Double
+  encryption_time_ms : Double
+  entropy : Double
+  correlation_coefficient : Double
+  npcr : Double
+  uaci : Double
+}
+
+pub(all) enum ChaoticSystemType {
+  Logistic
+  Henon
+  Lorenz
+  Rossler
+  Chen
+  Hyperchaotic
+  Unknown
+} derive(Eq)
+
+pub(all) enum DNAEncodingType {
+  Binary
+  Complement
+  Addition
+  Subtraction
+  XOR
+  Unknown
+} derive(Eq)
+
+pub(all) struct DNAEncryptionResult {
+  encrypted_data : Array[Byte]
+  encrypted_size_bytes : Int
+  original_size_bytes : Int
+  dna_encoding : DNAEncodingType
+  dna_sequences : Array[String]
+  num_sequences : Int
+  key : Array[Byte]
+  encryption_time_ms : Double
+  entropy : Double
+  correlation_coefficient : Double
+}
+
+pub(all) struct DecryptionResult {
+  decrypted_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  decryption_time_ms : Double
+  encryption_algorithm : EncryptionAlgorithmType
+  psnr : Double
+  ssim : Double
+  is_correct : Bool
+}
+
+pub(all) struct DigitalWatermarkResult {
+  watermarked_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  watermark_data : Array[Byte]
+  watermark_size_bytes : Int
+  watermark_strength : Double
+  embedding_domain : String
+  psnr : Double
+  ssim : Double
+  robustness_score : Double
+  imperceptibility_score : Double
+  capacity_bits : Int
+}
+
+pub(all) enum EncryptionAlgorithmType {
+  AES
+  DES
+  RSA
+  ECC
+  ChaCha20
+  Blowfish
+  Twofish
+  Serpent
+  Unknown
+} derive(Eq)
+
+pub(all) struct EncryptionResult {
+  encrypted_data : Array[Byte]
+  encrypted_size_bytes : Int
+  original_size_bytes : Int
+  encryption_algorithm : EncryptionAlgorithmType
+  key_size : Int
+  iv : Array[Byte]
+  salt : Array[Byte]
+  encryption_time_ms : Double
+  entropy : Double
+  correlation_coefficient : Double
+  npcr : Double
+  uaci : Double
+}
+
+pub(all) struct ImageEncryptionConfig {
+  task_type : ImageEncryptionTaskType
+  encryption_algorithm : EncryptionAlgorithmType
+  key_size : Int
+  iv_size : Int
+  salt_size : Int
+  chaotic_system : ChaoticSystemType
+  initial_condition : Array[Double]
+  control_parameters : Array[Double]
+  num_chaotic_iterations : Int
+  dna_encoding : DNAEncodingType
+  steganography_type : SteganographyType
+  watermark_strength : Double
+  use_salt : Bool
+  use_iv : Bool
+  use_padding : Bool
+  padding_mode : String
+  use_gpu : Bool
+}
+
+pub(all) enum ImageEncryptionTaskType {
+  SymmetricEncryption
+  AsymmetricEncryption
+  ChaoticEncryption
+  DNAEncryption
+  OpticalEncryption
+  Steganography
+  DigitalWatermark
+  HomomorphicEncryption
+  Unknown
+} derive(Eq)
+
+pub(all) struct SteganographyResult {
+  stego_image : Array[Double]
+  width : Int
+  height : Int
+  num_channels : Int
+  hidden_data : Array[Byte]
+  hidden_data_size_bytes : Int
+  steganography_type : SteganographyType
+  capacity_bits : Int
+  embedding_rate : Double
+  psnr : Double
+  ssim : Double
+  is_robust : Bool
+}
+
+pub(all) enum SteganographyType {
+  LSB
+  MSB
+  DCTDomain
+  DWTomain
+  FFTomain
+  SpreadSpectrum
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

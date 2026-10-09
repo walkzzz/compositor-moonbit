@@ -1,0 +1,136 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/multimodal_advanced"
+
+// Values
+pub fn cosine_similarity(Array[Double], Array[Double]) -> Double
+
+pub fn create_default_multimodal_config() -> MultimodalConfig
+
+pub fn create_multimodal_data(String, Int, Array[ModalityType]) -> MultimodalData
+
+pub fn cross_modal_retrieval(MultimodalData, Array[MultimodalData], ModalityType, ModalityType, Int) -> CrossModalRetrievalResult
+
+pub fn fuse_multimodal(MultimodalData, MultimodalConfig) -> MultimodalFusionResult
+
+pub fn multimodal_report_to_string(MultimodalTaskType, MultimodalConfig, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct AudioVisualResult {
+  video_id : String
+  audio_features : Array[Double]
+  visual_features : Array[Double]
+  fused_features : Array[Double]
+  sync_score : Double
+  audio_visual_alignment : Double
+  event_detections : Array[String]
+  num_events : Int
+}
+
+pub(all) struct CrossModalRetrievalResult {
+  query_modality : ModalityType
+  target_modality : ModalityType
+  query_id : String
+  retrieved_ids : Array[String]
+  retrieved_scores : Array[Double]
+  num_retrieved : Int
+  similarity_metric : String
+  recall_at_k : Double
+}
+
+pub(all) enum FusionStrategy {
+  EarlyFusion
+  LateFusion
+  HybridFusion
+  AttentionFusion
+  CrossAttentionFusion
+  TensorFusion
+  GatedFusion
+  Unknown
+} derive(Eq)
+
+pub(all) struct ImageTextGenerationResult {
+  image_id : String
+  generated_text : String
+  text_embedding : Array[Double]
+  image_embedding : Array[Double]
+  similarity_score : Double
+  generation_model : String
+  inference_time_ms : Double
+}
+
+pub(all) enum ModalityType {
+  Image
+  Text
+  Audio
+  Video
+  Depth
+  Thermal
+  PointCloud
+  Unknown
+} derive(Eq)
+
+pub(all) struct MultimodalConfig {
+  task_type : MultimodalTaskType
+  fusion_strategy : FusionStrategy
+  modalities : Array[ModalityType]
+  feature_dim : Int
+  hidden_dim : Int
+  num_attention_heads : Int
+  num_fusion_layers : Int
+  dropout_rate : Double
+  temperature : Double
+  similarity_metric : String
+  use_cross_attention : Bool
+  use_modality_specific_encoders : Bool
+  use_shared_encoder : Bool
+}
+
+pub(all) struct MultimodalData {
+  modalities : Array[ModalityType]
+  num_modalities : Int
+  image_features : Array[Double]
+  text_features : Array[Double]
+  audio_features : Array[Double]
+  video_features : Array[Double]
+  feature_dim : Int
+  sample_id : String
+}
+
+pub(all) struct MultimodalFusionResult {
+  fused_features : Array[Double]
+  fusion_strategy : FusionStrategy
+  num_modalities : Int
+  feature_dim : Int
+  modality_weights : Array[Double]
+  confidence : Double
+}
+
+pub(all) enum MultimodalTaskType {
+  MultimodalFusion
+  CrossModalRetrieval
+  ImageTextGeneration
+  VideoUnderstanding
+  AudioVisual
+  MultimodalReasoning
+  MultimodalTranslation
+  Unknown
+} derive(Eq)
+
+pub(all) struct VideoUnderstandingResult {
+  video_id : String
+  video_description : String
+  keyframes : Array[Int]
+  num_keyframes : Int
+  actions : Array[String]
+  num_actions : Int
+  scene_changes : Array[Int]
+  num_scene_changes : Int
+  duration_s : Double
+}
+
+// Type aliases
+
+// Traits
+

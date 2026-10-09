@@ -1,0 +1,142 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/graph_neural"
+
+// Values
+pub fn create_default_gnn_config() -> GNNConfig
+
+pub fn create_default_reasoning_config() -> RelationReasoningConfig
+
+pub fn create_random_graph(Int, Int, Int, Bool) -> GraphData
+
+pub fn detect_communities(GraphData, Int) -> CommunityDetectionResult
+
+pub fn graph_attention(GraphData, GNNConfig) -> NodeEmbeddingResult
+
+pub fn graph_convolution(GraphData, GNNConfig) -> NodeEmbeddingResult
+
+pub fn graph_neural_report_to_string(NodeEmbeddingResult, GraphData, GNNConfig) -> String
+
+pub fn predict_relation(GraphData, Int, Int, RelationReasoningConfig) -> RelationPredictionResult
+
+// Errors
+
+// Types and methods
+pub(all) struct CommunityDetectionResult {
+  communities : Array[Array[Int]]
+  num_communities : Int
+  modularity : Double
+  community_sizes : Array[Int]
+  method_type : String
+}
+
+pub(all) struct GNNConfig {
+  layer_type : GNNLayerType
+  num_layers : Int
+  hidden_dim : Int
+  output_dim : Int
+  dropout_rate : Double
+  learning_rate : Double
+  num_heads : Int
+  aggregation : String
+  use_residual : Bool
+  use_batch_norm : Bool
+  activation : String
+}
+
+pub(all) enum GNNLayerType {
+  GCN
+  GAT
+  GraphSAGE
+  GIN
+  GraphConv
+  ChebNet
+  APPNP
+  AGNN
+  Unknown
+} derive(Eq)
+
+pub(all) struct GraphData {
+  nodes : Array[GraphNode]
+  edges : Array[GraphEdge]
+  num_nodes : Int
+  num_edges : Int
+  adjacency_matrix : Array[Array[Double]]
+  is_directed : Bool
+  is_weighted : Bool
+}
+
+pub(all) struct GraphEdge {
+  source_id : Int
+  target_id : Int
+  weight : Double
+  relation_type : RelationType
+  features : Array[Double]
+}
+
+pub(all) struct GraphNode {
+  node_id : Int
+  features : Array[Double]
+  label : Int
+  num_features : Int
+  degree : Int
+  is_visited : Bool
+}
+
+pub(all) enum GraphTaskType {
+  NodeClassification
+  GraphClassification
+  LinkPrediction
+  GraphGeneration
+  NodeClustering
+  CommunityDetection
+  InfluenceMaximization
+  Recommendation
+  Unknown
+} derive(Eq)
+
+pub(all) struct NodeEmbeddingResult {
+  embeddings : Array[Array[Double]]
+  num_nodes : Int
+  embedding_dim : Int
+  method_type : String
+  training_loss : Double
+  training_accuracy : Double
+}
+
+pub(all) struct RelationPredictionResult {
+  source_id : Int
+  target_id : Int
+  predicted_relation : RelationType
+  confidence : Double
+  all_scores : Array[Double]
+  reasoning_path : Array[Int]
+}
+
+pub(all) struct RelationReasoningConfig {
+  num_relations : Int
+  embedding_dim : Int
+  num_hops : Int
+  use_attention : Bool
+  use_path_encoding : Bool
+  max_path_length : Int
+  reasoning_method : String
+  threshold : Double
+}
+
+pub(all) enum RelationType {
+  IsA
+  PartOf
+  LocatedIn
+  WorksFor
+  HasProperty
+  CausedBy
+  SimilarTo
+  Contradicts
+  Entails
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

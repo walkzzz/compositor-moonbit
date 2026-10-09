@@ -1,0 +1,153 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/vision_3d_advanced"
+
+// Values
+pub fn create_default_vision_3d_config() -> Vision3DConfig
+
+pub fn estimate_depth(Array[Double], Int, Int, Vision3DConfig) -> DepthMap
+
+pub fn estimate_pose(Array[Array[Double]], Array[Array[Double]], Vision3DConfig) -> PoseEstimationResult
+
+pub fn reconstruct_3d(Array[Array[Double]], Array[DepthMap], Vision3DConfig) -> Reconstruction3DResult
+
+pub fn stereo_match(Array[Double], Array[Double], Int, Int, Vision3DConfig) -> StereoMatchingResult
+
+pub fn vision_3d_report_to_string(Vision3DTaskType, Vision3DConfig, String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct DepthMap {
+  depth_data : Array[Double]
+  width : Int
+  height : Int
+  min_depth : Double
+  max_depth : Double
+  invalid_pixels : Int
+  confidence_map : Array[Double]
+  camera_params : Array[Double]
+}
+
+pub(all) struct Point3D {
+  x : Double
+  y : Double
+  z : Double
+  r : Double
+  g : Double
+  b : Double
+  intensity : Double
+  normal_x : Double
+  normal_y : Double
+  normal_z : Double
+  curvature : Double
+}
+
+pub(all) struct PointCloud {
+  points : Array[Point3D]
+  num_points : Int
+  width : Int
+  height : Int
+  is_organized : Bool
+  point_cloud_type : PointCloudType
+  coordinate_system : String
+  unit : String
+}
+
+pub(all) enum PointCloudType {
+  Structured
+  Unstructured
+  Organized
+  Unorganized
+  Unknown
+} derive(Eq)
+
+pub(all) struct PoseEstimationResult {
+  rotation_matrix : Array[Array[Double]]
+  translation_vector : Array[Double]
+  quaternion : Array[Double]
+  euler_angles : Array[Double]
+  confidence : Double
+  reprojection_error : Double
+  num_inliers : Int
+  num_correspondences : Int
+  pose_method : String
+}
+
+pub(all) struct Reconstruction3DResult {
+  point_cloud : PointCloud
+  mesh_vertices : Array[Array[Double]]
+  mesh_faces : Array[Array[Int]]
+  mesh_normals : Array[Array[Double]]
+  num_vertices : Int
+  num_faces : Int
+  volume : Double
+  surface_area : Double
+  reconstruction_method : String
+  resolution : Double
+  is_textured : Bool
+  texture_map : Array[Double]
+}
+
+pub(all) struct SLAMResult {
+  trajectory : Array[Array[Double]]
+  point_cloud : PointCloud
+  keyframes : Array[Array[Double]]
+  num_keyframes : Int
+  num_landmarks : Int
+  tracking_state : String
+  localization_accuracy : Double
+  mapping_accuracy : Double
+  loop_closures : Int
+  is_lost : Bool
+}
+
+pub(all) struct StereoMatchingResult {
+  disparity_map : Array[Double]
+  depth_map : Array[Double]
+  width : Int
+  height : Int
+  min_disparity : Double
+  max_disparity : Double
+  matching_method : String
+  num_invalid_pixels : Int
+  confidence_map : Array[Double]
+  baseline : Double
+  focal_length : Double
+}
+
+pub(all) struct Vision3DConfig {
+  task_type : Vision3DTaskType
+  point_cloud_type : PointCloudType
+  stereo_baseline : Double
+  focal_length : Double
+  principal_point_x : Double
+  principal_point_y : Double
+  min_depth : Double
+  max_depth : Double
+  disparity_range : Int
+  matching_method : String
+  reconstruction_method : String
+  voxel_size : Double
+  normal_radius : Double
+  keypoint_radius : Double
+  use_gpu : Bool
+  use_color : Bool
+  use_normals : Bool
+  use_intensity : Bool
+}
+
+pub(all) enum Vision3DTaskType {
+  Reconstruction3D
+  PointCloudProcessing
+  StereoMatching
+  DepthEstimation
+  PoseEstimation
+  SLAM
+  ObjectTracking3D
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

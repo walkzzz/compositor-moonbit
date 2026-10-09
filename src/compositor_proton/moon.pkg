@@ -1,0 +1,9 @@
+import {
+  "compositor/compositor-moonbit/src/compositor_shared" @shared,
+  "walkzzz/image/src" @image,
+  "walkzzz/image/src/types" @imgtypes,
+  "moonbitlang/x/fs" @fs,
+  "moonbitlang/core/env" @env,
+}
+
+pkgtype(kind: "executable")

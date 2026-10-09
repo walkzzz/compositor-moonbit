@@ -1,0 +1,30 @@
+{
+  "pdf_path": "/home/user/.doubao/agent_mode/workspace/.sessions/38441226996538882/attachments/投标文件-喜得勘察设计.pdf",
+  "total_pages": 3,
+  "dpi": 200,
+  "layout_analysis": "enhanced_v12.19.0",
+  "multi_column_support": true,
+  "header_footer_removal": true,
+  "list_detection": true,
+  "quote_detection": true,
+  "code_block_detection": true,
+  "smart_reading_order": true,
+  "layout_distribution": {
+    "single": 3,
+    "double": 0,
+    "mixed": 0,
+    "unknown": 0
+  },
+  "total_elements": 128,
+  "body_elements": 125,
+  "header_elements": 3,
+  "footer_elements": 0,
+  "element_distribution": {
+    "horizontal_rule": 19,
+    "paragraph": 20,
+    "heading2": 55,
+    "heading3": 26,
+    "heading1": 5
+  },
+  "output_path": "投标文件_增强版转换结果.md"
+}

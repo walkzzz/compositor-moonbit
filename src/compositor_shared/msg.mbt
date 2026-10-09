@@ -8,11 +8,14 @@
 /// layer interprets. Once a project file is read, the platform sends
 /// `ProjectLoaded(json)` so the actual state change still flows through
 /// `update`.
-pub enum Msg {
+pub(all) enum Msg {
   // --- Canvas / document ---
   NewCanvas(Int, Int)
   /// Carries the JSON text produced by reading a `.comp` file.
   ProjectLoaded(String)
+  /// Open a decoded image: name, width, height, RGBA8 bytes. The native layer
+  /// decodes PNG/JPEG via the STB image binding and sends this message.
+  ImportImage(String, Int, Int, Bytes)
 
   // --- Layer operations ---
   AddLayer

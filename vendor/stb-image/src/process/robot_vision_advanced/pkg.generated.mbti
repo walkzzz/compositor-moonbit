@@ -1,0 +1,163 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/robot_vision_advanced"
+
+// Values
+pub fn create_default_robot_vision_config() -> RobotVisionConfig
+
+pub fn estimate_object_pose(Int, Array[Double], Array[Double], RobotVisionConfig) -> ObjectPose
+
+pub fn generate_point_cloud(Array[Double], Array[Array[Int]], RobotVisionConfig) -> PointCloudData
+
+pub fn plan_arm_trajectory(ObjectPose, ObjectPose, RobotVisionConfig) -> RobotTrajectory
+
+pub fn plan_grasp(ObjectPose, Array[Double], RobotVisionConfig) -> GraspConfig
+
+pub fn robot_vision_report_to_string(RobotVisionTaskType, RobotVisionConfig, String) -> String
+
+pub fn visual_servoing(ObjectPose, ObjectPose, RobotVisionConfig) -> Array[Double]
+
+// Errors
+
+// Types and methods
+pub(all) struct EndEffectorState {
+  position : Array[Double]
+  orientation : Array[Double]
+  velocity : Array[Double]
+  angular_velocity : Array[Double]
+  force : Array[Double]
+  torque : Array[Double]
+  is_in_contact : Bool
+  contact_force : Double
+}
+
+pub(all) struct GraspConfig {
+  grasp_type : GraspType
+  grasp_position : Array[Double]
+  grasp_orientation : Array[Double]
+  approach_direction : Array[Double]
+  grasp_width : Double
+  grasp_force : Double
+  pre_grasp_distance : Double
+  post_grasp_distance : Double
+  is_force_closure : Bool
+  quality_score : Double
+}
+
+pub(all) enum GraspType {
+  ParallelJaw
+  SuctionCup
+  MultiFinger
+  Hook
+  Magnetic
+  Unknown
+} derive(Eq)
+
+pub(all) struct JointState {
+  joint_names : Array[String]
+  joint_positions : Array[Double]
+  joint_velocities : Array[Double]
+  joint_efforts : Array[Double]
+  num_joints : Int
+  timestamp : Double
+}
+
+pub(all) struct MeshData {
+  vertices : Array[Array[Double]]
+  faces : Array[Array[Int]]
+  normals : Array[Array[Double]]
+  uv_coords : Array[Array[Double]]
+  num_vertices : Int
+  num_faces : Int
+  volume : Double
+  surface_area : Double
+}
+
+pub(all) struct ObjectPose {
+  position : Array[Double]
+  orientation : Array[Double]
+  confidence : Double
+  object_id : Int
+  coordinate_frame : String
+}
+
+pub(all) struct PointCloudData {
+  points : Array[Array[Double]]
+  colors : Array[Array[Int]]
+  normals : Array[Array[Double]]
+  num_points : Int
+  width : Int
+  height : Int
+  is_dense : Bool
+  coordinate_frame : String
+}
+
+pub(all) struct RobotTrajectory {
+  points : Array[TrajectoryPoint]
+  num_points : Int
+  duration : Double
+  is_collision_free : Bool
+  is_singularity_free : Bool
+  planning_time : Double
+  planner_type : String
+}
+
+pub(all) enum RobotType {
+  Manipulator
+  MobileRobot
+  Humanoid
+  Drone
+  Wheeled
+  Legged
+  Unknown
+} derive(Eq)
+
+pub(all) struct RobotVisionConfig {
+  task_type : RobotVisionTaskType
+  robot_type : RobotType
+  visual_servoing_type : VisualServoingType
+  grasp_type : GraspType
+  num_joints : Int
+  end_effector_type : String
+  camera_intrinsics : Array[Double]
+  camera_extrinsics : Array[Double]
+  hand_eye_transform : Array[Double]
+  control_frequency : Int
+  planning_time_limit : Double
+  collision_margin : Double
+  singularity_threshold : Double
+  use_force_control : Bool
+  use_visual_servoing : Bool
+  use_realtime : Bool
+}
+
+pub(all) enum RobotVisionTaskType {
+  VisualServoing
+  ObjectGrasping
+  SLAMEnhanced
+  Reconstruction3D
+  ArmControl
+  MobileNavigation
+  HumanRobotInteraction
+  Unknown
+} derive(Eq)
+
+pub(all) struct TrajectoryPoint {
+  joint_positions : Array[Double]
+  joint_velocities : Array[Double]
+  joint_accelerations : Array[Double]
+  end_effector_pose : ObjectPose
+  time_from_start : Double
+}
+
+pub(all) enum VisualServoingType {
+  PositionBased
+  ImageBased
+  Hybrid
+  Advanced
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

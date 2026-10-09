@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/stylize"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn cartoon(@types.Image, levels? : Int, edge_threshold? : Double) -> @types.Image
+
+pub fn oil_paint(@types.Image, radius? : Int, intensity? : Int) -> @types.Image
+
+pub fn sketch(@types.Image, blend? : Double) -> @types.Image
+
+pub fn stylize(@types.Image, String, config? : StylizeConfig) -> @types.Image
+
+pub fn stylize_default_config() -> StylizeConfig
+
+pub fn watercolor(@types.Image, blur_radius? : Int) -> @types.Image
+
+// Errors
+
+// Types and methods
+pub(all) struct StylizeConfig {
+  oil_paint_radius : Int
+  oil_paint_intensity : Int
+  sketch_blend : Double
+  watercolor_blur : Int
+  cartoon_levels : Int
+  cartoon_edge_threshold : Double
+}
+
+// Type aliases
+
+// Traits
+

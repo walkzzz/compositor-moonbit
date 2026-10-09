@@ -1,0 +1,142 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/advanced_imaging"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn advanced_imaging_report_to_string(ImagingModality, @types.Image, AdvancedImagingConfig) -> String
+
+pub fn analyze_polarization(@types.Image, @types.Image, @types.Image, @types.Image) -> PolarizationData
+
+pub fn create_default_advanced_imaging_config(ImagingModality) -> AdvancedImagingConfig
+
+pub fn generate_hyperspectral_cube(@types.Image, Int, Double, Double) -> HyperspectralData
+
+pub fn infrared_pseudocolor(@types.Image, InfraredImagingType) -> @types.Image
+
+pub fn mri_synthesize(Int, Int, Double) -> MRIData
+
+pub fn pet_synthesize(Int, Int, String) -> PETData
+
+pub fn quantum_ghost_imaging(Int, Int, Int, QuantumImagingAlgorithm) -> @types.Image
+
+pub fn thermal_to_temperature(@types.Image, Double, Double, Double) -> ThermalData
+
+pub fn ultrasound_synthesize(Int, Int, Double, Double) -> UltrasoundData
+
+pub fn xray_enhance(@types.Image, Double) -> XRayData
+
+// Errors
+
+// Types and methods
+pub(all) struct AdvancedImagingConfig {
+  modality : ImagingModality
+  image_width : Int
+  image_height : Int
+  num_slices : Int
+  use_noise_reduction : Bool
+  use_enhancement : Bool
+  calibration_factor : Double
+}
+
+pub(all) struct HyperspectralData {
+  image_cube : Array[@types.Image]
+  num_bands : Int
+  wavelengths : Array[Double]
+  spectral_resolution : Double
+  spatial_width : Int
+  spatial_height : Int
+}
+
+pub(all) enum ImagingModality {
+  Quantum
+  Terahertz
+  Infrared
+  Hyperspectral
+  Polarization
+  Thermal
+  XRay
+  Ultrasound
+  MRI
+  PET
+  CT
+  Unknown
+} derive(Eq)
+
+pub(all) enum InfraredImagingType {
+  MWIR
+  LWIR
+  SWIR
+  NIR
+  ThermalIR
+  Unknown
+} derive(Eq)
+
+pub(all) struct MRIData {
+  t1_weighted : @types.Image
+  t2_weighted : @types.Image
+  flair : @types.Image
+  tr_ms : Double
+  te_ms : Double
+  slice_thickness_mm : Double
+  field_strength_t : Double
+}
+
+pub(all) struct PETData {
+  activity_map : @types.Image
+  radiotracer : String
+  injected_dose_mbq : Double
+  uptake_time_min : Double
+  reconstruction_algorithm : String
+  suv_scale : Double
+}
+
+pub(all) struct PolarizationData {
+  intensity : @types.Image
+  degree_of_polarization : @types.Image
+  angle_of_polarization : @types.Image
+  stokes_parameters : Array[@types.Image]
+  num_stokes : Int
+}
+
+pub(all) enum QuantumImagingAlgorithm {
+  GhostImaging
+  SinglePixel
+  QuantumIllumination
+  EntangledPhoton
+  CompressiveSensing
+  Unknown
+} derive(Eq)
+
+pub(all) struct ThermalData {
+  temperature_map : @types.Image
+  min_temperature : Double
+  max_temperature : Double
+  average_temperature : Double
+  emissivity : Double
+  units : String
+}
+
+pub(all) struct UltrasoundData {
+  b_mode : @types.Image
+  doppler : @types.Image
+  frequency_mhz : Double
+  depth_cm : Double
+  gain : Double
+  frame_rate : Double
+}
+
+pub(all) struct XRayData {
+  projection : @types.Image
+  energy_kev : Double
+  dose : Double
+  contrast : Double
+  noise_level : Double
+}
+
+// Type aliases
+
+// Traits
+

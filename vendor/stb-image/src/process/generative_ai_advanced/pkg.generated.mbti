@@ -1,0 +1,179 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/generative_ai_advanced"
+
+// Values
+pub fn create_default_diffusion_config() -> DiffusionConfig
+
+pub fn create_default_gan_config() -> GANConfig
+
+pub fn create_default_sampling_config() -> SamplingConfig
+
+pub fn create_default_vae_config() -> VAEConfig
+
+pub fn generate_noise(Int, Int, Int) -> Array[Array[Double]]
+
+pub fn generative_ai_report_to_string(GenerativeAITaskType, GenerationResult, String) -> String
+
+pub fn simulate_diffusion_sampling(DiffusionConfig, SamplingConfig) -> GenerationResult
+
+pub fn simulate_gan_generation(GANConfig, SamplingConfig) -> GenerationResult
+
+pub fn simulate_vae_reconstruction(VAEConfig, Array[Array[Double]]) -> GenerationResult
+
+// Errors
+
+// Types and methods
+pub(all) struct DiffusionConfig {
+  model_type : DiffusionModelType
+  num_timesteps : Int
+  beta_start : Double
+  beta_end : Double
+  beta_schedule : String
+  image_size : Int
+  in_channels : Int
+  out_channels : Int
+  latent_dim : Int
+  num_res_blocks : Int
+  base_channels : Int
+  channel_mults : Array[Int]
+  attention_resolutions : Array[Int]
+  dropout : Double
+  use_ema : Bool
+  ema_decay : Double
+  use_cfg : Bool
+  cfg_scale : Double
+  classifier_free_guidance : Bool
+}
+
+pub(all) enum DiffusionModelType {
+  DDPM
+  DDIM
+  ScoreBased
+  LatentDiffusion
+  StableDiffusion
+  ControlNet
+  InstructPix2Pix
+  Unknown
+} derive(Eq)
+
+pub(all) struct GANConfig {
+  gan_type : GANType
+  latent_dim : Int
+  image_size : Int
+  in_channels : Int
+  generator_channels : Int
+  discriminator_channels : Int
+  num_layers : Int
+  learning_rate_g : Double
+  learning_rate_d : Double
+  beta1 : Double
+  beta2 : Double
+  use_wasserstein : Bool
+  gradient_penalty : Double
+  use_spectral_norm : Bool
+  use_ema : Bool
+  ema_decay : Double
+  style_mixing_prob : Double
+  truncation_psi : Double
+}
+
+pub(all) enum GANType {
+  VanillaGAN
+  DCGAN
+  WGAN
+  WGANGP
+  StyleGAN
+  StyleGAN2
+  StyleGAN3
+  CycleGAN
+  Pix2Pix
+  Unknown
+} derive(Eq)
+
+pub(all) struct GenerationResult {
+  generated_samples : Array[Array[Double]]
+  num_samples : Int
+  image_size : Int
+  num_channels : Int
+  model_type : String
+  inference_time_ms : Double
+  fid_score : Double
+  is_score : Double
+  precision : Double
+  recall : Double
+}
+
+pub(all) enum GenerativeAITaskType {
+  DiffusionModel
+  GAN
+  VAE
+  FlowModel
+  AutoregressiveModel
+  EnergyBasedModel
+  TextToImage
+  ImageToImage
+  Unknown
+} derive(Eq)
+
+pub(all) struct SamplingConfig {
+  num_samples : Int
+  num_inference_steps : Int
+  guidance_scale : Double
+  seed : Int
+  use_ddim : Bool
+  eta : Double
+  use_parallel : Bool
+  batch_size : Int
+  output_dir : String
+  save_intermediate : Bool
+  intermediate_steps : Array[Int]
+}
+
+pub(all) struct TrainingState {
+  epoch : Int
+  step : Int
+  generator_loss : Double
+  discriminator_loss : Double
+  reconstruction_loss : Double
+  kl_loss : Double
+  diffusion_loss : Double
+  learning_rate : Double
+  elapsed_time_s : Double
+  best_metric : Double
+  is_best : Bool
+}
+
+pub(all) struct VAEConfig {
+  vae_type : VAEType
+  latent_dim : Int
+  image_size : Int
+  in_channels : Int
+  hidden_dims : Array[Int]
+  learning_rate : Double
+  beta : Double
+  gamma : Double
+  use_kl_annealing : Bool
+  kl_annealing_steps : Int
+  num_embeddings : Int
+  commitment_cost : Double
+  decay : Double
+  use_adversarial_loss : Bool
+  adversarial_weight : Double
+  perceptual_weight : Double
+}
+
+pub(all) enum VAEType {
+  VanillaVAE
+  BetaVAE
+  CVAE
+  VQVAE
+  VQVAE2
+  GumbelVAE
+  AdversarialAE
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

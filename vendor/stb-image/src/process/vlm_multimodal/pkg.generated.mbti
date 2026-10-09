@@ -1,0 +1,163 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/vlm_multimodal"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn compute_image_text_similarity(@types.Image, String, VLMConfig) -> VisionTextEmbedding
+
+pub fn create_default_diffusion_config() -> DiffusionConfig
+
+pub fn create_default_fusion_config() -> FusionConfig
+
+pub fn create_default_genai_config() -> GenerativeAIConfig
+
+pub fn create_default_vlm_config() -> VLMConfig
+
+pub fn diffusion_generate(String, String, DiffusionConfig, Int) -> DiffusionResult
+
+pub fn fuse_modalities(Array[Double], Array[Double], FusionConfig) -> FusionResult
+
+pub fn fusion_report_to_string(FusionResult) -> String
+
+pub fn image_to_text(@types.Image, GenerativeAIConfig) -> GenerativeAIResult
+
+pub fn text_to_image(String, GenerativeAIConfig, Int) -> GenerativeAIResult
+
+pub fn vlm_report_to_string(VisionTextEmbedding, VisionLanguageModelType) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct DiffusionConfig {
+  model_type : DiffusionModelType
+  num_timesteps : Int
+  beta_start : Double
+  beta_end : Double
+  beta_schedule : String
+  guidance_scale : Double
+  num_inference_steps : Int
+  image_size : Int
+  use_ddim : Bool
+  use_clip_guidance : Bool
+}
+
+pub(all) enum DiffusionModelType {
+  StableDiffusion
+  DALLE
+  Imagen
+  MidjourneyStyle
+  ControlNet
+  LoRA
+  DreamBooth
+  TextualInversion
+  Unknown
+} derive(Eq)
+
+pub(all) struct DiffusionResult {
+  image : @types.Image
+  num_steps : Int
+  guidance_scale : Double
+  prompt : String
+  negative_prompt : String
+  seed : Int
+  generation_time_ms : Double
+}
+
+pub(all) struct FusionConfig {
+  strategy : MultimodalFusionStrategy
+  num_modalities : Int
+  hidden_dim : Int
+  num_attention_heads : Int
+  num_layers : Int
+  dropout_rate : Double
+  use_gating : Bool
+}
+
+pub(all) struct FusionResult {
+  fused_representation : Array[Double]
+  modality_weights : Array[Double]
+  fusion_strategy : MultimodalFusionStrategy
+  hidden_dim : Int
+}
+
+pub(all) struct GenerativeAIConfig {
+  task_type : GenerativeAITaskType
+  vlm_config : VLMConfig
+  diffusion_config : DiffusionConfig
+  fusion_config : FusionConfig
+  max_length : Int
+  num_beams : Int
+  temperature : Double
+  top_p : Double
+  top_k : Int
+}
+
+pub(all) struct GenerativeAIResult {
+  task_type : GenerativeAITaskType
+  image : @types.Image
+  text : String
+  confidence : Double
+  generation_time_ms : Double
+  num_iterations : Int
+}
+
+pub(all) enum GenerativeAITaskType {
+  TextToImage
+  ImageToText
+  ImageEditing
+  ImageTranslation
+  StyleTransfer
+  Inpainting
+  Outpainting
+  SuperResolution
+  Unknown
+} derive(Eq)
+
+pub(all) enum MultimodalFusionStrategy {
+  EarlyFusion
+  LateFusion
+  HybridFusion
+  CrossAttention
+  TensorFusion
+  GatedFusion
+  Unknown
+} derive(Eq)
+
+pub(all) struct VLMConfig {
+  model_type : VisionLanguageModelType
+  image_encoder_size : Int
+  text_encoder_size : Int
+  projection_dim : Int
+  temperature : Double
+  use_contrastive_loss : Bool
+  use_matching_loss : Bool
+  use_captioning_loss : Bool
+}
+
+pub(all) enum VisionLanguageModelType {
+  CLIP
+  BLIP
+  ALIGN
+  FLAVA
+  CoCa
+  GIT
+  LLaVA
+  QwenVL
+  InternVL
+  Unknown
+} derive(Eq)
+
+pub(all) struct VisionTextEmbedding {
+  image_embedding : Array[Double]
+  text_embedding : Array[Double]
+  similarity : Double
+  projection_dim : Int
+}
+
+// Type aliases
+
+// Traits
+

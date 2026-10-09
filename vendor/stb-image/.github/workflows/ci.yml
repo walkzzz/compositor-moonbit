@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [dev, main]
+
+jobs:
+  check:
+    name: Check + Test + Bench
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
+      - name: Moon version
+        run: moon version
+
+      - name: Check compilation
+        run: |
+          moon check --target native
+          moon check --target wasm-gc
+          moon check --target js
+          moon check --target wasm
+
+      - name: Run tests
+        run: |
+          moon test --target native
+          moon test --target wasm-gc
+          moon test --target js
+          moon test --target wasm
+
+      - name: Run benchmarks
+        run: moon bench --target native
+
+      - name: Verify API interface
+        run: |
+          moon info
+          git diff --exit-code -- '*.mbti' || echo "Warning: .mbti files changed, please commit them"
+
+      - name: Code coverage report
+        run: |
+          moon coverage analyze | tee coverage.txt
+          echo "## Coverage Report" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          head -5 coverage.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY

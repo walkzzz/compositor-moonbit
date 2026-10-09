@@ -1,0 +1,96 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/inpainting"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn create_default_inpainting_config() -> InpaintingConfig
+
+pub fn create_rect_mask(Int, Int, Int, Int, Int, Int) -> @types.Image
+
+pub fn dehaze(@types.Image, DehazeAlgorithm) -> DehazeResult
+
+pub fn dehaze_clahe(@types.Image, Double, Int) -> @types.Image
+
+pub fn dehaze_dark_channel(@types.Image, Double, Double) -> DehazeResult
+
+pub fn derain(@types.Image, DerainAlgorithm) -> DerainResult
+
+pub fn derain_morphological(@types.Image) -> DerainResult
+
+pub fn inpaint(@types.Image, @types.Image, InpaintingConfig) -> InpaintingResult
+
+pub fn inpaint_diffusion(@types.Image, @types.Image, Int) -> @types.Image
+
+pub fn inpaint_simple(@types.Image, @types.Image, Int) -> @types.Image
+
+pub fn inpainting_report_to_string(InpaintingResult) -> String
+
+// Errors
+
+// Types and methods
+pub(all) enum DehazeAlgorithm {
+  DarkChannelPrior
+  ColorAttenuation
+  HomomorphicFiltering
+  Retinex
+  CLAHE
+  Unknown
+} derive(Eq)
+
+pub(all) struct DehazeResult {
+  image : @types.Image
+  algorithm : DehazeAlgorithm
+  atmospheric_light : Double
+  transmission_map : Array[Double]
+  processing_time_ms : Double
+}
+
+pub(all) enum DerainAlgorithm {
+  DictionaryLearning
+  ConvolutionalNeuralNetwork
+  GAN
+  Morphological
+  Unknown
+} derive(Eq)
+
+pub(all) struct DerainResult {
+  image : @types.Image
+  algorithm : DerainAlgorithm
+  rain_streaks_removed : Int
+  processing_time_ms : Double
+}
+
+pub(all) enum InpaintingAlgorithm {
+  Telea
+  NavierStokes
+  FastMarching
+  PatchMatch
+  DeepLearning
+  Unknown
+} derive(Eq)
+
+pub(all) struct InpaintingConfig {
+  algorithm : InpaintingAlgorithm
+  radius : Int
+  iterations : Int
+  use_edge_preservation : Bool
+  tolerance : Double
+}
+
+pub(all) struct InpaintingResult {
+  image : @types.Image
+  mask : @types.Image
+  algorithm : InpaintingAlgorithm
+  inpainted_pixels : Int
+  total_mask_pixels : Int
+  processing_time_ms : Double
+  iterations : Int
+}
+
+// Type aliases
+
+// Traits
+

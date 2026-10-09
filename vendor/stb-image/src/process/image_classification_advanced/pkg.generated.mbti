@@ -1,0 +1,170 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_classification_advanced"
+
+// Values
+pub fn classify_ensemble(Array[Double], Int, Int, ImageClassificationConfig) -> EnsembleClassificationResult
+
+pub fn classify_image(Array[Double], Int, Int, ImageClassificationConfig) -> ClassificationResult
+
+pub fn classify_multi_label(Array[Double], Int, Int, Int, Double, ImageClassificationConfig) -> MultiLabelClassificationResult
+
+pub fn create_default_classification_config() -> ImageClassificationConfig
+
+pub fn image_classification_report_to_string(ImageClassificationTaskType, ImageClassificationConfig, String) -> String
+
+pub fn train_classifier(Array[Array[Double]], Array[Int], ImageClassificationConfig) -> TrainingResult
+
+// Errors
+
+// Types and methods
+pub(all) struct ClassificationResult {
+  predicted_class : Int
+  predicted_label : String
+  class_probabilities : Array[Double]
+  num_classes : Int
+  confidence : Double
+  top_k_predictions : Array[Int]
+  top_k_confidences : Array[Double]
+  classification_time_ms : Double
+  feature_extraction_time_ms : Double
+  inference_time_ms : Double
+  is_correct : Bool
+}
+
+pub(all) enum ClassifierType {
+  KNN
+  SVM
+  RandomForest
+  DecisionTree
+  LogisticRegression
+  NaiveBayes
+  NeuralNetwork
+  CNN
+  ResNet
+  VGG
+  Inception
+  EfficientNet
+  VisionTransformer
+  Unknown
+} derive(Eq)
+
+pub(all) struct EnsembleClassificationResult {
+  final_prediction : Int
+  final_label : String
+  final_confidence : Double
+  individual_predictions : Array[Int]
+  individual_confidences : Array[Double]
+  num_classifiers : Int
+  ensemble_method : EnsembleMethodType
+  classification_time_ms : Double
+  diversity_score : Double
+}
+
+pub(all) enum EnsembleMethodType {
+  Bagging
+  Boosting
+  Stacking
+  Voting
+  RandomForest
+  GradientBoosting
+  AdaBoost
+  XGBoost
+  Unknown
+} derive(Eq)
+
+pub(all) enum FeatureExtractionMethod {
+  ColorHistogram
+  HOG
+  LBP
+  SIFT
+  SURF
+  ORB
+  Gabor
+  HaarWavelet
+  DeepFeature
+  TransferLearning
+  Unknown
+} derive(Eq)
+
+pub(all) struct FineGrainedClassificationResult {
+  predicted_subclass : Int
+  predicted_subclass_name : String
+  coarse_class : Int
+  coarse_class_name : String
+  subclass_probabilities : Array[Double]
+  num_subclasses : Int
+  confidence : Double
+  part_detection_results : Array[Array[Double]]
+  classification_time_ms : Double
+  feature_extraction_time_ms : Double
+}
+
+pub(all) struct ImageClassificationConfig {
+  task_type : ImageClassificationTaskType
+  classifier_type : ClassifierType
+  feature_extraction_method : FeatureExtractionMethod
+  num_classes : Int
+  use_transfer_learning : Bool
+  pretrained_model : String
+  use_data_augmentation : Bool
+  augmentation_methods : Array[String]
+  use_ensemble : Bool
+  ensemble_method : EnsembleMethodType
+  num_classifiers : Int
+  learning_rate : Double
+  num_epochs : Int
+  batch_size : Int
+  dropout_rate : Double
+  weight_decay : Double
+  use_gpu : Bool
+  use_multithreading : Bool
+  num_threads : Int
+}
+
+pub(all) enum ImageClassificationTaskType {
+  BinaryClassification
+  MultiClassClassification
+  MultiLabelClassification
+  FineGrainedClassification
+  HierarchicalClassification
+  ZeroShotClassification
+  FewShotClassification
+  OpenSetClassification
+  Unknown
+} derive(Eq)
+
+pub(all) struct MultiLabelClassificationResult {
+  predicted_labels : Array[Int]
+  predicted_label_names : Array[String]
+  label_probabilities : Array[Double]
+  num_labels : Int
+  threshold : Double
+  confidence_scores : Array[Double]
+  classification_time_ms : Double
+  hamming_loss : Double
+  subset_accuracy : Double
+  micro_f1 : Double
+  macro_f1 : Double
+}
+
+pub(all) struct TrainingResult {
+  classifier_type : ClassifierType
+  num_epochs : Int
+  final_loss : Double
+  final_accuracy : Double
+  training_accuracy : Double
+  validation_accuracy : Double
+  test_accuracy : Double
+  precision : Double
+  recall : Double
+  f1_score : Double
+  confusion_matrix : Array[Array[Int]]
+  training_time_ms : Double
+  model_size_bytes : Int
+  num_parameters : Int
+}
+
+// Type aliases
+
+// Traits
+

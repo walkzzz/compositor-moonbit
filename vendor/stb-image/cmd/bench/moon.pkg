@@ -1,0 +1,5 @@
+import {
+  "walkzzz/image/src",
+}
+
+pkgtype(kind: "executable")

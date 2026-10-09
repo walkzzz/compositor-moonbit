@@ -27,4 +27,6 @@ description = ""
 
 import {
   "moonbit-community/rabbita@0.16.4",
+  "walkzzz/image@0.6.0",
+  "moonbitlang/x@0.5.5",
 }

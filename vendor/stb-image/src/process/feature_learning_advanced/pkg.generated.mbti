@@ -1,0 +1,225 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/feature_learning_advanced"
+
+// Values
+pub fn create_default_feature_learning_config() -> FeatureLearningConfig
+
+pub fn extract_features_fl(Array[Array[Double]], Array[Int], Array[Int], FeatureLearningConfig) -> FeatureExtractionResult
+
+pub fn feature_learning_report_to_string(FeatureLearningTaskType, FeatureLearningConfig, String) -> String
+
+pub fn fuse_features_fl(Array[Array[Array[Double]]], FeatureLearningConfig) -> FeatureFusionResult
+
+pub fn learn_features(Array[Array[Double]], FeatureLearningConfig) -> FeatureLearningResult
+
+pub fn select_features_fl(Array[Array[Double]], Int, FeatureLearningConfig) -> FeatureSelectionResult
+
+pub fn transform_features_fl(Array[Array[Double]], FeatureLearningConfig) -> FeatureTransformationResult
+
+// Errors
+
+// Types and methods
+pub(all) struct ContrastiveLearningResult {
+  learned_representations : Array[Array[Double]]
+  num_samples : Int
+  representation_dimension : Int
+  training_loss : Double
+  validation_loss : Double
+  num_epochs : Int
+  temperature : Double
+  batch_size : Int
+  learning_rate : Double
+  learning_time_ms : Double
+  positive_pairs : Int
+  negative_pairs : Int
+}
+
+pub(all) enum FeatureExtractionMethodType {
+  Handcrafted
+  DeepLearning
+  CNN
+  ResNet
+  VGG
+  Inception
+  EfficientNet
+  VisionTransformer
+  Autoencoder
+  PCA
+  LDA
+  Unknown
+} derive(Eq)
+
+pub(all) struct FeatureExtractionResult {
+  features : Array[Array[Double]]
+  num_samples : Int
+  feature_dimension : Int
+  extraction_method : FeatureExtractionMethodType
+  extraction_time_ms : Double
+  feature_statistics : Array[Array[Double]]
+  num_layers : Int
+  layer_names : Array[String]
+}
+
+pub(all) enum FeatureFusionMethodType {
+  Concatenation
+  Addition
+  Multiplication
+  WeightedSum
+  Attention
+  GatedFusion
+  BilinearPooling
+  CompactBilinearPooling
+  Unknown
+} derive(Eq)
+
+pub(all) struct FeatureFusionResult {
+  fused_features : Array[Array[Double]]
+  num_samples : Int
+  fused_dimension : Int
+  input_dimensions : Array[Int]
+  fusion_method : FeatureFusionMethodType
+  fusion_weights : Array[Double]
+  fusion_time_ms : Double
+  attention_weights : Array[Array[Double]]
+}
+
+pub(all) struct FeatureLearningConfig {
+  task_type : FeatureLearningTaskType
+  extraction_method : FeatureExtractionMethodType
+  selection_method : FeatureSelectionMethodType
+  transformation_method : FeatureTransformationMethodType
+  fusion_method : FeatureFusionMethodType
+  metric_method : MetricLearningMethodType
+  num_features : Int
+  learning_rate : Double
+  num_epochs : Int
+  batch_size : Int
+  margin : Double
+  temperature : Double
+  regularization : Double
+  dropout_rate : Double
+  use_pretrained : Bool
+  pretrained_model : String
+  use_augmentation : Bool
+  use_gpu : Bool
+  random_state : Int
+}
+
+pub(all) struct FeatureLearningResult {
+  learned_features : Array[Array[Double]]
+  num_samples : Int
+  original_dimension : Int
+  learned_dimension : Int
+  feature_importance : Array[Double]
+  selected_features : Array[Int]
+  reconstruction_error : Double
+  training_loss : Double
+  validation_loss : Double
+  training_accuracy : Double
+  validation_accuracy : Double
+  learning_time_ms : Double
+  num_epochs : Int
+  converged : Bool
+}
+
+pub(all) enum FeatureLearningTaskType {
+  FeatureExtraction
+  FeatureSelection
+  FeatureTransformation
+  FeatureFusion
+  MetricLearning
+  ContrastiveLearning
+  SelfSupervisedLearning
+  RepresentationLearning
+  TransferLearning
+  Unknown
+} derive(Eq)
+
+pub(all) enum FeatureSelectionMethodType {
+  Filter
+  Wrapper
+  Embedded
+  VarianceThreshold
+  SelectKBest
+  SelectPercentile
+  RFE
+  L1Regularization
+  TreeBased
+  MutualInformation
+  Unknown
+} derive(Eq)
+
+pub(all) struct FeatureSelectionResult {
+  selected_features : Array[Int]
+  num_selected : Int
+  original_num_features : Int
+  feature_scores : Array[Double]
+  feature_ranking : Array[Int]
+  selection_method : FeatureSelectionMethodType
+  threshold : Double
+  selection_time_ms : Double
+  selected_data : Array[Array[Double]]
+}
+
+pub(all) enum FeatureTransformationMethodType {
+  Standardization
+  Normalization
+  Scaling
+  LogTransform
+  PowerTransform
+  QuantileTransform
+  Binning
+  OneHotEncoding
+  PCA
+  LDA
+  NMF
+  ICA
+  Unknown
+} derive(Eq)
+
+pub(all) struct FeatureTransformationResult {
+  transformed_features : Array[Array[Double]]
+  num_samples : Int
+  original_dimension : Int
+  transformed_dimension : Int
+  transformation_method : FeatureTransformationMethodType
+  transformation_parameters : Array[Double]
+  transformation_time_ms : Double
+  mean : Array[Double]
+  std : Array[Double]
+  min_values : Array[Double]
+  max_values : Array[Double]
+}
+
+pub(all) enum MetricLearningMethodType {
+  ContrastiveLoss
+  TripletLoss
+  QuadrupletLoss
+  NPairLoss
+  LiftedStructured
+  ProxyNCA
+  ProxyAnchor
+  CircleLoss
+  ArcFace
+  CosFace
+  Unknown
+} derive(Eq)
+
+pub(all) struct MetricLearningResult {
+  learned_metric : Array[Array[Double]]
+  num_samples : Int
+  feature_dimension : Int
+  metric_method : MetricLearningMethodType
+  training_loss : Double
+  validation_loss : Double
+  num_epochs : Int
+  learning_rate : Double
+  margin : Double
+  embedding_dimension : Int
+  learning_time_ms : Double
+}
+
+// Type aliases
+
+// Traits
+

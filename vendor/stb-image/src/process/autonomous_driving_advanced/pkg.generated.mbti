@@ -1,0 +1,171 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/autonomous_driving_advanced"
+
+// Values
+pub fn autonomous_driving_report_to_string(AutonomousDrivingTaskType, ADConfig, String) -> String
+
+pub fn create_default_ad_config() -> ADConfig
+
+pub fn create_detected_object(Int, ADObjectType, Array[Double], Double) -> ADDetectedObject
+
+pub fn create_sensor_data(SensorType, String, Double, Int) -> SensorData
+
+pub fn decision_control(PlannedPath, Double, Array[ADDetectedObject], ADConfig) -> ControlCommand
+
+pub fn fuse_sensors(Array[SensorData], ADConfig) -> Array[ADDetectedObject]
+
+pub fn plan_path(Array[Double], Array[Double], Array[ADDetectedObject], ADConfig) -> PlannedPath
+
+// Errors
+
+// Types and methods
+pub(all) struct ADConfig {
+  task_type : AutonomousDrivingTaskType
+  sensors : Array[SensorType]
+  num_sensors : Int
+  detection_threshold : Double
+  tracking_threshold : Double
+  planning_horizon : Double
+  control_frequency : Int
+  max_speed : Double
+  max_acceleration : Double
+  max_deceleration : Double
+  max_steering_angle : Double
+  safety_margin : Double
+  use_bev : Bool
+  use_end_to_end : Bool
+  use_sensor_fusion : Bool
+}
+
+pub(all) struct ADDetectedObject {
+  object_id : Int
+  object_type : ADObjectType
+  bounding_box : Array[Double]
+  confidence : Double
+  velocity : Array[Double]
+  acceleration : Array[Double]
+  position_3d : Array[Double]
+  dimensions : Array[Double]
+  orientation : Double
+  tracking_id : Int
+  age : Int
+  is_static : Bool
+}
+
+pub(all) enum ADObjectType {
+  Car
+  Truck
+  Bus
+  Motorcycle
+  Bicycle
+  Pedestrian
+  TrafficLight
+  TrafficSign
+  Lane
+  Road
+  Unknown
+} derive(Eq)
+
+pub(all) enum AutonomousDrivingTaskType {
+  EnvironmentPerception
+  PathPlanning
+  DecisionControl
+  SensorFusion
+  BEVPerception
+  EndToEnd
+  Localization
+  Unknown
+} derive(Eq)
+
+pub(all) struct ControlCommand {
+  steering_angle : Double
+  throttle : Double
+  brake : Double
+  gear : String
+  target_velocity : Double
+  target_acceleration : Double
+  is_emergency_brake : Bool
+  is_horn : Bool
+  is_light : Bool
+  timestamp : Double
+}
+
+pub(all) enum DrivingBehaviorType {
+  LaneKeep
+  LaneChangeLeft
+  LaneChangeRight
+  TurnLeft
+  TurnRight
+  Stop
+  Accelerate
+  Decelerate
+  Overtake
+  Yield
+  Unknown
+} derive(Eq)
+
+pub(all) struct LaneLine {
+  lane_id : Int
+  lane_type : String
+  points : Array[Array[Double]]
+  num_points : Int
+  confidence : Double
+  color : String
+  is_occluded : Bool
+}
+
+pub(all) struct PathPoint {
+  x : Double
+  y : Double
+  z : Double
+  heading : Double
+  curvature : Double
+  velocity : Double
+  acceleration : Double
+  timestamp : Double
+}
+
+pub(all) struct PlannedPath {
+  points : Array[PathPoint]
+  num_points : Int
+  path_length : Double
+  estimated_time : Double
+  is_safe : Bool
+  risk_level : Double
+  path_type : String
+}
+
+pub(all) struct SensorData {
+  sensor_type : SensorType
+  sensor_id : String
+  timestamp : Double
+  data : Array[Double]
+  data_size : Int
+  calibration_params : Array[Double]
+  is_valid : Bool
+}
+
+pub(all) enum SensorType {
+  Camera
+  LiDAR
+  Radar
+  Ultrasonic
+  IMU
+  GPS
+  Odometry
+  Unknown
+} derive(Eq)
+
+pub(all) struct TrafficLight {
+  light_id : Int
+  position : Array[Double]
+  state : String
+  confidence : Double
+  countdown : Double
+  is_countdown_available : Bool
+}
+
+// Type aliases
+
+// Traits
+

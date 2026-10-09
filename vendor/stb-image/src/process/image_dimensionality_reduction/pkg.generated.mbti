@@ -1,0 +1,195 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_dimensionality_reduction"
+
+// Values
+pub fn create_default_dr_config() -> DimensionalityReductionConfig
+
+pub fn dimensionality_reduction_report_to_string(DimensionalityReductionTaskType, DimensionalityReductionConfig, String) -> String
+
+pub fn pca_reduce(Array[Array[Double]], Int, DimensionalityReductionConfig) -> PCAResult
+
+pub fn reduce_dimensionality(Array[Array[Double]], DimensionalityReductionConfig) -> DimensionalityReductionResult
+
+pub fn select_features(Array[Array[Double]], Double) -> FeatureSelectionResult
+
+pub fn tsne_reduce(Array[Array[Double]], Int, DimensionalityReductionConfig) -> TSNEResult
+
+pub fn umap_reduce(Array[Array[Double]], Int, DimensionalityReductionConfig) -> UMAPResult
+
+// Errors
+
+// Types and methods
+pub(all) enum DimensionalityReductionAlgorithmType {
+  PCA
+  KernelPCA
+  IncrementalPCA
+  SparsePCA
+  TruncatedSVD
+  LDA
+  TSNE
+  UMAP
+  ISOMAP
+  LLE
+  HessianLLE
+  ModifiedLLE
+  LTSA
+  MDS
+  SpectralEmbedding
+  Autoencoder
+  Unknown
+} derive(Eq)
+
+pub(all) struct DimensionalityReductionConfig {
+  task_type : DimensionalityReductionTaskType
+  algorithm_type : DimensionalityReductionAlgorithmType
+  num_components : Int
+  kernel_type : KernelType
+  kernel_gamma : Double
+  kernel_degree : Int
+  kernel_coef0 : Double
+  perplexity : Double
+  learning_rate : Double
+  num_iterations : Int
+  n_neighbors : Int
+  min_dist : Double
+  metric : DistanceMetricTypeDR
+  regularization : Double
+  use_whitening : Bool
+  use_random_state : Bool
+  random_state : Int
+  early_exaggeration : Double
+  use_feature_selection : Bool
+  feature_selection_method : String
+  feature_threshold : Double
+}
+
+pub(all) struct DimensionalityReductionResult {
+  reduced_data : Array[Array[Double]]
+  original_dimension : Int
+  reduced_dimension : Int
+  num_samples : Int
+  explained_variance_ratio : Array[Double]
+  cumulative_explained_variance : Double
+  reconstruction_error : Double
+  stress : Double
+  trustworthiness : Double
+  continuity : Double
+  reduction_time_ms : Double
+  components : Array[Array[Double]]
+  singular_values : Array[Double]
+  mean : Array[Double]
+}
+
+pub(all) enum DimensionalityReductionTaskType {
+  PCA
+  LDA
+  TSNE
+  UMAP
+  ISOMAP
+  LLE
+  Autoencoder
+  ManifoldLearning
+  FeatureSelection
+  Unknown
+} derive(Eq)
+
+pub(all) enum DistanceMetricTypeDR {
+  Euclidean
+  Manhattan
+  Cosine
+  Chebyshev
+  Minkowski
+  Correlation
+  Unknown
+} derive(Eq)
+
+pub(all) struct FeatureSelectionResult {
+  selected_features : Array[Int]
+  num_selected : Int
+  original_num_features : Int
+  feature_scores : Array[Double]
+  feature_ranking : Array[Int]
+  selection_method : String
+  threshold : Double
+  selection_time_ms : Double
+}
+
+pub(all) struct ISOMAPResult {
+  reduced_data : Array[Array[Double]]
+  num_components : Int
+  num_samples : Int
+  n_neighbors : Int
+  geodesic_distances : Array[Array[Double]]
+  reconstruction_error : Double
+  residual_variance : Double
+  reduction_time_ms : Double
+}
+
+pub(all) enum KernelType {
+  Linear
+  Polynomial
+  RBF
+  Sigmoid
+  Cosine
+  Precomputed
+  Unknown
+} derive(Eq)
+
+pub(all) struct LLEResult {
+  reduced_data : Array[Array[Double]]
+  num_components : Int
+  num_samples : Int
+  n_neighbors : Int
+  reconstruction_error : Double
+  regularization : Double
+  reduction_time_ms : Double
+}
+
+pub(all) struct PCAResult {
+  reduced_data : Array[Array[Double]]
+  num_components : Int
+  original_dimension : Int
+  num_samples : Int
+  explained_variance : Array[Double]
+  explained_variance_ratio : Array[Double]
+  cumulative_explained_variance : Double
+  components : Array[Array[Double]]
+  singular_values : Array[Double]
+  mean : Array[Double]
+  noise_variance : Double
+  reconstruction_error : Double
+  reduction_time_ms : Double
+}
+
+pub(all) struct TSNEResult {
+  reduced_data : Array[Array[Double]]
+  num_components : Int
+  num_samples : Int
+  perplexity : Double
+  learning_rate : Double
+  num_iterations : Int
+  kl_divergence : Double
+  final_error : Double
+  reduction_time_ms : Double
+  early_exaggeration : Double
+  exaggeration_iterations : Int
+}
+
+pub(all) struct UMAPResult {
+  reduced_data : Array[Array[Double]]
+  num_components : Int
+  num_samples : Int
+  n_neighbors : Int
+  min_dist : Double
+  metric : DistanceMetricTypeDR
+  num_epochs : Int
+  reconstruction_error : Double
+  trustworthiness : Double
+  continuity : Double
+  reduction_time_ms : Double
+}
+
+// Type aliases
+
+// Traits
+

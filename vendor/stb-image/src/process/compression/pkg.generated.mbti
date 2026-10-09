@@ -1,0 +1,109 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/compression"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn calculate_bits_per_pixel(Int, Int, Int) -> Double
+
+pub fn calculate_compression_quality(@types.Image, @types.Image, Int, Int) -> CompressionQualityMetrics raise @types.LoadError
+
+pub fn calculate_compression_ratio(Int, Int) -> Double
+
+pub fn calculate_image_entropy(@types.Image) -> Double raise @types.LoadError
+
+pub fn compress_image(@types.Image, CompressionConfig) -> CompressionResult raise @types.LoadError
+
+pub fn compress_jpeg_simple(@types.Image, Double) -> CompressionResult raise @types.LoadError
+
+pub fn compress_png_simple(@types.Image) -> CompressionResult raise @types.LoadError
+
+pub fn compression_algorithm_to_string(CompressionAlgorithm) -> String
+
+pub fn compression_report_to_string(CompressionResult, CompressionQualityMetrics) -> String
+
+pub fn create_default_compression_config() -> CompressionConfig
+
+pub fn predictive_encode(@types.Image) -> Bytes raise @types.LoadError
+
+pub fn quantize_image(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn run_length_decode(Bytes) -> Bytes
+
+pub fn run_length_encode(Bytes) -> Bytes
+
+// Errors
+
+// Types and methods
+pub(all) enum CompressionAlgorithm {
+  RunLengthEncoding
+  HuffmanCoding
+  ArithmeticCoding
+  LZW
+  Deflate
+  JPEGBaseline
+  JPEG2000
+  WebP
+  AVIF
+  PNG
+  Unknown
+} derive(Eq)
+
+pub(all) struct CompressionConfig {
+  algorithm : CompressionAlgorithm
+  quality : Double
+  quantization_level : Int
+  use_dct : Bool
+  use_prediction : Bool
+  use_entropy_coding : Bool
+  block_size : Int
+}
+
+pub(all) struct CompressionQualityMetrics {
+  psnr : Double
+  ssim : Double
+  mse : Double
+  compression_ratio : Double
+  bits_per_pixel : Double
+  structural_similarity : Double
+  overall_quality : Double
+}
+
+pub(all) struct CompressionResult {
+  compressed_data : Bytes
+  original_size : Int
+  compressed_size : Int
+  compression_ratio : Double
+  bits_per_pixel : Double
+  algorithm : CompressionAlgorithm
+  quality : Double
+  processing_time_ms : Double
+}
+
+pub(all) struct DCTBlock {
+  coefficients : Array[Double]
+  block_size : Int
+  width : Int
+  height : Int
+}
+
+pub(all) struct HuffmanTable {
+  symbols : Array[Int]
+  codes : Array[Int]
+  code_lengths : Array[Int]
+  num_symbols : Int
+}
+
+pub(all) enum QuantizationTableType {
+  Luminance
+  Chrominance
+  Custom
+  Default
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,113 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/slam"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn create_default_slam_config() -> SLAMConfig
+
+pub fn detect_features_slam(@types.Image, Int, Double) -> Array[Array[Double]]
+
+pub fn detect_loop_closure(Array[Array[Double]], Array[KeyFrame], Double) -> LoopClosureResult
+
+pub fn estimate_camera_pose(FeatureTrackingResult, SLAMConfig, CameraPose) -> CameraPose
+
+pub fn initialize_slam(SLAMConfig) -> SLAMState
+
+pub fn process_frame_slam(SLAMState, @types.Image, SLAMConfig) -> SLAMState
+
+pub fn slam_report_to_string(SLAMState) -> String
+
+pub fn track_features_slam(@types.Image, @types.Image, Array[Array[Double]], Int) -> FeatureTrackingResult
+
+pub fn triangulate_points(Array[Array[Double]], CameraPose, CameraPose, SLAMConfig) -> Array[MapPoint]
+
+// Errors
+
+// Types and methods
+pub(all) struct CameraPose {
+  position : Array[Double]
+  rotation : Array[Double]
+  timestamp : Double
+  confidence : Double
+}
+
+pub(all) struct FeatureTrackingResult {
+  tracked_features : Array[Array[Double]]
+  num_tracked : Int
+  num_lost : Int
+  parallax : Double
+  is_keyframe : Bool
+}
+
+pub(all) struct KeyFrame {
+  pose : CameraPose
+  image : @types.Image
+  features : Array[Array[Double]]
+  descriptors : Array[Array[Double]]
+  map_points : Array[Int]
+  timestamp : Double
+  is_loop_closure : Bool
+}
+
+pub(all) struct LoopClosureResult {
+  is_loop_detected : Bool
+  loop_frame_index : Int
+  similarity_score : Double
+  transformation : Array[Double]
+  num_inliers : Int
+}
+
+pub(all) struct MapPoint {
+  position : Array[Double]
+  color : Array[Int]
+  normal : Array[Double]
+  descriptor : Array[Double]
+  num_observations : Int
+  is_outlier : Bool
+}
+
+pub(all) enum SLAMAlgorithm {
+  MonoSLAM
+  ORBSLAM
+  LSD_SLAM
+  SVO
+  DSO
+  PTAM
+  KinectFusion
+  ElasticFusion
+  Unknown
+} derive(Eq)
+
+pub(all) struct SLAMConfig {
+  algorithm : SLAMAlgorithm
+  feature_threshold : Double
+  max_features : Int
+  keyframe_interval : Int
+  min_parallax : Double
+  use_loop_closure : Bool
+  use_bundle_adjustment : Bool
+  camera_fx : Double
+  camera_fy : Double
+  camera_cx : Double
+  camera_cy : Double
+}
+
+pub(all) struct SLAMState {
+  current_pose : CameraPose
+  trajectory : Array[CameraPose]
+  map_points : Array[MapPoint]
+  keyframes : Array[KeyFrame]
+  num_frames_processed : Int
+  num_lost_frames : Int
+  is_tracking : Bool
+  is_mapping : Bool
+  processing_time_ms : Double
+}
+
+// Type aliases
+
+// Traits
+

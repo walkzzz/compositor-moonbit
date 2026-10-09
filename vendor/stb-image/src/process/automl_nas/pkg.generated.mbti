@@ -1,0 +1,150 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/automl_nas"
+
+// Values
+pub fn automl_report_to_string(SearchResult, NASConfig, ModelEvaluationMetrics) -> String
+
+pub fn create_default_hpo_config() -> HPOConfig
+
+pub fn create_default_nas_config() -> NASConfig
+
+pub fn evaluate_model(NetworkArchitecture, HyperparameterConfig) -> ModelEvaluationMetrics
+
+pub fn generate_random_architecture(Int, Int) -> NetworkArchitecture
+
+pub fn generate_random_hyperparameters() -> HyperparameterConfig
+
+pub fn perform_hpo(HPOConfig, NetworkArchitecture) -> SearchResult
+
+pub fn perform_nas(NASConfig) -> SearchResult
+
+// Errors
+
+// Types and methods
+pub(all) struct HPOConfig {
+  algorithm : HyperparameterOptimizationAlgorithm
+  num_trials : Int
+  num_epochs_per_trial : Int
+  search_space : Array[String]
+  use_early_stopping : Bool
+  early_stopping_patience : Int
+  use_parallel : Bool
+  num_workers : Int
+  resource_allocation : String
+}
+
+pub(all) struct HyperparameterConfig {
+  learning_rate : Double
+  batch_size : Int
+  num_epochs : Int
+  optimizer : String
+  weight_decay : Double
+  dropout_rate : Double
+  hidden_dim : Int
+  num_layers : Int
+  num_heads : Int
+  activation : String
+  config_id : Int
+}
+
+pub(all) enum HyperparameterOptimizationAlgorithm {
+  GridSearch
+  RandomSearch
+  BayesianOptimization
+  TPE
+  SMAC
+  Hyperband
+  ASHA
+  PopulationBasedTraining
+  Unknown
+} derive(Eq)
+
+pub(all) enum LayerType {
+  Convolution
+  Pooling
+  FullyConnected
+  BatchNorm
+  Dropout
+  Activation
+  Attention
+  Recurrent
+  Transformer
+  Unknown
+} derive(Eq)
+
+pub(all) struct ModelEvaluationMetrics {
+  accuracy : Double
+  loss : Double
+  precision : Double
+  recall : Double
+  f1_score : Double
+  auc_roc : Double
+  inference_time_ms : Double
+  memory_usage_mb : Double
+  model_size_mb : Double
+  num_parameters : Int
+  flops : Int
+}
+
+pub(all) enum NASAlgorithm {
+  ReinforcementLearning
+  Evolutionary
+  GradientBased
+  BayesianOptimization
+  RandomSearch
+  GridSearch
+  Differentiable
+  OneShot
+  Unknown
+} derive(Eq)
+
+pub(all) struct NASConfig {
+  algorithm : NASAlgorithm
+  search_space_type : SearchSpaceType
+  num_trials : Int
+  max_layers : Int
+  max_channels : Int
+  population_size : Int
+  mutation_rate : Double
+  crossover_rate : Double
+  learning_rate_controller : Double
+  use_pretrained : Bool
+  use_weight_sharing : Bool
+  resource_constraint_mb : Double
+  time_budget_s : Double
+}
+
+pub(all) struct NetworkArchitecture {
+  layers : Array[LayerType]
+  num_layers : Int
+  num_parameters : Int
+  flops : Int
+  memory_mb : Double
+  inference_time_ms : Double
+  architecture_id : Int
+}
+
+pub(all) struct SearchResult {
+  best_architecture : NetworkArchitecture
+  best_hyperparameters : HyperparameterConfig
+  best_accuracy : Double
+  best_loss : Double
+  num_trials_completed : Int
+  search_time_s : Double
+  all_accuracies : Array[Double]
+  convergence_curve : Array[Double]
+}
+
+pub(all) enum SearchSpaceType {
+  Macro
+  Micro
+  CellBased
+  Hierarchical
+  Joint
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

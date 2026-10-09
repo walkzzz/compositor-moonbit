@@ -1,0 +1,175 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/automl_advanced"
+
+// Values
+pub fn automated_feature_engineering(Int, AutoMLConfig) -> FeatureEngineeringResult
+
+pub fn automated_model_selection(Array[String], AutoMLConfig) -> ModelSelectionResult
+
+pub fn automl(Int, AutoMLConfig) -> AutoMLResult
+
+pub fn automl_report_to_string(AutoMLTaskType, AutoMLConfig, String) -> String
+
+pub fn create_default_automl_config() -> AutoMLConfig
+
+pub fn neural_architecture_search(Int, Int, AutoMLConfig) -> NASResult
+
+pub fn optimize_hyperparameters(Int, AutoMLConfig) -> HPOResult
+
+// Errors
+
+// Types and methods
+pub(all) struct AutoMLConfig {
+  task_type : AutoMLTaskType
+  hpo_algorithm : HPOAlgorithmType
+  nas_algorithm : NASAlgorithmType
+  feature_engineering_method : FeatureEngineeringMethodType
+  model_selection_strategy : ModelSelectionStrategyType
+  max_trials : Int
+  max_time_ms : Double
+  num_cv_folds : Int
+  search_space_size : Int
+  population_size : Int
+  mutation_rate : Double
+  crossover_rate : Double
+  learning_rate : Double
+  use_early_stopping : Bool
+  early_stopping_patience : Int
+  use_parallel : Bool
+  num_workers : Int
+  random_state : Int
+}
+
+pub(all) struct AutoMLResult {
+  best_model_type : String
+  best_hyperparameters : Array[Double]
+  best_architecture : Array[Int]
+  best_features : Array[Int]
+  best_validation_score : Double
+  best_test_score : Double
+  num_trials : Int
+  num_models_evaluated : Int
+  total_time_ms : Double
+  search_space_size : Int
+  convergence_curve : Array[Double]
+  best_pipeline : Array[String]
+  automl_task_type : AutoMLTaskType
+}
+
+pub(all) enum AutoMLTaskType {
+  HyperparameterOptimization
+  NeuralArchitectureSearch
+  FeatureEngineering
+  ModelSelection
+  PipelineOptimization
+  DataAugmentationSearch
+  NeuralArchitectureAndHPO
+  Unknown
+} derive(Eq)
+
+pub(all) enum FeatureEngineeringMethodType {
+  FeatureSelection
+  FeatureExtraction
+  FeatureConstruction
+  FeatureTransformation
+  FeatureNormalization
+  FeatureEncoding
+  FeatureInteraction
+  Unknown
+} derive(Eq)
+
+pub(all) struct FeatureEngineeringResult {
+  selected_features : Array[Int]
+  extracted_features : Array[Array[Double]]
+  num_original_features : Int
+  num_selected_features : Int
+  num_extracted_features : Int
+  feature_importance : Array[Double]
+  feature_scores : Array[Double]
+  improvement_score : Double
+  feature_engineering_method : FeatureEngineeringMethodType
+  processing_time_ms : Double
+}
+
+pub(all) enum HPOAlgorithmType {
+  GridSearch
+  RandomSearch
+  BayesianOptimization
+  TPE
+  SMAC
+  Hyperband
+  BOHB
+  ASHA
+  PBT
+  CMAES
+  GeneticAlgorithm
+  Unknown
+} derive(Eq)
+
+pub(all) struct HPOResult {
+  best_hyperparameters : Array[Double]
+  best_score : Double
+  num_trials : Int
+  num_evaluations : Int
+  search_space_dimensions : Int
+  convergence_curve : Array[Double]
+  best_trial_id : Int
+  total_time_ms : Double
+  hpo_algorithm : HPOAlgorithmType
+  early_stopped : Bool
+}
+
+pub(all) struct ModelSelectionResult {
+  best_model : String
+  model_scores : Array[Double]
+  model_names : Array[String]
+  num_models_evaluated : Int
+  best_score : Double
+  ensemble_score : Double
+  cross_validation_scores : Array[Double]
+  model_selection_strategy : ModelSelectionStrategyType
+  selection_time_ms : Double
+}
+
+pub(all) enum ModelSelectionStrategyType {
+  CrossValidation
+  Holdout
+  Bootstrap
+  EnsembleSelection
+  Stacking
+  Blending
+  Unknown
+} derive(Eq)
+
+pub(all) enum NASAlgorithmType {
+  ReinforcementLearning
+  Evolutionary
+  Differentiable
+  OneShot
+  ProxylessNAS
+  DARTS
+  ENAS
+  NASNet
+  AmoebaNet
+  PNAS
+  Unknown
+} derive(Eq)
+
+pub(all) struct NASResult {
+  best_architecture : Array[Int]
+  best_accuracy : Double
+  num_architectures_evaluated : Int
+  search_time_ms : Double
+  num_layers : Int
+  num_operations : Int
+  architecture_description : String
+  nas_algorithm : NASAlgorithmType
+  params_count : Int
+  flops_count : Int
+  convergence_curve : Array[Double]
+}
+
+// Type aliases
+
+// Traits
+

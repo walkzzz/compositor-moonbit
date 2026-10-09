@@ -1,0 +1,173 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_retrieval_advanced"
+
+// Values
+pub fn build_index(Array[Array[Double]], IndexStructureType) -> IndexConstructionResult
+
+pub fn calculate_similarity(Array[Double], Array[Double], SimilarityMetricType) -> Double
+
+pub fn create_default_retrieval_config() -> ImageRetrievalConfig
+
+pub fn expand_query(Array[Double], Array[Array[Double]], ImageRetrievalConfig) -> QueryExpansionResult
+
+pub fn extract_features(Array[Double], Int, Int, ImageRetrievalConfig) -> FeatureExtractionResult
+
+pub fn image_retrieval_report_to_string(ImageRetrievalTaskType, ImageRetrievalConfig, String) -> String
+
+pub fn relevance_feedback(Array[Double], Array[Int], Array[Int], Array[Array[Double]], ImageRetrievalConfig) -> RelevanceFeedbackResult
+
+pub fn retrieve_images(Array[Double], Int, Int, Array[Array[Double]], ImageRetrievalConfig) -> RetrievalResult
+
+// Errors
+
+// Types and methods
+pub(all) enum FeatureDescriptorType {
+  SIFT
+  SURF
+  ORB
+  HOG
+  LBP
+  Gabor
+  ColorHistogram
+  TextureDescriptor
+  ShapeDescriptor
+  DeepFeature
+  Unknown
+} derive(Eq)
+
+pub(all) struct FeatureExtractionResult {
+  features : Array[Double]
+  feature_dimension : Int
+  feature_type : FeatureDescriptorType
+  num_keypoints : Int
+  keypoints : Array[Array[Double]]
+  descriptors : Array[Array[Double]]
+  extraction_time_ms : Double
+  image_width : Int
+  image_height : Int
+}
+
+pub(all) struct ImageRetrievalConfig {
+  task_type : ImageRetrievalTaskType
+  feature_type : FeatureDescriptorType
+  similarity_metric : SimilarityMetricType
+  index_type : IndexStructureType
+  num_results : Int
+  feature_dimension : Int
+  use_pca : Bool
+  pca_dimension : Int
+  use_normalization : Bool
+  use_query_expansion : Bool
+  expansion_method : String
+  use_relevance_feedback : Bool
+  feedback_method : String
+  use_gpu : Bool
+  use_multithreading : Bool
+  num_threads : Int
+}
+
+pub(all) enum ImageRetrievalTaskType {
+  ContentBasedRetrieval
+  FeatureExtraction
+  SimilaritySearch
+  IndexConstruction
+  QueryExpansion
+  RelevanceFeedback
+  ImageClustering
+  ImageClassification
+  Unknown
+} derive(Eq)
+
+pub(all) struct IndexConstructionResult {
+  index_type : IndexStructureType
+  num_vectors : Int
+  vector_dimension : Int
+  index_size_bytes : Int
+  construction_time_ms : Double
+  query_time_ms : Double
+  recall_at_1 : Double
+  recall_at_10 : Double
+  is_approximate : Bool
+  num_trees : Int
+}
+
+pub(all) enum IndexStructureType {
+  KDTree
+  BallTree
+  VPree
+  LSH
+  IVF
+  HNSW
+  Annoy
+  FlatIndex
+  InvertedIndex
+  Unknown
+} derive(Eq)
+
+pub(all) struct QueryExpansionResult {
+  expanded_query : Array[Double]
+  original_query : Array[Double]
+  expansion_method : String
+  num_expansion_terms : Int
+  expansion_weight : Double
+  retrieval_improvement : Double
+  expansion_time_ms : Double
+}
+
+pub(all) struct RelevanceFeedbackResult {
+  updated_query : Array[Double]
+  original_query : Array[Double]
+  relevant_images : Array[Int]
+  irrelevant_images : Array[Int]
+  feedback_method : String
+  num_iterations : Int
+  precision_improvement : Double
+  recall_improvement : Double
+  feedback_time_ms : Double
+}
+
+pub(all) struct RetrievalResult {
+  query_image : Array[Double]
+  query_width : Int
+  query_height : Int
+  retrieved_images : Array[Array[Double]]
+  retrieved_indices : Array[Int]
+  retrieved_scores : Array[Double]
+  num_results : Int
+  total_candidates : Int
+  retrieval_time_ms : Double
+  feature_extraction_time_ms : Double
+  similarity_search_time_ms : Double
+  average_precision : Double
+  recall_at_k : Double
+  precision_at_k : Double
+}
+
+pub(all) enum SimilarityMetricType {
+  EuclideanDistance
+  CosineSimilarity
+  ManhattanDistance
+  ChebyshevDistance
+  MinkowskiDistance
+  HammingDistance
+  ChiSquareDistance
+  CorrelationCoefficient
+  BhattacharyyaDistance
+  EarthMoverDistance
+  Unknown
+} derive(Eq)
+
+pub(all) struct SimilarityResult {
+  similarity_scores : Array[Double]
+  similarity_metric : SimilarityMetricType
+  num_pairs : Int
+  average_similarity : Double
+  max_similarity : Double
+  min_similarity : Double
+  computation_time_ms : Double
+}
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,14 @@
+{
+  "pdf_path": "/home/user/.doubao/agent_mode/workspace/.sessions/38441226996538882/attachments/投标文件-喜得勘察设计.pdf",
+  "total_pages": 3,
+  "dpi": 200,
+  "total_elements": 128,
+  "element_distribution": {
+    "heading1": 6,
+    "horizontal_rule": 19,
+    "paragraph": 20,
+    "heading2": 56,
+    "heading3": 27
+  },
+  "output_path": "投标文件_转换结果.md"
+}

@@ -1,0 +1,192 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/image_clustering_advanced"
+
+// Values
+pub fn calculate_silhouette_score(Array[Array[Double]], Array[Int]) -> Double
+
+pub fn cluster_images(Array[Array[Double]], ImageClusteringConfig) -> ClusteringResult
+
+pub fn create_default_clustering_config() -> ImageClusteringConfig
+
+pub fn dbscan_clustering(Array[Array[Double]], Double, Int, ImageClusteringConfig) -> DBSCANResult
+
+pub fn hierarchical_clustering(Array[Array[Double]], Int, ImageClusteringConfig) -> HierarchicalClusteringResult
+
+pub fn image_clustering_report_to_string(ImageClusteringTaskType, ImageClusteringConfig, String) -> String
+
+pub fn kmeans_clustering(Array[Array[Double]], Int, ImageClusteringConfig) -> KMeansResult
+
+// Errors
+
+// Types and methods
+pub(all) enum ClusteringAlgorithmType {
+  KMeans
+  KMedoids
+  Hierarchical
+  DBSCAN
+  HDBSCAN
+  Spectral
+  GMM
+  FuzzyCMeans
+  MeanShift
+  AffinityPropagation
+  BIRCH
+  OPTICS
+  Unknown
+} derive(Eq)
+
+pub(all) struct ClusteringEvaluationResult {
+  silhouette_score : Double
+  calinski_harabasz_index : Double
+  davies_bouldin_index : Double
+  adjusted_rand_index : Double
+  normalized_mutual_info : Double
+  homogeneity_score : Double
+  completeness_score : Double
+  v_measure_score : Double
+  fowlkes_mallows_score : Double
+  overall_quality : Double
+}
+
+pub(all) struct ClusteringResult {
+  labels : Array[Int]
+  num_clusters : Int
+  num_samples : Int
+  cluster_centers : Array[Array[Double]]
+  cluster_sizes : Array[Int]
+  inertia : Double
+  silhouette_score : Double
+  davies_bouldin_index : Double
+  calinski_harabasz_index : Double
+  clustering_time_ms : Double
+  num_iterations : Int
+  converged : Bool
+}
+
+pub(all) struct DBSCANResult {
+  labels : Array[Int]
+  num_clusters : Int
+  num_noise_points : Int
+  num_core_points : Int
+  num_border_points : Int
+  eps : Double
+  min_samples : Int
+  cluster_sizes : Array[Int]
+  clustering_time_ms : Double
+}
+
+pub(all) enum DistanceMetricType {
+  Euclidean
+  Manhattan
+  Cosine
+  Chebyshev
+  Minkowski
+  Hamming
+  Mahalanobis
+  Correlation
+  BrayCurtis
+  Canberra
+  Unknown
+} derive(Eq)
+
+pub(all) struct FuzzyCMeansResult {
+  labels : Array[Int]
+  num_clusters : Int
+  num_samples : Int
+  cluster_centers : Array[Array[Double]]
+  membership_matrix : Array[Array[Double]]
+  fuzziness_parameter : Double
+  objective_function : Double
+  num_iterations : Int
+  converged : Bool
+  clustering_time_ms : Double
+}
+
+pub(all) struct GMMResult {
+  labels : Array[Int]
+  num_components : Int
+  num_samples : Int
+  means : Array[Array[Double]]
+  covariances : Array[Array[Array[Double]]]
+  weights : Array[Double]
+  responsibilities : Array[Array[Double]]
+  log_likelihood : Double
+  bic : Double
+  aic : Double
+  num_iterations : Int
+  converged : Bool
+  clustering_time_ms : Double
+}
+
+pub(all) struct HierarchicalClusteringResult {
+  labels : Array[Int]
+  num_clusters : Int
+  num_samples : Int
+  linkage_type : LinkageType
+  dendrogram : Array[Array[Double]]
+  merge_history : Array[Array[Int]]
+  cluster_sizes : Array[Int]
+  cophenetic_correlation : Double
+  clustering_time_ms : Double
+}
+
+pub(all) struct ImageClusteringConfig {
+  task_type : ImageClusteringTaskType
+  algorithm_type : ClusteringAlgorithmType
+  num_clusters : Int
+  distance_metric : DistanceMetricType
+  max_iterations : Int
+  tolerance : Double
+  random_seed : Int
+  eps : Double
+  min_samples : Int
+  linkage_type : LinkageType
+  fuzziness_parameter : Double
+  covariance_type : String
+  use_feature_extraction : Bool
+  feature_extraction_method : String
+  use_pca : Bool
+  pca_dimension : Int
+  use_normalization : Bool
+  use_gpu : Bool
+}
+
+pub(all) enum ImageClusteringTaskType {
+  KMeansClustering
+  HierarchicalClustering
+  DBSCANClustering
+  SpectralClustering
+  GaussianMixtureModel
+  FuzzyCMeans
+  DensityClustering
+  SubspaceClustering
+  Unknown
+} derive(Eq)
+
+pub(all) struct KMeansResult {
+  labels : Array[Int]
+  cluster_centers : Array[Array[Double]]
+  num_clusters : Int
+  num_samples : Int
+  inertia : Double
+  num_iterations : Int
+  converged : Bool
+  clustering_time_ms : Double
+  initial_centroids : Array[Array[Double]]
+  final_centroids : Array[Array[Double]]
+}
+
+pub(all) enum LinkageType {
+  Single
+  Complete
+  Average
+  Ward
+  Centroid
+  Median
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

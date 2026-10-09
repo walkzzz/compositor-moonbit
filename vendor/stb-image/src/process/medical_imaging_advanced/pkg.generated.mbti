@@ -1,0 +1,178 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/medical_imaging_advanced"
+
+// Values
+pub fn create_default_medical_config() -> MedicalImagingConfig
+
+pub fn detect_lesions(Array[Double], Int, Int, MedicalImagingConfig) -> Array[DetectedLesion]
+
+pub fn extract_radiomics_features(Array[Double], Array[Array[Bool]], MedicalImagingConfig) -> RadiomicsFeatures
+
+pub fn medical_imaging_report_to_string(MedicalImagingTaskType, MedicalImagingConfig, String) -> String
+
+pub fn register_medical_images(Array[Double], Array[Double], Int, Int, MedicalImagingConfig) -> RegistrationResult
+
+pub fn segment_medical_image(Array[Double], Int, Int, MedicalImagingConfig) -> SegmentationResult
+
+pub fn segment_organ(Array[Double], Int, Int, OrganType, MedicalImagingConfig) -> OrganSegmentationResult
+
+// Errors
+
+// Types and methods
+pub(all) struct DetectedLesion {
+  lesion_id : Int
+  lesion_type : LesionType
+  bounding_box : Array[Int]
+  segmentation_mask : Array[Array[Bool]]
+  confidence : Double
+  severity : Double
+  volume : Double
+  surface_area : Double
+  location : Array[Double]
+  is_malignant : Bool
+  malignancy_risk : Double
+}
+
+pub(all) struct DiseaseClassificationResult {
+  disease_name : String
+  confidence : Double
+  all_diseases : Array[String]
+  all_scores : Array[Double]
+  severity : String
+  recommendation : String
+  is_critical : Bool
+  affected_organs : Array[OrganType]
+}
+
+pub(all) enum LesionType {
+  Tumor
+  Nodule
+  Cyst
+  Hemorrhage
+  Infarction
+  Inflammation
+  Calcification
+  Stenosis
+  Aneurysm
+  Unknown
+} derive(Eq)
+
+pub(all) enum MedicalImageType {
+  XRay
+  CT
+  MRI
+  Ultrasound
+  PET
+  SPECT
+  Mammography
+  Endoscopy
+  Histopathology
+  Unknown
+} derive(Eq)
+
+pub(all) struct MedicalImagingConfig {
+  task_type : MedicalImagingTaskType
+  image_type : MedicalImageType
+  target_organ : OrganType
+  segmentation_method : String
+  detection_threshold : Double
+  segmentation_threshold : Double
+  voxel_spacing : Array[Double]
+  window_level : Double
+  window_width : Double
+  use_pretrained : Bool
+  pretrained_model : String
+  use_3d : Bool
+  slice_thickness : Double
+  num_slices : Int
+  use_augmentation : Bool
+}
+
+pub(all) enum MedicalImagingTaskType {
+  ImageSegmentation
+  LesionDetection
+  OrganSegmentation
+  Radiomics
+  ImageRegistration
+  Reconstruction3D
+  DiseaseClassification
+  Unknown
+} derive(Eq)
+
+pub(all) struct OrganSegmentationResult {
+  organ_type : OrganType
+  segmentation_mask : Array[Array[Bool]]
+  volume : Double
+  surface_area : Double
+  centroid : Array[Double]
+  bounding_box : Array[Int]
+  dice_score : Double
+  is_normal_size : Bool
+  size_deviation : Double
+}
+
+pub(all) enum OrganType {
+  Brain
+  Heart
+  Lung
+  Liver
+  Kidney
+  Spleen
+  Pancreas
+  Stomach
+  Intestine
+  Bone
+  Muscle
+  Unknown
+} derive(Eq)
+
+pub(all) struct RadiomicsFeatures {
+  first_order_stats : Array[Double]
+  shape_features : Array[Double]
+  texture_features : Array[Double]
+  wavelet_features : Array[Double]
+  num_features : Int
+  feature_names : Array[String]
+  feature_values : Array[Double]
+}
+
+pub(all) struct Reconstruction3DResult {
+  vertices : Array[Array[Double]]
+  faces : Array[Array[Int]]
+  normals : Array[Array[Double]]
+  num_vertices : Int
+  num_faces : Int
+  volume : Double
+  surface_area : Double
+  reconstruction_method : String
+  resolution : Double
+}
+
+pub(all) struct RegistrationResult {
+  transformation_matrix : Array[Array[Double]]
+  deformation_field : Array[Array[Double]]
+  similarity_score : Double
+  dice_score : Double
+  tre : Double
+  registration_time_s : Double
+  registration_method : String
+  is_converged : Bool
+  num_iterations : Int
+}
+
+pub(all) struct SegmentationResult {
+  segmentation_map : Array[Array[Int]]
+  num_classes : Int
+  class_names : Array[String]
+  confidence_map : Array[Array[Double]]
+  dice_scores : Array[Double]
+  iou_scores : Array[Double]
+  pixel_accuracy : Double
+  mean_iou : Double
+  mean_dice : Double
+}
+
+// Type aliases
+
+// Traits
+

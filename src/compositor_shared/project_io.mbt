@@ -17,7 +17,7 @@ suberror ProjectDecodeError {
 
 pub extend ProjectDecodeError with @debug.Debug::{ to_repr }
 
-fn fail[T](message : String) -> T raise ProjectDecodeError {
+fn[T] fail(message : String) -> T raise ProjectDecodeError {
   raise ProjectDecodeError(message)
 }
 

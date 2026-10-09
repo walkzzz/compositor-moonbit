@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/pure/color"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn convert_channels_pure(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn premultiply_alpha_pure(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn to_grayscale_pure(@types.Image) -> @types.Image
+
+pub fn to_rgb_pure(@types.Image) -> @types.Image
+
+pub fn to_rgba_pure(@types.Image) -> @types.Image
+
+pub fn unpremultiply_alpha_pure(@types.Image) -> @types.Image raise @types.LoadError
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

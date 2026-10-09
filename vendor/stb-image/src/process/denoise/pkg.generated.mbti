@@ -1,0 +1,118 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/denoise"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn bilateral_filter_denoise(@types.Image, Int, Double, Double) -> @types.Image raise @types.LoadError
+
+pub fn calculate_brightness(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_contrast(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_noise_level(@types.Image) -> Double raise @types.LoadError
+
+pub fn calculate_sharpness(@types.Image) -> Double raise @types.LoadError
+
+pub fn create_default_denoise_config() -> DenoiseConfig
+
+pub fn denoise_algorithm_to_string(DenoiseAlgorithm) -> String
+
+pub fn denoise_image(@types.Image, DenoiseConfig) -> DenoiseResult raise @types.LoadError
+
+pub fn denoise_report_to_string(DenoiseResult) -> String
+
+pub fn enhance_image_advanced(@types.Image, EnhancementAlgorithm) -> EnhancementResult raise @types.LoadError
+
+pub fn gamma_correction_enhance(@types.Image, Double) -> @types.Image raise @types.LoadError
+
+pub fn gaussian_filter_denoise(@types.Image, Int, Double) -> @types.Image raise @types.LoadError
+
+pub fn histogram_equalization_enhance(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn mean_filter_denoise(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn median_filter_denoise(@types.Image, Int) -> @types.Image raise @types.LoadError
+
+pub fn unsharp_mask_enhance(@types.Image, Double, Int) -> @types.Image raise @types.LoadError
+
+// Errors
+
+// Types and methods
+pub(all) enum DenoiseAlgorithm {
+  MeanFilter
+  MedianFilter
+  GaussianFilter
+  BilateralFilter
+  NonLocalMeans
+  WienerFilter
+  TotalVariation
+  WaveletDenoise
+  BM3D
+  DeepLearningDenoise
+  Unknown
+} derive(Eq)
+
+pub(all) struct DenoiseConfig {
+  algorithm : DenoiseAlgorithm
+  strength : Double
+  kernel_size : Int
+  sigma_color : Double
+  sigma_space : Double
+  search_window : Int
+  patch_size : Int
+  iterations : Int
+}
+
+pub(all) struct DenoiseResult {
+  image : @types.Image
+  algorithm : DenoiseAlgorithm
+  noise_level_before : Double
+  noise_level_after : Double
+  psnr : Double
+  ssim : Double
+  processing_time_ms : Double
+  strength : Double
+}
+
+pub(all) enum EnhancementAlgorithm {
+  HistogramEqualization
+  CLAHE
+  GammaCorrection
+  UnsharpMask
+  Retinex
+  HomomorphicFiltering
+  ColorBalance
+  ContrastStretching
+  AdaptiveThreshold
+  DeepLearningEnhance
+  Unknown
+} derive(Eq)
+
+pub(all) struct EnhancementResult {
+  image : @types.Image
+  algorithm : EnhancementAlgorithm
+  brightness_before : Double
+  brightness_after : Double
+  contrast_before : Double
+  contrast_after : Double
+  sharpness_before : Double
+  sharpness_after : Double
+  processing_time_ms : Double
+}
+
+pub(all) enum NoiseType {
+  GaussianNoise
+  SaltAndPepper
+  SpeckleNoise
+  PoissonNoise
+  UniformNoise
+  Unknown
+} derive(Eq)
+
+// Type aliases
+
+// Traits
+

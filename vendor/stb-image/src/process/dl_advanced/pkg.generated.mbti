@@ -1,0 +1,164 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/dl_advanced"
+
+// Values
+pub fn compute_self_attention(Array[Array[Double]], Array[Array[Double]], Array[Array[Double]], Int, Int) -> AttentionWeights
+
+pub fn create_default_finetuning_config() -> FineTuningConfig
+
+pub fn create_default_pretrained_config() -> PretrainedModelConfig
+
+pub fn create_default_transformer_config() -> TransformerConfig
+
+pub fn dl_advanced_report_to_string(DLAdvancedTaskType, TransformerConfig, String) -> String
+
+pub fn simulate_finetuning(FineTuningConfig, Double) -> TransferLearningResult
+
+pub fn transformer_forward(Array[Array[Double]], TransformerConfig) -> TransformerLayerOutput
+
+// Errors
+
+// Types and methods
+pub(all) enum AttentionType {
+  SelfAttention
+  MultiHeadAttention
+  CrossAttention
+  SparseAttention
+  LinearAttention
+  FlashAttention
+  Performer
+  Unknown
+} derive(Eq)
+
+pub(all) struct AttentionWeights {
+  weights : Array[Array[Double]]
+  num_heads : Int
+  seq_length : Int
+  head_dim : Int
+  attention_type : AttentionType
+}
+
+pub(all) enum DLAdvancedTaskType {
+  Transformer
+  AttentionMechanism
+  PretrainedModel
+  FineTuning
+  TransferLearning
+  SelfSupervisedLearning
+  ContrastiveLearning
+  Unknown
+} derive(Eq)
+
+pub(all) struct FineTuningConfig {
+  model_name : String
+  task_type : String
+  num_classes : Int
+  learning_rate : Double
+  num_epochs : Int
+  batch_size : Int
+  warmup_ratio : Double
+  weight_decay : Double
+  max_grad_norm : Double
+  use_gradient_accumulation : Bool
+  gradient_accumulation_steps : Int
+  use_mixed_precision : Bool
+  freeze_layers : Int
+  use_lora : Bool
+  lora_r : Int
+  lora_alpha : Double
+  lora_dropout : Double
+}
+
+pub(all) struct PretrainedModelConfig {
+  model_name : String
+  model_type : String
+  num_parameters : Int
+  hidden_dim : Int
+  num_layers : Int
+  num_heads : Int
+  vocab_size : Int
+  max_seq_length : Int
+  pretraining_data : String
+  pretraining_steps : Int
+  batch_size : Int
+  learning_rate : Double
+  optimizer : String
+  training_time_hours : Double
+}
+
+pub(all) enum PretrainingTask {
+  MaskedLanguageModeling
+  NextSentencePrediction
+  MaskedImageModeling
+  ContrastiveLearning
+  DenoisingAutoencoder
+  RotationPrediction
+  Colorization
+  Unknown
+} derive(Eq)
+
+pub(all) struct SelfSupervisedConfig {
+  task_type : PretrainingTask
+  mask_ratio : Double
+  temperature : Double
+  num_negatives : Int
+  use_momentum : Bool
+  momentum : Double
+  use_ema : Bool
+  ema_decay : Double
+  projection_dim : Int
+  prediction_dim : Int
+}
+
+pub(all) struct TransferLearningResult {
+  source_model : String
+  target_task : String
+  source_accuracy : Double
+  target_accuracy : Double
+  transfer_gain : Double
+  num_frozen_layers : Int
+  num_trainable_params : Int
+  training_time_s : Double
+  convergence_epoch : Int
+}
+
+pub(all) enum TransformerArchitecture {
+  EncoderOnly
+  DecoderOnly
+  EncoderDecoder
+  VisionTransformer
+  DataEfficient
+  SwinTransformer
+  Unknown
+} derive(Eq)
+
+pub(all) struct TransformerConfig {
+  architecture : TransformerArchitecture
+  attention_type : AttentionType
+  pretraining_task : PretrainingTask
+  num_layers : Int
+  hidden_dim : Int
+  num_heads : Int
+  intermediate_dim : Int
+  dropout_rate : Double
+  attention_dropout : Double
+  activation : String
+  max_position_embeddings : Int
+  vocab_size : Int
+  use_layer_norm : Bool
+  use_residual : Bool
+  use_gradient_checkpointing : Bool
+}
+
+pub(all) struct TransformerLayerOutput {
+  hidden_states : Array[Array[Double]]
+  attention_weights : AttentionWeights
+  layer_norm_output : Array[Array[Double]]
+  seq_length : Int
+  hidden_dim : Int
+}
+
+// Type aliases
+
+// Traits
+

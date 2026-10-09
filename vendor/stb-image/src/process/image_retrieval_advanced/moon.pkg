@@ -1,0 +1,6 @@
+import {
+  "moonbitlang/core/math",
+}
+
+import {
+} for "test"

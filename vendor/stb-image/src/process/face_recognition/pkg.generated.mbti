@@ -1,0 +1,149 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/face_recognition"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn add_face_to_database(FaceDatabase, FaceFeature, String) -> FaceDatabase
+
+pub fn analyze_face_attributes(@types.Image, FaceDetectionResult, FaceDatabase, FaceRecognitionConfig) -> FaceAttributeAnalysis raise @types.LoadError
+
+pub fn calculate_cosine_similarity(FaceFeature, FaceFeature) -> Double
+
+pub fn create_default_face_config() -> FaceRecognitionConfig
+
+pub fn create_face_database(FaceRecognitionAlgorithm, Double) -> FaceDatabase
+
+pub fn detect_faces(@types.Image, FaceRecognitionConfig) -> Array[FaceDetectionResult] raise @types.LoadError
+
+pub fn estimate_age_gender(@types.Image, FaceDetectionResult) -> AgeGenderEstimationResult raise @types.LoadError
+
+pub fn evaluate_face_quality(@types.Image, FaceDetectionResult) -> Double raise @types.LoadError
+
+pub fn extract_face_feature(@types.Image, FaceDetectionResult, FaceRecognitionConfig) -> FaceFeature raise @types.LoadError
+
+pub fn face_recognition_report_to_string(FaceAttributeAnalysis) -> String
+
+pub fn recognize_expression(@types.Image, FaceDetectionResult) -> ExpressionRecognitionResult raise @types.LoadError
+
+pub fn recognize_face_in_database(FaceDatabase, FaceFeature, Array[Double]) -> FaceRecognitionResult
+
+// Errors
+
+// Types and methods
+pub(all) struct AgeGenderEstimationResult {
+  age : Double
+  age_range : Array[Double]
+  gender : String
+  gender_confidence : Double
+  is_male : Bool
+}
+
+pub(all) struct ExpressionRecognitionResult {
+  expression : ExpressionType
+  confidence : Double
+  probabilities : Array[Double]
+  num_classes : Int
+  dominant_expression : String
+}
+
+pub(all) enum ExpressionType {
+  Neutral
+  Happy
+  Sad
+  Angry
+  Surprise
+  Fear
+  Disgust
+  Contempt
+  Unknown
+} derive(Eq)
+
+pub(all) struct FaceAttributeAnalysis {
+  detection : FaceDetectionResult
+  recognition : FaceRecognitionResult
+  expression : ExpressionRecognitionResult
+  age_gender : AgeGenderEstimationResult
+  face_quality : Double
+  brightness : Double
+  sharpness : Double
+  occlusion_rate : Double
+}
+
+pub(all) struct FaceDatabase {
+  faces : Array[FaceFeature]
+  identities : Array[String]
+  num_faces : Int
+  threshold : Double
+  algorithm : FaceRecognitionAlgorithm
+}
+
+pub(all) enum FaceDetectionAlgorithm {
+  HaarCascade
+  HOG_SVM
+  MTCNN
+  RetinaFace
+  YOLOFace
+  BlazeFace
+  FaceBoxes
+  Unknown
+} derive(Eq)
+
+pub(all) struct FaceDetectionResult {
+  bounding_box : Array[Double]
+  confidence : Double
+  landmarks : Array[Array[Double]]
+  num_landmarks : Int
+  face_id : Int
+  is_frontal : Bool
+  yaw : Double
+  pitch : Double
+  roll : Double
+}
+
+pub(all) struct FaceFeature {
+  vector : Array[Double]
+  dimension : Int
+  norm : Double
+  is_normalized : Bool
+}
+
+pub(all) enum FaceRecognitionAlgorithm {
+  FaceNet
+  ArcFace
+  CosFace
+  SphereFace
+  DeepFace
+  VGGFace
+  InsightFace
+  Unknown
+} derive(Eq)
+
+pub(all) struct FaceRecognitionConfig {
+  detection_algorithm : FaceDetectionAlgorithm
+  recognition_algorithm : FaceRecognitionAlgorithm
+  detection_threshold : Double
+  recognition_threshold : Double
+  min_face_size : Int
+  max_num_faces : Int
+  use_landmarks : Bool
+  use_alignment : Bool
+  feature_dimension : Int
+}
+
+pub(all) struct FaceRecognitionResult {
+  face_id : Int
+  identity : String
+  confidence : Double
+  similarity : Double
+  is_known : Bool
+  matched_face_id : Int
+  bounding_box : Array[Double]
+}
+
+// Type aliases
+
+// Traits
+

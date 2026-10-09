@@ -1,0 +1,31 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/fusion"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn fuse_alpha(@types.Image, @types.Image, alpha? : Double) -> @types.Image
+
+pub fn fuse_exposure(Array[@types.Image]) -> @types.Image
+
+pub fn fuse_images(@types.Image, @types.Image, config? : FusionConfig) -> @types.Image
+
+pub fn fuse_multifocus(@types.Image, @types.Image) -> @types.Image
+
+pub fn fusion_default_config() -> FusionConfig
+
+// Errors
+
+// Types and methods
+pub(all) struct FusionConfig {
+  method_type : String
+  alpha : Double
+  pyramid_levels : Int
+}
+
+// Type aliases
+
+// Traits
+

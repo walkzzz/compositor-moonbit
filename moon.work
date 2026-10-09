@@ -1,0 +1,8 @@
+// MoonBit workspace: the editor module plus the locally vendored STB image
+// binding (walkzzz/image, https://github.com/toadium/stb-image). The local
+// member is resolved from source instead of mooncakes.io, so the exact 0.6.0
+// GitHub version is used.
+members = [
+  ".",
+  "vendor/stb-image",
+]

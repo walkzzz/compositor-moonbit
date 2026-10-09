@@ -1,0 +1,190 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "walkzzz/image/src/process/transform"
+
+import {
+  "walkzzz/image/src/types",
+}
+
+// Values
+pub fn build_gaussian_pyramid(@types.Image, Int) -> Array[@types.Image] raise @types.LoadError
+
+pub fn build_gaussian_pyramid_16(@types.Image16, Int) -> Array[@types.Image16] raise @types.LoadError
+
+pub fn build_gaussian_pyramid_f(@types.ImageF, Int) -> Array[@types.ImageF] raise @types.LoadError
+
+pub fn build_laplacian_pyramid(@types.Image, Int) -> Array[@types.Image] raise @types.LoadError
+
+pub fn build_laplacian_pyramid_16(@types.Image16, Int) -> Array[@types.Image16] raise @types.LoadError
+
+pub fn build_laplacian_pyramid_float(@types.ImageF, Int) -> Array[@types.ImageF] raise @types.LoadError
+
+pub fn compute_energy(@types.Image) -> Array[Double]
+
+pub fn compute_energy_16(@types.Image16) -> Array[Double]
+
+pub fn compute_energy_f(@types.ImageF) -> Array[Double]
+
+pub fn crop(@types.Image, Int, Int, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn crop_16(@types.Image16, Int, Int, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn crop_f(@types.ImageF, Int, Int, Int, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn draw_circle(@types.Image, Int, Int, Int, Array[Byte], thickness? : Int, fill? : Bool) -> @types.Image
+
+pub fn draw_circle_16(@types.Image16, Int, Int, Int, Array[Int], thickness? : Int, fill? : Bool) -> @types.Image16
+
+pub fn draw_circle_f(@types.ImageF, Int, Int, Int, Array[Float], thickness? : Int, fill? : Bool) -> @types.ImageF
+
+pub fn draw_copy(@types.Image, @types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn draw_line(@types.Image, Int, Int, Int, Int, Array[Byte], thickness? : Int) -> @types.Image
+
+pub fn draw_line_16(@types.Image16, Int, Int, Int, Int, Array[Int], thickness? : Int) -> @types.Image16
+
+pub fn draw_line_f(@types.ImageF, Int, Int, Int, Int, Array[Float], thickness? : Int) -> @types.ImageF
+
+pub fn draw_over(@types.Image, @types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn draw_polygon(@types.Image, Array[(Int, Int)], Array[Byte], thickness? : Int, fill? : Bool) -> @types.Image
+
+pub fn draw_polygon_16(@types.Image16, Array[(Int, Int)], Array[Int], thickness? : Int) -> @types.Image16
+
+pub fn draw_polygon_f(@types.ImageF, Array[(Int, Int)], Array[Float], thickness? : Int) -> @types.ImageF
+
+pub fn draw_rectangle(@types.Image, Int, Int, Int, Int, Array[Byte], thickness? : Int, fill? : Bool) -> @types.Image
+
+pub fn draw_rectangle_16(@types.Image16, Int, Int, Int, Int, Array[Int], thickness? : Int, fill? : Bool) -> @types.Image16
+
+pub fn draw_rectangle_f(@types.ImageF, Int, Int, Int, Int, Array[Float], thickness? : Int, fill? : Bool) -> @types.ImageF
+
+pub fn find_horizontal_seam(Array[Double], Int, Int) -> Array[Int]
+
+pub fn find_vertical_seam(Array[Double], Int, Int) -> Array[Int]
+
+pub fn flip_horizontal(@types.Image) -> @types.Image
+
+pub fn flip_horizontal_16(@types.Image16) -> @types.Image16
+
+pub fn flip_horizontal_f(@types.ImageF) -> @types.ImageF
+
+pub fn flip_vertical(@types.Image) -> @types.Image
+
+pub fn flip_vertical_16(@types.Image16) -> @types.Image16
+
+pub fn flip_vertical_f(@types.ImageF) -> @types.ImageF
+
+pub fn get_affine_transform(Array[(Float, Float)], Array[(Float, Float)]) -> AffineMatrix?
+
+pub fn get_perspective_transform(Array[(Float, Float)], Array[(Float, Float)]) -> PerspectiveMatrix?
+
+pub fn get_rotation_matrix_2d((Float, Float), Float, Float) -> AffineMatrix
+
+pub fn multi_band_blend(@types.Image, @types.Image, @types.Image, num_bands? : Int) -> @types.Image raise @types.LoadError
+
+pub fn multi_band_blend_16(@types.Image16, @types.Image16, @types.Image16, num_bands? : Int) -> @types.Image16 raise @types.LoadError
+
+pub fn multi_band_blend_f(@types.ImageF, @types.ImageF, @types.ImageF, num_bands? : Int) -> @types.ImageF raise @types.LoadError
+
+pub fn pyr_down(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn pyr_down_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn pyr_down_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn pyr_up(@types.Image) -> @types.Image raise @types.LoadError
+
+pub fn pyr_up_16(@types.Image16) -> @types.Image16 raise @types.LoadError
+
+pub fn pyr_up_f(@types.ImageF) -> @types.ImageF raise @types.LoadError
+
+pub fn remove_horizontal_seam(@types.Image, Array[Int]) -> @types.Image
+
+pub fn remove_horizontal_seam_16(@types.Image16, Array[Int]) -> @types.Image16
+
+pub fn remove_horizontal_seam_f(@types.ImageF, Array[Int]) -> @types.ImageF
+
+pub fn remove_vertical_seam(@types.Image, Array[Int]) -> @types.Image
+
+pub fn remove_vertical_seam_16(@types.Image16, Array[Int]) -> @types.Image16
+
+pub fn remove_vertical_seam_f(@types.ImageF, Array[Int]) -> @types.ImageF
+
+pub fn resize_16(@types.Image16, Int, Int) -> @types.Image16
+
+pub fn resize_f(@types.ImageF, Int, Int) -> @types.ImageF
+
+pub fn resize_to_contain(@types.Image, Int, Int, Array[Byte]) -> @types.Image raise @types.LoadError
+
+pub fn resize_to_cover(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn rotate(@types.Image, Float) -> @types.Image
+
+pub fn rotate_180(@types.Image) -> @types.Image
+
+pub fn rotate_180_16(@types.Image16) -> @types.Image16
+
+pub fn rotate_180_f(@types.ImageF) -> @types.ImageF
+
+pub fn rotate_270(@types.Image) -> @types.Image
+
+pub fn rotate_270_16(@types.Image16) -> @types.Image16
+
+pub fn rotate_270_f(@types.ImageF) -> @types.ImageF
+
+pub fn rotate_90(@types.Image) -> @types.Image
+
+pub fn rotate_90_16(@types.Image16) -> @types.Image16
+
+pub fn rotate_90_f(@types.ImageF) -> @types.ImageF
+
+pub fn seam_carve_resize(@types.Image, Int, Int) -> @types.Image raise @types.LoadError
+
+pub fn seam_carve_resize_16(@types.Image16, Int, Int) -> @types.Image16 raise @types.LoadError
+
+pub fn seam_carve_resize_f(@types.ImageF, Int, Int) -> @types.ImageF raise @types.LoadError
+
+pub fn transpose_16(@types.Image16) -> @types.Image16
+
+pub fn transpose_f(@types.ImageF) -> @types.ImageF
+
+pub fn warp_affine(@types.Image, (Float, Float, Float, Float, Float, Float), Int, Int) -> @types.Image
+
+pub fn warp_affine_16(@types.Image16, (Float, Float, Float, Float, Float, Float), Int, Int) -> @types.Image16
+
+pub fn warp_affine_f(@types.ImageF, (Float, Float, Float, Float, Float, Float), Int, Int) -> @types.ImageF
+
+pub fn warp_perspective(@types.Image, PerspectiveMatrix, Int, Int) -> @types.Image
+
+pub fn warp_perspective_16(@types.Image16, PerspectiveMatrix, Int, Int) -> @types.Image16
+
+pub fn warp_perspective_f(@types.ImageF, PerspectiveMatrix, Int, Int) -> @types.ImageF
+
+// Errors
+
+// Types and methods
+pub(all) struct AffineMatrix {
+  a : Float
+  b : Float
+  c : Float
+  d : Float
+  e : Float
+  f : Float
+}
+
+pub(all) struct PerspectiveMatrix {
+  m00 : Float
+  m01 : Float
+  m02 : Float
+  m10 : Float
+  m11 : Float
+  m12 : Float
+  m20 : Float
+  m21 : Float
+  m22 : Float
+}
+
+// Type aliases
+
+// Traits
+

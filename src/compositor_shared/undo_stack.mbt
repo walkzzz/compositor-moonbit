@@ -7,9 +7,11 @@
 /// history is never aliased by later edits. The immutable `Bytes` rasters are
 /// shared safely without copying pixel memory.
 
+///|
 /// Maximum number of retained undo steps.
 let undo_limit = 50
 
+///|
 /// Capture the current document content.
 fn snapshot(model : Model) -> Snapshot {
   {
@@ -20,6 +22,7 @@ fn snapshot(model : Model) -> Snapshot {
   }
 }
 
+///|
 /// Restore document fields from a snapshot, preserving tool/brush settings.
 fn restore_snapshot(model : Model, snap : Snapshot) -> Model {
   {
@@ -43,7 +46,7 @@ pub fn push_history(model : Model) -> Model {
     let excess = undo.length() - undo_limit
     undo = Array::makei(undo.length() - excess, k => undo[k + excess])
   }
-  { ..model, undo, redo: [] }
+  { ..model, undo, redo: [], }
 }
 
 ///|
@@ -56,7 +59,7 @@ pub fn undo(model : Model) -> Model {
       redo.push(snapshot(model))
       let undo = Array::copy(model.undo)
       ignore(undo.pop())
-      restore_snapshot({ ..model, undo, redo }, snap)
+      restore_snapshot({ ..model, undo, redo, }, snap)
     }
     None => model
   }
@@ -71,7 +74,7 @@ pub fn redo(model : Model) -> Model {
       undo.push(snapshot(model))
       let redo = Array::copy(model.redo)
       ignore(redo.pop())
-      restore_snapshot({ ..model, undo, redo }, snap)
+      restore_snapshot({ ..model, undo, redo, }, snap)
     }
     None => model
   }

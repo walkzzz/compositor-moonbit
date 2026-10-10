@@ -10,13 +10,16 @@
 /// ProjectDecodeError`, and the public entry converts that into a first-class
 /// `Result` via `Ok(..) catch { .. }`.
 
+///|
 /// A malformed `.comp` document.
 suberror ProjectDecodeError {
   ProjectDecodeError(String)
 } derive(@debug.Debug)
 
-pub extend ProjectDecodeError with @debug.Debug::{ to_repr }
+///|
+pub extend ProjectDecodeError with @debug.Debug::{to_repr}
 
+///|
 fn[T] fail(message : String) -> T raise ProjectDecodeError {
   raise ProjectDecodeError(message)
 }
@@ -25,6 +28,7 @@ fn[T] fail(message : String) -> T raise ProjectDecodeError {
 // JSON value accessors (raising)
 // ---------------------------------------------------------------------------
 
+///|
 fn as_object(json : Json) -> Map[String, Json] raise ProjectDecodeError {
   match json {
     Object(map) => map
@@ -32,6 +36,7 @@ fn as_object(json : Json) -> Map[String, Json] raise ProjectDecodeError {
   }
 }
 
+///|
 fn as_array(json : Json) -> Array[Json] raise ProjectDecodeError {
   match json {
     Array(items) => items
@@ -39,17 +44,20 @@ fn as_array(json : Json) -> Array[Json] raise ProjectDecodeError {
   }
 }
 
+///|
 fn as_double(json : Json) -> Double raise ProjectDecodeError {
   match json {
-    Number(value) => value
+    Number(value, ..) => value
     _ => fail("expected number")
   }
 }
 
+///|
 fn as_int(json : Json) -> Int raise ProjectDecodeError {
   as_double(json).round().to_int()
 }
 
+///|
 fn as_string(json : Json) -> String raise ProjectDecodeError {
   match json {
     String(value) => value
@@ -57,6 +65,7 @@ fn as_string(json : Json) -> String raise ProjectDecodeError {
   }
 }
 
+///|
 fn as_bool(json : Json) -> Bool raise ProjectDecodeError {
   match json {
     True => true
@@ -65,6 +74,7 @@ fn as_bool(json : Json) -> Bool raise ProjectDecodeError {
   }
 }
 
+///|
 /// Require a key in an object map.
 fn req(map : Map[String, Json], key : String) -> Json raise ProjectDecodeError {
   match map.get(key) {
@@ -77,22 +87,27 @@ fn req(map : Map[String, Json], key : String) -> Json raise ProjectDecodeError {
 // Encoding
 // ---------------------------------------------------------------------------
 
+///|
 fn jint(value : Int) -> Json {
   Json::number(value.to_double())
 }
 
+///|
 fn jdouble(value : Double) -> Json {
   Json::number(value)
 }
 
+///|
 fn jbool(value : Bool) -> Json {
   Json::boolean(value)
 }
 
+///|
 fn jstring(value : String) -> Json {
   Json::string(value)
 }
 
+///|
 fn encode_mask(mask : Mask) -> Json {
   Json::object({
     "width": jint(mask.width),
@@ -101,6 +116,7 @@ fn encode_mask(mask : Mask) -> Json {
   })
 }
 
+///|
 fn encode_layer(layer : Layer) -> Json {
   Json::object({
     "id": jint(layer.id),
@@ -108,16 +124,16 @@ fn encode_layer(layer : Layer) -> Json {
     "visible": jbool(layer.visible),
     "opacity": jdouble(layer.opacity),
     "blend": jstring(layer.blend.to_keyword()),
-    "image":
-      match layer.image {
-        Some(image) => jstring(@base64.encode(image))
-        None => Json::null()
-      },
-    "mask":
-      match layer.mask {
-        Some(mask) => encode_mask(mask)
-        None => Json::null()
-      },
+    "offset_x": jdouble(layer.offset_x),
+    "offset_y": jdouble(layer.offset_y),
+    "image": match layer.image {
+      Some(image) => jstring(@base64.encode(image))
+      None => Json::null()
+    },
+    "mask": match layer.mask {
+      Some(mask) => encode_mask(mask)
+      None => Json::null()
+    },
   })
 }
 
@@ -129,31 +145,34 @@ pub fn encode_project(model : Model, indent? : Int) -> String {
     "version": jint(1),
     "width": jint(model.width),
     "height": jint(model.height),
-    "active_layer":
-      match model.active_layer {
-        Some(id) => jint(id)
-        None => Json::null()
-      },
+    "active_layer": match model.active_layer {
+      Some(id) => jint(id)
+      None => Json::null()
+    },
     "layers": Json::array(Array::map(model.layers, encode_layer)),
   })
-  project.stringify(indent=match indent {
-    Some(value) => value
-    None => 2
-  })
+  project.stringify(
+    indent=match indent {
+      Some(value) => value
+      None => 2
+    },
+  )
 }
 
 // ---------------------------------------------------------------------------
 // Decoding
 // ---------------------------------------------------------------------------
 
+///|
 fn decode_mask(json : Json) -> Mask raise ProjectDecodeError {
   let map = as_object(json)
   let width = as_int(req(map, "width"))
   let height = as_int(req(map, "height"))
   let b64 = as_string(req(map, "data"))
-  { width, height, data: @base64.decode_lossy(b64) }
+  { width, height, data: @base64.decode_lossy(b64), }
 }
 
+///|
 fn decode_layer(json : Json) -> Layer raise ProjectDecodeError {
   let map = as_object(json)
   let id = as_int(req(map, "id"))
@@ -173,6 +192,14 @@ fn decode_layer(json : Json) -> Layer raise ProjectDecodeError {
     Some(value) => BlendMode::from_keyword(as_string(value))
     None => Normal
   }
+  let offset_x = match map.get("offset_x") {
+    Some(value) => as_double(value)
+    None => 0.0
+  }
+  let offset_y = match map.get("offset_y") {
+    Some(value) => as_double(value)
+    None => 0.0
+  }
   let image = match map.get("image") {
     Some(value) =>
       match value {
@@ -191,36 +218,40 @@ fn decode_layer(json : Json) -> Layer raise ProjectDecodeError {
       }
     None => None
   }
-  { id, name, visible, opacity, blend, image, mask }
+  { id, name, visible, opacity, blend, image, mask, offset_x, offset_y, }
 }
 
 ///|
 /// Parse `.comp` JSON text into a document snapshot.
-pub fn decode_project(text : StringView) -> Result[Snapshot, ProjectDecodeError] {
-  Ok({
+pub fn decode_project(
+  text : StringView,
+) -> Result[Snapshot, ProjectDecodeError] {
+  Ok(
     // Convert a JSON parse error into our project error type.
-    let json = @json.parse(text) catch {
-      e => raise ProjectDecodeError(e.to_string())
-    }
-    let map = as_object(json)
-    let width = as_int(req(map, "width"))
-    let height = as_int(req(map, "height"))
-    let active_layer = match map.get("active_layer") {
-      Some(value) =>
-        match value {
-          Number(_) => Some(as_int(value))
-          Null => None
-          _ => None
-        }
-      None => None
-    }
-    let items = as_array(req(map, "layers"))
-    let layers = []
-    for item in items {
-      layers.push(decode_layer(item))
-    }
-    { width, height, layers, active_layer }
-  }) catch {
+    {
+      let json = @json.parse(text) catch {
+        e => raise ProjectDecodeError(e.to_string())
+      }
+      let map = as_object(json)
+      let width = as_int(req(map, "width"))
+      let height = as_int(req(map, "height"))
+      let active_layer = match map.get("active_layer") {
+        Some(value) =>
+          match value {
+            Number(_, ..) => Some(as_int(value))
+            Null => None
+            _ => None
+          }
+        None => None
+      }
+      let items = as_array(req(map, "layers"))
+      let layers = []
+      for item in items {
+        layers.push(decode_layer(item))
+      }
+      { width, height, layers, active_layer, }
+    },
+  ) catch {
     ProjectDecodeError(message) => Err(ProjectDecodeError(message))
   }
 }

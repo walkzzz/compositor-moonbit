@@ -22,15 +22,18 @@ vendor/stb-image/      # walkzzz/image STB image binding (native), toadium/stb-i
 The shared core never imports Proton, Rabbita, windowing or GPU APIs. File IO is
 performed by the platform layer; decoded results re-enter through `Msg`.
 
-## Status — Milestone 0
+## Status — Milestone 0.2
 
 - Data model: layers, masks, 16 blend modes, brush, tools, snapshots
+- Tools: Brush, Eraser, Fill (flood fill), Move, MaskBrush
 - Pure `update` with full undo/redo history
-- CPU brush (hard/soft, interpolated strokes), layer compositing/flatten,
-  brightness/contrast/hue/saturation
-- `.comp` project JSON encode/decode (pixels embedded as base64)
+- CPU brush (hard/soft, interpolated strokes), eraser, flood fill,
+  layer compositing/flatten with per-layer offset,
+  brightness/contrast/hue/saturation/Gaussian blur
+- `.comp` project JSON encode/decode (pixels embedded as base64,
+  layer offsets persisted)
 - Native CLI: decode an image via the STB binding, flatten, export PNG
-- Unit tests: 10 passing
+- Unit tests: 14 passing
 
 ## Build & test
 

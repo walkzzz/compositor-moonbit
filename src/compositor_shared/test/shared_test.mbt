@@ -38,6 +38,8 @@ fn gray_layer(
     blend,
     image: Some(solid_rgba(w, h, b, b, b, Int::to_byte(255))),
     mask: None,
+    offset_x: 0.0,
+    offset_y: 0.0,
   }
 }
 
@@ -144,4 +146,88 @@ test "brightness and contrast run" {
     @S.Msg::AdjustContrast(1.2),
   )
   assert_eq(m.layers.length(), 1)
+}
+
+test "eraser reduces alpha" {
+  let black : @S.Brush = {
+    size: 3.0,
+    hardness: 1.0,
+    opacity: 1.0,
+    color: @S.Color::{ r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
+  }
+  let m1 = { ..@S.init_model(8, 8), brush: black }
+  // Paint black, then erase the same spot.
+  let m2 = @S.update(m1, @S.Msg::BrushStart(4.0, 4.0))
+  let m3 = @S.update(m2, @S.Msg::BrushEnd)
+  let idx = (4 * 8 + 4) * 4
+  assert_eq(@S.flatten(m3)[idx + 3], 255) // opaque after paint
+  let m4 = { ..m3, tool: @S.Tool::Eraser }
+  let m5 = @S.update(m4, @S.Msg::BrushStart(4.0, 4.0))
+  let m6 = @S.update(m5, @S.Msg::BrushEnd)
+  assert_eq(@S.flatten(m6)[idx + 3], 0) // transparent after erase
+}
+
+test "flood fill replaces connected region" {
+  // Create a 4x4 image: top-left 2x2 red, rest white.
+  let arr = Array::make(4 * 4 * 4, Int::to_byte(0))
+  for y in 0..<4 {
+    for x in 0..<4 {
+      let i = (y * 4 + x) * 4
+      if x < 2 && y < 2 {
+        arr[i] = 255
+        arr[i + 1] = 0
+        arr[i + 2] = 0
+        arr[i + 3] = 255
+      } else {
+        arr[i] = 255
+        arr[i + 1] = 255
+        arr[i + 2] = 255
+        arr[i + 3] = 255
+      }
+    }
+  }
+  let image = Bytes::from_array(arr)
+  let filled = @S.flood_fill(image, 4, 4, 0, 0, @S.Color::rgb(0.0, 1.0, 0.0))
+  // Pixel (0,0) should now be green.
+  assert_eq(filled[0], 0)
+  assert_eq(filled[1], 255)
+  assert_eq(filled[2], 0)
+  // Pixel (2,0) should still be white (different region).
+  assert_eq(filled[(0 * 4 + 2) * 4], 255)
+  assert_eq(filled[(0 * 4 + 2) * 4 + 1], 255)
+}
+
+test "gaussian blur softens edges" {
+  // Create a 5x1 image: left half black, right half white.
+  let arr = Array::make(5 * 4, Int::to_byte(0))
+  for x in 0..<5 {
+    let i = x * 4
+    if x < 2 {
+      arr[i] = 0
+      arr[i + 1] = 0
+      arr[i + 2] = 0
+      arr[i + 3] = 255
+    } else {
+      arr[i] = 255
+      arr[i + 1] = 255
+      arr[i + 2] = 255
+      arr[i + 3] = 255
+    }
+  }
+  let image = Bytes::from_array(arr)
+  let blurred = @S.gaussian_blur(image, 5, 1, 2.0)
+  // The boundary pixel (index 2) should be a mid-gray, not pure black or white.
+  let v = blurred[2 * 4].to_int()
+  assert_true(v > 10 && v < 245)
+}
+
+test "layer offset shifts compositing" {
+  let m = @S.init_model(4, 4)
+  // Shift the background layer by (1, 0).
+  let m1 = @S.update(m, @S.Msg::SetLayerOffset(0, 1.0, 0.0))
+  let flat = @S.flatten(m1)
+  // Pixel (0, y) should now be transparent (background shifted right).
+  assert_eq(flat[3], 0)
+  // Pixel (1, y) should be white (background now covers it).
+  assert_eq(flat[(0 * 4 + 1) * 4], 255)
 }

@@ -1,0 +1,203 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "compositor/compositor-moonbit/src/compositor_shared"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn adjust_brightness(Bytes, Double) -> Bytes
+
+pub fn adjust_contrast(Bytes, Double) -> Bytes
+
+pub fn adjust_hue(Bytes, Double) -> Bytes
+
+pub fn adjust_saturation(Bytes, Double) -> Bytes
+
+pub fn decode_project(StringView) -> Result[Snapshot, ProjectDecodeError]
+
+pub fn encode_project(Model, indent? : Int) -> String
+
+pub fn erase_segment_rgba(Bytes, Int, Int, Double, Double, Double, Double, Brush) -> Bytes
+
+pub fn flatten(Model) -> Bytes
+
+pub fn flood_fill(Bytes, Int, Int, Int, Int, Color) -> Bytes
+
+pub fn gaussian_blur(Bytes, Int, Int, Double) -> Bytes
+
+pub fn init_model(Int, Int) -> Model
+
+pub fn paint_segment_mask(Mask, Double, Double, Double, Double, Brush, Int) -> Mask
+
+pub fn paint_segment_rgba(Bytes, Int, Int, Double, Double, Double, Double, Brush) -> Bytes
+
+pub fn push_history(Model) -> Model
+
+pub fn redo(Model) -> Model
+
+pub fn solid_rgba(Int, Int, Color) -> Bytes
+
+pub fn transparent_rgba(Int, Int) -> Bytes
+
+pub fn undo(Model) -> Model
+
+pub fn update(Model, Msg) -> Model
+
+// Errors
+type ProjectDecodeError derive(@debug.Debug)
+pub fn ProjectDecodeError::to_repr(Self) -> @debug.Repr
+
+// Types and methods
+pub(all) enum BlendMode {
+  Normal
+  Multiply
+  Screen
+  Overlay
+  Darken
+  Lighten
+  ColorDodge
+  ColorBurn
+  HardLight
+  SoftLight
+  Difference
+  Exclusion
+  Hue
+  Saturation
+  Color
+  Luminosity
+} derive(Eq, @debug.Debug)
+pub fn BlendMode::equal(Self, Self) -> Bool
+pub fn BlendMode::from_keyword(StringView) -> Self
+pub fn BlendMode::not_equal(Self, Self) -> Bool
+pub fn BlendMode::to_keyword(Self) -> String
+pub fn BlendMode::to_repr(Self) -> @debug.Repr
+
+pub(all) struct Brush {
+  size : Double
+  opacity : Double
+  hardness : Double
+  color : Color
+} derive(Eq, @debug.Debug)
+pub fn Brush::default() -> Self
+pub fn Brush::equal(Self, Self) -> Bool
+pub fn Brush::not_equal(Self, Self) -> Bool
+pub fn Brush::to_repr(Self) -> @debug.Repr
+
+pub(all) struct Color {
+  r : Double
+  g : Double
+  b : Double
+  a : Double
+} derive(Eq, @debug.Debug)
+pub fn Color::equal(Self, Self) -> Bool
+pub fn Color::not_equal(Self, Self) -> Bool
+pub fn Color::rgb(Double, Double, Double) -> Self
+pub fn Color::rgba(Double, Double, Double, Double) -> Self
+pub fn Color::to_repr(Self) -> @debug.Repr
+
+pub(all) struct Layer {
+  id : Int
+  name : String
+  visible : Bool
+  opacity : Double
+  blend : BlendMode
+  image : Bytes?
+  mask : Mask?
+  offset_x : Double
+  offset_y : Double
+} derive(Eq, @debug.Debug)
+pub fn Layer::equal(Self, Self) -> Bool
+pub fn Layer::not_equal(Self, Self) -> Bool
+pub fn Layer::to_repr(Self) -> @debug.Repr
+pub fn Layer::transparent(Int, String, Int, Int) -> Self
+
+pub(all) struct Mask {
+  width : Int
+  height : Int
+  data : Bytes
+} derive(Eq, @debug.Debug)
+pub fn Mask::black(Int, Int) -> Self
+pub fn Mask::equal(Self, Self) -> Bool
+pub fn Mask::not_equal(Self, Self) -> Bool
+pub fn Mask::to_repr(Self) -> @debug.Repr
+pub fn Mask::white(Int, Int) -> Self
+
+pub(all) struct Model {
+  width : Int
+  height : Int
+  layers : Array[Layer]
+  active_layer : Int?
+  tool : Tool
+  brush : Brush
+  next_id : Int
+  drawing : Bool
+  last_x : Double
+  last_y : Double
+  undo : Array[Snapshot]
+  redo : Array[Snapshot]
+} derive(Eq)
+pub fn Model::equal(Self, Self) -> Bool
+pub fn Model::not_equal(Self, Self) -> Bool
+
+pub(all) enum Msg {
+  NewCanvas(Int, Int)
+  ProjectLoaded(String)
+  ImportImage(String, Int, Int, Bytes)
+  AddLayer
+  DuplicateLayer(Int)
+  DeleteLayer(Int)
+  SelectLayer(Int)
+  ToggleLayerVisible(Int)
+  RenameLayer(Int, String)
+  MoveLayerUp(Int)
+  MoveLayerDown(Int)
+  SetLayerBlend(Int, BlendMode)
+  SetLayerOpacity(Int, Double)
+  SetLayerOffset(Int, Double, Double)
+  AddMask(Int)
+  RemoveMask(Int)
+  SetTool(Tool)
+  SetBrushSize(Double)
+  SetBrushOpacity(Double)
+  SetBrushHardness(Double)
+  SetBrushColor(Color)
+  BrushStart(Double, Double)
+  BrushMove(Double, Double)
+  BrushEnd
+  FillAt(Double, Double)
+  AdjustBrightness(Double)
+  AdjustContrast(Double)
+  AdjustHue(Double)
+  AdjustSaturation(Double)
+  AdjustBlur(Double)
+  Undo
+  Redo
+  RequestSaveProject(String)
+  RequestLoadProject(String)
+  RequestExportImage(String)
+}
+
+pub struct Snapshot {
+  width : Int
+  height : Int
+  layers : Array[Layer]
+  active_layer : Int?
+} derive(Eq)
+pub fn Snapshot::equal(Self, Self) -> Bool
+pub fn Snapshot::not_equal(Self, Self) -> Bool
+
+pub(all) enum Tool {
+  Brush
+  Eraser
+  Fill
+  Move
+  MaskBrush
+} derive(Eq, @debug.Debug)
+pub fn Tool::equal(Self, Self) -> Bool
+pub fn Tool::not_equal(Self, Self) -> Bool
+pub fn Tool::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

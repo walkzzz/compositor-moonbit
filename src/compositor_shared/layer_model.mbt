@@ -92,13 +92,13 @@ pub(all) struct Mask {
 ///|
 /// Construct a fully white (revealing) mask of the given size.
 pub fn Mask::white(width : Int, height : Int) -> Mask {
-  { width, height, data: Bytes::make(width * height, b"\xff"[0]) }
+  { width, height, data: Bytes::make(width * height, b"\xff"[0]), }
 }
 
 ///|
 /// Construct a fully black (concealing) mask of the given size.
 pub fn Mask::black(width : Int, height : Int) -> Mask {
-  { width, height, data: Bytes::make(width * height, b"\x00"[0]) }
+  { width, height, data: Bytes::make(width * height, b"\x00"[0]), }
 }
 
 ///|
@@ -114,6 +114,10 @@ pub(all) struct Layer {
   image : Bytes?
   /// Optional layer mask.
   mask : Mask?
+  /// Horizontal offset in pixels applied during compositing.
+  offset_x : Double
+  /// Vertical offset in pixels applied during compositing.
+  offset_y : Double
 } derive(Eq, @debug.Debug)
 
 ///|
@@ -132,6 +136,8 @@ pub fn Layer::transparent(
     blend: Normal,
     image: Some(Bytes::new(width * height * 4)),
     mask: None,
+    offset_x: 0.0,
+    offset_y: 0.0,
   }
 }
 
@@ -146,12 +152,12 @@ pub(all) struct Color {
 
 ///|
 pub fn Color::rgb(r : Double, g : Double, b : Double) -> Color {
-  { r, g, b, a: 1.0 }
+  { r, g, b, a: 1.0, }
 }
 
 ///|
 pub fn Color::rgba(r : Double, g : Double, b : Double, a : Double) -> Color {
-  { r, g, b, a }
+  { r, g, b, a, }
 }
 
 ///|
@@ -168,13 +174,15 @@ pub(all) struct Brush {
 
 ///|
 pub fn Brush::default() -> Brush {
-  { size: 20.0, opacity: 1.0, hardness: 0.8, color: Color::rgb(0.0, 0.0, 0.0) }
+  { size: 20.0, opacity: 1.0, hardness: 0.8, color: Color::rgb(0.0, 0.0, 0.0), }
 }
 
 ///|
 /// The active editing tool.
 pub(all) enum Tool {
   Brush
+  Eraser
+  Fill
   Move
   MaskBrush
 } derive(Eq, @debug.Debug)

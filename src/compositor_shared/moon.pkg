@@ -1,6 +1,6 @@
 import {
   "moonbitlang/core/json",
-  "moonbitlang/core/error",
   "moonbitlang/core/debug",
+  "moonbitlang/core/math",
   "moonbitlang/core/encoding/base64",
 }

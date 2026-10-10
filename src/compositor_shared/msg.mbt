@@ -28,6 +28,8 @@ pub(all) enum Msg {
   MoveLayerDown(Int)
   SetLayerBlend(Int, BlendMode)
   SetLayerOpacity(Int, Double)
+  /// Set the layer pixel offset (dx, dy) applied during compositing.
+  SetLayerOffset(Int, Double, Double)
 
   // --- Mask ---
   AddMask(Int)
@@ -44,12 +46,16 @@ pub(all) enum Msg {
   BrushStart(Double, Double)
   BrushMove(Double, Double)
   BrushEnd
+  /// Fill the area under the pointer with the brush color (flood fill).
+  FillAt(Double, Double)
 
   // --- Color adjustments ---
   AdjustBrightness(Double)
   AdjustContrast(Double)
   AdjustHue(Double)
   AdjustSaturation(Double)
+  /// Gaussian blur with the given radius in pixels.
+  AdjustBlur(Double)
 
   // --- History ---
   Undo

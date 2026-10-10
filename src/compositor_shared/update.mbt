@@ -428,6 +428,14 @@ pub fn update(model : Model, msg : Msg) -> Model {
       adjust_active(model, image => {
         gaussian_blur(image, model.width, model.height, radius)
       })
+    AdjustSharpen(amount) =>
+      adjust_active(model, image => {
+        sharpen(image, model.width, model.height, amount)
+      })
+    AdjustEdgeDetect =>
+      adjust_active(model, image => {
+        edge_detect_sobel(image, model.width, model.height)
+      })
     Undo => undo(model)
     Redo => redo(model)
 

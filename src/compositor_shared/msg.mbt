@@ -56,6 +56,10 @@ pub(all) enum Msg {
   AdjustSaturation(Double)
   /// Gaussian blur with the given radius in pixels.
   AdjustBlur(Double)
+  /// Sharpen using unsharp masking; amount controls strength `[0, 2]`.
+  AdjustSharpen(Double)
+  /// Sobel edge detection; writes grayscale edge magnitude into RGB.
+  AdjustEdgeDetect
 
   // --- History ---
   Undo

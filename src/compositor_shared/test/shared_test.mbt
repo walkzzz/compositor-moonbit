@@ -231,3 +231,87 @@ test "layer offset shifts compositing" {
   // Pixel (1, y) should be white (background now covers it).
   assert_eq(flat[(0 * 4 + 1) * 4], 255)
 }
+
+test "sharpen increases local contrast" {
+  // Create a 5x1 image with a single bright pixel in the center.
+  let arr = Array::make(5 * 4, Int::to_byte(0))
+  for x in 0..<5 {
+    let i = x * 4
+    if x == 2 {
+      arr[i] = 255
+      arr[i + 1] = 255
+      arr[i + 2] = 255
+    } else {
+      arr[i] = 0
+      arr[i + 1] = 0
+      arr[i + 2] = 0
+    }
+    arr[i + 3] = 255
+  }
+  let image = Bytes::from_array(arr)
+  let sharpened = @S.sharpen(image, 5, 1, 1.0)
+  // The center pixel should remain bright.
+  assert_true(sharpened[2 * 4].to_int() > 200)
+  // Neighboring pixels should go negative (clamped to 0) or stay dark.
+  assert_true(sharpened[1 * 4].to_int() < 20)
+}
+
+test "edge detect finds boundaries" {
+  // 4x1 image: left half black, right half white — strong vertical edge.
+  let arr = Array::make(4 * 4, Int::to_byte(0))
+  for x in 0..<4 {
+    let i = x * 4
+    if x < 2 {
+      arr[i] = 0
+      arr[i + 1] = 0
+      arr[i + 2] = 0
+    } else {
+      arr[i] = 255
+      arr[i + 1] = 255
+      arr[i + 2] = 255
+    }
+    arr[i + 3] = 255
+  }
+  let image = Bytes::from_array(arr)
+  let edges = @S.edge_detect_sobel(image, 4, 1)
+  // The boundary pixels (index 1 and 2) should have non-zero edge magnitude.
+  assert_true(edges[1 * 4].to_int() > 0)
+  assert_true(edges[2 * 4].to_int() > 0)
+}
+
+test "duplicate layer adds a copy" {
+  let m = @S.init_model(4, 4)
+  // init_model has 1 layer (id=0). Duplicate it.
+  let m1 = @S.update(m, @S.Msg::DuplicateLayer(0))
+  assert_eq(m1.layers.length(), 2)
+  // The new layer should have id=1 and name ending in " copy".
+  assert_eq(m1.layers[1].id, 1)
+  assert_true(m1.layers[1].name.contains("copy"))
+  // Active layer should be the new copy.
+  assert_eq(m1.active_layer, Some(1))
+}
+
+test "delete layer removes it" {
+  let m = @S.init_model(4, 4)
+  // Add a second layer, then delete the first.
+  let m1 = @S.update(m, @S.Msg::AddLayer)
+  assert_eq(m1.layers.length(), 2)
+  let m2 = @S.update(m1, @S.Msg::DeleteLayer(0))
+  assert_eq(m2.layers.length(), 1)
+  // Deleting the last layer should be a no-op.
+  let m3 = @S.update(m2, @S.Msg::DeleteLayer(m2.layers[0].id))
+  assert_eq(m3.layers.length(), 1)
+}
+
+test "move layer changes order" {
+  let m = @S.init_model(4, 4)
+  let m1 = @S.update(m, @S.Msg::AddLayer)
+  // layers = [id=0, id=1]. Move id=0 up (towards end of array = top).
+  let m2 = @S.update(m1, @S.Msg::MoveLayerUp(0))
+  assert_eq(m2.layers[0].id, 1)
+  assert_eq(m2.layers[1].id, 0)
+  // Move id=0 back down.
+  let m3 = @S.update(m2, @S.Msg::MoveLayerDown(0))
+  assert_eq(m3.layers[0].id, 0)
+  assert_eq(m3.layers[1].id, 1)
+}

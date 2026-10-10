@@ -868,3 +868,82 @@ pub fn gaussian_blur(
   ignore(n)
   Bytes::from_array(result)
 }
+
+// ---------------------------------------------------------------------------
+// Sharpen (unsharp masking)
+// ---------------------------------------------------------------------------
+
+///|
+/// Sharpen an RGBA8 raster using unsharp masking:
+/// `sharpened = original + amount * (original - blurred)`.
+/// `amount` is clamped to `[0, 3]`.  The blur radius is fixed at 2 px.
+pub fn sharpen(
+  image : Bytes,
+  width : Int,
+  height : Int,
+  amount : Double,
+) -> Bytes {
+  let a = if amount < 0.0 { 0.0 } else if amount > 3.0 { 3.0 } else { amount }
+  let blurred = gaussian_blur(image, width, height, 2.0)
+  let src = image.to_array()
+  let blur = blurred.to_array()
+  let n = width * height * 4
+  let result = Array::make(n, Int::to_byte(0))
+  for i in 0..<n {
+    if i % 4 == 3 {
+      result[i] = src[i]
+    } else {
+      let orig = src[i].to_int().to_double() / 255.0
+      let bv = blur[i].to_int().to_double() / 255.0
+      let v = orig + a * (orig - bv)
+      result[i] = (clamp01(v) * 255.0).round().to_int().to_byte()
+    }
+  }
+  Bytes::from_array(result)
+}
+
+// ---------------------------------------------------------------------------
+// Edge detection (Sobel)
+// ---------------------------------------------------------------------------
+
+///|
+/// Sobel edge detection on an RGBA8 raster.  Computes luminance, applies
+/// the Sobel operator, and writes the edge magnitude into all three RGB
+/// channels (grayscale).  Alpha is preserved.
+pub fn edge_detect_sobel(image : Bytes, width : Int, height : Int) -> Bytes {
+  let src = image.to_array()
+  let result = Array::make(width * height * 4, Int::to_byte(0))
+  // Sobel kernels (row-major, 3x3).
+  let kx = [-1.0, 0.0, 1.0, -2.0, 0.0, 2.0, -1.0, 0.0, 1.0]
+  let ky = [-1.0, -2.0, -1.0, 0.0, 0.0, 0.0, 1.0, 2.0, 1.0]
+  for y in 0..<height {
+    for x in 0..<width {
+      let mut gx = 0.0
+      let mut gy = 0.0
+      for dy in 0..<3 {
+        for dx in 0..<3 {
+          let sx = x + dx - 1
+          let sy = y + dy - 1
+          if sx >= 0 && sx < width && sy >= 0 && sy < height {
+            let i = (sy * width + sx) * 4
+            let r = src[i].to_int().to_double() / 255.0
+            let g = src[i + 1].to_int().to_double() / 255.0
+            let b = src[i + 2].to_int().to_double() / 255.0
+            let lum = 0.299 * r + 0.587 * g + 0.114 * b
+            let ki = dy * 3 + dx
+            gx += kx[ki] * lum
+            gy += ky[ki] * lum
+          }
+        }
+      }
+      let mag = (gx * gx + gy * gy).sqrt()
+      let oi = (y * width + x) * 4
+      let v = (clamp01(mag) * 255.0).round().to_int().to_byte()
+      result[oi] = v
+      result[oi + 1] = v
+      result[oi + 2] = v
+      result[oi + 3] = src[oi + 3]
+    }
+  }
+  Bytes::from_array(result)
+}

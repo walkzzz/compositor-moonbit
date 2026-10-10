@@ -16,6 +16,8 @@ pub fn adjust_saturation(Bytes, Double) -> Bytes
 
 pub fn decode_project(StringView) -> Result[Snapshot, ProjectDecodeError]
 
+pub fn edge_detect_sobel(Bytes, Int, Int) -> Bytes
+
 pub fn encode_project(Model, indent? : Int) -> String
 
 pub fn erase_segment_rgba(Bytes, Int, Int, Double, Double, Double, Double, Brush) -> Bytes
@@ -35,6 +37,8 @@ pub fn paint_segment_rgba(Bytes, Int, Int, Double, Double, Double, Double, Brush
 pub fn push_history(Model) -> Model
 
 pub fn redo(Model) -> Model
+
+pub fn sharpen(Bytes, Int, Int, Double) -> Bytes
 
 pub fn solid_rgba(Int, Int, Color) -> Bytes
 
@@ -171,6 +175,8 @@ pub(all) enum Msg {
   AdjustHue(Double)
   AdjustSaturation(Double)
   AdjustBlur(Double)
+  AdjustSharpen(Double)
+  AdjustEdgeDetect
   Undo
   Redo
   RequestSaveProject(String)

@@ -315,3 +315,50 @@ test "move layer changes order" {
   assert_eq(m3.layers[0].id, 0)
   assert_eq(m3.layers[1].id, 1)
 }
+
+test "invert flips channels" {
+  // White image → inverted → black.
+  let m = @S.init_model(2, 2)
+  let m1 = @S.update(m, @S.Msg::AdjustInvert)
+  let flat = @S.flatten(m1)
+  assert_eq(flat[0], 0) // R
+  assert_eq(flat[1], 0) // G
+  assert_eq(flat[2], 0) // B
+  // Invert again → back to white.
+  let m2 = @S.update(m1, @S.Msg::AdjustInvert)
+  let flat2 = @S.flatten(m2)
+  assert_eq(flat2[0], 255)
+}
+
+test "grayscale produces equal channels" {
+  // Create a colored pixel: red.
+  let arr = Array::make(2 * 2 * 4, Int::to_byte(0))
+  for i in 0..<4 {
+    let idx = i * 4
+    arr[idx] = 255
+    arr[idx + 3] = 255
+  }
+  let image = Bytes::from_array(arr)
+  let gray = @S.grayscale(image)
+  // Red pixel luminance = 0.299 * 255 ≈ 76.
+  let v = gray[0].to_int()
+  assert_true(v > 70 && v < 82)
+  // All three channels should be equal.
+  assert_eq(gray[0], gray[1])
+  assert_eq(gray[1], gray[2])
+}
+
+test "sepia shifts colors" {
+  // White image → sepia → warm tone.
+  let arr = Array::make(4, Int::to_byte(0))
+  arr[0] = 255
+  arr[1] = 255
+  arr[2] = 255
+  arr[3] = 255
+  let image = Bytes::from_array(arr)
+  let sepiad = @S.sepia(image)
+  // Sepia of white: R=0.393+0.769+0.189=1.351→255, G=0.349+0.686+0.168=1.203→255, B=0.272+0.534+0.131=0.937→239
+  assert_eq(sepiad[0], 255)
+  assert_eq(sepiad[1], 255)
+  assert_true(sepiad[2].to_int() > 230 && sepiad[2].to_int() < 245)
+}

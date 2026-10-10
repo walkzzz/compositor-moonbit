@@ -28,7 +28,11 @@ pub fn flood_fill(Bytes, Int, Int, Int, Int, Color) -> Bytes
 
 pub fn gaussian_blur(Bytes, Int, Int, Double) -> Bytes
 
+pub fn grayscale(Bytes) -> Bytes
+
 pub fn init_model(Int, Int) -> Model
+
+pub fn invert(Bytes) -> Bytes
 
 pub fn paint_segment_mask(Mask, Double, Double, Double, Double, Brush, Int) -> Mask
 
@@ -37,6 +41,8 @@ pub fn paint_segment_rgba(Bytes, Int, Int, Double, Double, Double, Double, Brush
 pub fn push_history(Model) -> Model
 
 pub fn redo(Model) -> Model
+
+pub fn sepia(Bytes) -> Bytes
 
 pub fn sharpen(Bytes, Int, Int, Double) -> Bytes
 
@@ -177,6 +183,9 @@ pub(all) enum Msg {
   AdjustBlur(Double)
   AdjustSharpen(Double)
   AdjustEdgeDetect
+  AdjustInvert
+  AdjustGrayscale
+  AdjustSepia
   Undo
   Redo
   RequestSaveProject(String)

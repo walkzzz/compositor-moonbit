@@ -947,3 +947,35 @@ pub fn edge_detect_sobel(image : Bytes, width : Int, height : Int) -> Bytes {
   }
   Bytes::from_array(result)
 }
+
+// ---------------------------------------------------------------------------
+// Invert / Grayscale / Sepia
+// ---------------------------------------------------------------------------
+
+///|
+/// Invert all RGB channels: `channel' = 1 - channel`.  Alpha is preserved.
+pub fn invert(image : Bytes) -> Bytes {
+  adjust_pixels(image, (r, g, b) => (1.0 - r, 1.0 - g, 1.0 - b))
+}
+
+///|
+/// Convert to grayscale using ITU-R BT.601 luminance weights.
+/// `lum = 0.299*r + 0.587*g + 0.114*b`.  Alpha is preserved.
+pub fn grayscale(image : Bytes) -> Bytes {
+  adjust_pixels(image, (r, g, b) => {
+    let lum = 0.299 * r + 0.587 * g + 0.114 * b
+    (lum, lum, lum)
+  })
+}
+
+///|
+/// Apply a sepia tone filter using the standard sepia transform matrix.
+/// Alpha is preserved.
+pub fn sepia(image : Bytes) -> Bytes {
+  adjust_pixels(image, (r, g, b) => {
+    let sr = 0.393 * r + 0.769 * g + 0.189 * b
+    let sg = 0.349 * r + 0.686 * g + 0.168 * b
+    let sb = 0.272 * r + 0.534 * g + 0.131 * b
+    (sr, sg, sb)
+  })
+}

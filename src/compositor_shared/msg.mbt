@@ -60,6 +60,12 @@ pub(all) enum Msg {
   AdjustSharpen(Double)
   /// Sobel edge detection; writes grayscale edge magnitude into RGB.
   AdjustEdgeDetect
+  /// Invert all RGB channels (1 - channel).
+  AdjustInvert
+  /// Convert to grayscale using luminance weights.
+  AdjustGrayscale
+  /// Apply sepia tone filter.
+  AdjustSepia
 
   // --- History ---
   Undo

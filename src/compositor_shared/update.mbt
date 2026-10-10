@@ -436,6 +436,9 @@ pub fn update(model : Model, msg : Msg) -> Model {
       adjust_active(model, image => {
         edge_detect_sobel(image, model.width, model.height)
       })
+    AdjustInvert => adjust_active(model, image => invert(image))
+    AdjustGrayscale => adjust_active(model, image => grayscale(image))
+    AdjustSepia => adjust_active(model, image => sepia(image))
     Undo => undo(model)
     Redo => redo(model)
 
